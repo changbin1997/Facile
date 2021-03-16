@@ -1,0 +1,463 @@
+// 文章头图
+@mixin headerImg {
+  width: 100%;
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-color: #E0E0E0;
+  }
+  a:after {
+    content: '';
+    padding-bottom: 50%;
+    display: block;
+  }
+}
+
+// 通用的文章标题
+@mixin postTitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: #212529;
+  a {
+    color: #333333;
+    &:hover {
+      text-decoration: none;
+      color: #D0220F;
+    }
+    &:focus {
+      color: #D0220F;
+    }
+  }
+}
+
+//  通用的文章内容样式
+@mixin postContent {
+  p,li,a {
+    font-size: 16px;
+  }
+  pre > code {
+    padding: 10px;
+    font-size: 16px;
+  }
+  h1,h2,h3,h4,h5,h6 {
+    color: #333333;
+    font-weight: 700;
+    code {
+      background: #F9F2F4;
+      padding: 0 4px;
+      color: #C7254E;
+    }
+  }
+  h1 {
+    font-size: 28px;
+    * {
+      font-size: 28px;
+    }
+  }
+  h2 {
+    font-size: 21px;
+    * {
+      font-size: 21px;
+    }
+  }
+  h3 {
+    font-size: 18px;
+    * {
+      font-size: 18px;
+    }
+  }
+  h4,h5,h6 {
+    font-size: 16px;
+    * {
+      font-size: 16px;
+    }
+  }
+  img {
+    max-width: 100%;
+  }
+  p code,li code,td code {
+    background: #F9F2F4;
+    font-size: 16px;
+    padding: 0 4px;
+    color: #C7254E;
+  }
+  a {
+    font-weight: 700;
+    word-wrap: break-word;
+    word-break: break-all;
+  }
+  p {
+    margin: 20px 0;
+  }
+  blockquote {
+    border-left: 3px solid #333333;
+    margin: 20px 0;
+    padding: 0 0 0 20px;
+  }
+  table {
+    td,th {
+      min-width: 90px;
+    }
+  }
+}
+
+* {
+  text-transform: none;
+}
+
+// 文章列表
+.post-list {
+  .post {
+    // 文章头图
+    .header-img {
+      @include headerImg;
+    }
+    // 文章标题
+    .post-title {
+      @include postTitle;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
+
+// 侧边栏
+.sidebar {
+  // 通用的侧边栏样式
+  section {
+    h2 {
+      font-size: 12px;
+      font-weight: 700;
+      color: #333333;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      li {
+        margin-bottom: 12px;;
+        a {
+          font-size: 12px;
+          color: #333333;
+        }
+      }
+    }
+  }
+  // 最新评论
+  .latest-comment {
+    img {
+      width: 42px;
+      height: 42px;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+    .media-body {
+      overflow: hidden;
+      p {
+        font-size: 12px;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+// 分类页的页头区域
+.archive-title {
+  h1 {
+    color: #6B6B6B;
+    font-size: 16px;
+    font-weight: 700;
+  }
+}
+
+// 文章页
+.post-page {
+  // 文章头图
+  .header-img {
+    @include headerImg;
+  }
+  // 文章标题
+  .post-title {
+    @include postTitle;
+  }
+  // 文章内容
+  article {
+    .post-content {
+      @include postContent;
+    }
+  }
+  // 分享链接和二维码区域
+  .qr-link {
+    > div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .link-box {
+      width: 160px;
+    }
+  }
+  // 上一篇和下一篇文章的导航区域
+  .post-navigation {
+    a {
+      color: #333333;
+      &:hover {
+        color: #D9230F;
+      }
+    }
+  }
+}
+
+// 点赞的效果样式
+#agree-p {
+  font-weight: 700;
+  font-size: 18px;
+  color: red;
+  position: absolute;
+}
+
+// 图片灯箱
+#max-img-box {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1200;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  // 功能按钮区
+  .features-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1230;
+  }
+  // 图片
+  img {
+    position: absolute;
+    cursor: move;
+  }
+}
+// 禁止滚动
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
+// 评论区引用头像
+.pingback {
+  width: 42px;
+  background: #488CB8;
+  text-align: center;
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 42px;
+  border-radius: 50%;
+}
+
+// 通用的头像样式
+.avatar {
+  background-color: #E0E0E0;
+}
+
+// 评论区
+#comments {
+  // 发表评论区
+  .comment-off {
+    margin-top: 24px;
+    h2 {
+      font-size: 21px;
+      font-weight: 700;
+    }
+  }
+  .comment-input {
+    margin-top: 24px;
+    h2 {
+      font-size: 21px;
+      font-weight: 700;
+      margin-bottom: 25px;
+    }
+    .row {
+      div {
+        margin-bottom: 16px;
+        textarea {
+          height: 150px;
+        }
+      }
+    }
+    a {
+      font-weight: 700;
+    }
+  }
+  // 评论列表区
+  .comments-lists {
+    margin-top: 24px;
+    h2 {
+      font-size: 21px;
+      font-weight: 700;
+      margin-bottom: 25px;
+    }
+    ol {
+      list-style: none;
+      padding: 0;
+    }
+    .comment-author {
+      .avatar {
+        float: left;
+        margin-right: 10px;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+      }
+      .comment-info {
+        // 评论者
+        .author {
+          font-size: 14px;
+          color: #333333;
+        }
+        // 评论时间
+        .comment-time {
+          display: block;
+          font-size: 12px;
+          color: #686868;
+        }
+      }
+      .comment-reply {
+        > span {
+          display: flex;
+          align-items: center;
+        }
+        a,i {
+          color: #333333;
+          font-weight: 700;
+          font-size: 14px;
+        }
+      }
+    }
+    .comment-content {
+      margin-left: 52px;
+      @include postContent;
+      p {
+        margin-top: 0;
+        word-wrap: break-word;
+        word-break: break-all;
+      }
+      p,a,li,code,td {
+        font-size: 15px;
+      }
+    }
+    //  子评论
+    .comment-children {
+      margin-left: 52px;
+      .comment-children {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+// 友情链接页面
+.page-links {
+  .logo {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: #F7F7F9;
+  }
+  .logo-icon {
+    width: 42px;
+    height: 42px;
+    background: #09679B;
+    color: #ffffff;
+    text-align: center;
+    line-height: 42px;
+    border-radius: 50%;
+    font-size: 22px;
+  }
+  .link {
+    display: flex;
+    align-items: center;
+  }
+}
+
+// 统计数据页面
+.statistics-page {
+  .statistics-card {
+    background: #B3D8FF;
+  }
+}
+
+// 404页面
+.page-404 {
+  .text-404 {
+    font-size: 120px;
+    font-weight: 700;
+  }
+}
+
+// >= 576 且 <= 767
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  // 文章列表
+  .post-list {
+    .post {
+      // 文章标题
+      .post-title {
+        font-size: 18px;
+      }
+    }
+  }
+  // 文章页
+  .post-page {
+    // 文章标题
+    .post-title {
+      @include postTitle;
+      font-size: 18px;
+    }
+  }
+}
+
+// <= 575
+@media screen and (max-width: 575px) {
+  // 文章列表
+  .post-list {
+    .post {
+      // 文章标题
+      .post-title {
+        font-size: 18px;
+      }
+    }
+  }
+  // 文章页
+  .post-page {
+    // 文章标题
+    .post-title {
+      @include postTitle;
+      font-size: 18px;
+    }
+  }
+  // 评论区
+  #comments {
+    // 评论列表区
+    .comments-lists {
+      //  子评论
+      .comment-children {
+        margin-left: 21px;
+        .comment-children {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
