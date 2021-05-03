@@ -88,7 +88,7 @@ $this->need('components/header.php');
                                         <i class="icon-qzone-logo mr-1"></i>
                                         <span>分享到QQ空间</span>
                                     </a>
-                                    <a href="javascript:;" class="btn btn-info d-block">
+                                    <a href="https://twitter.com/intent/tweet?url=<?php $this->permalink(); ?>&text=<?php $this->title(); ?>" class="btn btn-info d-block" target="_blank">
                                         <i class="icon-twitter mr-1"></i>
                                         <span>分享到Twitter</span>
                                     </a>
