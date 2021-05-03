@@ -13,7 +13,7 @@ $this->need('components/header.php');
 <div class="container main">
     <div class="row my-4">
         <div class="col-xl-8 col-lg-8 post-page mb-5 mb-sm-5 mb-md-5 mb-lg-0 mb-xl-0">
-            <main class="page">
+            <main class="page archive-page">
                 <article class="mb-5">
                     <header>
                         <h1 class="post-title m-0">
@@ -41,7 +41,7 @@ $this->need('components/header.php');
                                 $year = $year_tmp;
                                 $mon = $mon_tmp;
                                 // 输出年份
-                                $output .= '<div class="archives-item"><h2>' . date('Y年m月', $archives->created) . '</h2><ul class="archives-list" aria-label="' . date('Y年m月', $archives->created) . '">';
+                                $output .= '<div class="archives-item mb-4"><h2>' . date('Y年m月', $archives->created) . '</h2><ul class="archives-list pl-2" aria-label="' . date('Y年m月', $archives->created) . '">';
                             }
                             $output .= '<li>' . date('d日', $archives->created) . ' <a href="' . $archives->permalink . '">' . $archives->title . '</a></li>'; //输出文章
                         }
