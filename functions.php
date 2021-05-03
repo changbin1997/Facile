@@ -26,8 +26,8 @@ function themeFields($layout) {
 //  主题设置
 function themeConfig($form) {
     echo <<<EOT
-    <p>您现在使用的是 Journal 的开发板，开发板暂无版本号。<a href="javascript:;" target="_blank">点击查看发行版</a></p>
-    <p>主题使用帮助可以简单参考 <a href="https://mwordstar.misterma.com/" target="_blank">MWordStar</a> 的帮助文档，遇到问题也可以到 <a href="https://www.misterma.com/msg.html" target="_blank">留言板</a> 留言。</p>
+    <p>您现在使用的是 Facile 的开发板，开发板暂无版本号。<a href="https://github.com/changbin1997/Facile/releases" target="_blank">点击查看发行版</a></p>
+    <p>主题使用帮助可以简单参考 <a href="https://mwordstar.misterma.com/" target="_blank">MWordStar</a> 的帮助文档，遇到问题也可以到 <a href="https://www.misterma.com/msg.html" target="_blank">留言板</a> 或 <a href="https://www.misterma.com/archives/899/" target="_blank">Facile 介绍页</a> 留言。</p>
 EOT;
     echo '<script type="text/javascript">';
     require_once 'assets/js/options-panel.js';
@@ -46,7 +46,7 @@ EOT;
     $form->addInput($icp);
 
     //  侧边栏组件顺序
-    $sidebarComponent = new Typecho_Widget_Helper_Form_Element_Text('sidebarComponent', null, '搜索,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接', _t('侧边栏组件'), _t('您可以设置需要显示在侧边栏的组件，组件会根据这里的组件名称排序。组件名称之间用英文逗号分隔，逗号和名称之间不需要空格，结尾不需要逗号。例如 搜索,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接 。'));
+    $sidebarComponent = new Typecho_Widget_Helper_Form_Element_Text('sidebarComponent', null, '最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接', _t('侧边栏组件'), _t('您可以设置需要显示在侧边栏的组件，组件会根据这里的组件名称排序。组件名称之间用英文逗号分隔，逗号和名称之间不需要空格，结尾不需要逗号。例如 最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接 。'));
     $form->addInput($sidebarComponent);
 
     //  隐藏登录入口
@@ -91,15 +91,15 @@ EOT;
     $form->addInput($QQAvatar);
 
     //  首页友链
-    $homeLinks = new Typecho_Widget_Helper_Form_Element_Textarea('homeLinks', null, null, _t('首页友情链接'), _t('首页友情链接只会显示在首页的侧边栏，需要 JSON 格式数据。如需查看详细说明可以访问：https://www.misterma.com/archives/819/。'));
+    $homeLinks = new Typecho_Widget_Helper_Form_Element_Textarea('homeLinks', null, null, _t('首页友情链接'), _t('首页友情链接只会显示在首页的侧边栏，需要 JSON 格式数据。如需查看详细说明可以访问：https://mwordstar.misterma.com/docs/doc10 。'));
     $form->addInput($homeLinks);
 
     //  全站友链
-    $links = new Typecho_Widget_Helper_Form_Element_Textarea('links', null, null, _t('全站友情链接'), _t('全站友情链接会在每个页面的侧边栏显示，需要 JSON 格式数据。如需查看详细说明可以访问：https://www.misterma.com/archives/819/。'));
+    $links = new Typecho_Widget_Helper_Form_Element_Textarea('links', null, null, _t('全站友情链接'), _t('全站友情链接会在每个页面的侧边栏显示，需要 JSON 格式数据。如需查看详细说明可以访问：https://mwordstar.misterma.com/docs/doc10 。'));
     $form->addInput($links);
 
     //  独立页友链
-    $pageLinks = new Typecho_Widget_Helper_Form_Element_Textarea('pageLinks', null, null, _t('独立页友情链接'), _t('独立页友情链接只会在友情链接的页面显示，需要 JSON 格式 数据。如果要使用独立页友情链接需要创建一个独立页面，把 自定义模板设置为 友情链接。如需查看详细说明可以访问：https://www.misterma.com/archives/819/。'));
+    $pageLinks = new Typecho_Widget_Helper_Form_Element_Textarea('pageLinks', null, null, _t('独立页友情链接'), _t('独立页友情链接只会在友情链接的页面显示，需要 JSON 格式 数据。如果要使用独立页友情链接需要创建一个独立页面，把 自定义模板设置为 友情链接。如需查看详细说明可以访问：https://mwordstar.misterma.com/docs/doc10 。'));
     $form->addInput($pageLinks);
 
     //  自定义CSS
