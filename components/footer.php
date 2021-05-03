@@ -4,7 +4,7 @@
             Powered by
             <a class="mx-1" href="http://www.typecho.org/" target="_blank">Typecho</a>
             Theme by
-            <span class="ml-1">Facile测试</span>
+            <a class="ml-1" href="https://github.com/changbin1997/Facile" target="_blank">Facile</a>
         </nav>
     </div>
 </footer>
