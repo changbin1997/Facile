@@ -38,6 +38,10 @@
 .post-list .post .post-title a:focus {
   color: #D0220F;
 }
+.post-list .post .more-link-wrapper {
+  display: flex;
+  align-items: center;
+}
 
 .sidebar section h2 {
   font-size: 12px;
@@ -175,6 +179,20 @@
 }
 .post-page article .post-content table td, .post-page article .post-content table th {
   min-width: 90px;
+}
+.post-page .category-tag .post-category {
+  display: flex;
+  align-items: center;
+}
+.post-page .category-tag .post-tag {
+  display: flex;
+  align-items: center;
+}
+.post-page .category-tag .post-tag a {
+  margin-right: 6px;
+}
+.post-page .category-tag .post-tag a:last-child {
+  margin-right: 0;
 }
 .post-page .qr-link > div {
   display: flex;
@@ -383,6 +401,11 @@
 }
 #comments .comments-lists .comment-children .comment-children {
   margin-left: 0;
+}
+
+.archive-page .post-content ul {
+  padding-left: 0;
+  list-style: none;
 }
 
 .page-links .logo {

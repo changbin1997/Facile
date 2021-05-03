@@ -124,6 +124,11 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+    // 查看全文和查看评论区域
+    .more-link-wrapper {
+      display: flex;
+      align-items: center;
+    }
   }
 }
 
@@ -192,6 +197,23 @@
   article {
     .post-content {
       @include postContent;
+    }
+  }
+  // 文章的分类和标签区域
+  .category-tag {
+    .post-category {
+      display: flex;
+      align-items: center;
+    }
+    .post-tag {
+      display: flex;
+      align-items: center;
+      a {
+        margin-right: 6px;
+      }
+      a:last-child {
+        margin-right: 0;
+      }
     }
   }
   // 分享链接和二维码区域
@@ -365,6 +387,14 @@
         margin-left: 0;
       }
     }
+  }
+}
+
+// 文章归档页面
+.archive-page .post-content {
+  ul {
+    padding-left: 0;
+    list-style: none;
   }
 }
 
