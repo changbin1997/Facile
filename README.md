@@ -1,4 +1,4 @@
-![Facile主题各种设备的截图](https://www.misterma.com/img-admin/uploads/16197858108859.jpeg)
+![Facile主题各种设备的截图](screenshot/16197858108859.jpeg)
 
 Facile 是一套简洁的 Typecho 博客主题，也是我的博客正在使用的主题。
 
@@ -14,11 +14,11 @@ Facile 是一套简洁的 Typecho 博客主题，也是我的博客正在使用�
 
 下面是主题首页截图：
 
-![Facile首页截图](https://www.misterma.com/img-admin/uploads/16200336116020.png)
+![Facile首页截图](screenshot/16200336116020.png)
 
 不包含文章头图的截图：
 
-![Facile不包含文章头图的截图](https://www.misterma.com/img-admin/uploads/16200336317620.png)
+![Facile不包含文章头图的截图](screenshot/16200336317620.png)
 
 Facile 相比 [MWordStar](https://github.com/changbin1997/MWordStar) 来说，外观要更简洁一些，功能也会少一些，MWordStar 有的功能以后也会陆续增加到 Facile 中，但是 Facile 的功能以后也不会有 MWordStar 多。
 
@@ -71,21 +71,21 @@ ECharts 的库比较大，所以只引入了饼图和日历图，而且只会在
 
 基本数据统计如下：
 
-![Facile基本统计截图](https://www.misterma.com/img-admin/uploads/16198784315155.jpeg)
+![Facile基本统计截图](screenshot/16198784315155.jpeg)
 
 分类占比统计图如下：
 
-![Facile分类占比截图](https://www.misterma.com/img-admin/uploads/16198785132678.jpeg)
+![Facile分类占比截图](screenshot/16198785132678.jpeg)
 
 下面是评论动态日历图：
 
-![Facile评论动态图](https://www.misterma.com/img-admin/uploads/16198788751795.jpeg)
+![Facile评论动态图](screenshot/16198788751795.jpeg)
 
 文章动态日历图和评论动态的日历图是差不多的，屏幕尺寸不同显示的月份数量也不同。
 
 下面是文章评论排名表格：
 
-![Facile评论排名表格截图](https://www.misterma.com/img-admin/uploads/16198790286475.jpeg)
+![Facile评论排名表格截图](screenshot/16198790286475.jpeg)
 
 文章阅读量排名表格和评论量排名的表格也是差不多的。
 
@@ -106,3 +106,7 @@ Facile 主题针对屏幕阅读器做了大量优化，并在 [MVDA](http://www.
 主题自带友情链接功能，友链可以分为 全站、首页、独立页 三种显示方式。友链需要在主题设置中填写 JSON 数据，格式和说明可以简单参考 [MWordStar 友情链接](https://mwordstar.misterma.com/docs/doc10) 。
 
 文章头图目前支持手动输入和自动获取文章中的第一张图片作为文章头图，你可以在撰写文章页的下方设置。
+
+## 插件适配
+
+因为我需要用到 [Sticky](https://plugins.typecho.me/plugins/sticky.html) 文章置顶插件，所以这个主题也直接适配了 Sticky 插件，Sticky 插件安装完成后无需修改主题。
