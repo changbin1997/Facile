@@ -8,7 +8,7 @@ Facile 是一套简洁的 Typecho 博客主题，也是我的博客正在使用�
 
 主题下载地址：[https://github.com/changbin1997/Facile/releases](https://github.com/changbin1997/Facile/releases) 
 
-下载时请选择 `Facile-bundle.zip` ，开发版的源码前端 JS 使用的是 ES6 语法，无法在 IE 浏览器运行。
+下载时请选择 `Facile-bundle.zip` ，否则前端 JS 代码无法在 IE 系列浏览器运行。
 
 主题 Github 仓库：[https://github.com/changbin1997/Facile](https://github.com/changbin1997/Facile) 
 
