@@ -28,6 +28,11 @@ function themeConfig($form) {
     echo <<<EOT
     <p>您现在使用的是 Facile 的开发板，开发板暂无版本号。<a href="https://github.com/changbin1997/Facile/releases" target="_blank">点击查看发行版</a></p>
     <p>主题使用帮助可以简单参考 <a href="https://mwordstar.misterma.com/" target="_blank">MWordStar</a> 的帮助文档，遇到问题也可以到 <a href="https://www.misterma.com/msg.html" target="_blank">留言板</a> 或 <a href="https://www.misterma.com/archives/899/" target="_blank">Facile 介绍页</a> 留言。</p>
+    <button id="export-btn" type="button" class="btn">导出主题配置文件</button>
+    <button id="import-btn" type="button" class="btn">导入主题配置文件</button>
+    <a href="javascript:;" id="download-file" style="display: none;">下载</a>
+    <input type="file" id="file-select" style="display: none;">
+    <p><b>导出主题配置文件</b> 可以把主题外观设置导出为 JSON 文件，<b>导入主题配置文件</b> 可以导入 <b>Facile</b> 主题的 JSON 配置文件。</p>
 EOT;
     echo '<script type="text/javascript">';
     require_once 'assets/js/options-panel.js';
