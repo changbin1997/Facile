@@ -36,14 +36,24 @@
                     <?php $this->fields->summaryContent?$this->fields->summaryContent():$this->excerpt($this->options->summary, '...'); ?>
                 </p>
                 <div class="more-link-wrapper">
-                    <a href="<?php $this->permalink(); ?>" class="btn btn-outline-primary btn-sm mr-3">
-                        阅读全文
-                        <i class="icon-arrow-right2"></i>
-                    </a>
-                    <a href="<?php $this->permalink() ?>#comments">
-                        <i class="icon-bubble mr-1"></i>
-                        <b><?php $this->commentsNum('%d 评论'); ?></b>
-                    </a>
+                    <div>
+                        <a href="<?php $this->permalink(); ?>" class="btn btn-outline-primary btn-sm mr-3">
+                            阅读全文
+                            <i class="icon-arrow-right2"></i>
+                        </a>
+                        <a href="<?php $this->permalink() ?>#comments">
+                            <i class="icon-bubble mr-1"></i>
+                            <b><?php $this->commentsNum('%d 评论'); ?></b>
+                        </a>
+                    </div>
+                    <?php if ($this->user->hasLogin()): ?>
+                        <div>
+                            <a href="<?php echo $this->options->siteUrl . 'admin/write-post.php?cid=' . $this->cid; ?>" class="float-right">
+                                <i class="icon-pencil mr-1"></i>
+                                <b>编辑</b>
+                            </a>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

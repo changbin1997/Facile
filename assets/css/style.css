@@ -41,6 +41,7 @@
 .post-list .post .more-link-wrapper {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .sidebar section h2 {
