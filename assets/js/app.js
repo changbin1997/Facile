@@ -5,15 +5,27 @@ $(function () {
   let imgDirection = 0;  // 图片方向
   let  maxImg = false;  // 是否开启图片灯箱
 
-  $('[data-toggle="tooltip"]').tooltip();
-
   // 给分页链接添加class和aria属性
   if ($('.pagination li').length) {
     $('.pagination li').addClass('page-item');
     $('.pagination li a').addClass('page-link');
     $('.pagination .active a').attr('aria-current', 'page');
-    if ($('.pagination .prev').length) $('.pagination .prev a').attr('aria-label', '上一页');
-    if ($('.pagination .next').length) $('.pagination .next a').attr('aria-label', '下一页');
+    if ($('.pagination .prev').length) {
+      $('.pagination .prev a').attr({
+        'aria-label': '上一页（左光标键）',
+        'title': '上一页（左光标键）',
+        'data-toggle': 'tooltip',
+        'data-placement': 'top'
+      });
+    }
+    if ($('.pagination .next').length) {
+      $('.pagination .next a').attr({
+        'aria-label': '下一页（右光标键）',
+        'title': '下一页（右光标键）',
+        'data-toggle': 'tooltip',
+        'data-placement': 'top'
+      });
+    }
   }else {
     $('.page-nav').remove();
   }
@@ -295,4 +307,6 @@ $(function () {
       }
     });
   });
+
+  $('[data-toggle="tooltip"]').tooltip();
 });
