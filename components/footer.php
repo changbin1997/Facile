@@ -1,5 +1,8 @@
 <footer>
     <div class="container py-3">
+        <?php if ($this->options->icp): ?>
+            <nav class="text-center mb-1"><?php $this->options->icp(); ?></nav>
+        <?php endif; ?>
         <nav class="text-center">
             Powered by
             <a class="mx-1" href="http://www.typecho.org/" target="_blank">Typecho</a>
