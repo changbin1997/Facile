@@ -11,6 +11,8 @@
                 <label for="textarea" class="d-block">评论内容</label>
                 <textarea name="text" id="textarea" placeholder="请在此处输入评论内容" class="form-control" required></textarea>
             </div>
+            <!--Emoji表情区域-->
+            <?php if ($this->options->emojiPanel == 'show'): ?>
             <div class="col-12" id="emoji-box">
                 <button aria-expanded="false" type="button" class="btn btn-outline-primary btn-sm" id="show-emoji-btn" data-url="<?php $this->options->themeUrl('emoji.php'); ?>">😀 Emoji表情</button>
                 <div id="emoji-panel" class="bg-light border shadow rounded" role="dialog" aria-label="Emoji表情面板（按 ESC 可关闭表情面板并转到评论内容输入框。）">
@@ -31,6 +33,7 @@
                     <div id="emoji-list" class="clearfix" role="list" aria-label="表情列表（按回车可以把表情添加到评论内容输入框）"></div>
                 </div>
             </div>
+            <?php endif; ?>
             <?php if($this->user->hasLogin()): ?>
                 <div class="col-lg-12 comment-user">
                     <?php _e('登录身份: '); ?>

@@ -95,6 +95,13 @@ EOT;
     ), 'hide', _t('显示评论者的QQ头像'), _t('开启后如果检测到评论者使用QQ邮箱就会显示QQ头像，只支持 QQ号@qq.com 的QQ邮箱。'));
     $form->addInput($QQAvatar);
 
+    //  启用 Emoji 面板
+    $emojiPanel = new Typecho_Widget_Helper_Form_Element_Radio('emojiPanel', array(
+        'show' => '启用',
+        'hide' => '禁用'
+    ), 'show', _t('Emoji 表情面板'), _t('开启后在评论内容输入框下方会出现一个 Emoji  表情按钮，点击可以打开表情面板。'));
+    $form->addInput($emojiPanel);
+
     //  首页友链
     $homeLinks = new Typecho_Widget_Helper_Form_Element_Textarea('homeLinks', null, null, _t('首页友情链接'), _t('首页友情链接只会显示在首页的侧边栏，需要 JSON 格式数据。如需查看详细说明可以访问：https://mwordstar.misterma.com/docs/doc10 。'));
     $form->addInput($homeLinks);
