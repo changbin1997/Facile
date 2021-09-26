@@ -20,7 +20,7 @@ window.onload = function () {
   form.insertBefore(titleEl[0], ul[0]);  // 站点信息
   form.insertBefore(titleEl[1], ul[3]);  // 侧边栏
   form.insertBefore(titleEl[2], ul[5]);  // 文章相关
-  form.insertBefore(titleEl[3], ul[8]);  // 评论
+  form.insertBefore(titleEl[3], ul[7]);  // 评论
   form.insertBefore(titleEl[4], ul[11]);  // 友链
   form.insertBefore(titleEl[5], ul[14]);  // 开发者
 
