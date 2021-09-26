@@ -323,6 +323,45 @@
     a {
       font-weight: 700;
     }
+    // Emoji表情区域
+    #emoji-panel {
+      width: 400px;
+      height: 300px;
+      position: absolute;
+      z-index: 10;
+      display: none;
+      // 表情选择区
+      #emoji-classification {
+        overflow-x: auto;
+        button {
+          font-size: 16px;
+        }
+        button:hover {
+          background: #D9230F;
+        }
+        .selected {
+          background: #D9230F;
+        }
+      }
+      // 表情列表
+      #emoji-list {
+        max-height: 222px;
+        overflow-y: auto;
+        // 表情
+        .emoji {
+          float: left;
+          font-size: 16px;
+          margin: 0;
+          cursor: pointer;
+          &:hover {
+            background: #D9230F;
+          }
+          &:focus {
+            background: #D9230F;
+          }
+        }
+      }
+    }
   }
   // 评论列表区
   .comments-lists {
@@ -482,13 +521,17 @@
   #comments {
     // 评论列表区
     .comments-lists {
-      //  子评论
+      // 子评论
       .comment-children {
         margin-left: 21px;
         .comment-children {
           margin-left: 0;
         }
       }
+    }
+    // Emoji面板
+    #emoji-panel {
+      width: 93% !important;
     }
   }
 }

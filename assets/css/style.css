@@ -284,6 +284,41 @@
 #comments .comment-input a {
   font-weight: 700;
 }
+#comments .comment-input #emoji-panel {
+  width: 400px;
+  height: 300px;
+  position: absolute;
+  z-index: 10;
+  display: none;
+}
+#comments .comment-input #emoji-panel #emoji-classification {
+  overflow-x: auto;
+}
+#comments .comment-input #emoji-panel #emoji-classification button {
+  font-size: 16px;
+}
+#comments .comment-input #emoji-panel #emoji-classification button:hover {
+  background: #D9230F;
+}
+#comments .comment-input #emoji-panel #emoji-classification .selected {
+  background: #D9230F;
+}
+#comments .comment-input #emoji-panel #emoji-list {
+  max-height: 222px;
+  overflow-y: auto;
+}
+#comments .comment-input #emoji-panel #emoji-list .emoji {
+  float: left;
+  font-size: 16px;
+  margin: 0;
+  cursor: pointer;
+}
+#comments .comment-input #emoji-panel #emoji-list .emoji:hover {
+  background: #D9230F;
+}
+#comments .comment-input #emoji-panel #emoji-list .emoji:focus {
+  background: #D9230F;
+}
 #comments .comments-lists {
   margin-top: 24px;
 }
@@ -488,6 +523,9 @@
   }
   #comments .comments-lists .comment-children .comment-children {
     margin-left: 0;
+  }
+  #comments #emoji-panel {
+    width: 93% !important;
   }
 }
 
