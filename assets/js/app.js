@@ -400,4 +400,14 @@ $(function () {
       $('#textarea').focus();
     }
   });
+
+  // 给独立页友情链接的网站 Logo 添加加载错误事件
+  $('.page-links .logo').on('error', ev => {
+    // 创建默认网站 Logo
+    logoEl = '<div role="img" class="logo-icon mr-2"><i class="icon-link"></i></div>';
+    // 把默认网站 Logo 插入到页面
+    $(ev.target).before(logoEl);
+    // 移除加载失败的网站 Logo
+    $(ev.target).remove();
+  });
 });
