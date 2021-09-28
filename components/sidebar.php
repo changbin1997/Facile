@@ -49,7 +49,7 @@ $components = explode(',', $components);
                                 $comments->gravatar('50', '');
                             }
                             if ($comments->type == 'pingback') {
-                                echo '<div class="pingback avatar">引用</div>';
+                                echo '<div class="pingback avatar" role="img" aria-label="引用">引用</div>';
                             }
                             ?>
                             <div class="media-body">

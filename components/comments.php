@@ -35,7 +35,7 @@ function threadedComments($comments, $options) {
                     $comments->gravatar('50', '');
                 }
                 if ($comments->type == 'pingback') {
-                    echo '<div class="pingback avatar">引用</div>';
+                    echo '<div class="pingback avatar" role="img" aria-label="引用">引用</div>';
                 }
                 ?>
                 <div class="comment-info float-left">
@@ -53,7 +53,7 @@ function threadedComments($comments, $options) {
                 </div>
                 <span class="comment-reply float-right">
                     <span data-id="<?php $comments->theId(); ?>">
-                        <i class="icon-undo2 mr-1"></i>
+                        <i class="icon-undo2 mr-1" aria-hidden="true"></i>
                         <?php $comments->reply(); ?>
                     </span>
                 </span>

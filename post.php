@@ -32,18 +32,18 @@ $this->need('components/header.php');
                     <?php endif; ?>
                     <div class="post-info mt-2">
                         <span class="ml-1" title="发布日期" data-toggle="tooltip" data-placement="top">
-                            <i class="icon-calendar mr-1"></i>
+                            <i class="icon-calendar mr-1" aria-hidden="true"></i>
                             <?php $this->date('Y年m月d日'); ?>
                         </span>
                         <span class="ml-2" title="作者" data-toggle="tooltip" data-placement="top">
-                            <i class="icon-user mr-1"></i>
+                            <i class="icon-user mr-1" aria-hidden="true"></i>
                             <a href="<?php $this->author->permalink(); ?>" class="mr-2" title="作者：<?php $this->author(); ?>">
                                 <?php $this->author(); ?>
                             </a>
                         </span>
                         <span class="ml-2" title="阅读量" data-toggle="tooltip" data-placement="top">
                             <?php $views = getPostViews($this); ?>
-                            <i class="icon-eye mr-1"></i>
+                            <i class="icon-eye mr-1" aria-hidden="true"></i>
                             <?php echo $views; ?>
                         </span>
                     </div>
@@ -51,12 +51,12 @@ $this->need('components/header.php');
                         <?php $this->content(); ?>
                     </div>
                     <div class="category-tag clearfix my-4">
-                        <div class="post-category float-left">
-                            <i class="icon-folder-open mr-1"></i>
+                        <div class="post-category float-left" role="group" aria-label="文章分类">
+                            <i class="icon-folder-open mr-1" aria-hidden="true"></i>
                             <?php $this->category(' '); ?>
                         </div>
                         <div class="post-tag float-right" role="group" aria-label="标签">
-                            <i class="icon-price-tag mr-1"></i>
+                            <i class="icon-price-tag mr-1" aria-hidden="true"></i>
                             <?php $this->tags(' ', true, '暂无标签'); ?>
                         </div>
                     </div>
@@ -80,15 +80,15 @@ $this->need('components/header.php');
                             <div class="clearfix">
                                 <canvas id="qr" class="float-left"></canvas>
                                 <div class="link-box float-left p-2">
-                                    <a href="https://service.weibo.com/share/share.php?url=<?php $this->permalink(); ?>&title=<?php $this->title(); ?>" class="btn btn-primary d-block mb-2" target="_blank">
+                                    <a href="https://service.weibo.com/share/share.php?url=<?php $this->permalink(); ?>&title=<?php $this->title(); ?>" class="btn btn-primary d-block mb-2" target="_blank" rel="external nofollow">
                                         <i class="icon-sina-weibo mr-1"></i>
                                         <span>分享到新浪微博</span>
                                     </a>
-                                    <a href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=<?php $this->permalink(); ?>&title=<?php $this->title(); ?>&site=<?php $this->options->siteUrl(); ?>&summary=<?php $this->fields->summaryContent?$this->fields->summaryContent():$this->excerpt($this->options->summary, '...'); ?>" class="btn btn-info d-block mb-2" target="_blank">
+                                    <a href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=<?php $this->permalink(); ?>&title=<?php $this->title(); ?>&site=<?php $this->options->siteUrl(); ?>&summary=<?php $this->fields->summaryContent?$this->fields->summaryContent():$this->excerpt($this->options->summary, '...'); ?>" class="btn btn-info d-block mb-2" target="_blank" rel="external nofollow">
                                         <i class="icon-qzone-logo mr-1"></i>
                                         <span>分享到QQ空间</span>
                                     </a>
-                                    <a href="https://twitter.com/intent/tweet?url=<?php $this->permalink(); ?>&text=<?php $this->title(); ?>" class="btn btn-info d-block" target="_blank">
+                                    <a href="https://twitter.com/intent/tweet?url=<?php $this->permalink(); ?>&text=<?php $this->title(); ?>" class="btn btn-info d-block" target="_blank" rel="external nofollow">
                                         <i class="icon-twitter mr-1"></i>
                                         <span>分享到Twitter</span>
                                     </a>

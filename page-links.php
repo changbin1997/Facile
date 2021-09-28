@@ -50,18 +50,18 @@ $this->need('components/header.php');
                     <?php endif; ?>
                     <div class="post-info mt-2">
                         <span class="ml-1" title="发布日期" data-toggle="tooltip" data-placement="top">
-                                <i class="icon-calendar mr-1"></i>
+                                <i class="icon-calendar mr-1" aria-hidden="true"></i>
                                 <?php $this->date('Y年m月d日'); ?>
                             </span>
                         <span class="ml-2" title="作者" data-toggle="tooltip" data-placement="top">
-                                <i class="icon-user mr-1"></i>
+                                <i class="icon-user mr-1" aria-hidden="true"></i>
                                 <a href="<?php $this->author->permalink(); ?>" class="mr-2" title="作者：<?php $this->author(); ?>">
                                     <?php $this->author(); ?>
                                 </a>
                             </span>
                         <span class="ml-2" title="阅读量" data-toggle="tooltip" data-placement="top">
                                 <?php $views = getPostViews($this); ?>
-                                <i class="icon-eye mr-1"></i>
+                                <i class="icon-eye mr-1" aria-hidden="true"></i>
                                 <?php echo $views; ?>
                             </span>
                     </div>
