@@ -6,6 +6,8 @@ $(function () {
   let  maxImg = false;  // 是否开启图片灯箱
   let emojiList = null;  // Emoji 列表
   let showEmoji = false;  // Emoji 面板状态
+  const avatarColor = [];  // 存储文字头像颜色
+  const avatarName = [];  // 存储文字头像名称
 
   // 给分页链接添加class和aria属性
   if ($('.pagination li').length) {
@@ -404,10 +406,55 @@ $(function () {
   // 给独立页友情链接的网站 Logo 添加加载错误事件
   $('.page-links .logo').on('error', ev => {
     // 创建默认网站 Logo
-    logoEl = '<div role="img" class="logo-icon mr-2"><i class="icon-link"></i></div>';
+    const logoEl = '<div role="img" class="logo-icon mr-2"><i class="icon-link"></i></div>';
     // 把默认网站 Logo 插入到页面
     $(ev.target).before(logoEl);
     // 移除加载失败的网站 Logo
     $(ev.target).remove();
   });
+
+  // 给评论者头像添加错误事件
+  for (let i = 0;i < $('.avatar').length;i ++) {
+    // 检测是否是图片
+    if ($('.avatar').eq(i)[0].tagName === 'IMG') {
+      $('.avatar').eq(i).on('error', ev => {
+        // 获取头像昵称
+        const name = $(ev.target).attr('alt');
+        // 创建文字头像元素
+        const avatarEl = document.createElement('div');
+        avatarEl.setAttribute('role', 'img');
+        avatarEl.setAttribute('aria-label', name);
+        // 设置文字头像的 class
+        avatarEl.className = 'pingback avatar';
+        // 把文字头像的内容设置为评论者昵称的第一个字
+        avatarEl.innerHTML = name.substring(0, 1);
+
+        // 检测是否重复出现
+        const nameIndex = avatarName.indexOf(name);
+        if (nameIndex === -1) {
+          avatarName.push(name);
+          // 生成随机颜色
+          const bgColor = {r: rand(250, 1), g: rand(250, 1), b: rand(250, 1)};
+          // 把颜色添加到数组，遇到同名的头像可以使用同一组颜色
+          avatarColor.push(bgColor);
+          // 设置文字头像的背景颜色
+          avatarEl.style.background = 'rgb(' + bgColor.r + ',' + bgColor.g + ',' + bgColor.b + ')';
+        }else {
+          // 设置文字头像的背景颜色
+          avatarEl.style.background = 'rgb(' + avatarColor[nameIndex].r + ',' + avatarColor[nameIndex].g + ',' + avatarColor[nameIndex].b + ')';
+        }
+
+        // 把文字头像插入到页面
+        $(ev.target).before(avatarEl);
+        // 移除加载失败的头像
+        $(ev.target).remove();
+      });
+    }
+  }
+
+  // 生成随机数的函数
+  function rand(max, min) {
+    const num = max - min;
+    return Math.round(Math.random() * num + min);
+  }
 });
