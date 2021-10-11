@@ -13,6 +13,26 @@ $components = explode(',', $components);
 
 <aside class="col-xl-4 col-lg-4 sidebar">
     <?php foreach ($components as $component): ?>
+        <?php if ($component == '主题配色'): ?>
+            <!--主题配色-->
+            <section class="ml-xl-4 ml-lg-3 mb-5 change-color">
+                <h2 class="mb-4">主题配色</h2>
+                <ul aria-label="主题配色">
+                    <li>
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input change-theme-color" type="radio" name="color" id="light-color" <?php if (!$GLOBALS['dark']) echo'checked'; ?>>
+                            <label class="custom-control-label" for="light-color">浅色主题</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input change-theme-color" type="radio" name="color" id="dark-color" <?php if ($GLOBALS['dark']) echo'checked'; ?>>
+                            <label class="custom-control-label" for="dark-color">深色主题</label>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        <?php endif; ?>
         <?php if ($component == '最新文章'): ?>
             <!--最新文章-->
             <section class="ml-xl-4 ml-lg-3 mb-5">

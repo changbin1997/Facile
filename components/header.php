@@ -1,5 +1,14 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+
+// 检测是否包含主题配色 cookie
+if (isset($_COOKIE['themeColor'])) {
+    // 根据主题配色 cookie 设置配色
+    $GLOBALS['dark'] = $_COOKIE['themeColor'] == 'dark-color'?true:false;
+}else {
+    // 如果不包含主题配色 cookie 就使用后台设置的默认配色
+    $GLOBALS['dark'] = $this->options->themeColor == 'dark'?true:false;
+}
 ?>
 
 <!doctype html>
@@ -42,9 +51,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         <?php $this->options->headHTML(); ?>
     <?php endif; ?>
 </head>
-<body>
+<body class="<?php if ($GLOBALS['dark']) echo 'dark-color'; ?>">
 <header class="sticky-top">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg <?php echo $GLOBALS['dark']?'navbar-dark bg-dark':'bg-light navbar-light'; ?>">
         <div class="container">
             <a class="navbar-brand" href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="导航菜单">

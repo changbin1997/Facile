@@ -24,7 +24,7 @@ $this->need('components/header.php');
         </div>
     </div>
     <div class="text-center mt-3">
-        <a href="<?php $this->options->siteUrl(); ?>" class="btn btn-outline-primary">返回首页</a>
+        <a href="<?php $this->options->siteUrl(); ?>" class="btn <?php echo $GLOBALS['dark']?'btn-outline-light':'btn-outline-primary'; ?>">返回首页</a>
     </div>
 </div>
 

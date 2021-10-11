@@ -38,6 +38,13 @@ EOT;
     require_once 'assets/js/options-panel.js';
     echo '</script>';
 
+    // 主题配色
+    $themeColor = new Typecho_Widget_Helper_Form_Element_Radio('themeColor', array(
+        'light' => '浅色主题',
+        'dark' => '深色主题'
+    ), 'light', _t('默认主题配色'), _t('主题配色会优先使用访问者设置的配色，如果访问者没有更改过配色就会使用默认设置。主题配色设置组件可以在侧边栏组件设置中添加或删除。'));
+    $form->addInput($themeColor);
+
     //  站点Logo
     $logoUrl = new Typecho_Widget_Helper_Form_Element_Text('logoUrl', null, null, _t('站点 Logo 地址'), _t('Logo 会显示在标签页的标题前面。'));
     $form->addInput($logoUrl);
@@ -51,7 +58,7 @@ EOT;
     $form->addInput($icp);
 
     //  侧边栏组件顺序
-    $sidebarComponent = new Typecho_Widget_Helper_Form_Element_Text('sidebarComponent', null, '最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接', _t('侧边栏组件'), _t('您可以设置需要显示在侧边栏的组件，组件会根据这里的组件名称排序。组件名称之间用英文逗号分隔，逗号和名称之间不需要空格，结尾不需要逗号。例如 最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接 。'));
+    $sidebarComponent = new Typecho_Widget_Helper_Form_Element_Text('sidebarComponent', null, '主题配色,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接', _t('侧边栏组件'), _t('您可以设置需要显示在侧边栏的组件，组件会根据这里的组件名称排序。组件名称之间用英文逗号分隔，逗号和名称之间不需要空格，结尾不需要逗号。例如 主题配色,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接 。'));
     $form->addInput($sidebarComponent);
 
     //  隐藏登录入口

@@ -457,4 +457,19 @@ $(function () {
     const num = max - min;
     return Math.round(Math.random() * num + min);
   }
+
+  // 切换主题的单选框改变
+  $('.change-theme-color').on('click', ev => {
+    // 获取选中的颜色
+    const color = $(ev.target).attr('id');
+    // 获取当前的时间戳
+    let time = Date.parse(new Date());
+    // 在当前的时间戳上 + 180天
+    time += 15552000000;
+    time = new Date(time);
+    // 写入 cookie
+    document.cookie = 'themeColor=' + color + ';path=/;expires=Tue,' + time;
+    // 刷新网页
+    location.reload();
+  });
 });

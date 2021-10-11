@@ -8,7 +8,7 @@ $this->need('components/header.php');
     <div class="row mt-4">
         <div class="col-xl-8 col-lg-8 post-list">
             <header class="archive-title mb-5">
-                <h1>
+                <h1 <?php if ($GLOBALS['dark']) echo 'class="text-light"'; ?>>
                     <?php $this->archiveTitle(array(
                         'category' => _t('分类 %s 下的文章'),
                         'search' => _t('包含关键字 %s 的文章'),
@@ -17,7 +17,7 @@ $this->need('components/header.php');
                     ), '', ''); ?>
                 </h1>
                 <?php if ($this->getDescription() != ''): ?>
-                    <span><?php echo $this->getDescription(); ?></span>
+                    <span class="archive-description"><?php echo $this->getDescription(); ?></span>
                 <?php endif; ?>
             </header>
             <?php $this->need('components/post-list.php'); ?>

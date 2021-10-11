@@ -19,7 +19,7 @@
 <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/app.js'); ?>"></script>
 <!--统计数据的图表js-->
 <?php if (isset($GLOBALS['page']) && $GLOBALS['page'] == 'page-data'): ?>
-    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/tongji20210314.js'); ?>"></script>
+    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/ECharts.js'); ?>"></script>
 <?php endif; ?>
 <!--自定义HTML-->
 <?php if ($this->options->bodyHTML): ?>

@@ -532,5 +532,215 @@
     width: 93% !important;
   }
 }
+.dark-color {
+  background-color: #121212;
+}
+.dark-color header .navbar {
+  background-color: #212529 !important;
+}
+.dark-color .avatar {
+  background-color: #282828;
+}
+.dark-color .header-img a {
+  background-color: #232323 !important;
+}
+.dark-color .post-info a {
+  color: #FF4242;
+}
+.dark-color .post-info span {
+  color: #F9F9F9;
+}
+.dark-color .text-color {
+  color: #F5F5F5;
+}
+.dark-color .comment-count, .dark-color .edit-link {
+  color: #FF4242;
+}
+.dark-color .pagination li:not(.active) a {
+  background: #212529;
+  color: #F5F5F5;
+  border: none;
+}
+.dark-color .sidebar section > h2 {
+  color: #FFFFFF;
+}
+.dark-color .sidebar section li a {
+  color: #F5F5F5;
+}
+.dark-color .sidebar .change-color label {
+  color: #F5F5F5;
+}
+.dark-color .sidebar .latest-comment p {
+  color: #F5F5F5;
+}
+.dark-color .post-page .post-content p {
+  color: #F5F5F5;
+}
+.dark-color .post-page .post-content p > code {
+  background: #000000 !important;
+  color: #F1D951 !important;
+}
+.dark-color .post-page .post-content ol li, .dark-color .post-page .post-content ul li {
+  color: #F5F5F5;
+}
+.dark-color .post-page .post-content ol li code, .dark-color .post-page .post-content ul li code {
+  background: #000000 !important;
+  color: #F1D951 !important;
+}
+.dark-color .post-page .post-content h1, .dark-color .post-page .post-content h2, .dark-color .post-page .post-content h3, .dark-color .post-page .post-content h4, .dark-color .post-page .post-content h5 {
+  color: #FFFFFF !important;
+}
+.dark-color .post-page .post-content h1 code, .dark-color .post-page .post-content h2 code, .dark-color .post-page .post-content h3 code, .dark-color .post-page .post-content h4 code, .dark-color .post-page .post-content h5 code {
+  background: #000000 !important;
+  color: #F1D951 !important;
+}
+.dark-color .post-page .post-content table {
+  background: #212529;
+}
+.dark-color .post-page .post-content table th {
+  color: #FFFFFF;
+  border: 1px solid #454D55;
+}
+.dark-color .post-page .post-content table td {
+  color: #F5F5F5;
+  border: 1px solid #454D55;
+}
+.dark-color .post-page .post-content table td a {
+  color: #FF4242;
+}
+.dark-color .post-page .post-content table td code {
+  background: #000000 !important;
+  color: #F1D951 !important;
+}
+.dark-color .post-page .post-content table tbody tr:nth-child(odd) {
+  background: #343A40;
+}
+.dark-color .post-page .post-content table tr:hover {
+  background: #343A40;
+}
+.dark-color .post-page .post-content a {
+  color: #FF4242;
+}
+.dark-color .post-page .post-content hr {
+  background: #CCCCCC;
+}
+.dark-color .category-tag i {
+  color: #F9F9F9;
+}
+.dark-color .post-category a {
+  color: #FF4242;
+}
+.dark-color #qr-link p {
+  color: #F5F5F5;
+}
+.dark-color .post-navigation a {
+  color: #F5F5F5;
+}
+.dark-color .post-navigation div {
+  color: #FFFFFF;
+}
+.dark-color #comments a {
+  color: #FF4242;
+}
+.dark-color #comments .comment-info b {
+  color: #FFFFFF !important;
+}
+.dark-color #comments .comment-info .comment-time {
+  color: #F9F9F9 !important;
+}
+.dark-color #comments .comment-info .mx-2 {
+  color: #F5F5F5;
+}
+.dark-color #comments .comment-content p {
+  color: #F5F5F5;
+}
+.dark-color #comments .comment-content p > code {
+  background: #000000 !important;
+  color: #F1D951 !important;
+}
+.dark-color #comments .comment-content ol li, .dark-color #comments .comment-content ul li {
+  color: #F5F5F5;
+}
+.dark-color #comments .comment-content ol li code, .dark-color #comments .comment-content ul li code {
+  background: #000000 !important;
+  color: #F1D951 !important;
+}
+.dark-color #comments .comment-content h1, .dark-color #comments .comment-content h2, .dark-color #comments .comment-content h3, .dark-color #comments .comment-content h4, .dark-color #comments .comment-content h5 {
+  color: #FFFFFF !important;
+}
+.dark-color #comments .comment-content h1 code, .dark-color #comments .comment-content h2 code, .dark-color #comments .comment-content h3 code, .dark-color #comments .comment-content h4 code, .dark-color #comments .comment-content h5 code {
+  background: #000000 !important;
+  color: #F1D951 !important;
+}
+.dark-color #comments .comment-content table {
+  background: #212529;
+}
+.dark-color #comments .comment-content table th {
+  color: #FFFFFF;
+  border: 1px solid #454D55;
+}
+.dark-color #comments .comment-content table td {
+  color: #F5F5F5;
+  border: 1px solid #454D55;
+}
+.dark-color #comments .comment-content table td a {
+  color: #FF4242;
+}
+.dark-color #comments .comment-content table td code {
+  background: #000000 !important;
+  color: #F1D951 !important;
+}
+.dark-color #comments .comment-content table tbody tr:nth-child(odd) {
+  background: #343A40;
+}
+.dark-color #comments .comment-content table tr:hover {
+  background: #343A40;
+}
+.dark-color #comments .comment-content a {
+  color: #FF4242;
+}
+.dark-color #comments .comment-content hr {
+  background: #CCCCCC;
+}
+.dark-color #comments .comment-reply i, .dark-color #comments .comment-reply a {
+  color: #F9F9F9 !important;
+}
+.dark-color #comments .comment-input label {
+  color: #F5F5F5;
+}
+.dark-color #comments .comment-input textarea, .dark-color #comments .comment-input input {
+  background: #212529;
+  color: #F5F5F5;
+}
+.dark-color #comments .comment-input #emoji-panel {
+  background: #212529 !important;
+}
+.dark-color #comments .comment-input #emoji-panel .card-body {
+  background: #212529;
+}
+.dark-color #comments .comment-input #emoji-panel * {
+  color: #F5F5F5;
+}
+.dark-color #comments .comment-input .comment-user {
+  color: #F5F5F5;
+}
+.dark-color .archive-description {
+  color: #F9F9F9;
+}
+.dark-color footer nav {
+  color: #F9F9F9;
+}
+.dark-color footer nav a {
+  color: #FF4242;
+}
+.dark-color .statistics-card {
+  background: #212529;
+}
+.dark-color .page-404 h1 {
+  color: #F5F5F5;
+}
+.dark-color .page-404 h3 {
+  color: #F9F9F9;
+}
 
 /*# sourceMappingURL=style.css.map */

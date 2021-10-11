@@ -1,4 +1,11 @@
-<?php while ($this->next()): ?>
+<?php
+// 设置标题配色
+$postTitleColorClass = $GLOBALS['dark']?'class="text-light"':'';
+// 设置阅读全文按钮颜色
+$readMoreBtnColor = $GLOBALS['dark']?'btn-primary':'btn-outline-primary';
+
+while ($this->next()):
+?>
 <div class="post mb-5 pb-3">
     <article>
         <!--文章头图区域-->
@@ -14,7 +21,7 @@
             <header class="mb-4">
                 <h2 class="post-title m-0">
                     <?php $this->sticky(); ?>
-                    <a href="<?php $this->permalink(); ?>" rel="bookmark">
+                    <a href="<?php $this->permalink(); ?>" rel="bookmark" <?php echo $postTitleColorClass; ?>>
                         <?php $this->title(); ?>
                     </a>
                 </h2>
@@ -32,23 +39,23 @@
                 </div>
             </header>
             <div class="post-content mt-4">
-                <p>
+                <p class="text-color">
                     <?php $this->fields->summaryContent?$this->fields->summaryContent():$this->excerpt($this->options->summary, '...'); ?>
                 </p>
                 <div class="more-link-wrapper">
                     <div>
-                        <a href="<?php $this->permalink(); ?>" class="btn btn-outline-primary btn-sm mr-3">
+                        <a href="<?php $this->permalink(); ?>" class="btn btn-sm mr-3 <?php echo $readMoreBtnColor; ?>">
                             阅读全文
                             <i class="icon-arrow-right2"></i>
                         </a>
-                        <a href="<?php $this->permalink() ?>#comments">
+                        <a href="<?php $this->permalink() ?>#comments" class="comment-count">
                             <i class="icon-bubble mr-1"></i>
                             <b><?php $this->commentsNum('%d 评论'); ?></b>
                         </a>
                     </div>
                     <?php if ($this->user->hasLogin()): ?>
                         <div>
-                            <a href="<?php echo $this->options->siteUrl . 'admin/write-post.php?cid=' . $this->cid; ?>" class="float-right">
+                            <a href="<?php echo $this->options->siteUrl . 'admin/write-post.php?cid=' . $this->cid; ?>" class="float-right edit-link">
                                 <i class="icon-pencil mr-1"></i>
                                 <b>编辑</b>
                             </a>
