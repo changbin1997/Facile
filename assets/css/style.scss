@@ -469,8 +469,26 @@
 
 // 统计数据页面
 .statistics-page {
+  // 基本统计区域
   .statistics-card {
     background: #B3D8FF;
+  }
+  // 分类占比区域
+  #category-chart {
+    height: 390px;
+    position: relative;
+  }
+  // 文章和评论动态日历区域
+  #post-chart,#comment-chart {
+    height: 250px;
+    position: relative;
+  }
+  // 图表加载提示
+  .loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 

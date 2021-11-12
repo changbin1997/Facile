@@ -472,6 +472,20 @@
 .statistics-page .statistics-card {
   background: #B3D8FF;
 }
+.statistics-page #category-chart {
+  height: 390px;
+  position: relative;
+}
+.statistics-page #post-chart, .statistics-page #comment-chart {
+  height: 250px;
+  position: relative;
+}
+.statistics-page .loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 .page-404 .text-404 {
   font-size: 120px;

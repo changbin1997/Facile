@@ -89,15 +89,27 @@ $this->need('components/header.php');
                         <hr>
                         <h2>分类占比</h2>
                         <p>下面是个分类的文章占比：</p>
-                        <div id="category-chart" style="height: 390px;"></div>
+                        <div id="category-chart">
+                            <div class="loading text-center">
+                                <h4 class="text-primary">正在加载图表，请稍等……</h4>
+                            </div>
+                        </div>
                         <hr>
                         <h2>文章更新</h2>
                         <p>下面是 <?php echo date('Y年m月d日', time() - 20736000); ?> 到 <?php echo date('Y年m月d日', time()); ?> 的文章更新情况</p>
-                        <div id="post-chart" style="height: 250px;"></div>
+                        <div id="post-chart">
+                            <div class="loading text-center">
+                                <h4 class="text-primary">正在加载图表，请稍等……</h4>
+                            </div>
+                        </div>
                         <hr>
                         <h2>评论动态</h2>
                         <p>下面是 <?php echo date('Y年m月d日', time() - 20736000); ?> 到 <?php echo date('Y年m月d日', time()); ?> 的评论动态</p>
-                        <div id="comment-chart" style="height: 250px;"></div>
+                        <div id="comment-chart">
+                            <div class="loading text-center">
+                                <h4 class="text-primary">正在加载图表，请稍等……</h4>
+                            </div>
+                        </div>
                         <hr>
                         <h2>最多阅读的文章</h2>
                         <?php $top5Post = top5post(); ?>
