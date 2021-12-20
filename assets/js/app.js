@@ -348,6 +348,23 @@ $(function () {
     showEmoji = !showEmoji;
     // 设置用于屏幕阅读器的 Emoji 面板的显示和隐藏状态
     $(ev.target).attr('aria-expanded', showEmoji);
+    return false;
+  });
+
+  // 页面空白区域点击
+  $('body').on('click', () => {
+    // 如果表情面板处于开启状态就关闭表情面板
+    if (showEmoji) $('#show-emoji-btn').click();
+  });
+
+  // Emoji 面板的空白区域点击
+  $('#emoji-panel').on('click', () => {
+    return false;
+  });
+
+  // 评论内容输入框点击
+  $('#textarea').on('click', () => {
+    return false;
   });
 
   // 切换Emoji类型按钮点击
