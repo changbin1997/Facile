@@ -44,6 +44,18 @@
   justify-content: space-between;
 }
 
+#to-top-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: #FFFFFF;
+  font-size: 16px;
+  border: 1px solid #CCCCCC;
+  opacity: 0.7;
+}
+
 .sidebar section h2 {
   font-size: 12px;
   font-weight: 700;
@@ -573,6 +585,11 @@
 .dark-color .pagination li:not(.active) a {
   background: #212529;
   color: #F5F5F5;
+  border: none;
+}
+.dark-color #to-top-btn {
+  background-color: #212529;
+  color: #FFFFFF !important;
   border: none;
 }
 .dark-color .sidebar section > h2 {

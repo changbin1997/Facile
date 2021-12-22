@@ -489,4 +489,29 @@ $(function () {
     // 刷新网页
     location.reload();
   });
+
+  // 监听滚动条
+  $(document).on('scroll', () => {
+    // 返回顶部的按钮是否存在
+    if ($('#to-top-btn').length) {
+      // 如果滚动条高度 > 屏幕高度
+      if ($(document).scrollTop() > window.innerHeight) {
+        // 显示返回顶部按钮
+        $('#to-top-btn').removeClass('d-none');
+      }else {
+        // 隐藏返回顶部按钮
+        $('#to-top-btn').addClass('d-none');
+      }
+    }
+  });
+
+  // 返回顶部按钮点击
+  $('#to-top-btn').on('click', () => {
+    // 返回顶部，让第一个链接获取焦点
+    $('html').animate({
+      scrollTop: 0
+    }, 400);
+    $('header .navbar-brand').get(0).focus();
+    return false;
+  });
 });

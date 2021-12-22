@@ -133,6 +133,19 @@
   }
 }
 
+// 返回顶部按钮
+#to-top-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: #FFFFFF;
+  font-size: 16px;
+  border: 1px solid #CCCCCC;
+  opacity: 0.7;
+}
+
 // 侧边栏
 .sidebar {
   // 通用的侧边栏样式
@@ -668,6 +681,13 @@ $textColor: #F5F5F5;
       color: $textColor;
       border: none;
     }
+  }
+
+  // 返回顶部按钮配色
+  #to-top-btn {
+    background-color: #212529;
+    color: #FFFFFF !important;
+    border: none;
   }
 
   // 侧边栏配色

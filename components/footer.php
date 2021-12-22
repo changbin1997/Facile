@@ -12,6 +12,10 @@
     </div>
 </footer>
 
+<button class="btn text-primary rounded-circle d-none" id="to-top-btn" type="button" aria-label="返回顶部" title="返回顶部">
+    <i class="icon-arrow-up"></i>
+</button>
+
 <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/jquery-3.5.1.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/bootstrap.bundle.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/highlight.pack.js'); ?>"></script>
