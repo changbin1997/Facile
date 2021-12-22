@@ -16,9 +16,13 @@ Facile 是一套简洁的 Typecho 博客主题，也是我的博客正在使用�
 
 ![Facile首页截图](screenshot/16200336116020.png)
 
+![Facile深色主题截图](screenshot/16401686275075.png)
+
 不包含文章头图的截图：
 
 ![Facile不包含文章头图的截图](screenshot/16200336317620.png)
+
+![Facile不包含文章头图的深色主题截图](screenshot/16401686273059.png)
 
 Facile 相比 [MWordStar](https://github.com/changbin1997/MWordStar) 来说，外观要更简洁一些，功能也会少一些，MWordStar 有的功能以后也会陆续增加到 Facile 中，但是 Facile 的功能以后也不会有 MWordStar 多。
 
@@ -28,6 +32,7 @@ Facile 目前还没有专门的使用说明文档，Facile 的功能设置和 MW
 
 * 响应式设计
 * 无障碍适配（Accessibility）
+* 包含浅色和深色两套配色
 * 代码高亮
 * 自带点赞功能
 * 丰富的侧边栏组件
