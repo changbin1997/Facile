@@ -20,7 +20,13 @@ $this->need('components/header.php');
                     <span class="archive-description"><?php echo $this->getDescription(); ?></span>
                 <?php endif; ?>
             </header>
-            <?php $this->need('components/post-list.php'); ?>
+            <?php if ($this->have()): ?>
+                <?php $this->need('components/post-list.php'); ?>
+            <?php else: ?>
+                <article>
+                    <h2 class="text-center" role="alert">没有查找到您需要的内容！</h2>
+                </article>
+            <?php endif; ?>
             <nav class="page-nav my-5" aria-label="分页导航">
                 <?php $this->pageNav('&laquo;', '&raquo;', 1, '...', array('wrapTag' => 'ul', 'wrapClass' => 'pagination justify-content-center', 'itemTag' => 'li', 'textTag' => 'a', 'currentClass' => 'active', 'prevClass' => 'prev', 'nextClass' => 'next')); ?>
             </nav>
