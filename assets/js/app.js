@@ -117,13 +117,13 @@ $(function () {
 
   // 大图手指拖拽
   $('#max-img-box img').on('touchstart', ev => {
-    const X = ev.touches[0].pageX - $(ev.target).offset().left;
-    const Y = ev.touches[0].pageY - $(ev.target).offset().top;
+    const X = ev.touches[0].pageX - $(ev.target).get(0).offsetLeft;
+    const Y = ev.touches[0].pageY - $(ev.target).get(0).offsetTop;
 
     $(document).on('touchmove', ev => {
       $('#max-img-box img').css({
         left: ev.touches[0].pageX - X,
-        top: ev.touches[0].pageY - Y - $(document).scrollTop()
+        top: ev.touches[0].pageY - Y
       });
     });
 
@@ -135,13 +135,13 @@ $(function () {
 
   // 大图拖拽
   $('#max-img-box img').on('mousedown',  ev => {
-    const X = ev.clientX - $(ev.target).offset().left;
-    const Y = ev.clientY - $(ev.target).offset().top;
+    const X = ev.clientX - $(ev.target).get(0).offsetLeft;
+    const Y = ev.clientY - $(ev.target).get(0).offsetTop;
 
     $(document).on('mousemove', ev => {
       $('#max-img-box img').css({
         left: ev.clientX - X,
-        top: ev.clientY - Y - $(document).scrollTop()
+        top: ev.clientY - Y
       });
     });
 
