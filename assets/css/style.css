@@ -236,7 +236,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.8);
   z-index: 1200;
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
@@ -247,9 +247,23 @@
   right: 10px;
   z-index: 1230;
 }
+#max-img-box .features-btn button {
+  color: #FFFFFF;
+  text-shadow: 0 1px #333333, 1px 0 #333333, -1px 0 #333333, 0 -1px #333333;
+  font-size: 15px;
+}
 #max-img-box img {
   position: absolute;
   cursor: move;
+}
+#max-img-box #img-info {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 16px;
+  /*text-shadow: 0 -1px #F8F9FA, 1px 0 #333333;*/
+  text-shadow: 0 1px #333333, 1px 0 #333333, -1px 0 #333333, 0 -1px #333333;
 }
 
 .stop-scrolling {

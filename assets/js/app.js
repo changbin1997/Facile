@@ -96,6 +96,8 @@ $(function () {
       src: $(ev.target).attr('src'),
       alt: $(ev.target).attr('alt')
     });
+    // 设置图片描述
+    $('#img-info').html($(ev.target).attr('alt'));
     // 调整图片方向
     if (imgDirection !== 0) {
       imgDirection = 0;
