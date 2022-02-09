@@ -24,7 +24,7 @@ $this->need('components/header.php');
                 <?php $this->need('components/post-list.php'); ?>
             <?php else: ?>
                 <article>
-                    <h2 class="text-center" role="alert">没有查找到您需要的内容！</h2>
+                    <h3 class="text-center mb-5" role="alert">没有查找到您需要的内容！</h3>
                 </article>
             <?php endif; ?>
             <nav class="page-nav my-5" aria-label="分页导航">

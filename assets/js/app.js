@@ -195,6 +195,18 @@ $(function () {
     }, 300);
   });
 
+  // 大图鼠标滚动
+  $('#max-img-box img').on('mousewheel DOMMouseScroll', ev => {
+    if (ev.originalEvent.wheelDelta === undefined) return false;
+    if (ev.originalEvent.wheelDelta >  0) {
+      // 放大图片
+      $('#max-img-box .big').click();
+    }else {
+      // 缩小图片
+      $('#max-img-box .small').click();
+    }
+  });
+
   // 大图的关闭按钮点击
   $('#max-img-box .hide-img').on('click', () => {
     $('#max-img-box').fadeOut(250, () => {
