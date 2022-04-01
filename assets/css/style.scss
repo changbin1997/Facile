@@ -40,6 +40,12 @@
   p,li,a {
     font-size: 16px;
   }
+  pre {
+    position: relative;
+    &:hover .copy-code-btn {
+      display: block;
+    }
+  }
   pre > code {
     padding: 10px;
     font-size: 16px;
@@ -258,6 +264,14 @@
   font-size: 18px;
   color: red;
   position: absolute;
+}
+
+// 代码拷贝按钮
+.copy-code-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: none;
 }
 
 // 图片灯箱

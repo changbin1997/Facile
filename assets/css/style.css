@@ -131,6 +131,12 @@
 .post-page article .post-content p, .post-page article .post-content li, .post-page article .post-content a {
   font-size: 16px;
 }
+.post-page article .post-content pre {
+  position: relative;
+}
+.post-page article .post-content pre:hover .copy-code-btn {
+  display: block;
+}
 .post-page article .post-content pre > code {
   padding: 10px;
   font-size: 16px;
@@ -227,6 +233,13 @@
   font-size: 18px;
   color: red;
   position: absolute;
+}
+
+.copy-code-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: none;
 }
 
 #max-img-box {
@@ -391,6 +404,12 @@
 }
 #comments .comments-lists .comment-content p, #comments .comments-lists .comment-content li, #comments .comments-lists .comment-content a {
   font-size: 16px;
+}
+#comments .comments-lists .comment-content pre {
+  position: relative;
+}
+#comments .comments-lists .comment-content pre:hover .copy-code-btn {
+  display: block;
 }
 #comments .comments-lists .comment-content pre > code {
   padding: 10px;
