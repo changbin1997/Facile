@@ -57,6 +57,13 @@ EOT;
     $icp = new Typecho_Widget_Helper_Form_Element_Text('icp', null, null, _t('ICP备案号'), _t('ICP 备案号会显示在网站的底部，支持 a 标签。'));
     $form->addInput($icp);
 
+    // 面包屑导航
+    $breadcrumb = new Typecho_Widget_Helper_Form_Element_Radio('breadcrumb', array(
+        'on' => '开启',
+        'off' => '关闭'
+    ), 'off', _t('面包屑导航'), _t('开启后会在导航栏下方显示路劲导航。'));
+    $form->addInput($breadcrumb);
+
     //  侧边栏组件顺序
     $sidebarComponent = new Typecho_Widget_Helper_Form_Element_Text('sidebarComponent', null, '主题配色,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接', _t('侧边栏组件'), _t('您可以设置需要显示在侧边栏的组件，组件会根据这里的组件名称排序。组件名称之间用英文逗号分隔，逗号和名称之间不需要空格，结尾不需要逗号。例如 主题配色,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接 。'));
     $form->addInput($sidebarComponent);

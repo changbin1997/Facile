@@ -17,6 +17,19 @@ $btnColor = $GLOBALS['dark']?'btn-primary':'btn-outline-primary';
 <div class="container main">
     <div class="row my-4">
         <div class="col-xl-8 col-lg-8 post-page mb-5 mb-sm-5 mb-md-5 mb-lg-0 mb-xl-0">
+            <?php if ($this->options->breadcrumb == 'on'): ?>
+                <nav aria-label="路径" class="breadcrumb-nav bg">
+                    <ol class="breadcrumb m-0 pl-0 pr-0 pt-0 border-0">
+                        <li class="breadcrumb-item">
+                            <a href="<?php $this->options->siteUrl(); ?>">首页</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <?php $this->category(' '); ?>
+                        </li>
+                        <li tabindex="0" class="breadcrumb-item active" aria-current="page"><?php $this->title(); ?></li>
+                    </ol>
+                </nav>
+            <?php endif; ?>
             <main class="post">
                 <article>
                     <header>

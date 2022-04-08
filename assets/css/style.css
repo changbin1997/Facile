@@ -2,6 +2,10 @@
   text-transform: none;
 }
 
+.breadcrumb-nav .breadcrumb {
+  background: none;
+}
+
 .post-list .post .header-img {
   width: 100%;
 }
@@ -596,6 +600,12 @@
 }
 .dark-color header .navbar {
   background-color: #212529 !important;
+}
+.dark-color .breadcrumb-nav .breadcrumb a {
+  color: #FF4242;
+}
+.dark-color .breadcrumb-nav .breadcrumb li {
+  color: rgba(255, 255, 255, 0.75);
 }
 .dark-color .avatar {
   background-color: #282828;

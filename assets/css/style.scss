@@ -116,6 +116,13 @@
   text-transform: none;
 }
 
+// 面包屑导航
+.breadcrumb-nav {
+  .breadcrumb {
+    background: none;
+  }
+}
+
 // 文章列表
 .post-list {
   .post {
@@ -673,6 +680,18 @@ $textColor: #F5F5F5;
   header {
     .navbar {
       background-color: #212529 !important;
+    }
+  }
+
+  // 面包屑导航配色
+  .breadcrumb-nav {
+    .breadcrumb {
+      a {
+        color: $linkColor;
+      }
+      li {
+        color: rgba(255, 255, 255, 0.75);
+      }
     }
   }
 

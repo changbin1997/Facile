@@ -1,5 +1,5 @@
 window.onload = function () {
-  var title = ['外观', '站点信息', '侧边栏', '文章相关', '评论', '友情链接', '开发者'];  // 组标题
+  var title = ['外观', '站点信息', '导航', '侧边栏', '文章相关', '评论', '友情链接', '开发者'];  // 组标题
   var ul = document.querySelectorAll('form ul');  // 列表
   var form = document.querySelector('.typecho-page-main form');
   var titleEl = [];
@@ -19,11 +19,12 @@ window.onload = function () {
   // 插入分组标题
   form.insertBefore(titleEl[0], ul[0]);  // 外观
   form.insertBefore(titleEl[1], ul[1]);  // 站点信息
-  form.insertBefore(titleEl[2], ul[4]);  // 侧边栏
-  form.insertBefore(titleEl[3], ul[6]);  // 文章相关
-  form.insertBefore(titleEl[4], ul[8]);  // 评论
-  form.insertBefore(titleEl[5], ul[12]);  // 友链
-  form.insertBefore(titleEl[6], ul[15]);  // 开发者
+  form.insertBefore(titleEl[2], ul[4]);  // 导航
+  form.insertBefore(titleEl[3], ul[5]);  // 侧边栏
+  form.insertBefore(titleEl[4], ul[7]);  // 文章相关
+  form.insertBefore(titleEl[5], ul[9]);  // 评论
+  form.insertBefore(titleEl[6], ul[13]);  // 友链
+  form.insertBefore(titleEl[7], ul[16]);  // 开发者
 
   // 导出配置按钮点击
   document.querySelector('#export-btn').addEventListener('click', function() {
