@@ -86,6 +86,13 @@ EOT;
     ), array('home', 'post'), _t('文章头图设置'));
     $form->addInput($headerImage->multiMode());
 
+    // 文章头图风格
+    $headerImageStyle = new Typecho_Widget_Helper_Form_Element_Radio('headerImageStyle', array(
+        'right-angle' => '直角',
+        'rounded-corners' => '圆角'
+    ), 'right-angle', _t('文章头图风格'));
+    $form->addInput($headerImageStyle);
+
     //  评论日期时间格式
     $commentDateFormat = new Typecho_Widget_Helper_Form_Element_Radio('commentDateFormat', array(
         'format1' => '2020年04月23日 13:09',

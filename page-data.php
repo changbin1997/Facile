@@ -33,7 +33,7 @@ $this->need('components/header.php');
                         <?php $img = postImg($this); ?>
                         <?php if ($img): ?>
                             <div class="header-img mb-3 mt-4">
-                                <a href="<?php $this->permalink(); ?>" aria-hidden="true" aria-label="文章头图" style="background-image: url(<?php echo $img; ?>);" tabindex="-1"></a>
+                                <a <?php if ($this->options->headerImageStyle == 'rounded-corners') echo 'class="rounded"'; ?> href="<?php $this->permalink(); ?>" aria-hidden="true" aria-label="文章头图" style="background-image: url(<?php echo $img; ?>);" tabindex="-1"></a>
                             </div>
                         <?php endif; ?>
                     <?php endif; ?>
