@@ -144,6 +144,8 @@
 .post-page article .post-content pre > code {
   padding: 10px;
   font-size: 16px;
+  white-space: pre;
+  word-wrap: normal;
 }
 .post-page article .post-content h1, .post-page article .post-content h2, .post-page article .post-content h3, .post-page article .post-content h4, .post-page article .post-content h5, .post-page article .post-content h6 {
   color: #333333;
@@ -418,6 +420,8 @@
 #comments .comments-lists .comment-content pre > code {
   padding: 10px;
   font-size: 16px;
+  white-space: pre;
+  word-wrap: normal;
 }
 #comments .comments-lists .comment-content h1, #comments .comments-lists .comment-content h2, #comments .comments-lists .comment-content h3, #comments .comments-lists .comment-content h4, #comments .comments-lists .comment-content h5, #comments .comments-lists .comment-content h6 {
   color: #333333;
