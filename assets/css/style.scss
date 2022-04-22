@@ -42,12 +42,34 @@
   }
   pre {
     position: relative;
+    background: #1E1E1E;
+    border-radius: 4px;
     &:hover .copy-code-btn {
       display: block;
     }
+    .line-box {
+      width: 40px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #1E1E1E;
+      padding-top: 12px;
+      div {
+        color: #9B9B9B;
+        border-right: 1px solid #9B9B9B;
+        line-height: 24px;
+        height: 24px;
+        padding-right: 9px;
+        font-size: 15px;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+    }
   }
   pre > code {
-    padding: 10px;
+    padding: 12px;
     font-size: 16px;
     white-space: pre;
     word-wrap: normal;

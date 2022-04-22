@@ -62,7 +62,7 @@ $btnColor = $GLOBALS['dark']?'btn-primary':'btn-outline-primary';
                             <?php echo $views; ?>
                         </span>
                     </div>
-                    <div class="post-content mt-4">
+                    <div class="post-content mt-4" data-code-line-num="<?php $this->options->codeLineNum(); ?>">
                         <?php $this->content(); ?>
                     </div>
                     <div class="category-tag clearfix my-4">
