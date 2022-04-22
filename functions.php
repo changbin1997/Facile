@@ -79,6 +79,13 @@ EOT;
     $summary = new Typecho_Widget_Helper_Form_Element_Text('summary', null, '120', _t('文章摘要字数'), _t('首页、分类页、标签页、搜索页 的文章摘要字数，默认为：120个字。'));
     $form->addInput($summary);
 
+    // 显示代码行号
+    $codeLineNum = new Typecho_Widget_Helper_Form_Element_Radio('codeLineNum', array(
+        'show' => '显示',
+        'hide' => '不显示'
+    ), 'show', _t('代码块显示行号'), _t('开启后文章的代码块会显示行号'));
+    $form->addInput($codeLineNum);
+
     //  文章头图设置
     $headerImage = new Typecho_Widget_Helper_Form_Element_Checkbox('headerImage', array(
         'home' => _t('在首页显示文章头图'),
