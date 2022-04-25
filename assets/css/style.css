@@ -241,13 +241,17 @@
 .post-page .category-tag .post-tag a:last-child {
   margin-right: 0;
 }
-.post-page .qr-link > div {
+.post-page #qr-link .link-box {
+  margin: 0 auto;
+  width: 96px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
 }
-.post-page .qr-link .link-box {
-  width: 160px;
+.post-page #qr-link .link-box a {
+  font-size: 20px;
+}
+.post-page #qr-link .link-box a:hover {
+  text-decoration: none;
 }
 .post-page .post-navigation a {
   color: #333333;

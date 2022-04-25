@@ -92,20 +92,17 @@ $btnColor = $GLOBALS['dark']?'btn-primary':'btn-outline-primary';
                     <div class="collapse" id="qr-link">
                         <div class="mt-4 qr-link">
                             <p class="text-center mb-2">用手机扫描下方二维码可在手机上浏览和分享</p>
-                            <div class="clearfix">
-                                <canvas id="qr" class="float-left"></canvas>
-                                <div class="link-box float-left p-2">
-                                    <a href="https://service.weibo.com/share/share.php?url=<?php $this->permalink(); ?>&title=<?php $this->title(); ?>" class="btn btn-primary d-block mb-2" target="_blank" rel="external nofollow">
+                            <div class="text-center">
+                                <canvas id="qr" class="mb-1" aria-label="文章二维码"></canvas>
+                                <div class="link-box">
+                                    <a href="https://service.weibo.com/share/share.php?url=<?php $this->permalink(); ?>&title=<?php $this->title(); ?>" target="_blank" rel="external nofollow" aria-label="分享到新浪微博" title="分享到新浪微博" data-toggle="tooltip" data-placement="top">
                                         <i class="icon-sina-weibo mr-1"></i>
-                                        <span>分享到新浪微博</span>
                                     </a>
-                                    <a href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=<?php $this->permalink(); ?>&title=<?php $this->title(); ?>&site=<?php $this->options->siteUrl(); ?>&summary=<?php $this->fields->summaryContent?$this->fields->summaryContent():$this->excerpt($this->options->summary, '...'); ?>" class="btn btn-info d-block mb-2" target="_blank" rel="external nofollow">
+                                    <a class="text-info" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=<?php $this->permalink(); ?>&title=<?php $this->title(); ?>&site=<?php $this->options->siteUrl(); ?>&summary=<?php $this->fields->summaryContent?$this->fields->summaryContent():$this->excerpt($this->options->summary, '...'); ?>" target="_blank" rel="external nofollow" aria-label="分享到QQ空间" title="分享到QQ空间" data-toggle="tooltip" data-placement="top">
                                         <i class="icon-qzone-logo mr-1"></i>
-                                        <span>分享到QQ空间</span>
                                     </a>
-                                    <a href="https://twitter.com/intent/tweet?url=<?php $this->permalink(); ?>&text=<?php $this->title(); ?>" class="btn btn-info d-block" target="_blank" rel="external nofollow">
+                                    <a class="text-info" href="https://twitter.com/intent/tweet?url=<?php $this->permalink(); ?>&text=<?php $this->title(); ?>" target="_blank" rel="external nofollow" aria-label="分享到Twitter" title="分享到Twitter" data-toggle="tooltip" data-placement="top">
                                         <i class="icon-twitter mr-1"></i>
-                                        <span>分享到Twitter</span>
                                     </a>
                                 </div>
                             </div>

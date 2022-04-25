@@ -268,14 +268,18 @@
     }
   }
   // 分享链接和二维码区域
-  .qr-link {
-    > div {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+  #qr-link {
     .link-box {
-      width: 160px;
+      margin: 0 auto;
+      width: 96px;
+      display: flex;
+      justify-content: space-between;
+      a {
+        font-size: 20px;
+        &:hover {
+          text-decoration: none;
+        }
+      }
     }
   }
   // 上一篇和下一篇文章的导航区域
