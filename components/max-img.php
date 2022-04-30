@@ -1,5 +1,6 @@
-<div id="max-img-box">
-    <div class="btn-group features-btn">
+<div role="dialog">
+    <div id="max-img-box"></div>
+    <div class="btn-group max-img-features-btn">
         <button type="button" class="btn big" aria-label="放大" title="放大">
             <i class="icon-zoom-in"></i>
         </button>
@@ -16,6 +17,6 @@
             <i class="icon-cancel-circle"></i>
         </button>
     </div>
-    <img src="" alt="大图" class="shadow">
+    <img src="" alt="大图" class="shadow" id="max-img">
     <p id="img-info" class="text-light text-center"></p>
 </div>
