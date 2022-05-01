@@ -188,7 +188,7 @@ $(function () {
       top: $(document).scrollTop() + window.innerHeight / 2 - imgSize.h / 2
     }, 250, 'linear', () => {
       // 显示图片操作按钮
-      $('.max-img-features-btn').show();
+      $('.max-img-features-btn').css('display', 'flex');
       // 让关闭图片的按钮获取焦点
       $('.max-img-features-btn .hide-img').focus();
       // 显示和设置图片描述
@@ -287,7 +287,7 @@ $(function () {
   // 图片缩小
   $('.max-img-features-btn .small').on('click', () => {
     // 如果图片的宽度或高度 < 40px 将不再缩小
-    if ($('#max-img-box img').width() <= 40 || $('#max-img-box img').height() <= 40) return false;
+    if ($('#max-img').width() <= 80 || $('#max-img').height() <= 80) return false;
     $('#max-img').animate({
       width: $('#max-img').width() - $('#max-img').width() / 5,
       height: $('#max-img').height() - $('#max-img').height() / 5
