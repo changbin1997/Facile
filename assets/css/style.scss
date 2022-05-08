@@ -109,6 +109,7 @@
   }
   img {
     max-width: 100%;
+    cursor: zoom-in;
   }
   p code,li code,td code {
     background: #F9F2F4;
@@ -255,6 +256,9 @@
     .post-category {
       display: flex;
       align-items: center;
+      a {
+        margin-right: 6px;
+      }
     }
     .post-tag {
       display: flex;

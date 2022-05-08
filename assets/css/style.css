@@ -204,6 +204,7 @@
 }
 .post-page article .post-content img {
   max-width: 100%;
+  cursor: zoom-in;
 }
 .post-page article .post-content p code, .post-page article .post-content li code, .post-page article .post-content td code {
   background: #F9F2F4;
@@ -230,6 +231,9 @@
 .post-page .category-tag .post-category {
   display: flex;
   align-items: center;
+}
+.post-page .category-tag .post-category a {
+  margin-right: 6px;
 }
 .post-page .category-tag .post-tag {
   display: flex;
@@ -518,6 +522,7 @@
 }
 #comments .comments-lists .comment-content img {
   max-width: 100%;
+  cursor: zoom-in;
 }
 #comments .comments-lists .comment-content p code, #comments .comments-lists .comment-content li code, #comments .comments-lists .comment-content td code {
   background: #F9F2F4;
