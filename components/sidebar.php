@@ -87,10 +87,18 @@ $components = explode(',', $components);
         <?php endif; ?>
         <?php if ($component == '文章分类'): ?>
             <!--分类-->
-            <section class="ml-xl-4 ml-lg-3 mb-5">
+            <section class="ml-xl-4 ml-lg-3 mb-5 category">
                 <h2 class="mb-4">文章分类</h2>
                 <ul aria-label="文章分类">
-                    <?php $this->widget('Widget_Metas_Category_List')->parse('<li><a href="{permalink}" title="{description}" data-toggle="tooltip" data-placement="top">{name}({count})</a></li>'); ?>
+                    <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
+                    <?php while ($category->next()): ?>
+                        <li <?php if ($category->parent > 0) echo 'class="ml-3"'; ?>>
+                            <a title="<?php if ($category->parent > 0) echo getParentCategory($category->parent) . ' 下的子分类 ' ?><?php $category->description(); ?>" href="<?php $category->permalink(); ?>" data-toggle="tooltip" data-placement="top">
+                                <?php echo $category->name(); ?>
+                                (<?php $category->count(); ?>)
+                            </a>
+                        </li>
+                    <?php endwhile; ?>
                 </ul>
             </section>
         <?php endif; ?>
