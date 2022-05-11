@@ -33,7 +33,6 @@ if (isset($_COOKIE['themeColor'])) {
     <link rel="icon" href="<?php echo $this->options->logoUrl?$this->options->logoUrl:$this->options->siteUrl . 'favicon.ico'; ?>" type="image/x-icon">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/bootstrap.min.css'); ?>" type="text/css">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/style.css'); ?>" type="text/css">
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/vs2015.css'); ?>" type="text/css">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/icon.css'); ?>" type="text/css">
     <!--自定义CSS-->
     <?php if ($this->options->cssCode): ?>
@@ -51,7 +50,7 @@ if (isset($_COOKIE['themeColor'])) {
         <?php $this->options->headHTML(); ?>
     <?php endif; ?>
 </head>
-<body class="<?php if ($GLOBALS['dark']) echo 'dark-color'; ?>">
+<body class="<?php $this->options->codeThemeColor(); ?> <?php if ($GLOBALS['dark']) echo 'dark-color'; ?>">
 <header class="sticky-top">
     <nav class="navbar navbar-expand-lg <?php echo $GLOBALS['dark']?'navbar-dark bg-dark':'bg-light navbar-light'; ?>">
         <div class="container">

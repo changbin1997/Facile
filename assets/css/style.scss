@@ -1,3 +1,14 @@
+/*!
+* HomePage: https://www.misterma.com
+* GithubPage: https://github.com/changbin1997
+* ProjectPage: https://github.com/changbin1997/Facile
+* author: Mr. Ma
+* Licensed under MIT
+*/
+
+// 引入代码高亮配置
+@import "highlight";
+
 // 文章头图
 @mixin headerImg {
   width: 100%;
@@ -42,7 +53,6 @@
   }
   pre {
     position: relative;
-    background: #1E1E1E;
     border-radius: 4px;
     &:hover .copy-code-btn {
       display: block;
@@ -52,11 +62,8 @@
       position: absolute;
       top: 0;
       left: 0;
-      background: #1E1E1E;
       padding-top: 12px;
       div {
-        color: #9B9B9B;
-        border-right: 1px solid #9B9B9B;
         line-height: 24px;
         height: 24px;
         padding-right: 9px;

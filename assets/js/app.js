@@ -1,3 +1,11 @@
+/*!
+* HomePage: https://www.misterma.com
+* GithubPage: https://github.com/changbin1997
+* ProjectPage: https://github.com/changbin1997/Facile
+* author: Mr. Ma
+* Licensed under MIT
+*/
+
 $(function () {
   let imgWH = '';  // 记录图片的宽高
   let imgDirection = 0;  // 图片方向
