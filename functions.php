@@ -23,12 +23,12 @@ function themeFields($layout) {
 function themeConfig($form) {
     echo <<<EOT
     <p>您现在使用的是 Facile 的开发板，开发板暂无版本号。<a href="https://github.com/changbin1997/Facile/releases" target="_blank">点击查看发行版</a></p>
-    <p>主题使用帮助可以简单参考 <a href="https://mwordstar.misterma.com/" target="_blank">MWordStar</a> 的帮助文档，遇到问题也可以到 <a href="https://www.misterma.com/msg.html" target="_blank">留言板</a> 或 <a href="https://www.misterma.com/archives/899/" target="_blank">Facile 介绍页</a> 留言。</p>
+    <p>主题使用帮助可以简单参考 <a href="https://mwordstar.misterma.com/" target="_blank">MWordStar</a> 的帮助文档，遇到问题也可以到 <a href="https://www.misterma.com/msg.html" target="_blank">留言板</a> 或 <a href="https://www.misterma.com/archives/899/" target="_blank">Facile 介绍页</a> 留言。因为我有两个主题，为了更高效的解决问题，建议到 <a href="https://www.misterma.com/archives/899/" target="_blank">Facile 介绍页</a> 留言。</p>
     <button id="export-btn" type="button" class="btn">导出主题配置文件</button>
     <button id="import-btn" type="button" class="btn">导入主题配置文件</button>
     <a href="javascript:;" id="download-file" style="display: none;">下载</a>
     <input type="file" id="file-select" style="display: none;">
-    <p><b>导出主题配置文件</b> 可以把主题外观设置导出为 JSON 文件，<b>导入主题配置文件</b> 可以导入 <b>Facile</b> 主题的 JSON 配置文件。</p>
+    <p><b>导出主题配置文件</b> 可以把主题外观设置导出为 JSON 文件，主要用来备份主题设置，<b>导入主题配置文件</b> 可以导入 <b>Facile</b> 主题的 JSON 配置文件。Typecho 切换主题的时候会清空主题设置，为了避免重复设置，在切换主题之前可以先导出主题设置配置。</p>
 EOT;
     echo '<script type="text/javascript">';
     require_once 'assets/js/options-panel.js';
@@ -41,7 +41,7 @@ EOT;
     ), 'light', _t('默认主题配色'), _t('主题配色会优先使用访问者设置的配色，如果访问者没有更改过配色就会使用默认设置。主题配色设置组件可以在侧边栏组件设置中添加或删除。')));
 
     //  站点Logo
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('logoUrl', null, null, _t('站点 Logo 地址'), _t('Logo 会显示在标签页的标题前面。')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('logoUrl', null, null, _t('站点 Logo 地址'), _t('Logo 是一个 ico 格式的 icon 图标，会显示在标签页的标题前面。')));
 
     //  站点副标题
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('tagline', null, '生命不息，折腾不止', _t('站点副标题'), _t('站点副标题会显示在标签页标题的后面。')));
