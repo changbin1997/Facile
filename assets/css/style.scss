@@ -6,9 +6,6 @@
 * Licensed under MIT
 */
 
-// 引入代码高亮配置
-@import "highlight";
-
 // 文章头图
 @mixin headerImg {
   width: 100%;
@@ -142,6 +139,50 @@
       min-width: 90px;
     }
   }
+}
+
+// 代码高亮样式
+// stackoverflow-light 样式
+.stackoverflow-light {
+  pre {
+    background: #F6F6F6;
+    .line-box {
+      background: #F6F6F6;
+      div {
+        color: #777777;
+        border-right: 1px solid #777777;
+      }
+    }
+  }
+  @import "stackoverflow-light.min";
+}
+// vs2015样式
+.vs2015 {
+  pre {
+    background: #1E1E1E;
+    .line-box {
+      background: #1E1E1E;
+      div {
+        color: #9B9B9B;
+        border-right: 1px solid #9B9B9B;
+      }
+    }
+  }
+  @import "vs2015.min";
+}
+// Sunburst高对比度样式
+.sunburst {
+  pre {
+    background: #000000;
+    .line-box {
+      background: #000000;
+      div {
+        color: #AEAEAE;
+        border-right: 1px solid #AEAEAE;
+      }
+    }
+  }
+  @import "sunburst.min";
 }
 
 * {
