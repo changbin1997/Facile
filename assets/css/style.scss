@@ -574,10 +574,71 @@
 }
 
 // 文章归档页面
-.archive-page .post-content {
-  ul {
-    padding-left: 0;
-    list-style: none;
+.archive-page {
+  .archives {
+    position: relative;
+    &::before {
+      width: 2px;
+      height: 100%;
+      background: #BBBBBB;
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 57px;
+    }
+    .archives-item {
+      position: relative;
+      h2 {
+        font-size: 12px !important;
+        background: #FCFCFC;
+        width: 84px;
+        line-height: 24px;
+        text-align: center;
+        border-radius: 4px;
+        position: relative;
+        z-index: 10;
+        left: 15px;
+        cursor: pointer;
+        border: 1px solid #BBBBBB;
+      }
+      ul {
+        padding-left: 0;
+        list-style: none;
+        li {
+          min-height: 34px;
+          font-size: 14px;
+          display: flex;
+          align-items: center;
+          &:hover {
+            .timeline {
+              background: #FF4242;
+            }
+          }
+          .day {
+            display: block;
+            width: 36px;
+            text-align: center;
+            flex: none;
+          }
+          .timeline {
+            width: 8px;
+            height: 8px;
+            background: #BBBBBB;
+            border-radius: 50%;
+            margin: 0 10px;
+            flex: none;
+          }
+          // 链接
+          .link-box {
+            min-height: 34px;
+            display: flex;
+            align-items: center;
+            padding: 2px 0;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -939,6 +1000,13 @@ $textColor: #F5F5F5;
     color: #F9F9F9;
     a {
       color: $linkColor;
+    }
+  }
+
+  // 独立归档页面配色
+  .archive-page {
+    .archives h2 {
+      background: #121212;
     }
   }
 

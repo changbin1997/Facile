@@ -808,9 +808,67 @@
   margin-left: 0;
 }
 
-.archive-page .post-content ul {
+.archive-page .archives {
+  position: relative;
+}
+.archive-page .archives::before {
+  width: 2px;
+  height: 100%;
+  background: #BBBBBB;
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 57px;
+}
+.archive-page .archives .archives-item {
+  position: relative;
+}
+.archive-page .archives .archives-item h2 {
+  font-size: 12px !important;
+  background: #FCFCFC;
+  width: 84px;
+  line-height: 24px;
+  text-align: center;
+  border-radius: 4px;
+  position: relative;
+  z-index: 10;
+  left: 15px;
+  cursor: pointer;
+  border: 1px solid #BBBBBB;
+}
+.archive-page .archives .archives-item ul {
   padding-left: 0;
   list-style: none;
+}
+.archive-page .archives .archives-item ul li {
+  min-height: 34px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+.archive-page .archives .archives-item ul li:hover .timeline {
+  background: #FF4242;
+}
+.archive-page .archives .archives-item ul li .day {
+  display: block;
+  width: 36px;
+  text-align: center;
+  flex: none;
+}
+.archive-page .archives .archives-item ul li .timeline {
+  width: 8px;
+  height: 8px;
+  background: #BBBBBB;
+  border-radius: 50%;
+  margin: 0 10px;
+  flex: none;
+}
+.archive-page .archives .archives-item ul li .link-box {
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  padding: 2px 0;
 }
 
 .page-links .logo {
@@ -1122,6 +1180,9 @@
 }
 .dark-color footer nav a {
   color: #FF4242;
+}
+.dark-color .archive-page .archives h2 {
+  background: #121212;
 }
 .dark-color .statistics-card {
   background: #212529;
