@@ -606,10 +606,10 @@
         padding-left: 0;
         list-style: none;
         li {
-          min-height: 34px;
           font-size: 14px;
           display: flex;
           align-items: center;
+          padding: 6px 0;
           &:hover {
             .timeline {
               background: #FF4242;
@@ -628,13 +628,6 @@
             border-radius: 50%;
             margin: 0 10px;
             flex: none;
-          }
-          // 链接
-          .link-box {
-            min-height: 34px;
-            display: flex;
-            align-items: center;
-            padding: 2px 0;
           }
         }
       }

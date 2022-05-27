@@ -842,10 +842,10 @@
   list-style: none;
 }
 .archive-page .archives .archives-item ul li {
-  min-height: 34px;
   font-size: 14px;
   display: flex;
   align-items: center;
+  padding: 6px 0;
 }
 .archive-page .archives .archives-item ul li:hover .timeline {
   background: #FF4242;
@@ -863,12 +863,6 @@
   border-radius: 50%;
   margin: 0 10px;
   flex: none;
-}
-.archive-page .archives .archives-item ul li .link-box {
-  min-height: 34px;
-  display: flex;
-  align-items: center;
-  padding: 2px 0;
 }
 
 .page-links .logo {
