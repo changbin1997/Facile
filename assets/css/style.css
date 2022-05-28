@@ -420,6 +420,13 @@
   white-space: pre;
   word-wrap: normal;
 }
+.post-page article .post-content pre > code::-webkit-scrollbar {
+  height: 12px;
+  background: #F1F1F1;
+}
+.post-page article .post-content pre > code::-webkit-scrollbar-thumb {
+  background: #A8A8A8;
+}
 .post-page article .post-content h1, .post-page article .post-content h2, .post-page article .post-content h3, .post-page article .post-content h4, .post-page article .post-content h5, .post-page article .post-content h6 {
   color: #333333;
   font-weight: 700;
@@ -734,6 +741,13 @@
   white-space: pre;
   word-wrap: normal;
 }
+#comments .comments-lists .comment-content pre > code::-webkit-scrollbar {
+  height: 12px;
+  background: #F1F1F1;
+}
+#comments .comments-lists .comment-content pre > code::-webkit-scrollbar-thumb {
+  background: #A8A8A8;
+}
 #comments .comments-lists .comment-content h1, #comments .comments-lists .comment-content h2, #comments .comments-lists .comment-content h3, #comments .comments-lists .comment-content h4, #comments .comments-lists .comment-content h5, #comments .comments-lists .comment-content h6 {
   color: #333333;
   font-weight: 700;
@@ -1043,6 +1057,13 @@
   color: #FFFFFF;
   border: 1px solid #454D55;
 }
+.dark-color .post-page .post-content table th a {
+  color: #FF4242;
+}
+.dark-color .post-page .post-content table th code {
+  background: #000000 !important;
+  color: #F1D951 !important;
+}
 .dark-color .post-page .post-content table td {
   color: #F5F5F5;
   border: 1px solid #454D55;
@@ -1065,6 +1086,12 @@
 }
 .dark-color .post-page .post-content hr {
   background: #CCCCCC;
+}
+.dark-color .post-page .post-content pre code::-webkit-scrollbar {
+  background: #212529;
+}
+.dark-color .post-page .post-content pre code::-webkit-scrollbar-thumb {
+  background: #717171;
 }
 .dark-color .category-tag i {
   color: #F9F9F9;
@@ -1121,6 +1148,13 @@
   color: #FFFFFF;
   border: 1px solid #454D55;
 }
+.dark-color #comments .comment-content table th a {
+  color: #FF4242;
+}
+.dark-color #comments .comment-content table th code {
+  background: #000000 !important;
+  color: #F1D951 !important;
+}
 .dark-color #comments .comment-content table td {
   color: #F5F5F5;
   border: 1px solid #454D55;
@@ -1143,6 +1177,12 @@
 }
 .dark-color #comments .comment-content hr {
   background: #CCCCCC;
+}
+.dark-color #comments .comment-content pre code::-webkit-scrollbar {
+  background: #212529;
+}
+.dark-color #comments .comment-content pre code::-webkit-scrollbar-thumb {
+  background: #717171;
 }
 .dark-color #comments .comment-reply i, .dark-color #comments .comment-reply a {
   color: #F9F9F9 !important;

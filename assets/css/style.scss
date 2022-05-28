@@ -77,6 +77,13 @@
     font-size: 16px;
     white-space: pre;
     word-wrap: normal;
+    &::-webkit-scrollbar {
+      height: 12px;
+      background: #F1F1F1;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #A8A8A8;
+    }
   }
   h1,h2,h3,h4,h5,h6 {
     color: #333333;
@@ -789,6 +796,12 @@ $textColor: #F5F5F5;
     th {
       color: #FFFFFF;
       border: 1px solid #454D55;
+      a {
+        color: $linkColor;
+      }
+      code {
+        @include codeColor;
+      }
     }
     td {
       color: $textColor;
@@ -812,6 +825,16 @@ $textColor: #F5F5F5;
   }
   hr {
     background: #CCCCCC;
+  }
+  pre {
+    code {
+      &::-webkit-scrollbar {
+        background: #212529;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #717171;
+      }
+    }
   }
 }
 
