@@ -1169,6 +1169,12 @@
 .dark-color .archive-description {
   color: #F9F9F9;
 }
+.dark-color .no-content {
+  color: #F5F5F5;
+}
+.dark-color .no-content hr {
+  background: #F5F5F5;
+}
 .dark-color footer nav {
   color: #F9F9F9;
 }

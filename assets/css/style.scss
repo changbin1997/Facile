@@ -987,6 +987,13 @@ $textColor: #F5F5F5;
   .archive-description {
     color: #F9F9F9;
   }
+  // 搜索页无内容的文字提示颜色
+  .no-content {
+    color: $textColor;
+    hr {
+      background: $textColor;
+    }
+  }
 
   // 网站底部版权信息配色
   footer nav {

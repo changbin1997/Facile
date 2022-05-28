@@ -33,8 +33,15 @@ $this->need('components/header.php');
             <?php if ($this->have()): ?>
                 <?php $this->need('components/post-list.php'); ?>
             <?php else: ?>
-                <article>
-                    <h3 class="text-center mb-5" role="alert">没有查找到您需要的内容！</h3>
+                <article class="no-content">
+                    <hr>
+                    <h4 class="mb-3" role="alert">无法查找到包含 <b><?php $this->archiveTitle(array('search' => '%s'), '', ''); ?></b> 的文章！</h4 >
+                    <p>您可以尝试：</p>
+                    <ol class="pl-3 mb-5">
+                        <li>更换关键字重新搜索</li>
+                        <li>在右侧或下方的文章分类区域选择分类查找</li>
+                        <li>在右侧或下方的标签云区域选择标签查找</li>
+                    </ol>
                 </article>
             <?php endif; ?>
             <nav class="page-nav my-5" aria-label="分页导航">
