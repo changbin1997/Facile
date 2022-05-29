@@ -253,6 +253,14 @@
   font-weight: 700;
 }
 
+.post-content[data-code-line-num=show] pre code {
+  padding: 12px 10px;
+}
+
+.post-content[data-code-line-num=hide] pre code {
+  padding: 12px 16px;
+}
+
 * {
   text-transform: none;
 }
@@ -415,7 +423,6 @@
   user-select: none;
 }
 .post-page article .post-content pre > code {
-  padding: 12px;
   font-size: 16px;
   white-space: pre;
   word-wrap: normal;
@@ -736,7 +743,6 @@
   user-select: none;
 }
 #comments .comments-lists .comment-content pre > code {
-  padding: 12px;
   font-size: 16px;
   white-space: pre;
   word-wrap: normal;
