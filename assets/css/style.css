@@ -1013,6 +1013,10 @@
 .dark-color .comment-count, .dark-color .edit-link {
   color: #FF4242;
 }
+.dark-color .expiration-reminder {
+  background: #343A40;
+  color: #F5F5F5;
+}
 .dark-color .pagination li:not(.active) a {
   background: #212529;
   color: #F5F5F5;

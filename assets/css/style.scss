@@ -904,6 +904,12 @@ $textColor: #F5F5F5;
     color: $linkColor;
   }
 
+  // 文章有效期提醒信息配色
+  .expiration-reminder {
+    background: #343A40;
+    color: $textColor;
+  }
+
   // 翻页导航区
   .pagination {
     li:not(.active) a {
