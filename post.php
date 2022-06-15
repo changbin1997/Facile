@@ -37,13 +37,11 @@ $btnColor = $GLOBALS['dark']?'btn-primary':'btn-outline-primary';
                             <a <?php if ($GLOBALS['dark']) echo 'class="text-light"'; ?> href="<?php $this->permalink(); ?>" rel="bookmark"><?php $this->title(); ?></a>
                         </h1>
                     </header>
-                    <?php if ($this->options->headerImage && in_array('post', $this->options->headerImage)): ?>
-                        <?php $img = postImg($this); ?>
-                        <?php if ($img): ?>
-                            <div class="header-img mb-3 mt-4">
-                                <a <?php if ($this->options->headerImageStyle == 'rounded-corners') echo 'class="rounded"'; ?> href="<?php $this->permalink(); ?>" aria-hidden="true" aria-label="文章头图" style="background-image: url(<?php echo $img; ?>);" tabindex="-1"></a>
-                            </div>
-                        <?php endif; ?>
+                    <?php $headerImg = headerImageDisplay($this, $this->options->headerImage); ?>
+                    <?php if ($headerImg): ?>
+                        <div class="header-img mb-3 mt-4">
+                            <a <?php if ($this->options->headerImageStyle == 'rounded-corners') echo 'class="rounded"'; ?> href="<?php $this->permalink(); ?>" aria-hidden="true" aria-label="文章头图" style="background-image: url(<?php echo $headerImg; ?>);" tabindex="-1"></a>
+                        </div>
                     <?php endif; ?>
                     <div class="post-info mt-2">
                         <span class="ml-1" title="发布日期" data-toggle="tooltip" data-placement="top">
