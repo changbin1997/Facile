@@ -24,6 +24,14 @@ Facile 是一套简洁的 Typecho 博客主题，也是我的博客正在使用�
 
 ![Facile不包含文章头图的深色主题截图](screenshot/16401686273059.png)
 
+小头图模式：
+
+![Facile小头图模式截图](screenshot/mini-header-image.png)
+
+也可以给文章设置单独的头图样式：
+
+![Facile大头图和小头图搭配使用的截图](screenshot/header-image.png)
+
 Facile 相比 [MWordStar](https://github.com/changbin1997/MWordStar) 来说，外观要更简洁一些，功能也会少一些，MWordStar 有的功能以后也会陆续增加到 Facile 中，但是 Facile 的功能以后也不会有 MWordStar 多。
 
 Facile 目前还没有专门的使用说明文档，Facile 的功能设置和 MWordStar 是差不多的，可以直接参考 [MWordStar 的使用说明文档](https://mwordstar.misterma.com/) ，有问题也可以到 [留言板](https://www.misterma.com/msg.html) 或 [Facile 的介绍文章页](https://www.misterma.com/archives/899/) 留言。
@@ -37,6 +45,9 @@ Facile 目前还没有专门的使用说明文档，Facile 的功能设置和 MW
 * 自带点赞功能
 * 丰富的侧边栏组件
 * 丰富的设置选项
+* 详细的图表统计
+* 评论区自带 Emoji 表情面板
+* 长期维护
 
 ## 安装
 
@@ -64,7 +75,7 @@ ECharts 的库比较大，所以只引入了饼图和日历图，而且只会在
 
 ## 代码高亮
 
-文章区和评论区都有代码高亮效果，目前支持 30 多种语言的代码高亮，代码高亮的配色使用的是 VS2015 的暗色主题，和 VSCode 的默认主题差不多。
+代码高亮目前包含三套主题配色，分别是 Stack Overflow（浅色）、VS2015（深色）、Sunburst（高对比度）。目前支持 30 多种语言的代码高亮。
 
 支持的语言和 MWordStar 是一样的，可以访问 [MWordStar 代码高亮](https://mwordstar.misterma.com/docs/doc13/) 查看支持的语言。
 
@@ -115,3 +126,17 @@ Facile 主题针对屏幕阅读器做了大量优化，并在 [MVDA](http://www.
 ## 插件适配
 
 因为我需要用到 [Sticky](https://plugins.typecho.me/plugins/sticky.html) 文章置顶插件，所以这个主题也直接适配了 Sticky 插件，Sticky 插件安装完成后无需修改主题。
+
+## 兼容性
+
+主题用到了少量的 CSS3，常见的浏览器都能完美兼容，IE 系列浏览器需要达到 IE10 才能完美兼容。
+
+JavaScript 用到了 ES6，打包的发行版可以完美兼容 IE，开发版不支持 IE 系列浏览器和一些较老的浏览器。
+
+## 赞助
+
+如果主题用着感觉还可以的话，也可以扫描下方的二维码来赞助本项目，金额随意：
+
+![支付宝和微信的收款二维码](screenshot/qr-code.jpeg)
+
+非常感谢 ❤️
