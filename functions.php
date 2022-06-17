@@ -11,6 +11,13 @@ function themeFields($layout) {
         'hide' => '不显示文章头图'
     ), 'default', _t('文章头图显示设置'), _t('您可以单独给文章设置文章头图显示。')));
 
+    // 文章头图样式
+    $layout->addItem(new Typecho_Widget_Helper_Form_Element_Select('postListHeaderImageStyle', array(
+        'default' => '使用系统设置',
+        'max' => '大图（文章头图在上方，标题和摘要在下方）',
+        'mini' => '小图（文章标题和摘要在左侧，图片在右侧）'
+    ), 'default', _t('文章列表的头图样式'), _t('您可以给文章设置单独的文章头图样式。大图的图片长宽比为 18 比 9，小图的长宽比为 4 比 3，如果图片长宽比不符合要求，主题会自动裁剪图片来适配长宽比。')));
+
     //  文章头图来源
     $layout->addItem(new Typecho_Widget_Helper_Form_Element_Select('imageSource', array(
         'article' => '使用文章中的第一张图片作为文章头图',
@@ -95,8 +102,14 @@ EOT;
     $headerImage = new Typecho_Widget_Helper_Form_Element_Checkbox('headerImage', array(
         'home' => _t('在首页显示文章头图'),
         'post' => _t('在文章页显示文章头图')
-    ), array('home', 'post'), _t('文章头图设置'));
+    ), array('home', 'post'), _t('文章头图显示设置'), _t('这里可以统一设置文章头图的显示和隐藏，您也可以在文章编辑页给文章单独设置显示和隐藏。'));
     $form->addInput($headerImage->multiMode());
+
+    // 文章列表的文章头图样式
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('postListHeaderImageStyle', array(
+        'max' => '大图（文章头图在上方，文章标题和摘要在下方）',
+        'mini' => '小图（文章标题和摘要在左侧，图片在右侧）'
+    ), 'max', _t('文章列表的文章头图样式'), _t('这里可以统一设置文章头图的样式，您也可以在文章编辑页给文章单独设置头图样式。大图的图片长宽比为 18 比 9，小图的长宽比为 4 比 3，如果图片长宽比不符合要求，主题会自动裁剪图片来适配长宽比。')));
 
     // 文章头图风格
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('headerImageStyle', array(
@@ -449,6 +462,20 @@ function getPostImg($archive) {
     } else {
         return 'none';
     }
+}
+
+// 获取文章列表的文章头图样式
+function getPostListHeaderImageStyle($postStyle, $optionsStyle) {
+    if ($postStyle == 'max' or $postStyle == 'mini') {
+        return $postStyle;
+    }
+    if ($postStyle == 'default' or $postStyle == null) {
+        if ($optionsStyle == 'max' or $optionsStyle == 'mini') {
+            return $optionsStyle;
+        }
+        return 'max';
+    }
+    return 'max';
 }
 
 // 获取父分类的名称

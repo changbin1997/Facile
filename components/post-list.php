@@ -10,7 +10,7 @@ while ($this->next()):
     <article>
         <!--文章头图区域-->
         <?php $headerImage = headerImageDisplay($this, $this->options->headerImage); ?>
-        <?php if ($headerImage): ?>
+        <?php if (getPostListHeaderImageStyle($this->fields->postListHeaderImageStyle, $this->options->postListHeaderImageStyle) == 'max' && $headerImage): ?>
             <div class="header-img mb-4">
                 <a <?php if ($this->options->headerImageStyle == 'rounded-corners') echo 'class="rounded"'; ?> href="<?php $this->permalink(); ?>" aria-hidden="true" aria-label="文章头图" style="background-image: url(<?php echo $headerImage; ?>);" tabindex="-1"></a>
             </div>
@@ -36,31 +36,66 @@ while ($this->next()):
                     </span>
                 </div>
             </header>
-            <div class="post-content mt-4">
-                <p class="text-color">
-                    <?php $this->fields->summaryContent?$this->fields->summaryContent():$this->excerpt($this->options->summary, '...'); ?>
-                </p>
-                <div class="more-link-wrapper">
-                    <div>
-                        <a href="<?php $this->permalink(); ?>" class="btn btn-sm mr-3 <?php echo $readMoreBtnColor; ?>">
-                            阅读全文
-                            <i class="icon-arrow-right2"></i>
-                        </a>
-                        <a href="<?php $this->permalink() ?>#comments" class="comment-count">
-                            <i class="icon-bubble mr-1"></i>
-                            <b><?php $this->commentsNum('%d 评论'); ?></b>
-                        </a>
+            <?php if (getPostListHeaderImageStyle($this->fields->postListHeaderImageStyle, $this->options->postListHeaderImageStyle) == 'mini' && $headerImage): ?>
+                <div class="post-content mt-4 row" data-header-image-type="<?php $this->options->postListHeaderImageStyle(); ?>">
+                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-8 col-7 content-box">
+                        <div class="summary-box">
+                            <p class="text-color">
+                                <?php $this->fields->summaryContent?$this->fields->summaryContent():$this->excerpt($this->options->summary, '...'); ?>
+                            </p>
+                        </div>
+                        <div class="more-link-wrapper">
+                            <div>
+                                <a href="<?php $this->permalink(); ?>" class="btn btn-sm mr-3 <?php echo $readMoreBtnColor; ?>">
+                                    阅读全文
+                                    <i class="icon-arrow-right2"></i>
+                                </a>
+                                <a href="<?php $this->permalink() ?>#comments" class="comment-count">
+                                    <i class="icon-bubble mr-1"></i>
+                                    <b><?php $this->commentsNum('%d 评论'); ?></b>
+                                </a>
+                            </div>
+                            <?php if ($this->user->hasLogin()): ?>
+                                <div class="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                                    <a href="<?php echo $this->options->siteUrl . 'admin/write-post.php?cid=' . $this->cid; ?>" class="float-right edit-link">
+                                        <i class="icon-pencil mr-1"></i>
+                                        <b>编辑</b>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+                        </div>
                     </div>
-                    <?php if ($this->user->hasLogin()): ?>
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-5 mini-header-image pl-0">
+                        <a <?php if ($this->options->headerImageStyle == 'rounded-corners') echo 'class="rounded"'; ?> href="<?php $this->permalink(); ?>" aria-hidden="true" aria-label="文章头图" style="background-image: url(<?php echo $headerImage; ?>);" tabindex="-1"></a>
+                    </div>
+                </div>
+            <?php else: ?>
+                <div class="post-content mt-4">
+                    <p class="text-color">
+                        <?php $this->fields->summaryContent?$this->fields->summaryContent():$this->excerpt($this->options->summary, '...'); ?>
+                    </p>
+                    <div class="more-link-wrapper">
                         <div>
-                            <a href="<?php echo $this->options->siteUrl . 'admin/write-post.php?cid=' . $this->cid; ?>" class="float-right edit-link">
-                                <i class="icon-pencil mr-1"></i>
-                                <b>编辑</b>
+                            <a href="<?php $this->permalink(); ?>" class="btn btn-sm mr-3 <?php echo $readMoreBtnColor; ?>">
+                                阅读全文
+                                <i class="icon-arrow-right2"></i>
+                            </a>
+                            <a href="<?php $this->permalink() ?>#comments" class="comment-count">
+                                <i class="icon-bubble mr-1"></i>
+                                <b><?php $this->commentsNum('%d 评论'); ?></b>
                             </a>
                         </div>
-                    <?php endif; ?>
+                        <?php if ($this->user->hasLogin()): ?>
+                            <div class="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                                <a href="<?php echo $this->options->siteUrl . 'admin/write-post.php?cid=' . $this->cid; ?>" class="float-right edit-link">
+                                    <i class="icon-pencil mr-1"></i>
+                                    <b>编辑</b>
+                                </a>
+                            </div>
+                        <?php endif; ?>
+                    </div>
                 </div>
-            </div>
+            <?php endif; ?>
         </div>
     </article>
 </div>
