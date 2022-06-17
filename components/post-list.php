@@ -37,7 +37,7 @@ while ($this->next()):
                 </div>
             </header>
             <?php if (getPostListHeaderImageStyle($this->fields->postListHeaderImageStyle, $this->options->postListHeaderImageStyle) == 'mini' && $headerImage): ?>
-                <div class="post-content mt-4 row" data-header-image-type="<?php $this->options->postListHeaderImageStyle(); ?>">
+                <div class="post-content mt-4 row" data-header-image-type="<?php echo getPostListHeaderImageStyle($this->fields->postListHeaderImageStyle, $this->options->postListHeaderImageStyle); ?>">
                     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-8 col-7 content-box">
                         <div class="summary-box">
                             <p class="text-color">
