@@ -985,8 +985,11 @@ $textColor: #F5F5F5;
   .pagination {
     li:not(.active) a {
       background: #212529;
-      color: $textColor;
+      color: $textColor !important;
       border: none;
+    }
+    .active a {
+      color: $textColor !important;
     }
   }
 

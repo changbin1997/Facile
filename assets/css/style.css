@@ -1073,8 +1073,11 @@
 }
 .dark-color .pagination li:not(.active) a {
   background: #212529;
-  color: #F5F5F5;
+  color: #F5F5F5 !important;
   border: none;
+}
+.dark-color .pagination .active a {
+  color: #F5F5F5 !important;
 }
 .dark-color #to-top-btn {
   background-color: #212529;
