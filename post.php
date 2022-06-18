@@ -59,6 +59,12 @@ $btnColor = $GLOBALS['dark']?'btn-primary':'btn-outline-primary';
                             <i class="icon-eye mr-1" aria-hidden="true"></i>
                             <?php echo $views; ?>
                         </span>
+                        <?php if ($this->user->hasLogin()): ?>
+                        <span class="ml-2">
+                            <i class="icon-pencil mr-1" aria-hidden="true"></i>
+                            <a href="<?php echo $this->options->siteUrl . 'admin/write-post.php?cid=' . $this->cid; ?>">编辑</a>
+                        </span>
+                        <?php endif; ?>
                     </div>
                     <div class="post-content mt-4" data-code-line-num="<?php $this->options->codeLineNum(); ?>">
                         <?php if (is_numeric($this->fields->expired) && (int)$this->fields->expired > 0 && $this->created + (int)$this->fields->expired * 86400 < time()): ?>
