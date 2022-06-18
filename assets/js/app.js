@@ -78,7 +78,8 @@ $(function () {
         const btnEl = document.createElement('button');
         btnEl.className = 'copy-code-btn btn btn-outline-secondary btn-sm';
         btnEl.setAttribute('type', 'button');
-        btnEl.innerHTML = 'Copy';
+        btnEl.innerHTML = '<i class="icon-copy"></i>';
+        btnEl.setAttribute('aria-label', '拷贝代码');
         btnEl.setAttribute('data-clipboard-target', '#code-' + i);
         btnEl.setAttribute('title', '拷贝代码');
         btnEl.setAttribute('data-toggle', 'tooltip');

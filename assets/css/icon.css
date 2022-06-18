@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('../fonts/icomoon.eot?8c9v4l');
-  src:  url('../fonts/icomoon.eot?8c9v4l#iefix') format('embedded-opentype'),
-    url('../fonts/icomoon.ttf?8c9v4l') format('truetype'),
-    url('../fonts/icomoon.woff?8c9v4l') format('woff'),
-    url('../fonts/icomoon.svg?8c9v4l#icomoon') format('svg');
+  src:  url('../fonts/icomoon.eot?81ffza');
+  src:  url('../fonts/icomoon.eot?81ffza#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?81ffza') format('truetype'),
+    url('../fonts/icomoon.woff?81ffza') format('woff'),
+    url('../fonts/icomoon.svg?81ffza#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,14 +25,23 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-qzone-logo:before {
+.icon-chevron-right:before {
   content: "\e900";
 }
-.icon-thumbs-up:before {
+.icon-chevron-left:before {
   content: "\e901";
+}
+.icon-thumbs-up:before {
+  content: "\e902";
+}
+.icon-qzone-logo:before {
+  content: "\e903";
 }
 .icon-pencil:before {
   content: "\e905";
+}
+.icon-copy:before {
+  content: "\e92c";
 }
 .icon-folder-open:before {
   content: "\e930";
