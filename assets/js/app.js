@@ -398,15 +398,17 @@ $(function () {
     });
   });
 
-  // 评论回复链接鼠标移入移出
-  $('#comments .comment-reply').hover(ev => {
+  // 评论回复链接获取焦点
+  $('#comments .comment-reply a').on('focus', ev => {
     const cid = $(ev.target).parent().attr('data-id');
-    //alert(cid);
     $('#' + cid + ' .comment-content').css({
       background: '#D0210E',
       color: '#FFFFFF'
     });
-  }, ev => {
+  });
+
+  // 评论回复链接失去焦点
+  $('#comments .comment-reply a').on('blur', ev => {
     const cid = $(ev.target).parent().attr('data-id');
     $('#' + cid + ' .comment-content').css({
       background: 'none',

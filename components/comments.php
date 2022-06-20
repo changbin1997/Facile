@@ -51,11 +51,8 @@ function threadedComments($comments, $options) {
                         <?php echo dateFormat($comments->date->timeStamp, $GLOBALS['commentDateFormat']); ?>
                     </span>
                 </div>
-                <span class="comment-reply float-right">
-                    <span data-id="<?php $comments->theId(); ?>">
-                        <i class="icon-undo2 mr-1" aria-hidden="true"></i>
-                        <?php $comments->reply(); ?>
-                    </span>
+                <span class="comment-reply float-right" data-id="<?php $comments->theId(); ?>">
+                    <?php $comments->reply('<i class="icon-undo2 mr-1"></i><span>回复</span>', 'active'); ?>
                 </span>
             </div>
             <div class="comment-content" id="c-<?php $comments->theId(); ?>">
