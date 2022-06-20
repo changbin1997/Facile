@@ -933,6 +933,16 @@ $textColor: #F5F5F5;
   header {
     .navbar {
       background-color: #212529 !important;
+      // 搜索框
+      input[type="search"] {
+        background: #ADB5BD;
+        color: #FFFFFF;
+        transition: 0.3s;
+        &:focus {
+          background: #FCFCFC;
+          color: #000000;
+        }
+      }
     }
   }
 
@@ -1058,7 +1068,7 @@ $textColor: #F5F5F5;
       }
       // 评论时间配色
       .comment-time {
-        color: #F9F9F9 !important;
+        color: rgba(245, 245, 245, 0.8) !important;
       }
       // 回复提示配色
       .mx-2 {
@@ -1067,6 +1077,7 @@ $textColor: #F5F5F5;
     }
     // 评论内容配色
     .comment-content {
+      color: $textColor;
       @include darkPostContentColor;
     }
     // 回复链接的配色
@@ -1082,8 +1093,13 @@ $textColor: #F5F5F5;
         color: $textColor;
       }
       textarea,input {
-        background: #212529;
-        color: $textColor;
+        background: #ADB5BD;
+        color: #FFFFFF;
+        transition: 0.3s;
+        &:focus {
+          background: #FCFCFC;
+          color: #000000;
+        }
       }
       // Emoji 面板配色
       #emoji-panel {

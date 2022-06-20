@@ -1043,6 +1043,15 @@
 .dark-color header .navbar {
   background-color: #212529 !important;
 }
+.dark-color header .navbar input[type=search] {
+  background: #ADB5BD;
+  color: #FFFFFF;
+  transition: 0.3s;
+}
+.dark-color header .navbar input[type=search]:focus {
+  background: #FCFCFC;
+  color: #000000;
+}
 .dark-color .breadcrumb-nav .breadcrumb a {
   color: #FF4242;
 }
@@ -1182,9 +1191,12 @@
   color: #FFFFFF !important;
 }
 .dark-color #comments .comment-info .comment-time {
-  color: #F9F9F9 !important;
+  color: rgba(245, 245, 245, 0.8) !important;
 }
 .dark-color #comments .comment-info .mx-2 {
+  color: #F5F5F5;
+}
+.dark-color #comments .comment-content {
   color: #F5F5F5;
 }
 .dark-color #comments .comment-content p {
@@ -1258,8 +1270,13 @@
   color: #F5F5F5;
 }
 .dark-color #comments .comment-input textarea, .dark-color #comments .comment-input input {
-  background: #212529;
-  color: #F5F5F5;
+  background: #ADB5BD;
+  color: #FFFFFF;
+  transition: 0.3s;
+}
+.dark-color #comments .comment-input textarea:focus, .dark-color #comments .comment-input input:focus {
+  background: #FCFCFC;
+  color: #000000;
 }
 .dark-color #comments .comment-input #emoji-panel {
   background: #212529 !important;
