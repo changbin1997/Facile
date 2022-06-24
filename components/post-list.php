@@ -9,7 +9,7 @@ while ($this->next()):
 <div class="post mb-5 pb-3">
     <article>
         <!--文章头图区域-->
-        <?php $headerImage = headerImageDisplay($this, $this->options->headerImage); ?>
+        <?php $headerImage = headerImageDisplay($this, $this->options->headerImage, $this->options->headerImageUrl); ?>
         <?php if (getPostListHeaderImageStyle($this->fields->postListHeaderImageStyle, $this->options->postListHeaderImageStyle) == 'max' && $headerImage): ?>
             <div class="header-img mb-4">
                 <a <?php if ($this->options->headerImageStyle == 'rounded-corners') echo 'class="rounded"'; ?> href="<?php $this->permalink(); ?>" aria-hidden="true" aria-label="文章头图" style="background-image: url(<?php echo $headerImage; ?>);" tabindex="-1"></a>

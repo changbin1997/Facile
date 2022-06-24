@@ -37,7 +37,7 @@ $btnColor = $GLOBALS['dark']?'btn-primary':'btn-outline-primary';
                             <a <?php if ($GLOBALS['dark']) echo 'class="text-light"'; ?> href="<?php $this->permalink(); ?>" rel="bookmark"><?php $this->title(); ?></a>
                         </h1>
                     </header>
-                    <?php $headerImg = headerImageDisplay($this, $this->options->headerImage); ?>
+                    <?php $headerImg = headerImageDisplay($this, $this->options->headerImage, $this->options->headerImageUrl); ?>
                     <?php if ($headerImg): ?>
                         <div class="header-img mb-3 mt-4">
                             <a <?php if ($this->options->headerImageStyle == 'rounded-corners') echo 'class="rounded"'; ?> href="<?php $this->permalink(); ?>" aria-hidden="true" aria-label="文章头图" style="background-image: url(<?php echo $headerImg; ?>);" tabindex="-1"></a>
