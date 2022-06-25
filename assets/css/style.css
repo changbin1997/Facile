@@ -861,6 +861,9 @@
 #comments .comments-lists .comment-children .comment-children {
   margin-left: 0;
 }
+#comments .comments-lists .comment-input {
+  margin-bottom: 20px;
+}
 
 .archive-page .archives {
   position: relative;

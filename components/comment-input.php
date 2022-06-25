@@ -3,9 +3,6 @@
 <div id="<?php $this->respondId(); ?>" class="comment-input">
     <h2 <?php if ($GLOBALS['dark']) echo 'class="text-light"'; ?>>发表评论</h2>
     <form method="post" action="<?php $this->commentUrl() ?>" id="comment-form" role="form">
-        <div class="cancel-comment-reply">
-            <?php $comments->cancelReply(); ?>
-        </div>
         <div class="row">
             <div class="col-12">
                 <label for="textarea" class="d-block">评论内容</label>
@@ -61,6 +58,7 @@
             <?php endif; ?>
             <div class="col-12">
                 <button type="submit" class="btn btn-primary">提交评论</button>
+                <?php $comments->cancelReply(); ?>
             </div>
         </div>
     </form>

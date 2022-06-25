@@ -385,6 +385,10 @@ $(function () {
     $('.comment-info .author a').attr('target', '_blank');
   }
 
+  if ($('.comments-lists > ol').length) {
+    $('.comments-lists > ol').attr('aria-label', '评论区');
+  }
+
   // 回复对象名字鼠标移入和移出
   $('#comments .parent').hover(ev => {
     $($(ev.target).attr('href') + ' .comment-content').css({
@@ -405,6 +409,23 @@ $(function () {
       background: '#D0210E',
       color: '#FFFFFF'
     });
+  });
+
+  // 评论列表的回复链接点击
+  $('.comment-reply').on('click', () => {
+    if ($('.comment-list .comment-input').length && $('#cancel-comment-reply-link').length) {
+      $('#cancel-comment-reply-link').addClass('btn btn-outline-primary ml-2');
+      $('#cancel-comment-reply-link').attr('role', 'button');
+    }
+  });
+
+  // 取消回复链接按下 tab
+  $('#cancel-comment-reply-link').on('keydown', ev => {
+    if (ev.keyCode === 9) {
+      // 让评论内容输入框获取焦点
+      ev.preventDefault();
+      $('#textarea').focus();
+    }
   });
 
   // 评论回复链接失去焦点
