@@ -86,6 +86,13 @@ EOT;
     //  文章摘要字数
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('summary', null, '120', _t('文章摘要字数'), _t('首页、分类页、标签页、搜索页 的文章摘要字数，默认为：120个字。')));
 
+    // 章节目录
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('directory', array(
+        'first' => '在文章开头显示章节目录',
+        'first-title' => '在第一个章节标题前显示章节目录',
+        'hide' => '不显示章节目录'
+    ), 'hide', _t('章节目录'), _t('章节目录会根据文章内插入的标题生成，如果文章内没有插入标题就不会生成章节目录。')));
+
     // 显示代码行号
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('codeLineNum', array(
         'show' => '显示',
@@ -509,4 +516,98 @@ function getParentCategory($categoryId) {
 // 计算两个时间之间相差的天数
 function getDays($time1, $time2) {
     return floor(($time2 - $time1) / 86400);
+}
+
+// 根据文章内的标题生成目录
+function articleDirectory($content, $options) {
+    $re = '#<h(\d)(.*?)>(.*?)</h\d>#im';
+    preg_match_all($re, $content, $result);
+    if (!is_array($result) or count($result[0]) < 1) {
+        echo $content;
+        return false;
+    }
+
+    $treeList = array();
+    $id = 1;
+    foreach ($result[1] as $i => $level) {
+        $treeList[$id] = array(
+            'id' => $id,
+            'parent_id' => 0,
+            'level' => $level,
+            'name' => trim(strip_tags($result[3][$i])),
+            'rand' => mt_rand(1000, 9999)
+        );
+        $id ++;
+    }
+
+    for ($i = 2;$i <= count($treeList);$i ++) {
+        $item = $treeList[$i];
+        $prevItem = $treeList[$i - 1];
+        if ($item['level'] == $prevItem['level']) {
+            $treeList[$i]['parent_id'] = $prevItem['parent_id'];
+            continue;
+        }
+        if ($item['level'] > $prevItem['level']) {
+            $treeList[$i]['parent_id'] = $prevItem['id'];
+            continue;
+        }
+        $parentId = 0;
+        while ($item['level'] <= $prevItem['level']) {
+            $parentId = $prevItem['parent_id'];
+            if (!isset($treeList[($prevItem['id'] - 1)])) {
+                break;
+            }
+            $prevItem = $treeList[($prevItem['id'] - 1)];
+        }
+        $treeList[$i]['parent_id'] = $parentId;
+    }
+
+    $tree = array();
+    foreach ($treeList as $item) {
+        if ($item[ 'parent_id' ] != 0 && !isset($treeList[$item['parent_id']])) {
+            continue;
+        }
+        if (isset($treeList[$item['parent_id']])) {
+            $treeList[$item['parent_id']]['children'][] = &$treeList[$item['id']];
+        } else {
+            $tree[] = &$treeList[$item['id']];
+        }
+    }
+
+    $GLOBALS['directoryList'] = '<div id="directory-box" class="border p-3 mb-3 rounded"><h2>目录</h2>' . renderArticleDirectory($tree, '') . '</div>';
+    if ($options == 'first') {
+        echo $GLOBALS['directoryList'];
+    }
+
+    $GLOBALS['directoryOptions'] = $options;
+    $GLOBALS['directory'] = $treeList;
+    $GLOBALS['directoryIndex'] = 1;
+    $content = preg_replace_callback($re, function ($matches) {
+        $name = urlencode(strip_tags($matches[3]));
+        if ($GLOBALS['directoryOptions'] == 'first-title' && $GLOBALS['directoryIndex'] == 1) {
+            $span = $GLOBALS['directoryList'] . '<span data-title="' . $name . $GLOBALS['directory'][$GLOBALS['directoryIndex']]['rand'] . '" id="' . $name . $GLOBALS['directory'][$GLOBALS['directoryIndex']]['rand'] . '"></span>' . $matches[0];
+        }else {
+            $span = '<span data-title="' . $name . $GLOBALS['directory'][$GLOBALS['directoryIndex']]['rand'] . '" id="' . $name . $GLOBALS['directory'][$GLOBALS['directoryIndex']]['rand'] . '"></span>' . $matches[0];
+        }
+        $GLOBALS['directoryIndex'] ++;
+        return $span;
+    }, $content);
+    echo $content;
+}
+
+//  生成目录 HTML
+function renderArticleDirectory($tree, $parent = '') {
+    $index = 1;
+    $ariaLabel = $tree[0]['parent_id'] == 0?'aria-label="目录"':'';
+    $htmlStr = '<ul class="article-directory"' . $ariaLabel . '>';
+    foreach ($tree as $item) {
+        $num = $parent == ''?$index:$parent . '.' . $index;
+        $htmlStr .= sprintf('<li><a rel="nofollow" data-directory="%s" class="directory-link" href="#%s">%s</a></li>', urlencode($item['name']) . $item['rand'], urlencode($item['name']) . $item['rand'], '<span class="mr-2 directory-num">' . $num . '</span>' . $item['name']);
+        if (isset($item['children']) && count($item['children']) > 0) {
+            $htmlStr .= renderArticleDirectory($item['children'], $num);
+        }
+        $index ++;
+    }
+    $htmlStr .= '</ul>';
+    return $htmlStr;
 }

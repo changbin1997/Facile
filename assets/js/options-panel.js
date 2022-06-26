@@ -22,9 +22,9 @@ window.onload = function () {
   form.insertBefore(titleEl[2], ul[4]);  // 导航
   form.insertBefore(titleEl[3], ul[5]);  // 侧边栏
   form.insertBefore(titleEl[4], ul[7]);  // 文章相关
-  form.insertBefore(titleEl[5], ul[14]);  // 评论
-  form.insertBefore(titleEl[6], ul[18]);  // 友链
-  form.insertBefore(titleEl[7], ul[21]);  // 开发者
+  form.insertBefore(titleEl[5], ul[15]);  // 评论
+  form.insertBefore(titleEl[6], ul[19]);  // 友链
+  form.insertBefore(titleEl[7], ul[22]);  // 开发者
 
   // 导出配置按钮点击
   document.querySelector('#export-btn').addEventListener('click', function() {

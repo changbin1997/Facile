@@ -68,9 +68,14 @@ $btnColor = $GLOBALS['dark']?'btn-primary':'btn-outline-primary';
                     </div>
                     <div class="post-content mt-4" data-code-line-num="<?php $this->options->codeLineNum(); ?>">
                         <?php if (is_numeric($this->fields->expired) && (int)$this->fields->expired > 0 && $this->created + (int)$this->fields->expired * 86400 < time()): ?>
+                            <!--警示信息-->
                             <div class="alert expiration-reminder <?php if (!$GLOBALS['dark']) echo 'alert-info'; ?>" role="alert">这篇文章发布于 <?php echo getDays($this->created, time()); ?> 天前，其中的信息可能已经有所发展或是发生改变！</div>
                         <?php endif; ?>
-                        <?php $this->content(); ?>
+                        <?php if ($this->options->directory == 'first' or $this->options->directory == 'first-title'): ?>
+                            <?php articleDirectory($this->content, $this->options->directory); ?>
+                        <?php else: ?>
+                            <?php $this->content(); ?>
+                        <?php endif; ?>
                     </div>
                     <div class="category-tag clearfix my-4">
                         <div class="post-category float-left" role="group" aria-label="文章分类">

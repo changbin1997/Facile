@@ -429,6 +429,13 @@
 .post-page .post-title a:focus {
   color: #D0220F;
 }
+.post-page article #directory-box {
+  background: #F8F9FA;
+  display: inline-block;
+}
+.post-page article #directory-box .directory-num {
+  color: #212529;
+}
 .post-page article .post-content p, .post-page article .post-content li, .post-page article .post-content a {
   font-size: 16px;
 }
@@ -1107,6 +1114,12 @@
 }
 .dark-color .sidebar .latest-comment p {
   color: #F5F5F5;
+}
+.dark-color #directory-box {
+  background: #343A40 !important;
+}
+.dark-color #directory-box .directory-num {
+  color: #F5F5F5 !important;
 }
 .dark-color .post-page .post-content p {
   color: #F5F5F5;

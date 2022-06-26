@@ -142,6 +142,16 @@ $(function () {
     $('.protected p').replaceWith(formEl);
   }
 
+  // 文章内的章节目录跳转
+  $('.directory-link').on('click', ev => {
+    ev.preventDefault();
+    const titleSelect = `[data-title="${$(ev.target).attr('data-directory')}"]`;
+    $('html').animate({
+      scrollTop: $(titleSelect).offset().top - 60
+    }, 400);
+    return false;
+  });
+
   // 生成二维码
   if ($('#qr') !== undefined) {
     const qr = new QRious({

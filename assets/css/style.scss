@@ -355,6 +355,14 @@
   }
   // 文章内容
   article {
+    // 文章目录
+    #directory-box {
+      background: #F8F9FA;
+      display: inline-block;
+      .directory-num {
+        color: #212529;
+      }
+    }
     .post-content {
       @include postContent;
     }
@@ -1029,6 +1037,14 @@ $textColor: #F5F5F5;
     }
     .latest-comment p {
       color: $textColor;
+    }
+  }
+
+  // 章节目录配色
+  #directory-box {
+    background: #343A40 !important;
+    .directory-num {
+      color: $textColor !important;
     }
   }
 
