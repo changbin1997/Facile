@@ -71,10 +71,11 @@ $btnColor = $GLOBALS['dark']?'btn-primary':'btn-outline-primary';
                             <!--警示信息-->
                             <div class="alert expiration-reminder <?php if (!$GLOBALS['dark']) echo 'alert-info'; ?>" role="alert">这篇文章发布于 <?php echo getDays($this->created, time()); ?> 天前，其中的信息可能已经有所发展或是发生改变！</div>
                         <?php endif; ?>
-                        <?php if ($this->options->directory == 'first' or $this->options->directory == 'first-title'): ?>
-                            <?php articleDirectory($this->content, $this->options->directory); ?>
-                        <?php else: ?>
+                        <?php $directoryOptions = getDirectoryOptions($this->fields->directory, $this->options->directory); ?>
+                        <?php if (!$directoryOptions): ?>
                             <?php $this->content(); ?>
+                        <?php else: ?>
+                            <?php articleDirectory($this->content, $directoryOptions); ?>
                         <?php endif; ?>
                     </div>
                     <div class="category-tag clearfix my-4">

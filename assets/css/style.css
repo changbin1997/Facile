@@ -433,8 +433,17 @@
   background: #F8F9FA;
   display: inline-block;
 }
-.post-page article #directory-box .directory-num {
+.post-page article #directory-box ul {
+  list-style: none;
+}
+.post-page article #directory-box ul .directory-num {
   color: #212529;
+}
+.post-page article #directory-box > ul {
+  padding-left: 0;
+}
+.post-page article #directory-box > ul ul {
+  padding-left: 32px;
 }
 .post-page article .post-content p, .post-page article .post-content li, .post-page article .post-content a {
   font-size: 16px;

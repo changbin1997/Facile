@@ -31,6 +31,14 @@ function themeFields($layout) {
     //  自定义文章摘要内容
     $layout->addItem(new Typecho_Widget_Helper_Form_Element_Textarea('summaryContent', null, null, _t('自定义摘要内容'), _t('您可以在此处为文章定义摘要内容，此处定义的摘要内容不受字数限制。')));
 
+    // 章节目录
+    $layout->addItem(new Typecho_Widget_Helper_Form_Element_Select('directory', array(
+        'default' => '使用系统设置',
+        'first' => '在文章开头显示章节目录',
+        'first-title' => '在第一个章节标题前显示章节目录',
+        'hide' => '不显示章节目录'
+    ), 'default', _t('章节目录'), _t('您可以单独给文章设置章节目录的显示和位置。章节目录会根据文章内插入的标题生成，如果文章内没有插入标题就不会生成章节目录。')));
+
     //  自定义关键词
     $layout->addItem(new Typecho_Widget_Helper_Form_Element_Text('keywords', null, null, _t('自定义关键词'), _t('您可以输入这篇文章的关键词，多个关键词之间用英文逗号分隔，如果为空 会使用这篇文章的标签作为关键词。')));
 
@@ -91,7 +99,7 @@ EOT;
         'first' => '在文章开头显示章节目录',
         'first-title' => '在第一个章节标题前显示章节目录',
         'hide' => '不显示章节目录'
-    ), 'hide', _t('章节目录'), _t('章节目录会根据文章内插入的标题生成，如果文章内没有插入标题就不会生成章节目录。')));
+    ), 'first-title', _t('章节目录'), _t('章节目录会根据文章内插入的标题生成，如果文章内没有插入标题就不会生成章节目录。')));
 
     // 显示代码行号
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('codeLineNum', array(
@@ -610,4 +618,12 @@ function renderArticleDirectory($tree, $parent = '') {
     }
     $htmlStr .= '</ul>';
     return $htmlStr;
+}
+
+// 获取章节目录设置
+function getDirectoryOptions($post, $options) {
+    if ($post == 'hide') return false;
+    if ($post == 'first' or $post == 'first-title') return $post;
+    if ($options == 'first' or $options == 'first-title') return $options;
+    return false;
 }

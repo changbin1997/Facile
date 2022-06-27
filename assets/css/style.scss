@@ -359,8 +359,17 @@
     #directory-box {
       background: #F8F9FA;
       display: inline-block;
-      .directory-num {
-        color: #212529;
+      ul {
+        list-style: none;
+        .directory-num {
+          color: #212529;
+        }
+      }
+      > ul {
+        padding-left: 0;
+        ul {
+          padding-left: 32px;
+        }
       }
     }
     .post-content {
