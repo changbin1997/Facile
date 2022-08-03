@@ -72,7 +72,7 @@ function threadedComments($comments, $options) {
     <?php if ($this->options->commentInput == 'top') require_once 'comment-input.php'; ?>
     <?php if ($comments->have()): ?>
         <div class="comments-lists">
-            <h2 <?php if ($GLOBALS['dark']) echo 'class="text-light"'; ?>><?php $this->commentsNum(_t('暂无评论'), _t('仅有一条评论'), _t('已有 %d 条评论')); ?></h2>
+            <h2><?php $this->commentsNum(_t('暂无评论'), _t('仅有一条评论'), _t('已有 %d 条评论')); ?></h2>
 
             <?php $comments->listComments(); ?>
 

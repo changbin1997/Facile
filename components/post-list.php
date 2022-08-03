@@ -1,6 +1,5 @@
 <?php
-// 设置标题配色
-$postTitleColorClass = $GLOBALS['dark']?'class="text-light"':'';
+
 // 设置阅读全文按钮颜色
 $readMoreBtnColor = $GLOBALS['dark']?'btn-primary':'btn-outline-primary';
 
@@ -19,17 +18,17 @@ while ($this->next()):
             <header class="mb-4">
                 <h2 class="post-title m-0">
                     <?php $this->sticky(); ?>
-                    <a href="<?php $this->permalink(); ?>" rel="bookmark" <?php echo $postTitleColorClass; ?>>
+                    <a href="<?php $this->permalink(); ?>" rel="bookmark">
                         <?php $this->title(); ?>
                     </a>
                 </h2>
                 <div class="post-info mt-2">
                     <span class="ml-1" title="发布日期" data-toggle="tooltip" data-placement="top">
-                        <i class="icon-calendar mr-1" aria-hidden="true"></i>
+                        <i class="icon-calendar mr-2" aria-hidden="true"></i>
                         <?php $this->date('Y年m月d日'); ?>
                     </span>
                     <span class="ml-2" title="作者" data-toggle="tooltip" data-placement="top">
-                        <i class="icon-user mr-1" aria-hidden="true"></i>
+                        <i class="icon-user mr-2" aria-hidden="true"></i>
                         <a href="<?php $this->author->permalink(); ?>" class="mr-2" title="作者：<?php $this->author(); ?>">
                             <?php $this->author(); ?>
                         </a>

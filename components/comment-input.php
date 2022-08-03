@@ -1,7 +1,7 @@
 <?php if($this->allow('comment')): ?>
 
 <div id="<?php $this->respondId(); ?>" class="comment-input">
-    <h2 <?php if ($GLOBALS['dark']) echo 'class="text-light"'; ?>>发表评论</h2>
+    <h2>发表评论</h2>
     <form method="post" action="<?php $this->commentUrl() ?>" id="comment-form" role="form">
         <div class="row">
             <div class="col-12">

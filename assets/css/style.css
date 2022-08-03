@@ -265,6 +265,10 @@
   text-transform: none;
 }
 
+header input[type=search]:focus {
+  box-shadow: none;
+}
+
 .breadcrumb-nav .breadcrumb {
   background: none;
 }
@@ -297,6 +301,7 @@
 }
 .post-list .post .post-title a {
   color: #333333;
+  transition: 0.3s;
 }
 .post-list .post .post-title a:hover {
   text-decoration: none;
@@ -319,6 +324,14 @@
   content: "";
   padding-bottom: 75%;
   display: block;
+}
+.post-list .post .post-info {
+  display: flex;
+  justify-content: flex-start;
+}
+.post-list .post .post-info span {
+  display: flex;
+  align-items: center;
 }
 .post-list .post .more-link-wrapper {
   height: 28px;
@@ -421,6 +434,7 @@
 }
 .post-page .post-title a {
   color: #333333;
+  transition: 0.3s;
 }
 .post-page .post-title a:hover {
   text-decoration: none;
@@ -428,6 +442,14 @@
 }
 .post-page .post-title a:focus {
   color: #D0220F;
+}
+.post-page .post-info {
+  display: flex;
+  justify-content: flex-start;
+}
+.post-page .post-info span {
+  display: flex;
+  align-items: center;
 }
 .post-page article #directory-box {
   background: #F8F9FA;
@@ -1011,6 +1033,7 @@
   }
   .post-page .post-title a {
     color: #333333;
+    transition: 0.3s;
   }
   .post-page .post-title a:hover {
     text-decoration: none;
@@ -1037,6 +1060,7 @@
   }
   .post-page .post-title a {
     color: #333333;
+    transition: 0.3s;
   }
   .post-page .post-title a:hover {
     text-decoration: none;
@@ -1057,22 +1081,22 @@
   }
 }
 .dark-color {
-  background-color: #121212;
+  background-color: #0C0C0C;
 }
 .dark-color header .navbar {
-  background-color: #212529 !important;
+  background-color: #16161A !important;
 }
 .dark-color header .navbar input[type=search] {
-  background: #ADB5BD;
+  background: #25252C;
   color: #FFFFFF;
   transition: 0.3s;
+  border-color: #CF210E;
 }
 .dark-color header .navbar input[type=search]:focus {
-  background: #FCFCFC;
-  color: #000000;
+  background: #16161A;
 }
 .dark-color .breadcrumb-nav .breadcrumb a {
-  color: #FF4242;
+  color: #E47063;
 }
 .dark-color .breadcrumb-nav .breadcrumb li {
   color: rgba(255, 255, 255, 0.75);
@@ -1083,62 +1107,71 @@
 .dark-color .header-img a {
   background-color: #232323 !important;
 }
+.dark-color .post-title a {
+  color: #D3D3D3 !important;
+}
+.dark-color .post-title a:hover {
+  color: #E47063 !important;
+}
+.dark-color .post-title a:focus {
+  color: #E47063 !important;
+}
 .dark-color .post-info a {
-  color: #FF4242;
+  color: #E47063;
 }
 .dark-color .post-info span {
-  color: #F9F9F9;
+  color: rgba(245, 245, 245, 0.8);
 }
 .dark-color .text-color {
-  color: #F5F5F5;
+  color: #D3D3D3;
 }
 .dark-color .comment-count, .dark-color .edit-link {
-  color: #FF4242;
+  color: #E47063;
 }
 .dark-color .expiration-reminder {
   background: #343A40;
-  color: #F5F5F5;
+  color: #D3D3D3;
 }
 .dark-color .pagination li:not(.active) a {
-  background: #212529;
-  color: #F5F5F5 !important;
+  background: #16161A;
+  color: #D3D3D3 !important;
   border: none;
 }
 .dark-color .pagination .active a {
-  color: #F5F5F5 !important;
+  color: #D3D3D3 !important;
 }
 .dark-color #to-top-btn {
-  background-color: #212529;
+  background-color: #16161A;
   color: #FFFFFF !important;
   border: none;
 }
 .dark-color .sidebar section > h2 {
-  color: #FFFFFF;
+  color: #D3D3D3;
 }
 .dark-color .sidebar section li a {
-  color: #F5F5F5;
+  color: #D3D3D3;
 }
 .dark-color .sidebar .change-color label {
-  color: #F5F5F5;
+  color: #D3D3D3;
 }
 .dark-color .sidebar .latest-comment p {
-  color: #F5F5F5;
+  color: #D3D3D3;
 }
 .dark-color #directory-box {
-  background: #343A40 !important;
+  background: #16161A !important;
 }
 .dark-color #directory-box .directory-num {
-  color: #F5F5F5 !important;
+  color: #D3D3D3 !important;
 }
 .dark-color .post-page .post-content p {
-  color: #F5F5F5;
+  color: #D3D3D3;
 }
 .dark-color .post-page .post-content p > code {
   background: #000000 !important;
   color: #F1D951 !important;
 }
 .dark-color .post-page .post-content ol li, .dark-color .post-page .post-content ul li {
-  color: #F5F5F5;
+  color: #D3D3D3;
 }
 .dark-color .post-page .post-content ol li code, .dark-color .post-page .post-content ul li code {
   background: #000000 !important;
@@ -1152,38 +1185,38 @@
   color: #F1D951 !important;
 }
 .dark-color .post-page .post-content table {
-  background: #212529;
+  background: #16161A;
 }
 .dark-color .post-page .post-content table th {
   color: #FFFFFF;
   border: 1px solid #454D55;
 }
 .dark-color .post-page .post-content table th a {
-  color: #FF4242;
+  color: #E47063;
 }
 .dark-color .post-page .post-content table th code {
   background: #000000 !important;
   color: #F1D951 !important;
 }
 .dark-color .post-page .post-content table td {
-  color: #F5F5F5;
+  color: #D3D3D3;
   border: 1px solid #454D55;
 }
 .dark-color .post-page .post-content table td a {
-  color: #FF4242;
+  color: #E47063;
 }
 .dark-color .post-page .post-content table td code {
   background: #000000 !important;
   color: #F1D951 !important;
 }
 .dark-color .post-page .post-content table tbody tr:nth-child(odd) {
-  background: #343A40;
+  background: #212529;
 }
 .dark-color .post-page .post-content table tr:hover {
-  background: #343A40;
+  background: #212529;
 }
 .dark-color .post-page .post-content a {
-  color: #FF4242;
+  color: #E47063;
 }
 .dark-color .post-page .post-content hr {
   background: #CCCCCC;
@@ -1195,44 +1228,47 @@
   background: #717171;
 }
 .dark-color .category-tag i {
-  color: #F9F9F9;
+  color: #D3D3D3;
 }
 .dark-color .post-category a {
-  color: #FF4242;
+  color: #D3D3D3;
 }
 .dark-color #qr-link p {
-  color: #F5F5F5;
+  color: #D3D3D3;
 }
 .dark-color .post-navigation a {
-  color: #F5F5F5;
+  color: #E47063;
 }
 .dark-color .post-navigation div {
-  color: #FFFFFF;
+  color: #D3D3D3;
+}
+.dark-color #comments h2 {
+  color: #D3D3D3;
 }
 .dark-color #comments a {
-  color: #FF4242;
+  color: #E47063;
 }
 .dark-color #comments .comment-info b {
-  color: #FFFFFF !important;
+  color: #D3D3D3 !important;
 }
 .dark-color #comments .comment-info .comment-time {
   color: rgba(245, 245, 245, 0.8) !important;
 }
 .dark-color #comments .comment-info .mx-2 {
-  color: #F5F5F5;
+  color: #D3D3D3;
 }
 .dark-color #comments .comment-content {
-  color: #F5F5F5;
+  color: #D3D3D3;
 }
 .dark-color #comments .comment-content p {
-  color: #F5F5F5;
+  color: #D3D3D3;
 }
 .dark-color #comments .comment-content p > code {
   background: #000000 !important;
   color: #F1D951 !important;
 }
 .dark-color #comments .comment-content ol li, .dark-color #comments .comment-content ul li {
-  color: #F5F5F5;
+  color: #D3D3D3;
 }
 .dark-color #comments .comment-content ol li code, .dark-color #comments .comment-content ul li code {
   background: #000000 !important;
@@ -1246,38 +1282,38 @@
   color: #F1D951 !important;
 }
 .dark-color #comments .comment-content table {
-  background: #212529;
+  background: #16161A;
 }
 .dark-color #comments .comment-content table th {
   color: #FFFFFF;
   border: 1px solid #454D55;
 }
 .dark-color #comments .comment-content table th a {
-  color: #FF4242;
+  color: #E47063;
 }
 .dark-color #comments .comment-content table th code {
   background: #000000 !important;
   color: #F1D951 !important;
 }
 .dark-color #comments .comment-content table td {
-  color: #F5F5F5;
+  color: #D3D3D3;
   border: 1px solid #454D55;
 }
 .dark-color #comments .comment-content table td a {
-  color: #FF4242;
+  color: #E47063;
 }
 .dark-color #comments .comment-content table td code {
   background: #000000 !important;
   color: #F1D951 !important;
 }
 .dark-color #comments .comment-content table tbody tr:nth-child(odd) {
-  background: #343A40;
+  background: #212529;
 }
 .dark-color #comments .comment-content table tr:hover {
-  background: #343A40;
+  background: #212529;
 }
 .dark-color #comments .comment-content a {
-  color: #FF4242;
+  color: #E47063;
 }
 .dark-color #comments .comment-content hr {
   background: #CCCCCC;
@@ -1289,52 +1325,48 @@
   background: #717171;
 }
 .dark-color #comments .comment-reply i, .dark-color #comments .comment-reply a {
-  color: #F9F9F9 !important;
+  color: #D3D3D3 !important;
 }
 .dark-color #comments .comment-input label {
-  color: #F5F5F5;
+  color: #D3D3D3;
 }
 .dark-color #comments .comment-input textarea, .dark-color #comments .comment-input input {
-  background: #ADB5BD;
-  color: #FFFFFF;
+  background: #16161A;
+  color: #D3D3D3;
   transition: 0.3s;
 }
-.dark-color #comments .comment-input textarea:focus, .dark-color #comments .comment-input input:focus {
-  background: #FCFCFC;
-  color: #000000;
-}
 .dark-color #comments .comment-input #emoji-panel {
-  background: #212529 !important;
+  background: #16161A !important;
 }
 .dark-color #comments .comment-input #emoji-panel .card-body {
-  background: #212529;
+  background: #16161A;
 }
 .dark-color #comments .comment-input #emoji-panel * {
-  color: #F5F5F5;
+  color: #D3D3D3;
 }
 .dark-color #comments .comment-input .comment-user {
-  color: #F5F5F5;
+  color: #D3D3D3;
 }
 .dark-color .archive-description {
   color: #F9F9F9;
 }
 .dark-color .no-content {
-  color: #F5F5F5;
+  color: #D3D3D3;
 }
 .dark-color .no-content hr {
-  background: #F5F5F5;
+  background: #D3D3D3;
 }
 .dark-color footer nav {
   color: #F9F9F9;
 }
 .dark-color footer nav a {
-  color: #FF4242;
+  color: #E47063;
 }
 .dark-color .archive-page .archives h2 {
   background: #121212;
 }
 .dark-color .statistics-card {
-  background: #212529;
+  background: #16161A;
 }
 .dark-color .page-404 h1 {
   color: #F5F5F5;

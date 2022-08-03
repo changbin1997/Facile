@@ -34,7 +34,7 @@ $btnColor = $GLOBALS['dark']?'btn-primary':'btn-outline-primary';
                 <article>
                     <header>
                         <h1 class="post-title m-0">
-                            <a <?php if ($GLOBALS['dark']) echo 'class="text-light"'; ?> href="<?php $this->permalink(); ?>" rel="bookmark"><?php $this->title(); ?></a>
+                            <a href="<?php $this->permalink(); ?>" rel="bookmark"><?php $this->title(); ?></a>
                         </h1>
                     </header>
                     <?php $headerImg = headerImageDisplay($this, $this->options->headerImage, $this->options->headerImageUrl); ?>
@@ -45,23 +45,23 @@ $btnColor = $GLOBALS['dark']?'btn-primary':'btn-outline-primary';
                     <?php endif; ?>
                     <div class="post-info mt-2">
                         <span class="ml-1" title="发布日期" data-toggle="tooltip" data-placement="top">
-                            <i class="icon-calendar mr-1" aria-hidden="true"></i>
+                            <i class="icon-calendar mr-2" aria-hidden="true"></i>
                             <?php $this->date('Y年m月d日'); ?>
                         </span>
                         <span class="ml-2" title="作者" data-toggle="tooltip" data-placement="top">
-                            <i class="icon-user mr-1" aria-hidden="true"></i>
+                            <i class="icon-user mr-2" aria-hidden="true"></i>
                             <a href="<?php $this->author->permalink(); ?>" class="mr-2" title="作者：<?php $this->author(); ?>">
                                 <?php $this->author(); ?>
                             </a>
                         </span>
                         <span class="ml-2" title="阅读量" data-toggle="tooltip" data-placement="top">
                             <?php $views = getPostViews($this); ?>
-                            <i class="icon-eye mr-1" aria-hidden="true"></i>
+                            <i class="icon-eye mr-2" aria-hidden="true"></i>
                             <?php echo $views; ?>
                         </span>
                         <?php if ($this->user->hasLogin()): ?>
                         <span class="ml-2">
-                            <i class="icon-pencil mr-1" aria-hidden="true"></i>
+                            <i class="icon-pencil mr-2" aria-hidden="true"></i>
                             <a href="<?php echo $this->options->siteUrl . 'admin/write-post.php?cid=' . $this->cid; ?>">编辑</a>
                         </span>
                         <?php endif; ?>
