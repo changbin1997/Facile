@@ -645,6 +645,25 @@ $(function () {
     return Math.round(Math.random() * num + min);
   }
 
+  // 根据当前使用的主题配色来设置侧边栏主题单选框的选中状态
+  if ($('.change-color').length) {
+    // 浅色模式
+    if ($('.light-color').length) $('#light-color').attr('checked', true);
+    // 深色模式
+    if ($('.dark-color').length) $('#dark-color').attr('checked', true);
+    // 如果使用了跟随系统主题就检测系统主题的配色模式
+    if ($('.auto-color').length) {
+      const darkColor = window.matchMedia('(prefers-color-scheme: dark)');
+      if (darkColor.matches) {
+        // 深色
+        $('#dark-color').attr('checked', true);
+      }else {
+        // 浅色
+        $('#light-color').attr('checked', true);
+      }
+    }
+  }
+
   // 切换主题的单选框改变
   $('.change-theme-color').on('click', ev => {
     // 获取选中的颜色
@@ -656,8 +675,10 @@ $(function () {
     time = new Date(time);
     // 写入 cookie
     document.cookie = 'themeColor=' + color + ';path=/;expires=Tue,' + time;
-    // 刷新网页
-    location.reload();
+    // 更改配色
+    $('body').removeClass($('body').attr('data-color'));
+    $('body').addClass(color);
+    $('body').attr('data-color', color);
   });
 
   // 监听滚动条

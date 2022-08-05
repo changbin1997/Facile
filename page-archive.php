@@ -27,7 +27,7 @@ $this->need('components/header.php');
                 <article class="mb-5">
                     <header>
                         <h1 class="post-title m-0">
-                            <a href="<?php $this->permalink(); ?>" rel="bookmark" <?php if ($GLOBALS['dark']) echo 'class="text-light"'; ?>><?php $this->title(); ?></a>
+                            <a href="<?php $this->permalink(); ?>" rel="bookmark"><?php $this->title(); ?></a>
                         </h1>
                     </header>
                     <div class="post-content mt-4">

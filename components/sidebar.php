@@ -20,13 +20,13 @@ $components = explode(',', $components);
                 <ul aria-label="主题配色">
                     <li>
                         <div class="custom-control custom-radio">
-                            <input class="custom-control-input change-theme-color" type="radio" name="color" id="light-color" <?php if (!$GLOBALS['dark']) echo'checked'; ?>>
+                            <input class="custom-control-input change-theme-color" type="radio" name="color" id="light-color">
                             <label class="custom-control-label" for="light-color">浅色主题</label>
                         </div>
                     </li>
                     <li>
                         <div class="custom-control custom-radio">
-                            <input class="custom-control-input change-theme-color" type="radio" name="color" id="dark-color" <?php if ($GLOBALS['dark']) echo'checked'; ?>>
+                            <input class="custom-control-input change-theme-color" type="radio" name="color" id="dark-color">
                             <label class="custom-control-label" for="dark-color">深色主题</label>
                         </div>
                     </li>

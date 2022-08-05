@@ -1,0 +1,268 @@
+// 单独提取的按钮配色，用于浅色模式
+@mixin btn-outline-primary {
+  color: #d9230f;
+  border-color: #d9230f;
+  &:hover {
+    color: #fff;
+    background-color: #d9230f;
+    border-color: #d9230f;
+  }
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba(217, 35, 15, 0.5);
+  }
+  &:disabled {
+    color: #d9230f;
+    background-color: transparent;
+  }
+}
+
+// 浅色主题的单行代码配色
+@mixin codeColor {
+  background: #F9F2F4;
+  color: #C7254E;
+}
+
+// 浅色主题的文章内容配色
+@mixin light-post-content-color {
+  p {
+    > code {
+      @include codeColor;
+    }
+  }
+  ol, ul {
+    li {
+      code {
+        @include codeColor;
+      }
+    }
+  }
+  h1,h2,h3,h4,h5,h6 {
+    color: #333333;
+    code {
+      @include codeColor;
+    }
+  }
+  table {
+    th {
+      code {
+        @include codeColor;
+      }
+    }
+
+    td {
+      code {
+        @include codeColor;
+      }
+    }
+  }
+}
+
+// 浅色模式
+@mixin light-color {
+  background-color: #FCFCFC;
+
+  // 导航栏配色
+  header .navbar {
+    background-color: #FFFFFF;
+    border-color: #eeeeee;
+
+    .navbar-brand {
+      color: rgba(0, 0, 0, 0.9);
+    }
+
+    .navbar-brand:hover, .navbar-brand:focus {
+      color: rgba(0, 0, 0, 0.9);
+    }
+
+    .navbar-nav .nav-link {
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    .navbar-nav .nav-link:hover, .navbar-nav .nav-link:focus {
+      color: rgba(0, 0, 0, 0.7);
+    }
+
+    .navbar-nav .nav-link.disabled {
+      color: rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar-nav .show > .nav-link,
+    .navbar-nav .active > .nav-link,
+    .navbar-nav .nav-link.show,
+    .navbar-nav .nav-link.active {
+      color: rgba(0, 0, 0, 0.9);
+    }
+
+    .navbar-toggler {
+      color: rgba(0, 0, 0, 0.5);
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    .navbar-text {
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    .navbar-text a {
+      color: rgba(0, 0, 0, 0.9);
+    }
+
+    .navbar-text a:hover, .navbar-text a:focus {
+      color: rgba(0, 0, 0, 0.9);
+    }
+  }
+
+  // 通用头像背景颜色
+  .avatar {
+    background-color: #E0E0E0;;
+  }
+
+  // 文章头图背景颜色
+  .header-img a {
+    background-color: #E0E0E0;
+  }
+  // 小头图背景颜色
+  .mini-header-image a {
+    background-color: #E0E0E0;
+  }
+  // 文章标题颜色
+  .post-title a {
+    color: #212529;
+
+    &:hover {
+      color: #D0220F;
+    }
+
+    &:focus {
+      color: #D0220F;
+    }
+  }
+
+  // 文章列表的阅读全文按钮配色
+  .more-link-wrapper .read-more {
+    @include btn-outline-primary;
+  }
+
+  // 返回顶部按钮配色
+  #to-top-btn {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+  }
+
+  // 侧边栏配色
+  .sidebar {
+    section {
+      > h2 {
+        color: #333333;
+      }
+
+      li a {
+        color: #333333;
+      }
+    }
+  }
+
+  // 章节目录配色
+  #directory-box {
+    background: #F8F9FA;
+
+    .directory-num {
+      color: #212529;
+    }
+  }
+
+  // 文章页
+  .post-page {
+    // 文章页内容配色
+    .post-content {
+      @include light-post-content-color;
+    }
+
+    // 文章页的分享和点赞按钮配色
+    .agree-share button {
+      @include btn-outline-primary;
+    }
+
+    // 分享区域的文字提示颜色
+    // 上一篇和下一篇文章导航的文本颜色
+    .post-navigation {
+      a {
+        color: #333333;
+
+        &:hover {
+          color: #D9230F;
+        }
+      }
+    }
+  }
+
+  // 评论区的配色
+  #comments {
+    .comment-info {
+      // 评论者昵称的配色
+      b {
+        color: #333333;
+      }
+
+      // 评论时间配色
+      .comment-time {
+        color: #686868;
+      }
+    }
+
+    // 评论内容配色
+    .comment-content {
+      @include light-post-content-color;
+    }
+
+    // 回复链接的配色
+    .comment-reply {
+      i, a {
+        color: #333333;
+      }
+    }
+
+    // 评论表单区域
+    .comment-input {
+      // emoji 面板开关按钮配色
+      #show-emoji-btn {
+        @include btn-outline-primary;
+      }
+
+    }
+  }
+
+  // 分类页的页头区域
+  .archive-title {
+    h1 {
+      color: #6B6B6B;
+    }
+  }
+
+  // 统计页的配色
+  .statistics-card {
+    background: #B3D8FF;
+  }
+
+  // 404 页面配色
+  .page-404 {
+    #back-home-page {
+      @include btn-outline-primary;
+    }
+  }
+}
+
+// 设置浅色模式
+.light-color {
+  @include light-color;
+}
+
+// 根据系统主题设置浅色模式
+@media (prefers-color-scheme: light) {
+  .auto-color {
+    @include light-color;
+  }
+}

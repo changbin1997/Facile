@@ -63,8 +63,9 @@ EOT;
 
     // 主题配色
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('themeColor', array(
-        'light' => '浅色主题',
-        'dark' => '深色主题'
+        'light-color' => '浅色主题',
+        'dark-color' => '深色主题',
+        'auto-color' => '跟随系统主题'
     ), 'light', _t('默认主题配色'), _t('主题配色会优先使用访问者设置的配色，如果访问者没有更改过配色就会使用默认设置。主题配色设置组件可以在侧边栏组件设置中添加或删除。')));
 
     //  站点Logo

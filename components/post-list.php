@@ -1,8 +1,5 @@
 <?php
 
-// 设置阅读全文按钮颜色
-$readMoreBtnColor = $GLOBALS['dark']?'btn-primary':'btn-outline-primary';
-
 while ($this->next()):
 ?>
 <div class="post mb-5 pb-3">
@@ -45,7 +42,7 @@ while ($this->next()):
                         </div>
                         <div class="more-link-wrapper">
                             <div>
-                                <a href="<?php $this->permalink(); ?>" class="btn btn-sm mr-3 <?php echo $readMoreBtnColor; ?>">
+                                <a href="<?php $this->permalink(); ?>" class="btn btn-sm mr-3">
                                     阅读全文
                                     <i class="icon-arrow-right2"></i>
                                 </a>
@@ -75,7 +72,7 @@ while ($this->next()):
                     </p>
                     <div class="more-link-wrapper">
                         <div>
-                            <a href="<?php $this->permalink(); ?>" class="btn btn-sm mr-3 <?php echo $readMoreBtnColor; ?>">
+                            <a href="<?php $this->permalink(); ?>" class="btn btn-sm mr-3 read-more">
                                 阅读全文
                                 <i class="icon-arrow-right2"></i>
                             </a>

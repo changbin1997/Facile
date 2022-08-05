@@ -11,7 +11,7 @@
             <!--Emoji表情区域-->
             <?php if ($this->options->emojiPanel == 'show'): ?>
             <div class="col-12" id="emoji-box">
-                <button aria-expanded="false" type="button" class="btn btn-sm <?php echo $GLOBALS['dark']?'btn-outline-light':'btn-outline-primary'; ?>" id="show-emoji-btn" data-url="<?php $this->options->themeUrl('emoji.php'); ?>">😀 Emoji表情</button>
+                <button aria-expanded="false" type="button" class="btn btn-sm" id="show-emoji-btn" data-url="<?php $this->options->themeUrl('emoji.php'); ?>">😀 Emoji表情</button>
                 <div id="emoji-panel" class="bg-light border shadow rounded" role="dialog" aria-label="Emoji表情面板（按 ESC 可关闭表情面板并转到评论内容输入框。）">
                     <div class="card card-body p-0 m-0 border-bottom">
                         <div id="emoji-classification" class="m-0 btn-group" role="group" aria-label="表情类型">

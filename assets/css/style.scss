@@ -17,7 +17,6 @@
     overflow: hidden;
     background-size: cover;
     background-position: center;
-    background-color: #E0E0E0;
   }
   a:after {
     content: '';
@@ -30,16 +29,10 @@
 @mixin postTitle {
   font-size: 28px;
   font-weight: 700;
-  color: #212529;
   a {
-    color: #333333;
     transition: 0.3s;
     &:hover {
       text-decoration: none;
-      color: #D0220F;
-    }
-    &:focus {
-      color: #D0220F;
     }
   }
 }
@@ -86,12 +79,9 @@
     }
   }
   h1,h2,h3,h4,h5,h6 {
-    color: #333333;
     font-weight: 700;
     code {
-      background: #F9F2F4;
       padding: 0 4px;
-      color: #C7254E;
     }
   }
   h1 {
@@ -123,10 +113,8 @@
     cursor: zoom-in;
   }
   p code,li code,td code {
-    background: #F9F2F4;
     font-size: 16px;
     padding: 0 4px;
-    color: #C7254E;
   }
   a {
     font-weight: 700;
@@ -250,7 +238,6 @@ header {
       overflow: hidden;
       background-size: cover;
       background-position: center;
-      background-color: #E0E0E0;
       &:after {
         content: '';
         padding-bottom: 75%;
@@ -303,9 +290,7 @@ header {
   bottom: 20px;
   width: 40px;
   height: 40px;
-  background-color: #FFFFFF;
   font-size: 16px;
-  border: 1px solid #CCCCCC;
   opacity: 0.7;
 }
 
@@ -316,7 +301,6 @@ header {
     h2 {
       font-size: 12px;
       font-weight: 700;
-      color: #333333;
     }
     ul {
       list-style: none;
@@ -325,7 +309,6 @@ header {
         margin-bottom: 12px;;
         a {
           font-size: 12px;
-          color: #333333;
         }
       }
     }
@@ -354,7 +337,6 @@ header {
 // 分类页的页头区域
 .archive-title {
   h1 {
-    color: #6B6B6B;
     font-size: 16px;
     font-weight: 700;
   }
@@ -383,13 +365,9 @@ header {
   article {
     // 文章目录
     #directory-box {
-      background: #F8F9FA;
       display: inline-block;
       ul {
         list-style: none;
-        .directory-num {
-          color: #212529;
-        }
       }
       > ul {
         padding-left: 0;
@@ -434,15 +412,6 @@ header {
         &:hover {
           text-decoration: none;
         }
-      }
-    }
-  }
-  // 上一篇和下一篇文章的导航区域
-  .post-navigation {
-    a {
-      color: #333333;
-      &:hover {
-        color: #D9230F;
       }
     }
   }
@@ -536,10 +505,6 @@ header {
   background: #488CB8;
 }
 
-// 通用的头像样式
-.avatar {
-  background-color: #E0E0E0;
-}
 
 // 评论区
 #comments {
@@ -569,7 +534,6 @@ header {
     a {
       font-weight: 700;
     }
-    // Emoji表情区域
     #emoji-panel {
       width: 400px;
       height: 300px;
@@ -633,13 +597,11 @@ header {
         // 评论者
         .author {
           font-size: 14px;
-          color: #333333;
         }
         // 评论时间
         .comment-time {
           display: block;
           font-size: 12px;
-          color: #686868;
         }
       }
       .comment-reply {
@@ -648,7 +610,6 @@ header {
           align-items: center;
         }
         a,i {
-          color: #333333;
           font-weight: 700;
           font-size: 14px;
         }
@@ -768,10 +729,6 @@ header {
 
 // 统计数据页面
 .statistics-page {
-  // 基本统计区域
-  .statistics-card {
-    background: #B3D8FF;
-  }
   // 分类占比区域
   #category-chart {
     height: 390px;
@@ -892,336 +849,8 @@ header {
   }
 }
 
-// 暗色主题的单行代码配色
-@mixin codeColor {
-  background: #000000 !important;
-  color: #F1D951 !important;
-}
+// 浅色配色
+@import "light-color";
 
-// 暗色主题的通用链接颜色
-$linkColor: #E47063;
-// 暗色主题的通用文字颜色
-$textColor: #D3D3D3;
-
-// 暗色主题的文章内容配色
-@mixin darkPostContentColor {
-  p {
-    color: $textColor;
-    > code {
-      @include codeColor;
-    }
-  }
-  ol, ul {
-    li {
-      color: $textColor;
-      code {
-        @include codeColor;
-      }
-    }
-  }
-  h1, h2, h3, h4, h5 {
-    color: #FFFFFF !important;
-    code {
-      @include codeColor;
-    }
-  }
-  table {
-    background: #16161A;
-    th {
-      color: #FFFFFF;
-      border: 1px solid #454D55;
-      a {
-        color:$linkColor;
-      }
-      code {
-        @include codeColor;
-      }
-    }
-    td {
-      color: $textColor;
-      a {
-        color: $linkColor;
-      }
-      code {
-        @include codeColor;
-      }
-      border: 1px solid #454D55;
-    }
-    tbody tr:nth-child(odd) {
-      background: #212529;
-    }
-    tr:hover {
-      background: #212529;
-    }
-  }
-  a {
-    color: $linkColor;
-  }
-  hr {
-    background: #CCCCCC;
-  }
-  pre {
-    code {
-      &::-webkit-scrollbar {
-        background: #212529;
-      }
-      &::-webkit-scrollbar-thumb {
-        background: #717171;
-      }
-    }
-  }
-}
-
-// 暗黑配色
-.dark-color {
-  background-color: #0C0C0C;
-
-  // 顶部导航区域
-  header {
-    .navbar {
-      background-color: #16161A !important;
-      // 搜索框
-      input[type="search"] {
-        background: #25252C;
-        color: #FFFFFF;
-        transition: 0.3s;
-        border-color: #CF210E;
-        &:focus {
-          background: #16161A;
-        }
-      }
-    }
-  }
-
-  // 面包屑导航配色
-  .breadcrumb-nav {
-    .breadcrumb {
-      a {
-        color: $linkColor;
-      }
-      li {
-        color: rgba(255, 255, 255, 0.75);
-      }
-    }
-  }
-
-  // 通用头像背景颜色
-  .avatar {
-    background-color: #282828;
-  }
-
-  // 文章头图背景颜色
-  .header-img a {
-    background-color: #232323 !important;
-  }
-  // 文章标题颜色
-  .post-title a {
-    color: $textColor !important;
-    &:hover {
-      color: $linkColor !important;
-    }
-    &:focus {
-      color: $linkColor !important;
-    }
-  }
-  // 文章信息链接颜色
-  .post-info {
-    a {
-      color: $linkColor;
-    }
-    span {
-      color: rgba(245, 245, 245, 0.8);
-    }
-  }
-  // 文章内容文本颜色
-  .text-color {
-    color: $textColor;
-  }
-  // 评论数量和编辑链接颜色
-  .comment-count,.edit-link {
-    color: $linkColor;
-  }
-
-  // 文章有效期提醒信息配色
-  .expiration-reminder {
-    background: #343A40;
-    color: $textColor;
-  }
-
-  // 翻页导航区
-  .pagination {
-    li:not(.active) a {
-      background: #16161A;
-      color: $textColor !important;
-      border: none;
-    }
-    .active a {
-      color: $textColor !important;
-    }
-  }
-
-  // 返回顶部按钮配色
-  #to-top-btn {
-    background-color: #16161A;
-    color: #FFFFFF !important;
-    border: none;
-  }
-
-  // 侧边栏配色
-  .sidebar {
-    section {
-      > h2 {
-        color: $textColor;
-      }
-      li a {
-        color: $textColor;
-      }
-    }
-    .change-color label {
-      color: $textColor;
-    }
-    .latest-comment p {
-      color: $textColor;
-    }
-  }
-
-  // 章节目录配色
-  #directory-box {
-    background: #16161A !important;
-    .directory-num {
-      color: $textColor !important;
-    }
-  }
-
-  // 文章页内容配色
-  .post-page .post-content {
-    @include darkPostContentColor;
-  }
-
-  // 文章内的分类和标签图标颜色
-  .category-tag i {
-    color: #D3D3D3;
-  }
-  // 文章页的分类链接颜色
-  .post-category a {
-    color: $textColor;
-  }
-  // 分享区域的文字提示颜色
-  #qr-link p {
-    color: $textColor;
-  }
-  // 上一篇和下一篇文章导航的文本颜色
-  .post-navigation {
-    a {
-      color: $linkColor;
-    }
-    div {
-      color: #D3D3D3;
-    }
-  }
-
-  // 评论区的配色
-  #comments {
-    // 评论区标题配色
-    h2 {
-      color: $textColor;
-    }
-    // 评论区链接的配色
-    a {
-      color: $linkColor;
-    }
-    .comment-info {
-      // 评论者昵称的配色
-      b {
-        color: #D3D3D3 !important;
-      }
-      // 评论时间配色
-      .comment-time {
-        color: rgba(245, 245, 245, 0.8) !important;
-      }
-      // 回复提示配色
-      .mx-2 {
-        color: $textColor;
-      }
-    }
-    // 评论内容配色
-    .comment-content {
-      color: $textColor;
-      @include darkPostContentColor;
-    }
-    // 回复链接的配色
-    .comment-reply {
-      i,a {
-        color: #D3D3D3 !important;
-      }
-    }
-
-    // 评论表单区域
-    .comment-input {
-      label {
-        color: $textColor;
-      }
-      textarea,input {
-        background: #16161A;
-        color: $textColor;
-        transition: 0.3s;
-      }
-      // Emoji 面板配色
-      #emoji-panel {
-        background: #16161A !important;
-        .card-body {
-          background: #16161A;
-        }
-        * {
-          color: $textColor;
-        }
-      }
-
-      .comment-user {
-        color: $textColor;
-      }
-    }
-  }
-
-  // 归档页的文字说明配色
-  .archive-description {
-    color: #F9F9F9;
-  }
-  // 搜索页无内容的文字提示颜色
-  .no-content {
-    color: $textColor;
-    hr {
-      background: $textColor;
-    }
-  }
-
-  // 网站底部版权信息配色
-  footer nav {
-    color: #F9F9F9;
-    a {
-      color: $linkColor;
-    }
-  }
-
-  // 独立归档页面配色
-  .archive-page {
-    .archives h2 {
-      background: #121212;
-    }
-  }
-
-  // 统计页的配色
-  .statistics-card {
-    background: #16161A;
-  }
-
-  // 404 页面配色
-  .page-404 {
-    h1 {
-      color: #F5F5F5;
-    }
-    h3 {
-      color: #F9F9F9;
-    }
-  }
-}
+// 深色配色
+@import "dark-color";

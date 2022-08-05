@@ -1,0 +1,505 @@
+// 单独6提取的按钮配色，用于深色模式
+@mixin btn-primary {
+  color: #fff;
+  background-color: #d9230f;
+  border-color: #d9230f;
+  &:hover {
+    color: #fff;
+    background-color: #b51d0d;
+    border-color: #a91b0c;
+  }
+  &:focus {
+    color: #fff;
+    background-color: #b51d0d;
+    border-color: #a91b0c;
+    box-shadow: 0 0 0 0.2rem rgba(223, 68, 51, 0.5);
+  }
+  &:disabled {
+    color: #fff;
+    background-color: #d9230f;
+    border-color: #d9230f;
+  }
+}
+
+@mixin btn-outline-light {
+  color: #fff;
+  border-color: #fff;
+  &:hover {
+    color: #212529;
+    background-color: #fff;
+    border-color: #fff;
+  }
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
+  }
+  &:disabled {
+    color: #fff;
+    background-color: transparent;
+  }
+}
+
+// 暗色主题的单行代码配色
+@mixin codeColor {
+  background: #000000 !important;
+  color: #F1D951 !important;
+}
+
+// 暗色主题的通用链接颜色
+$dark-link-color: #E47063;
+// 暗色主题的通用文字颜色
+$dark-text-color: #D3D3D3;
+// 暗色主题的信息区域的文字颜色
+$dark-text-color2: #999999;
+
+// 暗色主题的文章内容配色
+@mixin dark-post-content-color {
+  p {
+    color: $dark-text-color;
+
+    > code {
+      @include codeColor;
+    }
+  }
+  ol, ul {
+    li {
+      color: $dark-text-color;
+
+      code {
+        @include codeColor;
+      }
+    }
+  }
+  h1, h2, h3, h4, h5 {
+    color: #FFFFFF !important;
+
+    code {
+      @include codeColor;
+    }
+  }
+  table {
+    background: #16161A;
+
+    th {
+      color: #FFFFFF;
+      border: 1px solid #454D55;
+
+      a {
+        color: $dark-link-color;
+      }
+
+      code {
+        @include codeColor;
+      }
+    }
+
+    td {
+      color: $dark-text-color;
+
+      a {
+        color: $dark-link-color;
+      }
+
+      code {
+        @include codeColor;
+      }
+
+      border: 1px solid #454D55;
+    }
+
+    tbody tr:nth-child(odd) {
+      background: #212529;
+    }
+
+    tr:hover {
+      background: #212529;
+    }
+  }
+  a {
+    color: $dark-link-color;
+  }
+  hr {
+    background: #CCCCCC;
+  }
+  pre {
+    code {
+      &::-webkit-scrollbar {
+        background: #212529;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #717171;
+      }
+    }
+  }
+}
+
+// 暗黑配色
+@mixin dark-color {
+  background-color: #0C0C0C;
+
+  // 顶部导航区域
+  header {
+    // 导航栏配色
+    .navbar {
+      background-color: #16161A;
+      border-color: #202025;
+      .navbar-brand {
+        color: #fff;
+      }
+
+      .navbar-brand:hover, .navbar-brand:focus {
+        color: #fff;
+      }
+
+      .navbar-nav .nav-link {
+        color: rgba(255, 255, 255, 0.75);
+      }
+
+      .navbar-nav .nav-link:hover, .navbar-nav .nav-link:focus {
+        color: #fff;
+      }
+
+      .navbar-nav .nav-link.disabled {
+        color: rgba(255, 255, 255, 0.25);
+      }
+
+      .navbar-nav .show > .nav-link,
+      .navbar-nav .active > .nav-link,
+      .navbar-nav .nav-link.show,
+      .navbar-nav .nav-link.active {
+        color: #fff;
+      }
+
+      .navbar-toggler {
+        color: rgba(255, 255, 255, 0.75);
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
+
+      .navbar-text {
+        color: rgba(255, 255, 255, 0.75);
+      }
+
+      .navbar-text a {
+        color: #fff;
+      }
+
+      .navbar-text a:hover, .navbar-text a:focus {
+        color: #fff;
+      }
+
+      // 搜索框
+      input[type="search"] {
+        background: #25252C;
+        color: #FFFFFF;
+        transition: 0.3s;
+        border-color: #CF210E;
+
+        &:focus {
+          background: #16161A;
+        }
+      }
+    }
+  }
+
+  // 面包屑导航配色
+  .breadcrumb-nav {
+    .breadcrumb {
+      a {
+        color: $dark-link-color;
+      }
+
+      li {
+        color: rgba(255, 255, 255, 0.75);
+      }
+    }
+  }
+
+  // 通用头像背景颜色
+  .avatar {
+    background-color: #282828;
+  }
+
+  // 文章头图背景颜色
+  .header-img a {
+    background-color: #232323 !important;
+  }
+  // 文章标题颜色
+  .post-title a {
+    color: $dark-text-color !important;
+
+    &:hover {
+      color: $dark-link-color !important;
+    }
+
+    &:focus {
+      color: $dark-link-color !important;
+    }
+  }
+  // 文章信息链接颜色
+  .post-info {
+    a {
+      color: $dark-link-color;
+    }
+
+    span {
+      color: $dark-text-color2;
+    }
+  }
+  // 文章内容文本颜色
+  .text-color {
+    color: $dark-text-color;
+  }
+  // 评论数量和编辑链接颜色
+  .comment-count, .edit-link {
+    color: $dark-link-color;
+  }
+  // 文章列表的阅读全文按钮配色
+  .more-link-wrapper .read-more {
+    @include btn-primary;
+  }
+
+  // 文章有效期提醒信息配色
+  .expiration-reminder {
+    background: #343A40;
+    color: $dark-text-color;
+  }
+
+  // 翻页导航区
+  .pagination {
+    li:not(.active) a {
+      background: #16161A;
+      color: $dark-text-color !important;
+      border: none;
+    }
+
+    .active a {
+      color: $dark-text-color !important;
+    }
+  }
+
+  // 返回顶部按钮配色
+  #to-top-btn {
+    background-color: #16161A;
+    color: #FFFFFF !important;
+    border: none;
+  }
+
+  // 侧边栏配色
+  .sidebar {
+    section {
+      > h2 {
+        color: $dark-text-color;
+      }
+
+      li a {
+        color: $dark-text-color;
+      }
+    }
+
+    .change-color label {
+      color: $dark-text-color;
+    }
+
+    .latest-comment p {
+      color: $dark-text-color;
+    }
+  }
+
+  // 章节目录配色
+  #directory-box {
+    background: #16161A !important;
+
+    .directory-num {
+      color: $dark-text-color !important;
+    }
+  }
+
+  // 文章页
+  .post-page {
+    // 文章页内容配色
+    .post-content {
+      @include dark-post-content-color;
+    }
+
+    // 文章内的分类和标签图标颜色
+    .category-tag i {
+      color: #D3D3D3;
+    }
+
+    // 文章页的分类链接颜色
+    .post-category a {
+      color: $dark-text-color;
+    }
+
+    // 文章页的分享和点赞按钮配色
+    .agree-share button {
+      @include btn-primary;
+    }
+
+    // 分享区域的文字提示颜色
+    #qr-link p {
+      color: $dark-text-color;
+    }
+
+    // 上一篇和下一篇文章导航的文本颜色
+    .post-navigation {
+      a {
+        color: $dark-link-color;
+      }
+
+      div {
+        color: #D3D3D3;
+      }
+    }
+  }
+
+  // 评论区的配色
+  #comments {
+    // 评论区标题配色
+    h2 {
+      color: $dark-text-color;
+    }
+
+    // 评论区链接的配色
+    a {
+      color: $dark-link-color;
+    }
+
+    .comment-info {
+      // 评论者昵称的配色
+      b {
+        color: #D3D3D3;
+      }
+
+      // 评论时间配色
+      .comment-time {
+        color: $dark-text-color2;
+      }
+
+      // 回复提示配色
+      .mx-2 {
+        color: $dark-text-color;
+      }
+    }
+
+    // 评论内容配色
+    .comment-content {
+      color: $dark-text-color;
+      @include dark-post-content-color;
+    }
+
+    // 回复链接的配色
+    .comment-reply {
+      i, a {
+        color: #D3D3D3 !important;
+      }
+    }
+
+    // 评论表单区域
+    .comment-input {
+      label {
+        color: $dark-text-color;
+      }
+
+      textarea, input {
+        background: #16161A;
+        color: $dark-text-color;
+        transition: 0.3s;
+      }
+
+      // emoji 面板开关按钮配色
+      #show-emoji-btn {
+        @include btn-outline-light;
+      }
+
+      // Emoji 面板配色
+      #emoji-panel {
+        background: #16161A !important;
+
+        .card-body {
+          background: #16161A;
+        }
+
+        * {
+          color: $dark-text-color;
+        }
+      }
+
+      .comment-user {
+        color: $dark-text-color;
+      }
+    }
+  }
+
+  // 分类、标签、归档页文字说明配色
+  .archive-description {
+    color: $dark-text-color2;
+  }
+  // 搜索页无内容的文字提示颜色
+  .no-content {
+    color: $dark-text-color;
+
+    hr {
+      background: $dark-text-color;
+    }
+  }
+
+  // 网站底部版权信息配色
+  footer nav {
+    color: #F9F9F9;
+
+    a {
+      color: $dark-link-color;
+    }
+  }
+
+  // 分类页的页头区域
+  .archive-title {
+    h1 {
+      color: $dark-text-color;
+    }
+  }
+
+  // 独立归档页面配色
+  .archive-page {
+    .archives h2 {
+      background: #121212;
+    }
+  }
+
+  // 统计页的配色
+  .statistics-card {
+    background: #16161A;
+  }
+
+  // 404 页面配色
+  .page-404 {
+    h1 {
+      color: $dark-text-color;
+    }
+
+    h3 {
+      color: $dark-text-color;
+    }
+
+    #back-home-page {
+      @include btn-outline-light;
+    }
+  }
+}
+
+// 设置深色模式
+.dark-color {
+  @include dark-color;
+}
+
+// 根据系统主题设置深色模式
+@media (prefers-color-scheme: dark) {
+  .auto-color {
+    @include dark-color;
+  }
+}

@@ -10,8 +10,6 @@ if (isset($_POST['agree'])) {
 }
 
 $this->need('components/header.php');
-// 设置点赞和分享按钮的颜色
-$btnColor = $GLOBALS['dark']?'btn-primary':'btn-outline-primary';
 ?>
 
 <div class="container main">
@@ -69,7 +67,7 @@ $btnColor = $GLOBALS['dark']?'btn-primary':'btn-outline-primary';
                     <div class="post-content mt-4" data-code-line-num="<?php $this->options->codeLineNum(); ?>">
                         <?php if (is_numeric($this->fields->expired) && (int)$this->fields->expired > 0 && $this->created + (int)$this->fields->expired * 86400 < time()): ?>
                             <!--警示信息-->
-                            <div class="alert expiration-reminder <?php if (!$GLOBALS['dark']) echo 'alert-info'; ?>" role="alert">这篇文章发布于 <?php echo getDays($this->created, time()); ?> 天前，其中的信息可能已经有所发展或是发生改变！</div>
+                            <div class="alert expiration-reminder" role="alert">这篇文章发布于 <?php echo getDays($this->created, time()); ?> 天前，其中的信息可能已经有所发展或是发生改变！</div>
                         <?php endif; ?>
                         <?php $directoryOptions = getDirectoryOptions($this->fields->directory, $this->options->directory); ?>
                         <?php if (!$directoryOptions): ?>
@@ -92,12 +90,12 @@ $btnColor = $GLOBALS['dark']?'btn-primary':'btn-outline-primary';
                 <div class="agree-share mb-4">
                     <div class="text-center">
                         <?php $agree = $this->hidden?array('agree' => 0, 'recording' => true):agreeNum($this->cid); ?>
-                        <button type="button" class="btn btn-sm agree-btn <?php echo $btnColor; ?>" <?php if ($agree['recording']) echo 'disabled'; ?> data-cid="<?php echo $this->cid; ?>" data-url="<?php $this->permalink(); ?>">
+                        <button type="button" class="btn btn-sm agree-btn" <?php if ($agree['recording']) echo 'disabled'; ?> data-cid="<?php echo $this->cid; ?>" data-url="<?php $this->permalink(); ?>">
                             <i class="icon-thumbs-up"></i>
                             <span class="agree-num">赞 <?php echo $agree['agree']; ?></span>
                         </button>
                         <span class="pl-2"></span>
-                        <button type="button" class="btn btn-sm <?php echo $btnColor; ?>" data-toggle="collapse" data-target="#qr-link" aria-expanded="false" aria-controls="collapseExample">
+                        <button type="button" class="btn btn-sm" data-toggle="collapse" data-target="#qr-link" aria-expanded="false" aria-controls="collapseExample">
                             <i class="icon-share2"></i>
                             <span>分享</span>
                         </button>
