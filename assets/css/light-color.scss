@@ -146,6 +146,20 @@
     @include btn-outline-primary;
   }
 
+  // 文章有效期提醒信息配色
+  .expiration-reminder {
+    color: #01506c;
+    background-color: #ccebf5;
+    border-color: #b8e3f2;
+  }
+
+  // 文章版权信息配色
+  #copyright-info {
+    color: #714410;
+    background-color: #f7e6d2;
+    border-color: #f4dcc0;
+  }
+
   // 返回顶部按钮配色
   #to-top-btn {
     background-color: #FFFFFF;

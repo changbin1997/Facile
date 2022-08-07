@@ -264,8 +264,13 @@ $dark-text-color2: #999999;
 
   // 文章有效期提醒信息配色
   .expiration-reminder {
-    background: #343A40;
+    background: #16161A;
     color: $dark-text-color;
+  }
+
+  // 文章版权信息配色
+  #copyright-info {
+    background: #16161A;
   }
 
   // 翻页导航区
@@ -283,7 +288,7 @@ $dark-text-color2: #999999;
 
   // 返回顶部按钮配色
   #to-top-btn {
-    background-color: #16161A;
+    background-color: #212529;
     color: #FFFFFF !important;
     border: none;
   }

@@ -42,7 +42,7 @@ while ($this->next()):
                         </div>
                         <div class="more-link-wrapper">
                             <div>
-                                <a href="<?php $this->permalink(); ?>" class="btn btn-sm mr-3">
+                                <a href="<?php $this->permalink(); ?>" class="btn btn-sm mr-3 read-more">
                                     阅读全文
                                     <i class="icon-arrow-right2"></i>
                                 </a>
