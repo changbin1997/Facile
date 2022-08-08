@@ -628,3 +628,12 @@ function getDirectoryOptions($post, $options) {
     if ($options == 'first' or $options == 'first-title') return $options;
     return false;
 }
+
+// 检测是否是 IE
+function isIE() {
+    $agent = $_SERVER['HTTP_USER_AGENT'];
+    if (preg_match('/MSIE/i', $agent) || preg_match('/Trident/i', $agent)) {
+        return true;
+    }
+    return false;
+}

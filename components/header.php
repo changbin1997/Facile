@@ -8,6 +8,12 @@ if (isset($_COOKIE['themeColor'])) {
 }else {
     // 如果不包含主题配色 cookie 就使用后台设置的默认配色
     $GLOBALS['color'] = $this->options->themeColor;
+
+    // 如果设置了跟随系统主题并且浏览器是 IE
+    if ($GLOBALS['color'] == 'auto-color' && isIE()) {
+        // 默认使用浅色主题
+        $GLOBALS['color'] = 'light-color';
+    }
 }
 ?>
 
