@@ -66,7 +66,7 @@ EOT;
         'light-color' => '浅色主题',
         'dark-color' => '深色主题',
         'auto-color' => '跟随系统主题'
-    ), 'light', _t('默认主题配色'), _t('主题配色会优先使用访问者设置的配色，如果访问者没有更改过配色就会使用默认设置。主题配色设置组件可以在侧边栏组件设置中添加或删除。')));
+    ), 'auto-color', _t('默认主题配色'), _t('主题配色会优先使用访问者设置的配色，如果访问者没有更改过配色就会使用默认设置。主题配色设置组件可以在侧边栏组件设置中添加或删除。')));
 
     //  站点Logo
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('logoUrl', null, null, _t('站点 Logo 地址'), _t('Logo 是一个 ico 格式的 icon 图标，会显示在标签页的标题前面。')));
@@ -117,7 +117,7 @@ EOT;
 
     //  文章头图设置
     $headerImage = new Typecho_Widget_Helper_Form_Element_Checkbox('headerImage', array(
-        'home' => _t('在首页显示文章头图'),
+        'home' => _t('在文章列表显示文章头图'),
         'post' => _t('在文章页显示文章头图')
     ), array('home', 'post'), _t('文章头图显示设置'), _t('这里可以统一设置文章头图的显示和隐藏，您也可以在文章编辑页给文章单独设置显示和隐藏。'));
     $form->addInput($headerImage->multiMode());
@@ -439,7 +439,7 @@ function headerImageDisplay($t, $options, $defaultImageUrl) {
         return postImg($t, $defaultImageUrl);
     }
     // 在文章列表显示文章头图
-    if ($t->fields->headerImgDisplay == 'post-list' && $t->is('index') or $t->is('archive')) {
+    if ($t->fields->headerImgDisplay == 'post-list' && $t->is('index') or $t->fields->headerImgDisplay == 'post-list' && $t->is('archive')) {
         return postImg($t, $defaultImageUrl);
     }
     // 在文章页显示文章头图
@@ -448,9 +448,15 @@ function headerImageDisplay($t, $options, $defaultImageUrl) {
     }
     // 使用系统文章头图设置
     if ($t->fields->headerImgDisplay == 'default' or $t->fields->headerImgDisplay == null) {
+        // 在首页文章列表显示文章头图
         if (is_array($options) && in_array('home', $options) && $t->is('index')) {
             return postImg($t, $defaultImageUrl);
         }
+        // 在分类页、标签页、日期归档页显示文章头图
+        if (is_array($options) && in_array('home', $options) && $t->is('archive')) {
+            return postImg($t, $defaultImageUrl);
+        }
+        // 在文章页和独立页显示文章头图
         if (is_array($options) && in_array('post', $options) && $t->is('post') or $t->is('page')) {
             return postImg($t, $defaultImageUrl);
         }
