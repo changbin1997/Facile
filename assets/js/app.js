@@ -163,6 +163,8 @@ $(function () {
 
   // 给文章内的图片添加点击事件
   $('.post-content img').on('click', ev => {
+    // 如果图片还没有加载完成
+    if ($(ev.target).attr('src') === undefined) return false;
     // 获取图片的真实尺寸
     const imgSize = {
       w: ev.target.naturalWidth,
@@ -694,6 +696,31 @@ $(function () {
         $('#to-top-btn').addClass('d-none');
       }
     }
+
+    // 检测文章图片位置
+    $('.load-img').each(function() {
+      // 如果文章内的 img 进入可视区就加载图片
+      if (
+        $(this).offset().top < $(document).scrollTop() + window.innerHeight &&
+        $(this).offset().top + $(this).height() > $(document).scrollTop()
+      ) {
+        if ($(this).attr('src') === undefined) {
+          $(this).attr('src', $(this).attr('data-src'));
+        }
+      }
+    });
+  });
+
+// 如果页面加载完成时有图片在可视区就直接加载图片
+  $('.load-img').each(function() {
+    if ($(this).offset().top < window.innerHeight) {
+      $(this).attr('src', $(this).attr('data-src'));
+    }
+  });
+
+  // 文章图片加载完成后删除默认样式
+  $('.load-img').on('load', function() {
+    $(this).removeClass('load-img');
   });
 
   // 返回顶部按钮点击

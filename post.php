@@ -71,9 +71,9 @@ $this->need('components/header.php');
                         <?php endif; ?>
                         <?php $directoryOptions = getDirectoryOptions($this->fields->directory, $this->options->directory); ?>
                         <?php if (!$directoryOptions): ?>
-                            <?php $this->content(); ?>
+                            <?php echo $this->options->imagelazyloading == 'on'?replaceImgSrc($this->content):$this->content; ?>
                         <?php else: ?>
-                            <?php articleDirectory($this->content, $directoryOptions); ?>
+                            <?php echo $this->options->imagelazyloading == 'on'?replaceImgSrc(articleDirectory($this->content, $directoryOptions)):articleDirectory($this->content, $directoryOptions); ?>
                         <?php endif; ?>
                     </div>
                     <div class="category-tag clearfix my-4">

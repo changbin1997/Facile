@@ -536,6 +536,12 @@ header input[type=search]:focus {
 .post-page article .post-content table td, .post-page article .post-content table th {
   min-width: 90px;
 }
+.post-page article .post-content .load-img {
+  width: 100%;
+  height: 380px;
+  display: block;
+  background-color: #E0E0E0;
+}
 .post-page .category-tag .post-category {
   display: flex;
   align-items: center;
@@ -1016,6 +1022,10 @@ header input[type=search]:focus {
   }
   #comments #emoji-panel {
     width: 93% !important;
+  }
+
+  .load-img {
+    height: 200px !important;
   }
 }
 .light-color {

@@ -378,6 +378,13 @@ header {
     }
     .post-content {
       @include postContent;
+      // 待加载的图片
+      .load-img {
+        width: 100%;
+        height: 380px;
+        display: block;
+        background-color: #E0E0E0;
+      }
     }
   }
   // 文章的分类和标签区域
@@ -846,6 +853,10 @@ header {
     #emoji-panel {
       width: 93% !important;
     }
+  }
+  // 待加载的图片
+  .load-img {
+    height: 200px !important;
   }
 }
 
