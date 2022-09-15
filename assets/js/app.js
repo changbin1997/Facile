@@ -683,6 +683,17 @@ $(function () {
     $('body').attr('data-color', color);
   });
 
+  let directoryTop = 0;
+  if ($('.sidebar .directory').length) {
+    // 获取侧边栏章节目录的位置
+    directoryTop = $('.sidebar .directory').offset().top;
+    // 设置侧边栏章节目录的最大高度
+    if ($('.sidebar .directory').length) {
+      $('.sidebar .directory').css('max-height', window.innerHeight - 100);
+      $('.sidebar .directory > .article-directory').css('width', $('.sidebar .directory > .article-directory').width());
+    }
+  }
+
   // 监听滚动条
   $(document).on('scroll', () => {
     // 返回顶部的按钮是否存在
@@ -709,9 +720,21 @@ $(function () {
         }
       }
     });
+
+    // 固定侧边栏章节目录位置
+    if ($('.sidebar .directory').length && window.innerWidth >= 992) {
+      if ($(document).scrollTop() >= directoryTop) {
+        $('.sidebar .directory').css({
+          position: 'fixed',
+          top: 80
+        });
+      }else {
+        $('.sidebar .directory').css('position', 'static');
+      }
+    }
   });
 
-// 如果页面加载完成时有图片在可视区就直接加载图片
+  // 如果页面加载完成时有图片在可视区就直接加载图片
   $('.load-img').each(function() {
     if ($(this).offset().top < window.innerHeight) {
       $(this).attr('src', $(this).attr('data-src'));

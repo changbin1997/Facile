@@ -48,12 +48,7 @@ $this->need('components/header.php');
                             </span>
                         </div>
                         <div class="post-content mt-4" data-code-line-num="<?php $this->options->codeLineNum(); ?>">
-                            <?php $directoryOptions = getDirectoryOptions($this->fields->directory, $this->options->directory); ?>
-                            <?php if (!$directoryOptions): ?>
-                                <?php $this->content(); ?>
-                            <?php else: ?>
-                                <?php articleDirectory($this->content, $directoryOptions); ?>
-                            <?php endif; ?>
+                            <?php $this->content(); ?>
                         </div>
                     </article>
                     <?php $this->need('components/comments.php'); ?>

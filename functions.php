@@ -31,14 +31,6 @@ function themeFields($layout) {
     //  自定义文章摘要内容
     $layout->addItem(new Typecho_Widget_Helper_Form_Element_Textarea('summaryContent', null, null, _t('自定义摘要内容'), _t('您可以在此处为文章定义摘要内容，此处定义的摘要内容不受字数限制。')));
 
-    // 章节目录
-    $layout->addItem(new Typecho_Widget_Helper_Form_Element_Select('directory', array(
-        'default' => '使用系统设置',
-        'first' => '在文章开头显示章节目录',
-        'first-title' => '在第一个章节标题前显示章节目录',
-        'hide' => '不显示章节目录'
-    ), 'default', _t('章节目录'), _t('您可以单独给文章设置章节目录的显示和位置。章节目录会根据文章内插入的标题生成，如果文章内没有插入标题就不会生成章节目录。')));
-
     //  自定义关键词
     $layout->addItem(new Typecho_Widget_Helper_Form_Element_Text('keywords', null, null, _t('自定义关键词'), _t('您可以输入这篇文章的关键词，多个关键词之间用英文逗号分隔，如果为空 会使用这篇文章的标签作为关键词。')));
 
@@ -86,21 +78,32 @@ EOT;
     //  侧边栏组件顺序
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('sidebarComponent', null, '主题配色,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接', _t('侧边栏组件'), _t('您可以设置需要显示在侧边栏的组件，组件会根据这里的组件名称排序。组件名称之间用英文逗号分隔，逗号和名称之间不需要空格，结尾不需要逗号。例如 主题配色,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接 。')));
 
+    // 文章页的侧边栏组件顺序
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('postPageSidebarComponent', null, '博客信息,主题配色,最新文章,目录', _t('文章页的侧边栏组件'), _t('这里可以单独设置文章页的侧边栏组件。目录组件的内容会根据文章内插入的标题生成，如果文章内没有插入标题就不会显示。目录组件滚动到页面上方时，位置会被固定，建议把目录放到最后。')));
+
     //  隐藏登录入口
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('loginLink', array(
         'show' => '显示',
         'hide' => '隐藏'
     ), 'show', _t('登录入口'), _t('隐藏登录入口后在前台就不会显示登录入口，只能通过 域名/admin/login.php 进入登录页面')));
 
+    //  侧边栏博客信息博主头像地址
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('avatarUrl', null, null, _t('博主头像地址'), _t('博主头像会显示在侧边栏的博客信息区域，如果省略会使用管理员的 Gravatar 头像。')));
+
+    //  侧边栏博客信息区域博主昵称
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('nickname', null, null, _t('博主昵称'), _t('博主昵称会显示在侧边栏博客信息区域，如果省略会显示管理员昵称。')));
+
+    //  侧边栏博客信息博主昵称链接
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('nicknameUrl', null, null, _t('博主昵称链接调转地址'), _t('在侧边栏的博客信息区域会显示一个包含博主昵称的链接，在这里可以填写链接的跳转地址，如果省略会使用博客首页地址。')));
+
+    //  侧边栏博客信息博主简介
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('Introduction', null, null, _t('博主简介'), _t('博主简介会显示在侧边栏博客信息区域的博主昵称下方，如果省略会使用设置中的站点描述信息。')));
+
+    //  侧边栏博客信息的运行天数
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('birthday', null, null, _t('站点创建时间'), _t('在这里填写站点创建时间后，在侧边栏的博客信息区域就会显示网站运行天数。如果省略 网站运行天数会从管理员账号创建的时间开始计算天数。站点创建时间的格式为：yyyy-mm-dd，例如：2019-11-11。')));
+
     //  文章摘要字数
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('summary', null, '120', _t('文章摘要字数'), _t('首页、分类页、标签页、搜索页 的文章摘要字数，默认为：120个字。')));
-
-    // 章节目录
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('directory', array(
-        'first' => '在文章开头显示章节目录',
-        'first-title' => '在第一个章节标题前显示章节目录',
-        'hide' => '不显示章节目录'
-    ), 'first-title', _t('章节目录'), _t('章节目录会根据文章内插入的标题生成，如果文章内没有插入标题就不会生成章节目录。')));
 
     // 显示代码行号
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('codeLineNum', array(
@@ -540,7 +543,7 @@ function getDays($time1, $time2) {
 }
 
 // 根据文章内的标题生成目录
-function articleDirectory($content, $options) {
+function articleDirectory($content) {
     $re = '#<h(\d)(.*?)>(.*?)</h\d>#im';
     preg_match_all($re, $content, $result);
     if (!is_array($result) or count($result[0]) < 1) {
@@ -595,25 +598,19 @@ function articleDirectory($content, $options) {
         }
     }
 
-    $GLOBALS['directoryList'] = '<div id="directory-box" class="border p-3 mb-3 rounded"><h2>目录</h2>' . renderArticleDirectory($tree, '') . '</div>';
-    if ($options == 'first') {
-        echo $GLOBALS['directoryList'];
-    }
-
-    $GLOBALS['directoryOptions'] = $options;
     $GLOBALS['directory'] = $treeList;
     $GLOBALS['directoryIndex'] = 1;
     $content = preg_replace_callback($re, function ($matches) {
         $name = urlencode(strip_tags($matches[3]));
-        if ($GLOBALS['directoryOptions'] == 'first-title' && $GLOBALS['directoryIndex'] == 1) {
-            $span = $GLOBALS['directoryList'] . '<span data-title="' . $name . $GLOBALS['directory'][$GLOBALS['directoryIndex']]['rand'] . '" id="' . $name . $GLOBALS['directory'][$GLOBALS['directoryIndex']]['rand'] . '"></span>' . $matches[0];
-        }else {
-            $span = '<span data-title="' . $name . $GLOBALS['directory'][$GLOBALS['directoryIndex']]['rand'] . '" id="' . $name . $GLOBALS['directory'][$GLOBALS['directoryIndex']]['rand'] . '"></span>' . $matches[0];
-        }
+        $span = '<span data-title="' . $name . $GLOBALS['directory'][$GLOBALS['directoryIndex']]['rand'] . '" id="' . $name . $GLOBALS['directory'][$GLOBALS['directoryIndex']]['rand'] . '"></span>' . $matches[0];
         $GLOBALS['directoryIndex'] ++;
         return $span;
     }, $content);
-    return $content;
+
+    return array(
+        'content' => $content,
+        'directory' => renderArticleDirectory($tree, '')
+    );
 }
 
 //  生成目录 HTML
@@ -655,4 +652,16 @@ function replaceImgSrc($content) {
     $pattern = '/<img(.*?)src(.*?)=(.*?)"(.*?)">/i';
     $replacement = '<img$1data-src$3="$4"$5 class="load-img">';
     return preg_replace($pattern, $replacement, $content);
+}
+
+// 获取 Gravatar 头像
+function gravatarUrl($email, $size) {
+    echo 'https://sdn.geekzu.org/avatar/' . md5(strtolower(trim($email))) . '?s=' . $size;
+}
+
+// 获取管理员信息
+function getAdminInfo() {
+    $db = Typecho_Db::get();
+    $userInfo = $db->fetchRow($db->select('mail', 'url', 'screenName', 'created')->from('table.users')->where('group = ?', 'administrator'));
+    return $userInfo;
 }

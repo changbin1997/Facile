@@ -69,12 +69,8 @@ $this->need('components/header.php');
                             <!--警示信息-->
                             <div class="alert expiration-reminder" role="alert">这篇文章发布于 <?php echo getDays($this->created, time()); ?> 天前，其中的信息可能已经有所发展或是发生改变！</div>
                         <?php endif; ?>
-                        <?php $directoryOptions = getDirectoryOptions($this->fields->directory, $this->options->directory); ?>
-                        <?php if (!$directoryOptions): ?>
-                            <?php echo $this->options->imagelazyloading == 'on'?replaceImgSrc($this->content):$this->content; ?>
-                        <?php else: ?>
-                            <?php echo $this->options->imagelazyloading == 'on'?replaceImgSrc(articleDirectory($this->content, $directoryOptions)):articleDirectory($this->content, $directoryOptions); ?>
-                        <?php endif; ?>
+                        <?php $GLOBALS['post'] = articleDirectory($this->content); ?>
+                        <?php echo $this->options->imagelazyloading == 'on'?replaceImgSrc($GLOBALS['post']['content']):$GLOBALS['post']['content']; ?>
                     </div>
                     <div class="category-tag clearfix my-4">
                         <div class="post-category float-left" role="group" aria-label="文章分类">

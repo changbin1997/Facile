@@ -1,6 +1,6 @@
 <?php
 // 读取侧边栏组件
-$components = $this->options->sidebarComponent;
+$components = $GLOBALS['page'] == 'post'?$this->options->postPageSidebarComponent:$this->options->sidebarComponent;
 // 如果侧边栏组件为空就使用默认设置
 if ($components == null or $components == '') {
     $components = '搜索,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接';
@@ -11,8 +11,40 @@ $components = str_replace(' ', '', $components);
 $components = explode(',', $components);
 ?>
 
-<aside class="col-xl-4 col-lg-4 sidebar">
+<aside class="col-xl-4 col-lg-4 sidebar pl-4 pl-lg-3">
     <?php foreach ($components as $component): ?>
+        <?php if ($component == '博客信息'): ?>
+            <!--博客信息-->
+            <section class="ml-xl-4 ml-lg-3 mb-5 blog-info">
+                <h2 class="mb-4">博客信息</h2>
+                <div>
+                    <?php if (!$this->options->nickname or !$this->options->birthday or !$this->options->avatarUrl) $userInfo = getAdminInfo(); ?>
+                    <div class="blog-user-info">
+                        <img src="<?php $this->options->avatarUrl?$this->options->avatarUrl():gravatarUrl($userInfo['mail'], 56); ?>" alt="<?php echo $this->options->nickname?$this->options->nickname . '的头像':$this->options->title . '的头像'; ?>" class="avatar mr-3">
+                        <div class="blog-text-info">
+                            <h5 class="mb-1"><a href="<?php echo $this->options->nicknameUrl?$this->options->nicknameUrl:$this->options->siteUrl; ?>" target="_blank"><?php echo $this->options->nickname?$this->options->nickname:$userInfo['screenName']; ?></a></h5>
+                            <p class="m-0"><?php echo $this->options->Introduction?$this->options->Introduction:$this->options->description; ?></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="statistics mb-2">
+                        <?php Typecho_Widget::widget('Widget_Stat')->to($quantity); ?>
+                        <div class="mb-2">
+                            <p><i class="icon-award mr-2"></i> 文章数 <?php $quantity->publishedPostsNum(); ?></p>
+                        </div>
+                        <div class="mb-2">
+                            <p><i class="icon-bubble mr-2"></i> 评论数 <?php $quantity->publishedCommentsNum(); ?></p>
+                        </div>
+                        <div class="mb-2">
+                            <p><i class="icon-eye mr-2"></i> 文章阅读量 <?php echo viewsCount(); ?></p>
+                        </div>
+                        <div class="mb-2">
+                            <p><i class="icon-calendar mr-2"></i> 运行天数 <?php echo $this->options->birthday?round((time() - strtotime($this->options->birthday)) / 86400, 0) . '天':round((time() - $userInfo['created']) / 86400, 0) . '天'; ?></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        <?php endif; ?>
         <?php if ($component == '主题配色'): ?>
             <!--主题配色-->
             <section class="ml-xl-4 ml-lg-3 mb-5 change-color">
@@ -204,6 +236,12 @@ $components = explode(',', $components);
                     </ul>
                 </section>
             <?php endif; ?>
+        <?php endif; ?>
+        <?php if ($component == '目录' && $GLOBALS['page'] == 'post' && $GLOBALS['post']['directory'] != null): ?>
+            <section class="ml-xl-4 ml-lg-3 mb-5 directory d-none d-sm-none d-md-none d-lg-block d-xl-block">
+                <h2 class="mb-4">目录</h2>
+                <?php echo $GLOBALS['post']['directory']; ?>
+            </section>
         <?php endif; ?>
     <?php endforeach; ?>
 </aside>

@@ -296,6 +296,7 @@ header {
 
 // 侧边栏
 .sidebar {
+  position: relative;
   // 通用的侧边栏样式
   section {
     h2 {
@@ -329,6 +330,52 @@ header {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+      }
+    }
+  }
+  // 目录
+  .directory {
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 6px;
+      background: #F1F1F1;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #A8A8A8;
+    }
+    > .article-directory {
+      width: 100%;
+      .article-directory {
+        margin-left: 16px;
+      }
+    }
+  }
+  // 博客信息
+  .blog-info {
+    .blog-user-info {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      // 头像
+      .avatar {
+        border-radius: 50%;
+        width: 56px;
+        height: 56px;
+        flex: none;
+      }
+      .pingback {
+        font-size: 20px;
+        line-height: 56px;
+      }
+    }
+    // 统计数据区域
+    .statistics {
+      p {
+        font-size: 16px;
+        margin: 0;
+        color: #333333;
+        display: flex;
+        align-items: center;
       }
     }
   }

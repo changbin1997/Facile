@@ -295,6 +295,7 @@ $dark-text-color2: #999999;
 
   // 侧边栏配色
   .sidebar {
+    // 侧边栏通用列表配色
     section {
       > h2 {
         color: $dark-text-color;
@@ -304,13 +305,25 @@ $dark-text-color2: #999999;
         color: $dark-text-color;
       }
     }
-
+    // 切换配色模式区域
     .change-color label {
       color: $dark-text-color;
     }
-
+    // 最新评论区域
     .latest-comment p {
       color: $dark-text-color;
+    }
+    // 博客信息区域
+    .blog-info {
+      a {
+        color: $dark-link-color;
+      }
+      p {
+        color: $dark-text-color;
+      }
+      hr {
+        background: #CCCCCC;
+      }
     }
   }
 
