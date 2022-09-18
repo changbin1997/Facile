@@ -76,10 +76,10 @@ EOT;
     ), 'off', _t('面包屑导航'), _t('开启后会在导航栏下方显示路劲导航。')));
 
     //  侧边栏组件顺序
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('sidebarComponent', null, '主题配色,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接', _t('侧边栏组件'), _t('您可以设置需要显示在侧边栏的组件，组件会根据这里的组件名称排序。组件名称之间用英文逗号分隔，逗号和名称之间不需要空格，结尾不需要逗号。例如 主题配色,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接 。')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('sidebarComponent', null, '博客信息,主题配色,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接', _t('侧边栏组件'), _t('您可以设置需要显示在侧边栏的组件，组件会根据这里的组件名称排序。组件名称之间用英文逗号分隔，逗号和名称之间不需要空格，结尾不需要逗号。例如 博客信息,主题配色,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接 。')));
 
     // 文章页的侧边栏组件顺序
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('postPageSidebarComponent', null, '博客信息,主题配色,最新文章,目录', _t('文章页的侧边栏组件'), _t('这里可以单独设置文章页的侧边栏组件。目录组件的内容会根据文章内插入的标题生成，如果文章内没有插入标题就不会显示。目录组件滚动到页面上方时，位置会被固定，建议把目录放到最后。')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('postPageSidebarComponent', null, '博客信息,主题配色,最新文章,目录', _t('文章页的侧边栏组件'), _t('这里可以单独设置文章页的侧边栏组件，组件会根据这里的组件名称排序。组件名称之间用英文逗号分隔，逗号和名称之间不需要空格，结尾不需要逗号。例如 博客信息,主题配色,最新文章,目录。其中目录组件只能在文章页显示，目录列表项会根据文章内插入的标题生成，如果文章内没有插入标题就不会显示目录，目录组件滚动到页面上方时位置会被固定，建议把目录放到最后。')));
 
     //  隐藏登录入口
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('loginLink', array(
@@ -103,7 +103,7 @@ EOT;
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('birthday', null, null, _t('站点创建时间'), _t('在这里填写站点创建时间后，在侧边栏的博客信息区域就会显示网站运行天数。如果省略 网站运行天数会从管理员账号创建的时间开始计算天数。站点创建时间的格式为：yyyy-mm-dd，例如：2019-11-11。')));
 
     //  文章摘要字数
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('summary', null, '120', _t('文章摘要字数'), _t('首页、分类页、标签页、搜索页 的文章摘要字数，默认为：120个字。')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('summary', null, '130', _t('文章摘要字数'), _t('首页、分类页、标签页、搜索页 的文章摘要字数，默认为：130个字。')));
 
     // 显示代码行号
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('codeLineNum', array(
