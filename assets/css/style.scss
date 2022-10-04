@@ -111,6 +111,15 @@
   img {
     max-width: 100%;
     cursor: zoom-in;
+    border-radius: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+  figcaption {
+    text-align: center;
+    color: #757575;
+    font-size: 15px;
   }
   p code,li code,td code {
     font-size: 16px;

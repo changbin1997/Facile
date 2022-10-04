@@ -556,6 +556,15 @@ header input[type=search]:focus {
 .post-page article .post-content img {
   max-width: 100%;
   cursor: zoom-in;
+  border-radius: 4px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+.post-page article .post-content figcaption {
+  text-align: center;
+  color: #757575;
+  font-size: 15px;
 }
 .post-page article .post-content p code, .post-page article .post-content li code, .post-page article .post-content td code {
   font-size: 16px;
@@ -864,6 +873,15 @@ header input[type=search]:focus {
 #comments .comments-lists .comment-content img {
   max-width: 100%;
   cursor: zoom-in;
+  border-radius: 4px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+#comments .comments-lists .comment-content figcaption {
+  text-align: center;
+  color: #757575;
+  font-size: 15px;
 }
 #comments .comments-lists .comment-content p code, #comments .comments-lists .comment-content li code, #comments .comments-lists .comment-content td code {
   font-size: 16px;

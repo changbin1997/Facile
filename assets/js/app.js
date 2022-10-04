@@ -164,7 +164,7 @@ $(function () {
   // 给文章内的图片添加点击事件
   $('.post-content img').on('click', ev => {
     // 如果图片还没有加载完成
-    if ($(ev.target).attr('src') === undefined) return false;
+    if ($(ev.target).attr('class') === 'load-img') return false;
     // 获取图片的真实尺寸
     const imgSize = {
       w: ev.target.naturalWidth,
