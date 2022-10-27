@@ -21,10 +21,10 @@ window.onload = function () {
   form.insertBefore(titleEl[1], ul[1]);  // 站点信息
   form.insertBefore(titleEl[2], ul[4]);  // 导航
   form.insertBefore(titleEl[3], ul[5]);  // 侧边栏
-  form.insertBefore(titleEl[4], ul[13]);  // 文章相关
-  form.insertBefore(titleEl[5], ul[21]);  // 评论
-  form.insertBefore(titleEl[6], ul[25]);  // 友链
-  form.insertBefore(titleEl[7], ul[28]);  // 开发者
+  form.insertBefore(titleEl[4], ul[14]);  // 文章相关
+  form.insertBefore(titleEl[5], ul[22]);  // 评论
+  form.insertBefore(titleEl[6], ul[26]);  // 友链
+  form.insertBefore(titleEl[7], ul[29]);  // 开发者
 
   // 导出配置按钮点击
   document.querySelector('#export-btn').addEventListener('click', function() {

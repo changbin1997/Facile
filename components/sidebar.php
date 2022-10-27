@@ -138,7 +138,8 @@ $components = explode(',', $components);
             <!--标签云-->
             <section class="ml-xl-4 ml-lg-3 tags mb-5">
                 <h2 class="mb-4">标签云</h2>
-                <?php $this->widget('Widget_Metas_Tag_Cloud', 'sort=mid&ignoreZeroCount=1&desc=0&limit=50')->to($tags); ?>
+                <?php $limit = $this->options->tagCount == 0?1000:$this->options->tagCount; ?>
+                <?php $this->widget('Widget_Metas_Tag_Cloud', 'sort=mid&ignoreZeroCount=1&desc=0&limit=' . $limit)->to($tags); ?>
                 <?php if($tags->have()): ?>
                     <div role="group" aria-label="标签云" class="clearfix">
                         <?php
