@@ -378,12 +378,26 @@ $(function () {
       $('.max-img-features-btn .small').click();
     }
     // 如果按下的是右方向键就跳转到下一页
-    if (ev.keyCode === 39 && $('.next .page-link').length) {
-      location.href = $('.next .page-link').attr('href');
+    if (ev.keyCode === 39) {
+      // 文章列表页面跳转
+      if ($('.next .page-link').length) {
+        location.href = $('.next .page-link').attr('href');
+      }
+      // 文章页内容翻页
+      if ($('.post-pagination .next-page').length) {
+        location.href = $('.post-pagination .next-page').attr('href');
+      }
     }
     // 如果按下的是左方向键就跳转到上一页
-    if (ev.keyCode === 37 && $('.prev .page-link').length) {
-      location.href = $('.prev .page-link').attr('href');
+    if (ev.keyCode === 37) {
+      // 文章列表页面跳转
+      if ($('.prev .page-link').length) {
+        location.href = $('.prev .page-link').attr('href');
+      }
+      // 文章页内容翻页
+      if ($('.post-pagination .previous-page').length) {
+        location.href = $('.post-pagination .previous-page').attr('href');
+      }
     }
   });
 
