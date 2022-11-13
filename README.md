@@ -10,7 +10,7 @@ Facile 是一套简洁的 Typecho 博客主题，也是我的博客正在使用�
 
 下载时请选择 `Facile-bundle.zip` ，否则前端 JS 代码无法在 IE 系列浏览器运行。
 
-主题 Github 仓库：[https://github.com/changbin1997/Facile](https://github.com/changbin1997/Facile) 
+主题使用帮助：[https://facile.misterma.com/](https://facile.misterma.com/) 
 
 下面是主题首页截图：
 
@@ -22,8 +22,6 @@ Facile 是一套简洁的 Typecho 博客主题，也是我的博客正在使用�
 
 ![Facile不包含文章头图的截图](screenshot/16200336317620.png)
 
-![Facile不包含文章头图的深色主题截图](screenshot/16401686273059.png)
-
 小头图模式：
 
 ![Facile小头图模式截图](screenshot/mini-header-image.png)
@@ -34,8 +32,6 @@ Facile 是一套简洁的 Typecho 博客主题，也是我的博客正在使用�
 
 Facile 相比 [MWordStar](https://github.com/changbin1997/MWordStar) 来说，外观要更简洁一些，功能也会少一些，MWordStar 有的功能以后也会陆续增加到 Facile 中，但是 Facile 的功能以后也不会有 MWordStar 多。
 
-Facile 目前还没有专门的使用说明文档，Facile 的功能设置和 MWordStar 是差不多的，可以直接参考 [MWordStar 的使用说明文档](https://mwordstar.misterma.com/) ，有问题也可以到 [留言板](https://www.misterma.com/msg.html) 或 [Facile 的介绍文章页](https://www.misterma.com/archives/899/) 留言。
-
 ## 特点和功能
 
 * 响应式设计
@@ -43,10 +39,14 @@ Facile 目前还没有专门的使用说明文档，Facile 的功能设置和 MW
 * 包含浅色和深色两套配色
 * 代码高亮
 * 自带点赞功能
+* 支持根据文章内插入的标题生成章节目录
+* 支持图片懒加载
+* 支持文章分页
 * 丰富的侧边栏组件
 * 丰富的设置选项
 * 详细的图表统计
 * 评论区自带 Emoji 表情面板
+* 详细的 [帮助文档](https://facile.misterma.com/) （必看）
 * 长期维护
 
 ## 安装
@@ -77,7 +77,24 @@ ECharts 的库比较大，所以只引入了饼图和日历图，而且只会在
 
 代码高亮目前包含三套主题配色，分别是 Stack Overflow（浅色）、VS2015（深色）、Sunburst（高对比度）。目前支持 30 多种语言的代码高亮。
 
-支持的语言和 MWordStar 是一样的，可以访问 [MWordStar 代码高亮](https://mwordstar.misterma.com/docs/doc13/) 查看支持的语言。
+要查看支持的语言列表和代码高亮样式可以访问 [帮助文档 - 代码高亮](https://facile.misterma.com/%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE.html)
+
+## 侧边栏
+
+下面是目前可以显示在侧边栏的组件：
+
+- 博客信息
+- 主题配色
+- 最新文章
+- 最新回复
+- 文章分类
+- 标签云
+- 文章归档
+- 其它功能
+- 友情链接
+- 目录
+
+侧边栏的每个组件你都可以选择开启或关闭，你还可以自定义侧边栏的组件排序顺序。
 
 ## 统计页
 
@@ -107,6 +124,16 @@ ECharts 的库比较大，所以只引入了饼图和日历图，而且只会在
 
 统计页面演示可以访问 [https://www.misterma.com/data.html](https://www.misterma.com/data.html) 。
 
+## Emoji 表情
+
+主题评论区包含一个 Emoji 表情面板，你可以在后台启用或禁用。Emoji 表情面板包含 1466 个表情，这些表情都是按照分类动态加载的，不用担心性能问题。
+
+Emoji 表情面板也进行了无障碍适配，可支持键盘访问和屏幕阅读器朗读。
+
+下面是 Emoji 表情面板的截图：
+
+![Facile Emoji表情面板](screenshot/emoji-panel.jpg)
+
 ## 无障碍（Accessibility）
 
 上网对于大多数人来说是一件再简单不过的事，但是对于一些身体有缺陷的残障人士来说却是一件非常困难的事。目前国内的很多网站和 App 都只注重外观，忽略了残障人士的 [可访问性](https://www.misterma.com/archives/264/)，甚至有的 App 在开启屏幕阅读器的情况下都无法正常使用。
@@ -117,11 +144,11 @@ Facile 主题针对屏幕阅读器做了大量优化，并在 [MVDA](http://www.
 
 小提示：如果您是屏幕阅读器用户，为了您的浏览体验，不建议使用 IE 浏览器。
 
-## 其他功能
+## 友情链接
 
-主题自带友情链接功能，友链可以分为 全站、首页、独立页 三种显示方式。友链需要在主题设置中填写 JSON 数据，格式和说明可以简单参考 [MWordStar 友情链接](https://mwordstar.misterma.com/docs/doc10) 。
+友情链接分为 `全站友情链接`、`首页友情链接`、`内页友情链接`。`全站友情链接` 会在每个页面的侧边栏显示，`首页友情链接` 会在首页的侧边栏显示，`内页友情链接` 只会在 友情链接 的页面显示。
 
-文章头图目前支持手动输入和自动获取文章中的第一张图片作为文章头图，你可以在撰写文章页的下方设置。
+要查看友情链接的设置说明可以访问 [帮助文档 - 主题设置](https://facile.misterma.com/%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE.html#%E8%BF%9B%E5%85%A5%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE)
 
 ## 插件适配
 
@@ -133,9 +160,9 @@ Facile 主题针对屏幕阅读器做了大量优化，并在 [MVDA](http://www.
 
 JavaScript 用到了 ES6，打包的发行版可以完美兼容 IE，开发版不支持 IE 系列浏览器和一些较老的浏览器。
 
-## 赞助
+## 打赏支持
 
-如果主题用着感觉还可以的话，也可以扫描下方的二维码来赞助本项目，金额随意：
+如果主题用着感觉还可以的话，也可以扫描下方的二维码打赏，金额随意：
 
 ![支付宝和微信的收款二维码](screenshot/qr-code.jpeg)
 
