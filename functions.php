@@ -108,6 +108,12 @@ EOT;
     //  文章摘要字数
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('summary', null, '130', _t('文章摘要字数'), _t('首页、分类页、标签页、搜索页 的文章摘要字数，默认为：130个字。')));
 
+    // 启用代码高亮功能
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('codeHighlight', array(
+        'enable-highlight' => '启用',
+        'disabled-highlight' => '禁用'
+    ), 'enable-highlight', _t('代码高亮'), _t('您可以设置是否启用文章内的代码块高亮，如果您需要使用其他代码高亮插件的话，可以禁用主题自带的代码高亮功能。')));
+
     // 显示代码行号
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('codeLineNum', array(
         'show' => '显示',

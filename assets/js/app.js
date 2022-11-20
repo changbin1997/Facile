@@ -59,7 +59,7 @@ $(function () {
   }
 
   // 给文章中的代码块添加拷贝按钮和拷贝事件
-  if ($('pre').length) {
+  if ($('.enable-highlight').length && $('pre').length) {
     for (let i = 0;i < $('pre').length;i ++) {
       // 是否是代码块
       if ($('pre').eq(i).children('code').length) {
@@ -770,5 +770,8 @@ $(function () {
     return false;
   });
 });
-// 代码高亮初始化
-hljs.initHighlightingOnLoad();
+
+// 如果开启了代码高亮就初始化代码高亮
+if (document.querySelectorAll('.enable-highlight').length) {
+  hljs.initHighlightingOnLoad();
+}

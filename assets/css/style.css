@@ -253,11 +253,46 @@
   font-weight: 700;
 }
 
-.post-content[data-code-line-num=show] pre code {
+.enable-highlight pre {
+  position: relative;
+  border-radius: 4px;
+}
+.enable-highlight pre:hover .copy-code-btn {
+  display: block;
+}
+.enable-highlight pre .line-box {
+  width: 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 12px;
+}
+.enable-highlight pre .line-box div {
+  line-height: 24px;
+  height: 24px;
+  padding-right: 9px;
+  font-size: 15px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.enable-highlight pre > code {
+  font-size: 16px;
+  white-space: pre;
+  word-wrap: normal;
+}
+.enable-highlight pre > code::-webkit-scrollbar {
+  height: 12px;
+  background: #F1F1F1;
+}
+.enable-highlight pre > code::-webkit-scrollbar-thumb {
+  background: #A8A8A8;
+}
+.enable-highlight .post-content[data-code-line-num=show] pre code {
   padding: 12px 10px;
 }
-
-.post-content[data-code-line-num=hide] pre code {
+.enable-highlight .post-content[data-code-line-num=hide] pre code {
   padding: 12px 16px;
 }
 
@@ -486,42 +521,6 @@ header input[type=search]:focus {
 }
 .post-page article .post-content p, .post-page article .post-content li, .post-page article .post-content a {
   font-size: 16px;
-}
-.post-page article .post-content pre {
-  position: relative;
-  border-radius: 4px;
-}
-.post-page article .post-content pre:hover .copy-code-btn {
-  display: block;
-}
-.post-page article .post-content pre .line-box {
-  width: 40px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding-top: 12px;
-}
-.post-page article .post-content pre .line-box div {
-  line-height: 24px;
-  height: 24px;
-  padding-right: 9px;
-  font-size: 15px;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-.post-page article .post-content pre > code {
-  font-size: 16px;
-  white-space: pre;
-  word-wrap: normal;
-}
-.post-page article .post-content pre > code::-webkit-scrollbar {
-  height: 12px;
-  background: #F1F1F1;
-}
-.post-page article .post-content pre > code::-webkit-scrollbar-thumb {
-  background: #A8A8A8;
 }
 .post-page article .post-content h1, .post-page article .post-content h2, .post-page article .post-content h3, .post-page article .post-content h4, .post-page article .post-content h5, .post-page article .post-content h6 {
   font-weight: 700;
@@ -803,42 +802,6 @@ header input[type=search]:focus {
 }
 #comments .comments-lists .comment-content p, #comments .comments-lists .comment-content li, #comments .comments-lists .comment-content a {
   font-size: 16px;
-}
-#comments .comments-lists .comment-content pre {
-  position: relative;
-  border-radius: 4px;
-}
-#comments .comments-lists .comment-content pre:hover .copy-code-btn {
-  display: block;
-}
-#comments .comments-lists .comment-content pre .line-box {
-  width: 40px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding-top: 12px;
-}
-#comments .comments-lists .comment-content pre .line-box div {
-  line-height: 24px;
-  height: 24px;
-  padding-right: 9px;
-  font-size: 15px;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-#comments .comments-lists .comment-content pre > code {
-  font-size: 16px;
-  white-space: pre;
-  word-wrap: normal;
-}
-#comments .comments-lists .comment-content pre > code::-webkit-scrollbar {
-  height: 12px;
-  background: #F1F1F1;
-}
-#comments .comments-lists .comment-content pre > code::-webkit-scrollbar-thumb {
-  background: #A8A8A8;
 }
 #comments .comments-lists .comment-content h1, #comments .comments-lists .comment-content h2, #comments .comments-lists .comment-content h3, #comments .comments-lists .comment-content h4, #comments .comments-lists .comment-content h5, #comments .comments-lists .comment-content h6 {
   font-weight: 700;
