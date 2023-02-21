@@ -635,6 +635,57 @@ header input[type=search]:focus {
   display: none;
 }
 
+#directory-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 80px;
+  font-size: 16px;
+  opacity: 0.7;
+  width: 40px;
+  height: 40px;
+}
+
+#directory-mobile {
+  width: 0;
+  position: fixed;
+  right: 60px;
+  bottom: 80px;
+  flex-direction: column;
+  display: flex;
+  max-height: 70%;
+  width: 300px;
+  opacity: 0;
+}
+#directory-mobile .directory-list {
+  height: 100%;
+  overflow-y: auto;
+}
+#directory-mobile .directory-list ul {
+  list-style: none;
+  padding-left: 0;
+}
+#directory-mobile .directory-list ul ul {
+  padding-left: 15px;
+}
+#directory-mobile .directory-list a {
+  font-size: 14px;
+}
+#directory-mobile .title-bar {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+#directory-mobile .title-bar i {
+  font-size: 15px;
+}
+
+@media screen and (max-height: 450px) {
+  #directory-mobile {
+    max-height: 60%;
+  }
+}
 #max-img-box {
   display: none;
   width: 100%;
@@ -1138,7 +1189,7 @@ header input[type=search]:focus {
   background-color: #f7e6d2;
   border-color: #f4dcc0;
 }
-.light-color #to-top-btn {
+.light-color #to-top-btn, .light-color #directory-btn {
   background-color: #FFFFFF;
   border: 1px solid #CCCCCC;
 }
@@ -1148,11 +1199,8 @@ header input[type=search]:focus {
 .light-color .sidebar section li a {
   color: #333333;
 }
-.light-color #directory-box {
-  background: #F8F9FA;
-}
-.light-color #directory-box .directory-num {
-  color: #212529;
+.light-color #directory-mobile {
+  background: #FFFFFF;
 }
 .light-color .post-page .post-content p > code {
   background: #F9F2F4;
@@ -1359,7 +1407,7 @@ header input[type=search]:focus {
     background-color: #f7e6d2;
     border-color: #f4dcc0;
   }
-  .auto-color #to-top-btn {
+  .auto-color #to-top-btn, .auto-color #directory-btn {
     background-color: #FFFFFF;
     border: 1px solid #CCCCCC;
   }
@@ -1369,11 +1417,8 @@ header input[type=search]:focus {
   .auto-color .sidebar section li a {
     color: #333333;
   }
-  .auto-color #directory-box {
-    background: #F8F9FA;
-  }
-  .auto-color #directory-box .directory-num {
-    color: #212529;
+  .auto-color #directory-mobile {
+    background: #FFFFFF;
   }
   .auto-color .post-page .post-content p > code {
     background: #F9F2F4;
@@ -1613,10 +1658,10 @@ header input[type=search]:focus {
 .dark-color .pagination .active a {
   color: #D3D3D3 !important;
 }
-.dark-color #to-top-btn {
+.dark-color #to-top-btn, .dark-color #directory-btn {
   background-color: #212529;
   color: #FFFFFF !important;
-  border: none;
+  border: none !important;
 }
 .dark-color .sidebar section > h2 {
   color: #D3D3D3;
@@ -1639,11 +1684,14 @@ header input[type=search]:focus {
 .dark-color .sidebar .blog-info hr {
   background: #CCCCCC;
 }
-.dark-color #directory-box {
-  background: #16161A !important;
+.dark-color #directory-mobile {
+  background: #16161A;
 }
-.dark-color #directory-box .directory-num {
-  color: #D3D3D3 !important;
+.dark-color #directory-mobile .title-bar h5, .dark-color #directory-mobile .title-bar button {
+  color: #D3D3D3;
+}
+.dark-color #directory-mobile a {
+  color: #E47063;
 }
 .dark-color .post-page .post-content p {
   color: #D3D3D3;
@@ -2036,10 +2084,10 @@ header input[type=search]:focus {
   .auto-color .pagination .active a {
     color: #D3D3D3 !important;
   }
-  .auto-color #to-top-btn {
+  .auto-color #to-top-btn, .auto-color #directory-btn {
     background-color: #212529;
     color: #FFFFFF !important;
-    border: none;
+    border: none !important;
   }
   .auto-color .sidebar section > h2 {
     color: #D3D3D3;
@@ -2062,11 +2110,14 @@ header input[type=search]:focus {
   .auto-color .sidebar .blog-info hr {
     background: #CCCCCC;
   }
-  .auto-color #directory-box {
-    background: #16161A !important;
+  .auto-color #directory-mobile {
+    background: #16161A;
   }
-  .auto-color #directory-box .directory-num {
-    color: #D3D3D3 !important;
+  .auto-color #directory-mobile .title-bar h5, .auto-color #directory-mobile .title-bar button {
+    color: #D3D3D3;
+  }
+  .auto-color #directory-mobile a {
+    color: #E47063;
   }
   .auto-color .post-page .post-content p {
     color: #D3D3D3;

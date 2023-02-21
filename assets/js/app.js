@@ -10,6 +10,7 @@ $(function () {
   let imgWH = '';  // 记录图片的宽高
   let imgDirection = 0;  // 图片方向
   let maxImg = false;  // 是否开启图片灯箱
+  let directory = false;  // 是否打开移动设备的目录
   let contentImgSize = null;  // 文章区域的图片尺寸
   let emojiList = null;  // Emoji 列表
   let showEmoji = false;  // Emoji 面板状态
@@ -768,6 +769,26 @@ $(function () {
     }, 400);
     $('header .navbar-brand').get(0).focus();
     return false;
+  });
+
+  // 移动设备的目录按钮点击
+  $('#directory-btn').on('click', () => {
+    if (!directory) {
+      $('#directory-mobile').css('display', 'flex');
+      $('#directory-mobile').animate({opacity: 1}, 250);
+      directory = true;
+    }else {
+      $('#directory-mobile').animate({opacity: 0}, 250, () => {
+        $('#directory-mobile').hide();
+      });
+      directory = false;
+    }
+    $('#directory-btn').attr('aria-expanded', directory);
+  });
+
+  // 移动设备的关闭目录按钮点击
+  $('#directory-mobile .close-btn').on('click', () => {
+    $('#directory-btn').click();
   });
 });
 

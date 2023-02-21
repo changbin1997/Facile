@@ -286,11 +286,11 @@ $dark-text-color2: #999999;
     }
   }
 
-  // 返回顶部按钮配色
-  #to-top-btn {
+  // 返回顶部按钮和移动设备的目录按钮配色
+  #to-top-btn,#directory-btn {
     background-color: #212529;
     color: #FFFFFF !important;
-    border: none;
+    border: none !important;
   }
 
   // 侧边栏配色
@@ -327,12 +327,16 @@ $dark-text-color2: #999999;
     }
   }
 
-  // 章节目录配色
-  #directory-box {
-    background: #16161A !important;
-
-    .directory-num {
-      color: $dark-text-color !important;
+  // 移动设备目录配色
+  #directory-mobile {
+    background: #16161A;
+    .title-bar {
+      h5,button {
+        color: $dark-text-color;
+      }
+    }
+    a {
+      color: $dark-link-color;
     }
   }
 
