@@ -507,18 +507,6 @@ header input[type=search]:focus {
   display: flex;
   align-items: center;
 }
-.post-page article #directory-box {
-  display: inline-block;
-}
-.post-page article #directory-box ul {
-  list-style: none;
-}
-.post-page article #directory-box > ul {
-  padding-left: 0;
-}
-.post-page article #directory-box > ul ul {
-  padding-left: 32px;
-}
 .post-page article .post-content p, .post-page article .post-content li, .post-page article .post-content a {
   font-size: 16px;
 }
@@ -552,7 +540,7 @@ header input[type=search]:focus {
 .post-page article .post-content h4 *, .post-page article .post-content h5 *, .post-page article .post-content h6 * {
   font-size: 16px;
 }
-.post-page article .post-content img {
+.post-page article .post-content img:not(.logo) {
   max-width: 100%;
   cursor: zoom-in;
   border-radius: 4px;
@@ -884,7 +872,7 @@ header input[type=search]:focus {
 #comments .comments-lists .comment-content h4 *, #comments .comments-lists .comment-content h5 *, #comments .comments-lists .comment-content h6 * {
   font-size: 16px;
 }
-#comments .comments-lists .comment-content img {
+#comments .comments-lists .comment-content img:not(.logo) {
   max-width: 100%;
   cursor: zoom-in;
   border-radius: 4px;

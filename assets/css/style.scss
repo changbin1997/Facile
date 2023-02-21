@@ -72,7 +72,7 @@
       font-size: 16px;
     }
   }
-  img {
+  img:not(.logo) {
     max-width: 100%;
     cursor: zoom-in;
     border-radius: 4px;
@@ -422,19 +422,6 @@ header {
   }
   // 文章内容
   article {
-    // 文章目录
-    #directory-box {
-      display: inline-block;
-      ul {
-        list-style: none;
-      }
-      > ul {
-        padding-left: 0;
-        ul {
-          padding-left: 32px;
-        }
-      }
-    }
     .post-content {
       @include postContent;
       // 待加载的图片
