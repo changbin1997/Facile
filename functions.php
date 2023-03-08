@@ -211,10 +211,6 @@ function agreeNum($cid) {
     $db = Typecho_Db::get();
     $prefix = $db->getPrefix();
 
-    if (!array_key_exists('agree', $db->fetchRow($db->select()->from('table.contents')))) {
-        $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `agree` INT(10) NOT null DEFAULT 0;');
-    }
-
     $agree = $db->fetchRow($db->select('table.contents.agree')->from('table.contents')->where('cid = ?', $cid));
     $AgreeRecording = Typecho_Cookie::get('typechoAgreeRecording');
     if (empty($AgreeRecording)) {
@@ -384,15 +380,28 @@ function reply($parent) {
     return $link;
 }
 
+// 检查数据库字段
+function checkField() {
+    $db = Typecho_Db::get();
+    $prefix = $db->getPrefix();
+
+    // 检查阅读量字段是否存在
+    if (!array_key_exists('views', $db->fetchRow($db->select()->from('table.contents')))) {
+        // 在文章表中创建一个字段用来存储阅读量
+        $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `views` INT(10) NOT NULL DEFAULT 0;');
+    }
+
+    // 检查点赞字段是否存在
+    if (!array_key_exists('agree', $db->fetchRow($db->select()->from('table.contents')))) {
+        //  在文章表中创建一个字段用来存储点赞数量
+        $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `agree` INT(10) NOT NULL DEFAULT 0;');
+    }
+}
+
 //  统计文章阅读量
 function getPostViews($archive) {
     $cid = $archive->cid;
     $db = Typecho_Db::get();
-    $prefix = $db->getPrefix();
-    if (!array_key_exists('views', $db->fetchRow($db->select()->from('table.contents')))) {
-        $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `views` INT(10) DEFAULT 0;');
-        return 0;
-    }
     $row = $db->fetchRow($db->select('views')->from('table.contents')->where('cid = ?', $cid));
     if ($archive->is('single')) {
         $views = Typecho_Cookie::get('extend_contents_views');
