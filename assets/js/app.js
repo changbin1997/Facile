@@ -126,21 +126,8 @@ $(function () {
 
   // 文章是否加密
   if ($('.post-content .protected').length) {
-    // 替换 Typecho 默认的密码输入表单
-    $('.protected .word').replaceWith('<h2 class="word text-center mb-4">请输入密码访问</h2>');
-    const formEl = `
-    <div class="row">
-      <div class="col-xl-8 col-lg-10 col-md-8 col-sm-12 col-12 offset-xl-2 offset-lg-1 offset-md-2">
-        <div class="input-group mb-4">
-          <input type="password" placeholder="请在此处输入密码" name="protectPassword" class="text form-control" required autofocus>
-          <div class="input-group-append">
-            <button type="submit" class="btn btn-primary submit">提交密码</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    `;
-    $('.protected p').replaceWith(formEl);
+    $('input[name="protectPassword"]').attr('placeholder', '请在此处输入文章密码');
+    $('input[name="protectPassword"]').focus();
   }
 
   // 文章内的章节目录跳转

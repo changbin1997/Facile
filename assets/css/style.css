@@ -608,6 +608,9 @@ header input[type=search]:focus {
 .post-page #qr-link .link-box a:hover {
   text-decoration: none;
 }
+.post-page .protected {
+  text-align: center;
+}
 
 #agree-p {
   font-weight: 700;
