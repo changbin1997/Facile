@@ -571,8 +571,7 @@ function articleDirectory($content) {
     $re = '#<h(\d)(.*?)>(.*?)</h\d>#im';
     preg_match_all($re, $content, $result);
     if (!is_array($result) or count($result[0]) < 1) {
-        echo $content;
-        return false;
+        return array('content' => $content, 'directory' => null);
     }
 
     $treeList = array();
