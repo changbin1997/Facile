@@ -4,7 +4,7 @@ $GLOBALS['page'] = 'post';
 //  点赞请求
 if (isset($_POST['agree'])) {
     if ($_POST['agree'] == $this->cid) {
-        exit(agree($this->cid));
+        exit((string)agree($this->cid));
     }
     exit('error');
 }
