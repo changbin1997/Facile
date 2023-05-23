@@ -47,9 +47,8 @@ $this->need('components/header.php');
                                 </a>
                             </span>
                         <span class="ml-2" title="阅读量" data-toggle="tooltip" data-placement="top">
-                                <?php $views = getPostViews($this); ?>
                                 <i class="icon-eye mr-1" aria-hidden="true"></i>
-                                <?php echo $views; ?>
+                                <?php echo postViews($this); ?>
                             </span>
                     </div>
                     <div class="post-content mt-4">

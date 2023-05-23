@@ -30,6 +30,10 @@ while ($this->next()):
                             <?php $this->author(); ?>
                         </a>
                     </span>
+                    <span class="ml-2" title="阅读量" data-toggle="tooltip" data-placement="top">
+                        <i class="icon-eye mr-2"></i>
+                        <?php echo postViews($this); ?>
+                    </span>
                 </div>
             </header>
             <?php if (getPostListHeaderImageStyle($this->fields->postListHeaderImageStyle, $this->options->postListHeaderImageStyle) == 'mini' && $headerImage): ?>

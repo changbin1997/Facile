@@ -292,10 +292,10 @@ function postCalendar($start, $end) {
     $dateList = array();
 
     for ($i = 0;$i < count($dateList2);$i ++) {
-        array_push($dateList, array(
+        $dateList[] = array(
             $key[$i],
             $dateList2[$key[$i]]
-        ));
+        );
     }
 
     return $dateList;
@@ -317,10 +317,10 @@ function commentCalendar($start, $end) {
     $dateList = array();
 
     for ($i = 0;$i < count($dateList2);$i ++) {
-        array_push($dateList, array(
+        $dateList[] = array(
             $key[$i],
             $dateList2[$key[$i]]
-        ));
+        );
     }
 
     return $dateList;
@@ -343,11 +343,11 @@ function top5post() {
     $postList =array();
     foreach ($top5Post as $post) {
         $post = Typecho_Widget::widget('Widget_Abstract_Contents')->filter($post);
-        array_push($postList, array(
+        $postList[] = array(
             'title' => $post['title'],
             'link' => $post['permalink'],
             'views' => $post['views']
-        ));
+        );
     }
     return $postList;
 }
@@ -359,11 +359,11 @@ function top5CommentPost() {
     $postList = array();
     foreach ($top5Post as $post) {
         $post = Typecho_Widget::widget('Widget_Abstract_Contents')->filter($post);
-        array_push($postList, array(
+        $postList[] = array(
             'title' => $post['title'],
             'link' => $post['permalink'],
             'commentsNum' => $post['commentsNum']
-        ));
+        );
     }
     return $postList;
 }
@@ -398,24 +398,32 @@ function checkField() {
     }
 }
 
-//  统计文章阅读量
-function getPostViews($archive) {
+//  设置文章阅读量
+function postViews($archive) {
+    // 获取文章的 cid
     $cid = $archive->cid;
     $db = Typecho_Db::get();
+    // 查询出阅读量
     $row = $db->fetchRow($db->select('views')->from('table.contents')->where('cid = ?', $cid));
+    // 是否是内容页
     if ($archive->is('single')) {
+        // 获取阅读 cookie
         $views = Typecho_Cookie::get('extend_contents_views');
         if (empty($views)) {
             $views = array();
         } else {
             $views = explode(',', $views);
         }
+        // 如果 cookie 不存在
         if (!in_array($cid, $views)) {
-            //  如果cookie不存在才会加1
+            // 阅读量 +1
             $db->query($db->update('table.contents')->rows(array('views' => (int)$row['views'] + 1))->where('cid = ?', $cid));
-            array_push($views, $cid);
+            $views[] = $cid;
             $views = implode(',', $views);
-            Typecho_Cookie::set('extend_contents_views', $views);  //  记录查看cookie
+            // 写入阅读 cookie
+            Typecho_Cookie::set('extend_contents_views', $views);
+            // 返回的最终阅读量 +1
+            $row['views'] ++;
         }
     }
     return $row['views'];
