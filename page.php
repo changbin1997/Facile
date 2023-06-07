@@ -45,6 +45,12 @@ $this->need('components/header.php');
                                 <i class="icon-eye mr-1" aria-hidden="true"></i>
                                 <?php echo postViews($this); ?>
                             </span>
+                            <?php if ($this->user->hasLogin()): ?>
+                                <span class="ml-2">
+                            <i class="icon-pencil mr-2" aria-hidden="true"></i>
+                            <a href="<?php echo $this->options->siteUrl . 'admin/write-page.php?cid=' . $this->cid; ?>">编辑</a>
+                        </span>
+                            <?php endif; ?>
                         </div>
                         <div class="post-content mt-4" data-code-line-num="<?php $this->options->codeLineNum(); ?>">
                             <?php $this->content(); ?>
