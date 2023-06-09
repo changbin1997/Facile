@@ -65,6 +65,12 @@ $components = explode(',', $components);
                 </ul>
             </section>
         <?php endif; ?>
+        <?php if ($component == '自定义' && $this->options->customizeHTML): ?>
+            <section class="ml-xl-4 ml-lg-3 mb-5 customize">
+                <h2 class="mb-4"><?php $this->options->customizeTitle(); ?></h2>
+                <div class="customize-html"><?php $this->options->customizeHTML(); ?></div>
+            </section>
+        <?php endif; ?>
         <?php if ($component == '最新文章'): ?>
             <!--最新文章-->
             <section class="ml-xl-4 ml-lg-3 mb-5">

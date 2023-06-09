@@ -391,6 +391,13 @@ header {
       }
     }
   }
+  // 自定义HTML
+  .customize-html {
+    word-break: break-all;
+    img {
+      max-width: 100%;
+    }
+  }
 }
 
 // 分类页的页头区域

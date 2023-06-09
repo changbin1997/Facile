@@ -325,6 +325,13 @@ $dark-text-color2: #999999;
         background: #CCCCCC;
       }
     }
+    // 自定义HTML
+    .customize-html {
+      color: $dark-text-color;
+      a {
+        color: $dark-link-color;
+      }
+    }
   }
 
   // 移动设备目录配色

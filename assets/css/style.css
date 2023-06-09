@@ -466,6 +466,12 @@ header input[type=search]:focus {
   display: flex;
   align-items: center;
 }
+.sidebar .customize-html {
+  word-break: break-all;
+}
+.sidebar .customize-html img {
+  max-width: 100%;
+}
 
 .archive-title h1 {
   font-size: 16px;
@@ -1675,6 +1681,12 @@ header input[type=search]:focus {
 .dark-color .sidebar .blog-info hr {
   background: #CCCCCC;
 }
+.dark-color .sidebar .customize-html {
+  color: #D3D3D3;
+}
+.dark-color .sidebar .customize-html a {
+  color: #E47063;
+}
 .dark-color #directory-mobile {
   background: #16161A;
 }
@@ -2100,6 +2112,12 @@ header input[type=search]:focus {
   }
   .auto-color .sidebar .blog-info hr {
     background: #CCCCCC;
+  }
+  .auto-color .sidebar .customize-html {
+    color: #D3D3D3;
+  }
+  .auto-color .sidebar .customize-html a {
+    color: #E47063;
   }
   .auto-color #directory-mobile {
     background: #16161A;
