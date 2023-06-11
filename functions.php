@@ -181,12 +181,6 @@ EOT;
         'bottom' => '评论框在评论列表下方'
     ), 'bottom', _t('评论框位置'), _t('评论框就是发表评论的区域，评论列表就是已发表的评论区域')));
 
-    //  使用QQ头像
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('QQAvatar', array(
-        'show' => '显示',
-        'hide' => '不显示'
-    ), 'hide', _t('显示评论者的QQ头像'), _t('开启后如果检测到评论者使用QQ邮箱就会显示QQ头像，只支持 QQ号@qq.com 的QQ邮箱。')));
-
     //  启用 Emoji 面板
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('emojiPanel', array(
         'show' => '启用',
@@ -435,23 +429,6 @@ function postViews($archive) {
     return $row['views'];
 }
 
-//  检测是否是QQ邮箱
-function isQQEmail($email) {
-    $re = '/^\d{6,11}\@qq\.com$/';
-    preg_match($re, $email, $result);
-    if (count($result)) {
-        return true;
-    }
-    return false;
-}
-
-//  获取QQ头像
-function QQAvatar($email, $name, $size) {
-    $qq = str_replace('@qq.com', '', $email);  //  获取QQ号
-    $imgUrl = 'https://q2.qlogo.cn/headimg_dl?dst_uin=' . $qq . '&spec=' . $size;
-    echo '<img src="' . $imgUrl . '" alt="' . $name . '" class="avatar">';
-}
-
 //  日期格式化
 function dateFormat($date, $options = 'format1') {
     if ($options == 'format1') {
@@ -693,7 +670,7 @@ function replaceImgSrc($content) {
 
 // 获取 Gravatar 头像
 function gravatarUrl($email, $size) {
-    echo 'https://sdn.geekzu.org/avatar/' . md5(strtolower(trim($email))) . '?s=' . $size;
+    echo 'https://cravatar.cn/avatar/' . md5(strtolower(trim($email))) . '?s=' . $size;
 }
 
 // 获取管理员信息
