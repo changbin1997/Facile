@@ -47,11 +47,19 @@ function themeConfig($form) {
     <button id="import-btn" type="button" class="btn">导入主题配置文件</button>
     <a href="javascript:;" id="download-file" style="display: none;">下载</a>
     <input type="file" id="file-select" style="display: none;">
-    <p><b>导出主题配置文件</b> 可以把主题外观设置导出为 JSON 文件，主要用来备份主题设置，<b>导入主题配置文件</b> 可以导入 <b>Facile</b> 主题的 JSON 配置文件。Typecho 切换主题的时候会清空主题设置，为了避免重复设置，在切换主题之前可以先导出主题设置配置。</p>
+    <p><b>导出主题配置文件</b> 可以把主题外观设置导出为 JSON 文件，主要用来备份主题设置，<b>导入主题配置文件</b> 可以导入 <b>Facile</b> 主题的 JSON 配置文件。Typecho 切换主题的时候会清空主题设置，为了避免重复设置，在切换主题之前可以先导出主题设置配置。
+    <div id="options-list">
+        <h3>选项目录</h3>
+        <ul aria-label="选项目录 - 点击可快速滚动到对应的选项分组"></ul>
+        <button class="btn primary submit-options" type="button">保存设置</button>
+    </div>
 EOT;
     echo '<script type="text/javascript">';
     require_once 'assets/js/options-panel.js';
     echo '</script>';
+    echo '<style type="text/css">';
+    require_once 'assets/css/options-panel.css';
+    echo '</style>';
 
     // 主题配色
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('themeColor', array(
