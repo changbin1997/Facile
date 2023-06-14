@@ -63,8 +63,7 @@ $dark-text-color2: #999999;
   ol, ul {
     li {
       color: $dark-text-color;
-
-      code {
+      > code {
         @include codeColor;
       }
     }
