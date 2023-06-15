@@ -11,7 +11,7 @@ $components = str_replace(' ', '', $components);
 $components = explode(',', $components);
 ?>
 
-<aside class="col-xl-4 col-lg-4 sidebar pl-4 pl-lg-3">
+<aside class="col-xl-4 col-lg-4 sidebar pl-lg-3 pl-xl-3">
     <?php foreach ($components as $component): ?>
         <?php if ($component == '博客信息'): ?>
             <!--博客信息-->

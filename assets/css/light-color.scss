@@ -31,7 +31,7 @@
   }
   ol, ul {
     li {
-      code {
+      > code {
         @include codeColor;
       }
     }
