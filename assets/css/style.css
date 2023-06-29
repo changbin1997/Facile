@@ -1710,10 +1710,10 @@ header input[type=search]:focus {
   background: #000000 !important;
   color: #F1D951 !important;
 }
-.dark-color .post-page .post-content h1, .dark-color .post-page .post-content h2, .dark-color .post-page .post-content h3, .dark-color .post-page .post-content h4, .dark-color .post-page .post-content h5 {
+.dark-color .post-page .post-content h1, .dark-color .post-page .post-content h2, .dark-color .post-page .post-content h3, .dark-color .post-page .post-content h4, .dark-color .post-page .post-content h5, .dark-color .post-page .post-content h6 {
   color: #FFFFFF !important;
 }
-.dark-color .post-page .post-content h1 code, .dark-color .post-page .post-content h2 code, .dark-color .post-page .post-content h3 code, .dark-color .post-page .post-content h4 code, .dark-color .post-page .post-content h5 code {
+.dark-color .post-page .post-content h1 code, .dark-color .post-page .post-content h2 code, .dark-color .post-page .post-content h3 code, .dark-color .post-page .post-content h4 code, .dark-color .post-page .post-content h5 code, .dark-color .post-page .post-content h6 code {
   background: #000000 !important;
   color: #F1D951 !important;
 }
@@ -1831,10 +1831,10 @@ header input[type=search]:focus {
   background: #000000 !important;
   color: #F1D951 !important;
 }
-.dark-color #comments .comment-content h1, .dark-color #comments .comment-content h2, .dark-color #comments .comment-content h3, .dark-color #comments .comment-content h4, .dark-color #comments .comment-content h5 {
+.dark-color #comments .comment-content h1, .dark-color #comments .comment-content h2, .dark-color #comments .comment-content h3, .dark-color #comments .comment-content h4, .dark-color #comments .comment-content h5, .dark-color #comments .comment-content h6 {
   color: #FFFFFF !important;
 }
-.dark-color #comments .comment-content h1 code, .dark-color #comments .comment-content h2 code, .dark-color #comments .comment-content h3 code, .dark-color #comments .comment-content h4 code, .dark-color #comments .comment-content h5 code {
+.dark-color #comments .comment-content h1 code, .dark-color #comments .comment-content h2 code, .dark-color #comments .comment-content h3 code, .dark-color #comments .comment-content h4 code, .dark-color #comments .comment-content h5 code, .dark-color #comments .comment-content h6 code {
   background: #000000 !important;
   color: #F1D951 !important;
 }
@@ -2148,10 +2148,10 @@ header input[type=search]:focus {
     background: #000000 !important;
     color: #F1D951 !important;
   }
-  .auto-color .post-page .post-content h1, .auto-color .post-page .post-content h2, .auto-color .post-page .post-content h3, .auto-color .post-page .post-content h4, .auto-color .post-page .post-content h5 {
+  .auto-color .post-page .post-content h1, .auto-color .post-page .post-content h2, .auto-color .post-page .post-content h3, .auto-color .post-page .post-content h4, .auto-color .post-page .post-content h5, .auto-color .post-page .post-content h6 {
     color: #FFFFFF !important;
   }
-  .auto-color .post-page .post-content h1 code, .auto-color .post-page .post-content h2 code, .auto-color .post-page .post-content h3 code, .auto-color .post-page .post-content h4 code, .auto-color .post-page .post-content h5 code {
+  .auto-color .post-page .post-content h1 code, .auto-color .post-page .post-content h2 code, .auto-color .post-page .post-content h3 code, .auto-color .post-page .post-content h4 code, .auto-color .post-page .post-content h5 code, .auto-color .post-page .post-content h6 code {
     background: #000000 !important;
     color: #F1D951 !important;
   }
@@ -2269,10 +2269,10 @@ header input[type=search]:focus {
     background: #000000 !important;
     color: #F1D951 !important;
   }
-  .auto-color #comments .comment-content h1, .auto-color #comments .comment-content h2, .auto-color #comments .comment-content h3, .auto-color #comments .comment-content h4, .auto-color #comments .comment-content h5 {
+  .auto-color #comments .comment-content h1, .auto-color #comments .comment-content h2, .auto-color #comments .comment-content h3, .auto-color #comments .comment-content h4, .auto-color #comments .comment-content h5, .auto-color #comments .comment-content h6 {
     color: #FFFFFF !important;
   }
-  .auto-color #comments .comment-content h1 code, .auto-color #comments .comment-content h2 code, .auto-color #comments .comment-content h3 code, .auto-color #comments .comment-content h4 code, .auto-color #comments .comment-content h5 code {
+  .auto-color #comments .comment-content h1 code, .auto-color #comments .comment-content h2 code, .auto-color #comments .comment-content h3 code, .auto-color #comments .comment-content h4 code, .auto-color #comments .comment-content h5 code, .auto-color #comments .comment-content h6 code {
     background: #000000 !important;
     color: #F1D951 !important;
   }
