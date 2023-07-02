@@ -43,6 +43,20 @@ if ($this->options->codeHighlight != 'enable-highlight') {
         <?php $this->options->title(); ?>
         <?php if ($this->is('index')) echo $this->options->tagline; ?>
     </title>
+    <?php if ($this->is('post') && $this->fields->keywords or $this->fields->summaryContent): ?>
+        <?php
+        $metaContent = array();
+        // 如果设置了自定义关键词就显示自定义关键词
+        if ($this->fields->keywords) $metaContent['keywords'] = $this->fields->keywords;
+        // 如果设置了自定义摘要内容就显示自定义摘要
+        if ($this->fields->summaryContent) $metaContent['description'] = $this->fields->summaryContent;
+        // 把包含自定义关键词和摘要的数组转为 URL 查询格式
+        $metaContent = urldecode(http_build_query($metaContent));
+        $this->header($metaContent);
+        ?>
+    <?php else: ?>
+        <?php $this->header(); ?>
+    <?php endif; ?>
     <link rel="icon" href="<?php echo $this->options->logoUrl?$this->options->logoUrl:$this->options->siteUrl . 'favicon.ico'; ?>" type="image/x-icon">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/bootstrap.css'); ?>" type="text/css">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/style.css'); ?>" type="text/css">
@@ -52,11 +66,6 @@ if ($this->options->codeHighlight != 'enable-highlight') {
         <style type="text/css">
             <?php $this->options->cssCode(); ?>
         </style>
-    <?php endif; ?>
-    <?php if ($this->is('post') && $this->fields->keywords): ?>
-        <?php $this->header('keywords=' . $this->fields->keywords); ?>
-    <?php else: ?>
-        <?php $this->header(); ?>
     <?php endif; ?>
     <!--自定义HTML-->
     <?php if ($this->options->headHTML): ?>
