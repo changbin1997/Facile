@@ -68,9 +68,8 @@ $dark-text-color2: #999999;
       }
     }
   }
-  h1, h2, h3, h4, h5 {
+  h1, h2, h3, h4, h5, h6 {
     color: #FFFFFF !important;
-
     code {
       @include codeColor;
     }
@@ -129,6 +128,9 @@ $dark-text-color2: #999999;
         background: #717171;
       }
     }
+  }
+  blockquote {
+    color: $dark-text-color2;
   }
 }
 
