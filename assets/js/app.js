@@ -180,7 +180,9 @@ $(function () {
     }
 
     // 显示大图
-    $('#max-img-box').fadeIn(250);
+    $('#max-img-box').show();
+    // 显示半透明背景
+    $('#max-img-bg').fadeIn(250);
     // 设置大图的初始尺寸和位置
     $('#max-img').css({
       display: 'inline',
@@ -222,7 +224,7 @@ $(function () {
   });
 
   // 在图片灯箱开启的情况下滑动屏幕禁止页面滚动
-  $('#max-img-box, .max-img-features-btn, #img-info').on('touchmove', ev => {
+  $('#max-img-bg, .max-img-features-btn, #img-info').on('touchmove', ev => {
     if (maxImg) {
       ev.preventDefault();
       return false;
@@ -319,7 +321,8 @@ $(function () {
   // 大图的关闭按钮点击
   $('.max-img-features-btn .hide-img').on('click', () => {
     maxImg = false;
-    $('#max-img-box').fadeOut(250);
+    // 隐藏半透明背景
+    $('#max-img-bg').fadeOut(250);
     // 隐藏图片描述
     $('#img-info').hide();
     // 隐藏图片功能区按钮
@@ -336,6 +339,7 @@ $(function () {
         src: '',
         alt: ''
       });
+      $('#max-img-box').hide();
     });
   });
 

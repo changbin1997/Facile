@@ -1,5 +1,5 @@
-<div role="dialog">
-    <div id="max-img-box"></div>
+<div id="max-img-box" role="dialog" aria-modal="true" aria-labelledby="img-info">
+    <div id="max-img-bg"></div>
     <div class="btn-group max-img-features-btn">
         <button type="button" class="btn big" aria-label="放大" title="放大">
             <i class="icon-zoom-in"></i>
