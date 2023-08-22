@@ -293,6 +293,10 @@ header {
       }
     }
   }
+  // 全文显示区域
+  .fullText {
+    @include postContent;
+  }
 }
 
 // 返回顶部按钮

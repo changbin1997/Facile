@@ -2,6 +2,13 @@
 
 //  文章的自定义字段
 function themeFields($layout) {
+    // 文章列表显示设置
+    $layout->addItem(new Typecho_Widget_Helper_Form_Element_Select('postListStyle', array(
+        'default' => '使用系统设置',
+        'fullText' => '文章列表直接显示全文',
+        'summary' => '文章列表显示摘要和文章头图'
+    ), 'default', _t('文章列表显示'), _t('文章列表包括首页、搜索页、归档 左侧的文章列表。在显示全文的情况下，文章列表不会显示文章头图，显示全文也支持使用 <b style="color: #C7254E;">&lt!--more--&gt</b> 来手动分隔摘要。')));
+
     // 文章头图显示设置
     $layout->addItem(new Typecho_Widget_Helper_Form_Element_Select('headerImgDisplay', array(
         'default' => '使用系统设置',
@@ -118,6 +125,12 @@ EOT;
 
     // 侧边栏自定义HTML
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('customizeHTML', null, null, _t('侧边栏自定义 HTML 内容'), _t('如果您启用了侧边栏的自定义 HTML 组件，可以在这里输入 HTML，支持纯文本和 HTML，包括 img、audio、video、canvas。您可以用来设置网站公告内容或广告。')));
+
+    // 文章列表显示设置
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('postListStyle', array(
+        'fullText' => '文章列表直接显示全文',
+        'summary' => '文章列表显示摘要和文章头图'
+    ), 'summary', _t('文章列表显示'), _t('文章列表包括首页、搜索页、归档 左侧的文章列表。在显示全文的情况下，文章列表不会显示文章头图，显示全文也支持使用 <b style="color: #C7254E;">&lt!--more--&gt</b> 来手动分隔摘要。如果你想自定义单篇文章的列表显示，你也可以在文章编辑页单独设置列表显示。')));
 
     //  文章摘要字数
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('summary', null, '130', _t('文章摘要字数'), _t('首页、分类页、标签页、搜索页 的文章摘要字数，默认为：130个字。')));
@@ -709,4 +722,18 @@ function getAdminInfo() {
     $db = Typecho_Db::get();
     $userInfo = $db->fetchRow($db->select('mail', 'url', 'screenName', 'created')->from('table.users')->where('group = ?', 'administrator'));
     return $userInfo;
+}
+
+// 获取文章列表显示设置
+function postListStyle($option, $postOption) {
+    // 判断单篇文章的列表显示设置
+    if ($postOption == 'summary' or $postOption == 'fullText') {
+        return $postOption;
+    }
+    // 判断列表全局设置
+    if ($option == 'fullText' or $option == 'summary') {
+        return $option;
+    }
+    // 如果出现异常就默认显示文章摘要和
+    return 'summary';
 }

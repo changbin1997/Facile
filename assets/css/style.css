@@ -384,6 +384,72 @@ header input[type=search]:focus {
   display: flex;
   justify-content: space-between;
 }
+.post-list .fullText p, .post-list .fullText li, .post-list .fullText a {
+  font-size: 16px;
+}
+.post-list .fullText h1, .post-list .fullText h2, .post-list .fullText h3, .post-list .fullText h4, .post-list .fullText h5, .post-list .fullText h6 {
+  font-weight: 700;
+}
+.post-list .fullText h1 code, .post-list .fullText h2 code, .post-list .fullText h3 code, .post-list .fullText h4 code, .post-list .fullText h5 code, .post-list .fullText h6 code {
+  padding: 0 4px;
+}
+.post-list .fullText h1 {
+  font-size: 28px;
+}
+.post-list .fullText h1 * {
+  font-size: 28px;
+}
+.post-list .fullText h2 {
+  font-size: 21px;
+}
+.post-list .fullText h2 * {
+  font-size: 21px;
+}
+.post-list .fullText h3 {
+  font-size: 18px;
+}
+.post-list .fullText h3 * {
+  font-size: 18px;
+}
+.post-list .fullText h4, .post-list .fullText h5, .post-list .fullText h6 {
+  font-size: 16px;
+}
+.post-list .fullText h4 *, .post-list .fullText h5 *, .post-list .fullText h6 * {
+  font-size: 16px;
+}
+.post-list .fullText img:not(.logo) {
+  max-width: 100%;
+  cursor: zoom-in;
+  border-radius: 4px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+.post-list .fullText figcaption {
+  text-align: center;
+  color: #757575;
+  font-size: 15px;
+}
+.post-list .fullText p code, .post-list .fullText li code, .post-list .fullText td code {
+  font-size: 16px;
+  padding: 0 4px;
+}
+.post-list .fullText a {
+  font-weight: 700;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+.post-list .fullText p {
+  margin: 20px 0;
+}
+.post-list .fullText blockquote {
+  border-left: 3px solid #333333;
+  margin: 20px 0;
+  padding: 0 0 0 20px;
+}
+.post-list .fullText table td, .post-list .fullText table th {
+  min-width: 90px;
+}
 
 #to-top-btn {
   position: fixed;
@@ -1640,6 +1706,73 @@ header input[type=search]:focus {
   background-color: #d9230f;
   border-color: #d9230f;
 }
+.dark-color .fullText p {
+  color: #D3D3D3;
+}
+.dark-color .fullText p > code {
+  background: #000000 !important;
+  color: #F1D951 !important;
+}
+.dark-color .fullText ol li, .dark-color .fullText ul li {
+  color: #D3D3D3;
+}
+.dark-color .fullText ol li > code, .dark-color .fullText ul li > code {
+  background: #000000 !important;
+  color: #F1D951 !important;
+}
+.dark-color .fullText h1, .dark-color .fullText h2, .dark-color .fullText h3, .dark-color .fullText h4, .dark-color .fullText h5, .dark-color .fullText h6 {
+  color: #FFFFFF !important;
+}
+.dark-color .fullText h1 code, .dark-color .fullText h2 code, .dark-color .fullText h3 code, .dark-color .fullText h4 code, .dark-color .fullText h5 code, .dark-color .fullText h6 code {
+  background: #000000 !important;
+  color: #F1D951 !important;
+}
+.dark-color .fullText table {
+  background: #16161A;
+}
+.dark-color .fullText table th {
+  color: #FFFFFF;
+  border: 1px solid #454D55;
+}
+.dark-color .fullText table th a {
+  color: #E47063;
+}
+.dark-color .fullText table th code {
+  background: #000000 !important;
+  color: #F1D951 !important;
+}
+.dark-color .fullText table td {
+  color: #D3D3D3;
+  border: 1px solid #454D55;
+}
+.dark-color .fullText table td a {
+  color: #E47063;
+}
+.dark-color .fullText table td code {
+  background: #000000 !important;
+  color: #F1D951 !important;
+}
+.dark-color .fullText table tbody tr:nth-child(odd) {
+  background: #212529;
+}
+.dark-color .fullText table tr:hover {
+  background: #212529;
+}
+.dark-color .fullText a {
+  color: #E47063;
+}
+.dark-color .fullText hr {
+  background: #CCCCCC;
+}
+.dark-color .fullText pre code::-webkit-scrollbar {
+  background: #212529;
+}
+.dark-color .fullText pre code::-webkit-scrollbar-thumb {
+  background: #717171;
+}
+.dark-color .fullText blockquote {
+  color: #999999;
+}
 .dark-color .expiration-reminder {
   background: #16161A;
   color: #D3D3D3;
@@ -2077,6 +2210,73 @@ header input[type=search]:focus {
     color: #fff;
     background-color: #d9230f;
     border-color: #d9230f;
+  }
+  .auto-color .fullText p {
+    color: #D3D3D3;
+  }
+  .auto-color .fullText p > code {
+    background: #000000 !important;
+    color: #F1D951 !important;
+  }
+  .auto-color .fullText ol li, .auto-color .fullText ul li {
+    color: #D3D3D3;
+  }
+  .auto-color .fullText ol li > code, .auto-color .fullText ul li > code {
+    background: #000000 !important;
+    color: #F1D951 !important;
+  }
+  .auto-color .fullText h1, .auto-color .fullText h2, .auto-color .fullText h3, .auto-color .fullText h4, .auto-color .fullText h5, .auto-color .fullText h6 {
+    color: #FFFFFF !important;
+  }
+  .auto-color .fullText h1 code, .auto-color .fullText h2 code, .auto-color .fullText h3 code, .auto-color .fullText h4 code, .auto-color .fullText h5 code, .auto-color .fullText h6 code {
+    background: #000000 !important;
+    color: #F1D951 !important;
+  }
+  .auto-color .fullText table {
+    background: #16161A;
+  }
+  .auto-color .fullText table th {
+    color: #FFFFFF;
+    border: 1px solid #454D55;
+  }
+  .auto-color .fullText table th a {
+    color: #E47063;
+  }
+  .auto-color .fullText table th code {
+    background: #000000 !important;
+    color: #F1D951 !important;
+  }
+  .auto-color .fullText table td {
+    color: #D3D3D3;
+    border: 1px solid #454D55;
+  }
+  .auto-color .fullText table td a {
+    color: #E47063;
+  }
+  .auto-color .fullText table td code {
+    background: #000000 !important;
+    color: #F1D951 !important;
+  }
+  .auto-color .fullText table tbody tr:nth-child(odd) {
+    background: #212529;
+  }
+  .auto-color .fullText table tr:hover {
+    background: #212529;
+  }
+  .auto-color .fullText a {
+    color: #E47063;
+  }
+  .auto-color .fullText hr {
+    background: #CCCCCC;
+  }
+  .auto-color .fullText pre code::-webkit-scrollbar {
+    background: #212529;
+  }
+  .auto-color .fullText pre code::-webkit-scrollbar-thumb {
+    background: #717171;
+  }
+  .auto-color .fullText blockquote {
+    color: #999999;
   }
   .auto-color .expiration-reminder {
     background: #16161A;

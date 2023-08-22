@@ -181,5 +181,4 @@ $this->need('components/header.php');
         </div>
     </div>
 <?php endif; ?>
-<?php require_once 'components/max-img.php'; ?>
 <?php $this->need('components/footer.php'); ?>

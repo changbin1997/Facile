@@ -263,6 +263,11 @@ $dark-text-color2: #999999;
     @include btn-primary;
   }
 
+  // 文章列表的全文显示配色
+  .fullText {
+    @include dark-post-content-color;
+  }
+
   // 文章有效期提醒信息配色
   .expiration-reminder {
     background: #16161A;
