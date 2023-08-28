@@ -3,8 +3,14 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
 // 检测是否包含主题配色 cookie
 if (isset($_COOKIE['themeColor'])) {
-    // 根据主题配色 cookie 设置配色
-    $GLOBALS['color'] = $_COOKIE['themeColor'];
+    // 检测 cookie
+    if ($_COOKIE['themeColor'] == 'light-color' or $_COOKIE['themeColor'] == 'dark-color') {
+        // 根据主题配色 cookie 设置配色
+        $GLOBALS['color'] = $_COOKIE['themeColor'];
+    }else {
+        // 如果 cookie 内容有问题就使用主题默认配色
+        $GLOBALS['color'] = $this->options->themeColor;
+    }
 }else {
     // 如果不包含主题配色 cookie 就使用后台设置的默认配色
     $GLOBALS['color'] = $this->options->themeColor;
