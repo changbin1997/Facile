@@ -17,6 +17,7 @@ $(function () {
   const codeLineNum = $('.post-content').attr('data-code-line-num');
   const avatarColor = [];  // 存储文字头像颜色
   const avatarName = [];  // 存储文字头像名称
+  let directoryTop = 0;  // 侧边栏章节目录的高度
 
   // 给分页链接添加class和aria属性
   if ($('.pagination li').length) {
@@ -718,16 +719,25 @@ $(function () {
     $('body').attr('data-color', color);
   });
 
-  let directoryTop = 0;
-  if ($('.sidebar .directory').length) {
-    // 获取侧边栏章节目录的位置
-    directoryTop = $('.sidebar .directory').offset().top;
-    // 设置侧边栏章节目录的最大高度
+  // 调整侧边栏章节目录的尺寸
+  function directorySize() {
     if ($('.sidebar .directory').length) {
+      // 获取侧边栏章节目录的位置
+      directoryTop = $('.sidebar .directory').offset().top;
+      // 设置侧边栏章节目录的最大高度
       $('.sidebar .directory').css('max-height', window.innerHeight - 100);
-      $('.sidebar .directory > .article-directory').css('width', $('.sidebar .directory > .article-directory').width());
+      $('.sidebar .directory > .article-directory').css('width', $('.sidebar .directory').width());
     }
   }
+
+  // 页面加载完成后调整侧边栏目录的高度
+  directorySize()
+
+  // 窗口尺寸改变
+  window.addEventListener('resize', () => {
+    // 调整侧边栏目录的高度
+    directorySize();
+  });
 
   // 监听滚动条
   $(document).on('scroll', () => {
