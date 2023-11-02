@@ -714,7 +714,7 @@ function replaceImgSrc($content) {
 
 // 获取 Gravatar 头像
 function gravatarUrl($email, $size) {
-    echo 'https://sdn.geekzu.org/avatar/' . md5(strtolower(trim($email))) . '?s=' . $size;
+    echo 'https://www.gravatar.com/avatar/' . md5(strtolower(trim($email))) . '?s=' . $size;
 }
 
 // 获取管理员信息
