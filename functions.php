@@ -678,7 +678,7 @@ function renderArticleDirectory($tree, $parent = '') {
     $htmlStr = '<ul class="article-directory"' . $ariaLabel . '>';
     foreach ($tree as $item) {
         $num = $parent == ''?$index:$parent . '.' . $index;
-        $htmlStr .= sprintf('<li><a rel="nofollow" data-directory="%s" class="directory-link" href="#%s">%s</a></li>', urlencode($item['name']) . $item['rand'], urlencode($item['name']) . $item['rand'], '<span class="mr-2 directory-num">' . $num . '</span>' . $item['name']);
+        $htmlStr .= sprintf('<li><a rel="bookmark" data-directory="%s" class="directory-link" href="#%s">%s</a></li>', urlencode($item['name']) . $item['rand'], urlencode($item['name']) . $item['rand'], '<span class="mr-2 directory-num">' . $num . '</span>' . $item['name']);
         if (isset($item['children']) && count($item['children']) > 0) {
             $htmlStr .= renderArticleDirectory($item['children'], $num);
         }

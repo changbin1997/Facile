@@ -131,7 +131,7 @@ $components = explode(',', $components);
                     <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
                     <?php while ($category->next()): ?>
                         <li <?php if ($category->parent > 0) echo 'class="ml-3"'; ?>>
-                            <a title="<?php if ($category->parent > 0) echo getParentCategory($category->parent) . ' 下的子分类 ' ?><?php $category->description(); ?>" href="<?php $category->permalink(); ?>" data-toggle="tooltip" data-placement="top">
+                            <a rel="index" title="<?php if ($category->parent > 0) echo getParentCategory($category->parent) . ' 下的子分类 ' ?><?php $category->description(); ?>" href="<?php $category->permalink(); ?>" data-toggle="tooltip" data-placement="top">
                                 <?php echo $category->name(); ?>
                                 (<?php $category->count(); ?>)
                             </a>
@@ -177,7 +177,7 @@ $components = explode(',', $components);
                     <?php $postArchive = $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月'); ?>
                     <?php while ($postArchive->next()): ?>
                         <li class="float-xl-left float-lg-none float-md-left float-sm-left float-left mr-4">
-                            <a href="<?php $postArchive->permalink(); ?>" class="mr-2">
+                            <a rel="archives" href="<?php $postArchive->permalink(); ?>" class="mr-2">
                                 <?php $postArchive->date(); ?>
                                 (<?php $postArchive->count(); ?>)
                             </a>

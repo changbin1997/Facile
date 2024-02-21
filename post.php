@@ -48,7 +48,7 @@ $this->need('components/header.php');
                         </span>
                         <span class="ml-2" title="作者" data-toggle="tooltip" data-placement="top">
                             <i class="icon-user mr-2" aria-hidden="true"></i>
-                            <a href="<?php $this->author->permalink(); ?>" class="mr-2" title="作者：<?php $this->author(); ?>">
+                            <a rel="author" href="<?php $this->author->permalink(); ?>" class="mr-2" title="作者：<?php $this->author(); ?>">
                                 <?php $this->author(); ?>
                             </a>
                         </span>
