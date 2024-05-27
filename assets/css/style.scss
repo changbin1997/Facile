@@ -483,6 +483,16 @@ header {
   .protected {
     text-align: center;
   }
+  // 打赏二维码区域
+  #reward-qr .qr {
+    img {
+      max-width: 100%;
+    }
+  }
+  // 文章底部的交互按钮区域
+  .agree-share > div button:last-child {
+    margin-right: 0 !important;
+  }
 }
 
 // 点赞的效果样式

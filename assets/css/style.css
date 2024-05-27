@@ -683,6 +683,12 @@ header input[type=search]:focus {
 .post-page .protected {
   text-align: center;
 }
+.post-page #reward-qr .qr img {
+  max-width: 100%;
+}
+.post-page .agree-share > div button:last-child {
+  margin-right: 0 !important;
+}
 
 #agree-p {
   font-weight: 700;
@@ -1116,7 +1122,6 @@ header input[type=search]:focus {
     max-height: 80px;
     overflow-y: hidden;
   }
-
   .post-page .post-title {
     font-size: 28px;
     font-weight: 700;
@@ -1137,7 +1142,6 @@ header input[type=search]:focus {
     max-height: 60px;
     overflow-y: hidden;
   }
-
   .post-page .post-title {
     font-size: 28px;
     font-weight: 700;
@@ -1149,7 +1153,6 @@ header input[type=search]:focus {
   .post-page .post-title a:hover {
     text-decoration: none;
   }
-
   #comments .comments-lists .comment-children {
     margin-left: 21px;
   }
@@ -1159,7 +1162,6 @@ header input[type=search]:focus {
   #comments #emoji-panel {
     width: 93% !important;
   }
-
   .load-img {
     height: 200px !important;
   }
@@ -1405,9 +1407,9 @@ header input[type=search]:focus {
     color: rgba(0, 0, 0, 0.3);
   }
   .auto-color header .navbar .navbar-nav .show > .nav-link,
-.auto-color header .navbar .navbar-nav .active > .nav-link,
-.auto-color header .navbar .navbar-nav .nav-link.show,
-.auto-color header .navbar .navbar-nav .nav-link.active {
+  .auto-color header .navbar .navbar-nav .active > .nav-link,
+  .auto-color header .navbar .navbar-nav .nav-link.show,
+  .auto-color header .navbar .navbar-nav .nav-link.active {
     color: rgba(0, 0, 0, 0.9);
   }
   .auto-color header .navbar .navbar-toggler {
@@ -2127,9 +2129,9 @@ header input[type=search]:focus {
     color: rgba(255, 255, 255, 0.25);
   }
   .auto-color header .navbar .navbar-nav .show > .nav-link,
-.auto-color header .navbar .navbar-nav .active > .nav-link,
-.auto-color header .navbar .navbar-nav .nav-link.show,
-.auto-color header .navbar .navbar-nav .nav-link.active {
+  .auto-color header .navbar .navbar-nav .active > .nav-link,
+  .auto-color header .navbar .navbar-nav .nav-link.show,
+  .auto-color header .navbar .navbar-nav .nav-link.active {
     color: #fff;
   }
   .auto-color header .navbar .navbar-toggler {

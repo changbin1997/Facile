@@ -9,6 +9,10 @@ if (isset($_POST['agree'])) {
     exit('error');
 }
 
+// 获取文章底部交互区域的按钮设置
+$engagementSection = str_replace(' ', '', $this->options->engagementSection);
+if ($engagementSection != '') $engagementSection = explode(',', $engagementSection);
+
 $this->need('components/header.php');
 ?>
 
@@ -110,39 +114,63 @@ $this->need('components/header.php');
                         </div>
                     </div>
                 </article>
-                <div class="agree-share mb-4">
-                    <div class="text-center">
-                        <?php $agree = $this->hidden?array('agree' => 0, 'recording' => true):agreeNum($this->cid); ?>
-                        <button type="button" class="btn btn-sm agree-btn" <?php if ($agree['recording']) echo 'disabled'; ?> data-cid="<?php echo $this->cid; ?>" data-url="<?php $this->permalink(); ?>">
-                            <i class="icon-thumbs-up"></i>
-                            <span class="agree-num">赞 <?php echo $agree['agree']; ?></span>
-                        </button>
-                        <span class="pl-2"></span>
-                        <button type="button" class="btn btn-sm" data-toggle="collapse" data-target="#qr-link" aria-expanded="false" aria-controls="collapseExample">
-                            <i class="icon-share2"></i>
-                            <span>分享</span>
-                        </button>
-                    </div>
-                    <div class="collapse" id="qr-link">
-                        <div class="mt-4 qr-link">
-                            <p class="text-center mb-2">用手机扫描下方二维码可在手机上浏览和分享</p>
-                            <div class="text-center">
-                                <canvas id="qr" class="mb-1" aria-label="文章二维码"></canvas>
-                                <div class="link-box">
-                                    <a href="https://service.weibo.com/share/share.php?url=<?php $this->permalink(); ?>&title=<?php $this->title(); ?>" target="_blank" rel="external nofollow" aria-label="分享到新浪微博" title="分享到新浪微博" data-toggle="tooltip" data-placement="top">
-                                        <i class="icon-sina-weibo mr-1"></i>
-                                    </a>
-                                    <a class="text-info" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=<?php $this->permalink(); ?>&title=<?php $this->title(); ?>&site=<?php $this->options->siteUrl(); ?>&summary=<?php $this->fields->summaryContent?$this->fields->summaryContent():$this->excerpt($this->options->summary, '...'); ?>" target="_blank" rel="external nofollow" aria-label="分享到QQ空间" title="分享到QQ空间" data-toggle="tooltip" data-placement="top">
-                                        <i class="icon-qzone-logo mr-1"></i>
-                                    </a>
-                                    <a class="text-info" href="https://twitter.com/intent/tweet?url=<?php $this->permalink(); ?>&text=<?php $this->title(); ?>" target="_blank" rel="external nofollow" aria-label="分享到Twitter" title="分享到Twitter" data-toggle="tooltip" data-placement="top">
-                                        <i class="icon-twitter mr-1"></i>
-                                    </a>
+                <?php if ($engagementSection != ''): ?>
+                    <div class="agree-share mb-4">
+                        <div class="text-center">
+                            <?php foreach ($engagementSection as $val): ?>
+                                <?php if ($val == '点赞'): ?>
+                                    <?php $agree = $this->hidden?array('agree' => 0, 'recording' => true):agreeNum($this->cid); ?>
+                                    <button type="button" class="btn btn-sm agree-btn mr-2" <?php if ($agree['recording']) echo 'disabled'; ?> data-cid="<?php echo $this->cid; ?>" data-url="<?php $this->permalink(); ?>">
+                                        <i class="icon-thumbs-up"></i>
+                                        <span class="agree-num">赞 <?php echo $agree['agree']; ?></span>
+                                    </button>
+                                <?php endif; ?>
+                                <?php if ($val == '打赏'): ?>
+                                    <button type="button" class="btn btn-sm mr-2" data-toggle="collapse" data-target="#reward-qr" aria-expanded="false">
+                                        <i class="icon-coffee"></i>
+                                        <span>打赏</span>
+                                    </button>
+                                <?php endif; ?>
+                                <?php if ($val == '分享'): ?>
+                                    <button type="button" class="btn btn-sm mr-2" data-toggle="collapse" data-target="#qr-link" aria-expanded="false" aria-controls="collapseExample">
+                                        <i class="icon-share2"></i>
+                                        <span>分享</span>
+                                    </button>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </div>
+                        <?php if (in_array('打赏', $engagementSection)): ?>
+                            <!--打赏二维码-->
+                            <div class="collapse" id="reward-qr">
+                                <div class="mt-4 text-center qr">
+                                    <img src="<?php $this->options->rewardQr(); ?>" alt="二维码">
                                 </div>
                             </div>
-                        </div>
+                        <?php endif; ?>
+                        <?php if (in_array('分享', $engagementSection)): ?>
+                            <!--分享区域-->
+                            <div class="collapse" id="qr-link">
+                                <div class="mt-4 qr-link">
+                                    <p class="text-center mb-2">用手机扫描下方二维码可在手机上浏览和分享</p>
+                                    <div class="text-center">
+                                        <canvas id="qr" class="mb-1" aria-label="文章二维码"></canvas>
+                                        <div class="link-box">
+                                            <a href="https://service.weibo.com/share/share.php?url=<?php $this->permalink(); ?>&title=<?php $this->title(); ?>" target="_blank" rel="external nofollow" aria-label="分享到新浪微博" title="分享到新浪微博" data-toggle="tooltip" data-placement="top">
+                                                <i class="icon-sina-weibo mr-1"></i>
+                                            </a>
+                                            <a class="text-info" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=<?php $this->permalink(); ?>&title=<?php $this->title(); ?>&site=<?php $this->options->siteUrl(); ?>&summary=<?php $this->fields->summaryContent?$this->fields->summaryContent():$this->excerpt($this->options->summary, '...'); ?>" target="_blank" rel="external nofollow" aria-label="分享到QQ空间" title="分享到QQ空间" data-toggle="tooltip" data-placement="top">
+                                                <i class="icon-qzone-logo mr-1"></i>
+                                            </a>
+                                            <a class="text-info" href="https://twitter.com/intent/tweet?url=<?php $this->permalink(); ?>&text=<?php $this->title(); ?>" target="_blank" rel="external nofollow" aria-label="分享到Twitter" title="分享到Twitter" data-toggle="tooltip" data-placement="top">
+                                                <i class="icon-twitter mr-1"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
                     </div>
-                </div>
+                <?php endif; ?>
                 <div class="post-navigation border-top border-bottom py-4">
                     <nav class="row">
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 previous">
