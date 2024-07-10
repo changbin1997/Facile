@@ -4,7 +4,7 @@ $GLOBALS['page'] = '404';
 $this->need('components/header.php');
 ?>
 
-<div class="container main page-404">
+<div class="container main page-404" id="main">
     <div class="mt-5" role="alert" aria-labelledby="page-title" aria-describedby="page-info">
         <h1 class="text-404 text-center" id="page-title">404</h1>
         <h3 class="text-center" id="page-info">您访问的页面不存在！</h3>

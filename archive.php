@@ -4,7 +4,7 @@ $GLOBALS['page'] = 'archive';
 $this->need('components/header.php');
 ?>
 
-<div class="container main">
+<div class="container main" id="main">
     <div class="row mt-4">
         <div class="col-xl-8 col-lg-8 post-list">
             <?php if ($this->options->breadcrumb == 'on'): ?>

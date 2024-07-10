@@ -1,5 +1,5 @@
 window.addEventListener('load', function() {
-  var title = ['外观', '站点信息', '导航', '侧边栏', '文章相关', '评论', '友情链接', '开发者'];  // 组标题
+  var title = ['外观', '站点信息', '导航', '侧边栏', '文章相关', '评论', '友情链接', 'PJAX', '开发者'];  // 组标题
   var ul = document.querySelectorAll('form ul');  // 列表
   var form = document.querySelector('.typecho-page-main form');
   var titleEl = [];
@@ -25,7 +25,8 @@ window.addEventListener('load', function() {
   form.insertBefore(titleEl[4], ul[16]);  // 文章相关
   form.insertBefore(titleEl[5], ul[29]);  // 评论
   form.insertBefore(titleEl[6], ul[33]);  // 友链
-  form.insertBefore(titleEl[7], ul[36]);  // 开发者
+  form.insertBefore(titleEl[7], ul[36]);  // PJAX
+  form.insertBefore(titleEl[8], ul[39]);  // 开发者
 
   // 导出配置按钮点击
   document.querySelector('#export-btn').addEventListener('click', function() {

@@ -9,7 +9,7 @@ $GLOBALS['page'] = 'page-data';
 $this->need('components/header.php');
 ?>
 
-<div class="container main">
+<div class="container main" id="main">
     <div class="row my-4">
         <div class="col-xl-8 col-lg-8 post-page statistics-page mb-5 mb-sm-5 mb-md-5 mb-lg-0 mb-xl-0">
             <?php if ($this->options->breadcrumb == 'on'): ?>
@@ -172,12 +172,14 @@ $this->need('components/header.php');
         </div>
         <?php $this->need('components/sidebar.php'); ?>
     </div>
+    <script type="text/javascript">
+      var data = {
+        post: <?php echo json_encode(postCalendar(time() - 20736000, time())); ?>,
+        comment: <?php echo json_encode(commentCalendar(time() - 20736000, time())); ?>,
+        category: <?php echo json_encode(categoryPostCount()); ?>
+      };
+    </script>
+    <?php $id = $this->options->pjax == 'on' ? '?id=' . mt_rand(1, 99999) : ''; ?>
+    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/ECharts.js'); ?><?php echo $id; ?>"></script>
 </div>
-<script type="text/javascript">
-  var data = {
-    post: <?php echo json_encode(postCalendar(time() - 20736000, time())); ?>,
-    comment: <?php echo json_encode(commentCalendar(time() - 20736000, time())); ?>,
-    category: <?php echo json_encode(categoryPostCount()); ?>
-  };
-</script>
 <?php $this->need('components/footer.php'); ?>

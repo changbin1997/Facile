@@ -304,6 +304,20 @@ header input[type=search]:focus {
   box-shadow: none;
 }
 
+#progress-bar {
+  width: 100%;
+  height: 3px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #E0E0E0;
+  z-index: 2000;
+}
+#progress-bar #progress {
+  height: 100%;
+  width: 0;
+}
+
 .breadcrumb-nav .breadcrumb {
   background: none;
 }
@@ -449,6 +463,15 @@ header input[type=search]:focus {
 }
 .post-list .fullText table td, .post-list .fullText table th {
   min-width: 90px;
+}
+.post-list .fullText .table-responsive {
+  margin-bottom: 20px;
+}
+.post-list .fullText .table-responsive table {
+  margin-bottom: 0;
+}
+.post-list .fullText pre {
+  margin-bottom: 20px;
 }
 
 #to-top-btn {
@@ -644,6 +667,15 @@ header input[type=search]:focus {
 }
 .post-page article .post-content table td, .post-page article .post-content table th {
   min-width: 90px;
+}
+.post-page article .post-content .table-responsive {
+  margin-bottom: 20px;
+}
+.post-page article .post-content .table-responsive table {
+  margin-bottom: 0;
+}
+.post-page article .post-content pre {
+  margin-bottom: 20px;
 }
 .post-page article .post-content .load-img {
   width: 100%;
@@ -985,6 +1017,15 @@ header input[type=search]:focus {
 }
 #comments .comments-lists .comment-content table td, #comments .comments-lists .comment-content table th {
   min-width: 90px;
+}
+#comments .comments-lists .comment-content .table-responsive {
+  margin-bottom: 20px;
+}
+#comments .comments-lists .comment-content .table-responsive table {
+  margin-bottom: 0;
+}
+#comments .comments-lists .comment-content pre {
+  margin-bottom: 20px;
 }
 #comments .comments-lists .comment-content p {
   margin-top: 0;
