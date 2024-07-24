@@ -20,8 +20,15 @@ $components = explode(',', $components);
                 <div>
                     <?php if (!$this->options->nickname or !$this->options->birthday or !$this->options->avatarUrl) $userInfo = getAdminInfo(); ?>
                     <div class="blog-user-info">
-                        <img src="<?php $this->options->avatarUrl?$this->options->avatarUrl():gravatarUrl($userInfo['mail'], 56); ?>" alt="<?php echo $this->options->nickname?$this->options->nickname . '的头像':$this->options->title . '的头像'; ?>" class="avatar mr-3">
-                        <div class="blog-text-info">
+                        <?php
+                            $avatarName = $this->options->nickname?$this->options->nickname . '的头像':$this->options->title . '的头像';
+                            if ($this->options->avatarUrl) {
+                                echo '<img src="' . $this->options->avatarUrl . '" alt="' . $avatarName . '" class="avatar" />';
+                            }else {
+                                gravatar($userInfo['mail'], 56, $this->options->gravatarUrl, $avatarName);
+                            }
+                        ?>
+                        <div class="blog-text-info ml-3">
                             <h5 class="mb-1"><a href="<?php echo $this->options->nicknameUrl?$this->options->nicknameUrl:$this->options->siteUrl; ?>" target="_blank"><?php echo $this->options->nickname?$this->options->nickname:$userInfo['screenName']; ?></a></h5>
                             <p class="m-0"><?php echo $this->options->Introduction?$this->options->Introduction:$this->options->description; ?></p>
                         </div>
@@ -101,14 +108,14 @@ $components = explode(',', $components);
                     <?php while($comments->next()): ?>
                         <li class="media mb-2">
                             <?php
-                            if ($this->options->QQAvatar == 'show' && isQQEmail($comments->mail)) {
-                                QQAvatar($comments->mail, $comments->author, 40);
-                            }else {
-                                $comments->gravatar('50', '');
-                            }
-                            if ($comments->type == 'pingback') {
-                                echo '<div class="pingback avatar" role="img" aria-label="引用">引用</div>';
-                            }
+                                if ($this->options->QQAvatar == 'show' && isQQEmail($comments->mail)) {
+                                    QQAvatar($comments->mail, $comments->author, 40);
+                                }else {
+                                    gravatar($comments->mail, 50, $this->options->gravatarUrl, $comments->author);
+                                }
+                                if ($comments->type == 'pingback') {
+                                    echo '<div class="pingback avatar" role="img" aria-label="引用">引用</div>';
+                                }
                             ?>
                             <div class="media-body">
                                 <h5 class="mb-0 text-truncate">

@@ -2,6 +2,7 @@
 
 $GLOBALS['commentDateFormat'] = $this->options->commentDateFormat;  // 获取日期格式设置
 $GLOBALS['QQAvatar'] = $this->options->QQAvatar;  // 获取QQ头像设置
+$GLOBALS['gravatarUrl'] = $this->options->gravatarUrl;  // 获取自定义 gravatar
 
 function threadedComments($comments, $options) {
     $commentClass = '';
@@ -29,11 +30,13 @@ function threadedComments($comments, $options) {
         <div id="<?php $comments->theId(); ?>" class="comment-box">
             <div class="comment-author clearfix">
                 <?php
+                // 普通评论头像
                 if ($GLOBALS['QQAvatar'] == 'show' && isQQEmail($comments->mail)) {
                     QQAvatar($comments->mail, $comments->author, 40);
                 }else {
-                    $comments->gravatar('50', '');
+                    gravatar($comments->mail, 50, $GLOBALS['gravatarUrl'], $comments->author);
                 }
+                // 引用头像
                 if ($comments->type == 'pingback') {
                     echo '<div class="pingback avatar" role="img" aria-label="引用">引用</div>';
                 }

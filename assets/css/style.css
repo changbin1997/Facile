@@ -473,6 +473,9 @@ header input[type=search]:focus {
 .post-list .fullText pre {
   margin-bottom: 20px;
 }
+.post-list .fullText video {
+  width: 100%;
+}
 
 #to-top-btn {
   position: fixed;
@@ -676,6 +679,9 @@ header input[type=search]:focus {
 }
 .post-page article .post-content pre {
   margin-bottom: 20px;
+}
+.post-page article .post-content video {
+  width: 100%;
 }
 .post-page article .post-content .load-img {
   width: 100%;
@@ -1026,6 +1032,9 @@ header input[type=search]:focus {
 }
 #comments .comments-lists .comment-content pre {
   margin-bottom: 20px;
+}
+#comments .comments-lists .comment-content video {
+  width: 100%;
 }
 #comments .comments-lists .comment-content p {
   margin-top: 0;

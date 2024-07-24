@@ -757,7 +757,7 @@ $(function () {
     }
   }
 
-// 图片灯箱初始化
+  // 图片灯箱初始化
   function imageLightboxInit() {
     let imgWH = '';  // 记录图片的宽高
     let imgDirection = 0;  // 图片方向
@@ -1009,7 +1009,7 @@ $(function () {
     }
   }
 
-// 代码高亮初始化
+  // 代码高亮初始化
   function codeHighlightInit() {
     const codeLineNum = $('.post-content').attr('data-code-line-num');
 

@@ -214,6 +214,9 @@ EOT;
         'hide' => '不显示'
     ), 'hide', _t('显示评论者的QQ头像'), _t('开启后如果检测到评论者使用QQ邮箱就会显示QQ头像，只支持 QQ号@qq.com 的QQ邮箱。')));
 
+    // 自定义 Gravatar 地址
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('gravatarUrl', null, '', _t('自定义 Gravatar 源'), _t('Gravatar 头像服务在有些地区可能无法正常使用，如果你需要更换 Gravatar 源的话，可以在这里输入 URL，留空会使用官方源。')));
+
     //  启用 Emoji 面板
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('emojiPanel', array(
         'show' => '启用',
@@ -734,8 +737,12 @@ function replaceImgSrc($content) {
 }
 
 // 获取 Gravatar 头像
-function gravatarUrl($email, $size) {
-    echo 'https://www.gravatar.com/avatar/' . md5(strtolower(trim($email))) . '?s=' . $size;
+function gravatar($email, $size, $gravatarUrl = '', $alt = '') {
+    $url = $gravatarUrl . md5(strtolower(trim($email))) . '?s=' . $size;
+    if ($gravatarUrl == '' or $gravatarUrl == null) {
+        $url = 'https://www.gravatar.com/avatar/' . md5(strtolower(trim($email))) . '?s=' . $size;
+    }
+    echo '<img src="' . $url . '" alt="' . $alt . '" class="avatar" />';
 }
 
 // 获取管理员信息
