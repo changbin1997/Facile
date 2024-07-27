@@ -21,12 +21,12 @@ window.addEventListener('load', function() {
   form.insertBefore(titleEl[0], ul[0]);  // 外观
   form.insertBefore(titleEl[1], ul[1]);  // 站点信息
   form.insertBefore(titleEl[2], ul[4]);  // 导航
-  form.insertBefore(titleEl[3], ul[5]);  // 侧边栏
-  form.insertBefore(titleEl[4], ul[16]);  // 文章相关
-  form.insertBefore(titleEl[5], ul[29]);  // 评论
-  form.insertBefore(titleEl[6], ul[34]);  // 友链
-  form.insertBefore(titleEl[7], ul[37]);  // PJAX
-  form.insertBefore(titleEl[8], ul[40]);  // 开发者
+  form.insertBefore(titleEl[3], ul[8]);  // 侧边栏
+  form.insertBefore(titleEl[4], ul[19]);  // 文章相关
+  form.insertBefore(titleEl[5], ul[32]);  // 评论
+  form.insertBefore(titleEl[6], ul[37]);  // 友链
+  form.insertBefore(titleEl[7], ul[40]);  // PJAX
+  form.insertBefore(titleEl[8], ul[43]);  // 开发者
 
   // 导出配置按钮点击
   document.querySelector('#export-btn').addEventListener('click', function() {

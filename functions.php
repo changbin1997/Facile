@@ -76,7 +76,7 @@ EOT;
     ), 'auto-color', _t('默认主题配色'), _t('主题配色会优先使用访问者设置的配色，如果访问者没有更改过配色就会使用默认设置。主题配色设置组件可以在侧边栏组件设置中添加或删除。')));
 
     //  站点Logo
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('logoUrl', null, null, _t('站点 Logo 地址'), _t('Logo 是一个 ico 格式的 icon 图标，会显示在标签页的标题前面。')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('logoUrl', null, null, _t('站点 Logo icon 地址'), _t('Logo 是一个 ico 格式的 icon 图标，会显示在标签页的标题前面。')));
 
     //  站点副标题
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('tagline', null, '生命不息，折腾不止', _t('站点副标题'), _t('站点副标题会显示在标签页标题的后面。')));
@@ -89,6 +89,15 @@ EOT;
         'on' => '开启',
         'off' => '关闭'
     ), 'off', _t('面包屑导航'), _t('开启后会在导航栏下方显示路劲导航。')));
+
+    // 自定义导航栏链接
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('navLinks', null, null, _t('自定义导航栏链接'), _t('您可以在导航栏添加自定义链接，链接的名称和 URL 都可以自定义，导航栏链接需要使用 JSON 配置，格式为 <b style="color: #C7254E;"><code>[{"name": "链接名称1", "url": "http"}, {"name": "链接名称2", "url": "http"}]</code></b> 。')));
+
+    // 导航栏图片 logo
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('navLogoUrl', null, null, _t('站点 Logo 图片地址'), _t('站点 Logo 图片会显示在顶部导航栏的左侧，支持常见的图片格式，包括 SVG，只要能在 img 标签显示的图片都可以，留空会使用站点名称作为 Logo。')));
+
+    // 站点 logo 图片高度限制
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('navLogoHeight', null, '30', _t('站点 Logo 图片高度限制'), _t('如果您发现导航栏 Logo 图片尺寸较小或过大的话，可以调整 Logo 图片的高度，可以直接填入数字，不需要加 px。')));
 
     //  侧边栏组件顺序
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('sidebarComponent', null, '博客信息,主题配色,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接', _t('侧边栏组件'), _t('您可以设置需要显示在侧边栏的组件，组件会根据这里的组件名称排序。组件名称之间用英文逗号分隔，逗号和名称之间不需要空格，结尾不需要逗号。例如 <b style="color: #C7254E;">博客信息,主题配色,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接</b> 。自定义组件主要用于显示自定义 HTML，开启后需要在下方的 <b style="color: #C7254E;">侧边栏自定义 HTML 内容</b> 表单填写内容后才会显示。')));

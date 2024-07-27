@@ -28,6 +28,10 @@ $codeThemeColor = $this->options->codeThemeColor;
 if ($this->options->codeHighlight != 'enable-highlight') {
     $codeThemeColor = 'code-theme-none';
 }
+
+// 导航栏自定义链接
+$navLinks = null;
+if ($this->options->navLinks) $navLinks = json_decode($this->options->navLinks);
 ?>
 
 <!doctype html>
@@ -87,7 +91,13 @@ if ($this->options->codeHighlight != 'enable-highlight') {
 <header class="sticky-top">
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a>
+            <?php if ($this->options->navLogoUrl): ?>
+                <a class="navbar-brand" href="<?php $this->options->siteUrl(); ?>" title="<?php $this->options->title(); ?>">
+                    <img src="<?php $this->options->navLogoUrl(); ?>" alt="<?php $this->options->title(); ?>" height="<?php $this->options->navLogoHeight(); ?>">
+                </a>
+            <?php else: ?>
+                <a class="navbar-brand" href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a>
+            <?php endif; ?>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="导航菜单">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -98,12 +108,19 @@ if ($this->options->codeHighlight != 'enable-highlight') {
                     </li>
                     <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
                     <?php while($pages->next()): ?>
-                    <li class="nav-item <?php if ($this->is('page', $pages->slug)) echo 'active'; ?>">
-                        <a class="nav-link" href="<?php $pages->permalink(); ?>" <?php if ($this->is('page', $pages->slug)) echo 'aria-current="page"'; ?>>
-                            <?php $pages->title(); ?>
-                        </a>
-                    </li>
+                        <li class="nav-item <?php if ($this->is('page', $pages->slug)) echo 'active'; ?>">
+                            <a class="nav-link" href="<?php $pages->permalink(); ?>" <?php if ($this->is('page', $pages->slug)) echo 'aria-current="page"'; ?>>
+                                <?php $pages->title(); ?>
+                            </a>
+                        </li>
                     <?php endwhile; ?>
+                    <?php if ($this->options->navLinks && is_array($navLinks)): ?>
+                        <?php foreach ($navLinks as $link): ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo $link->url; ?>"><?php echo $link->name; ?></a>
+                            </li>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </ul>
                 <form class="form-inline my-2 my-lg-0" action="<?php $this->options->siteUrl(); ?>" method="post" role="search">
                     <div class="input-group">
