@@ -28,6 +28,11 @@ window.addEventListener('load', function() {
   form.insertBefore(titleEl[7], ul[40]);  // PJAX
   form.insertBefore(titleEl[8], ul[43]);  // 开发者
 
+  // 插入分隔线
+  titleEl.forEach(function(el) {
+    form.insertBefore(document.createElement('hr'), el);
+  });
+
   // 导出配置按钮点击
   document.querySelector('#export-btn').addEventListener('click', function() {
     var input = document.querySelectorAll('form input');  // 获取所有 input

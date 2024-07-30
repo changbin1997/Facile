@@ -698,25 +698,30 @@ $(function () {
       return false;
     });
 
-    // 移动设备的目录按钮点击
-    $('#directory-btn').on('click', () => {
-      if (!directory) {
-        $('#directory-mobile').css('display', 'flex');
-        $('#directory-mobile').animate({opacity: 1}, 250);
-        directory = true;
-      }else {
-        $('#directory-mobile').animate({opacity: 0}, 250, () => {
-          $('#directory-mobile').hide();
-        });
-        directory = false;
-      }
-      $('#directory-btn').attr('aria-expanded', directory);
-    });
+    // 如果开启了移动设备文章目录就给目录添加事件
+    if ($('#directory-mobile').length) {
+      // 重置目录状态
+      if (directory) directory = false;
+      // 移动设备的目录按钮点击
+      $('#directory-btn').on('click', () => {
+        if (!directory) {
+          $('#directory-mobile').css('display', 'flex');
+          $('#directory-mobile').animate({opacity: 1}, 250);
+          directory = true;
+        }else {
+          $('#directory-mobile').animate({opacity: 0}, 250, () => {
+            $('#directory-mobile').hide();
+          });
+          directory = false;
+        }
+        $('#directory-btn').attr('aria-expanded', directory);
+      });
 
-    // 移动设备的关闭目录按钮点击
-    $('#directory-mobile .close-btn').on('click', () => {
-      $('#directory-btn').click();
-    });
+      // 移动设备的关闭目录按钮点击
+      $('#directory-mobile .close-btn').on('click', () => {
+        $('#directory-btn').click();
+      });
+    }
   }
 
   // 调整侧边栏章节目录的尺寸
