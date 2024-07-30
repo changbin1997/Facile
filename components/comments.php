@@ -31,10 +31,12 @@ function threadedComments($comments, $options) {
             <div class="comment-author clearfix">
                 <?php
                 // 普通评论头像
-                if ($GLOBALS['QQAvatar'] == 'show' && isQQEmail($comments->mail)) {
-                    QQAvatar($comments->mail, $comments->author, 40);
-                }else {
-                    gravatar($comments->mail, 50, $GLOBALS['gravatarUrl'], $comments->author);
+                if ($comments->type == 'comment') {
+                    if ($GLOBALS['QQAvatar'] == 'show' && isQQEmail($comments->mail)) {
+                        QQAvatar($comments->mail, $comments->author, 40);
+                    }else {
+                        gravatar($comments->mail, 50, $GLOBALS['gravatarUrl'], $comments->author);
+                    }
                 }
                 // 引用头像
                 if ($comments->type == 'pingback') {

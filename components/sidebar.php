@@ -108,11 +108,15 @@ $components = explode(',', $components);
                     <?php while($comments->next()): ?>
                         <li class="media mb-2">
                             <?php
-                                if ($this->options->QQAvatar == 'show' && isQQEmail($comments->mail)) {
-                                    QQAvatar($comments->mail, $comments->author, 40);
-                                }else {
-                                    gravatar($comments->mail, 50, $this->options->gravatarUrl, $comments->author);
+                                // 普通评论头像
+                                if ($comments->type == 'comment') {
+                                    if ($this->options->QQAvatar == 'show' && isQQEmail($comments->mail)) {
+                                        QQAvatar($comments->mail, $comments->author, 40);
+                                    }else {
+                                        gravatar($comments->mail, 50, $this->options->gravatarUrl, $comments->author);
+                                    }
                                 }
+                                // 引用头像
                                 if ($comments->type == 'pingback') {
                                     echo '<div class="pingback avatar" role="img" aria-label="引用">引用</div>';
                                 }
