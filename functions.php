@@ -67,6 +67,7 @@ EOT;
     echo '<style type="text/css">';
     require_once 'assets/css/options-panel.css';
     echo '</style>';
+    require_once 'components/link-editor.php';
 
     // 主题配色
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('themeColor', array(
@@ -233,13 +234,13 @@ EOT;
     ), 'show', _t('Emoji 表情面板'), _t('开启后在评论内容输入框下方会出现一个 Emoji  表情按钮，点击可以打开表情面板。')));
 
     //  首页友链
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('homeLinks', null, null, _t('首页友情链接'), _t('首页友情链接只会显示在首页的侧边栏，需要 JSON 格式数据。 <a href="https://facile.misterma.com/%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE.html" target="_blank">点击查看友情链接设置说明</a>')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('homeLinks', null, null, _t('首页友情链接'), _t('首页友情链接只会显示在首页的侧边栏，需要 JSON 格式数据。 <a href="https://facile.misterma.com/%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE.html" target="_blank">点击查看友情链接设置说明</a>，你也可以使用链接编辑器编辑，无需手动输入 JSON。。 <button data-title="首页友情链接" data-name="homeLinks" type="button" class="btn show-link-editor">打开链接编辑器</button>')));
 
     //  全站友链
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('links', null, null, _t('全站友情链接'), _t('全站友情链接会在每个页面的侧边栏显示，需要 JSON 格式数据。<a href="https://facile.misterma.com/%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE.html" target="_blank">点击查看友情链接设置说明</a>')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('links', null, null, _t('全站友情链接'), _t('全站友情链接会在每个页面的侧边栏显示，需要 JSON 格式数据。<a href="https://facile.misterma.com/%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE.html" target="_blank">点击查看友情链接设置说明</a>，你也可以使用链接编辑器编辑，无需手动输入 JSON。 <button data-title="全站友情链接" data-name="links" type="button" class="btn show-link-editor">打开链接编辑器</button>')));
 
     //  独立页友链
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('pageLinks', null, null, _t('独立页友情链接'), _t('独立页友情链接只会在友情链接的页面显示，需要 JSON 格式 数据。如果要使用独立页友情链接需要创建一个独立页面，把 自定义模板设置为 <b style="color: #C7254E;">友情链接</b>。<a href="https://facile.misterma.com/%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE.html" target="_blank">点击查看友情链接设置说明</a>')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('pageLinks', null, null, _t('独立页友情链接'), _t('独立页友情链接只会在友情链接的页面显示，需要 JSON 格式 数据。如果要使用独立页友情链接需要创建一个独立页面，把 自定义模板设置为 <b style="color: #C7254E;">友情链接</b>。<a href="https://facile.misterma.com/%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE.html" target="_blank">点击查看友情链接设置说明</a>，你也可以使用链接编辑器编辑，无需手动输入 JSON。 <button data-title="独立页友情链接" data-name="pageLinks" type="button" class="btn show-link-editor">打开链接编辑器</button>')));
 
     // PJAX
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('pjax', array(
@@ -254,7 +255,7 @@ EOT;
     ), 'on', _t('PJAX进度条'), _t('PJAX 进度条会显示在页面顶部，在 PJAX 页面内容更新时，进度条会显示更新进度，更新完成后进度条会隐藏。禁用 PJAX 进度条不会影响 PJAX 功能。')));
 
     // PJAX更新完成后执行的代码
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('pjaxEnd', null, null, _t('PJAX 更新完成后要执行的 JS 代码'), _t('这里的 JS 代码会在页面内容更新完成后执行，你可以直接填写 JS 代码，不需要加 script 标签。')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('pjaxEnd', null, null, _t('PJAX 更新完成后要执行的 JS 代码'), _t('这里的 JS 代码会在页面内容更新完成后执行，你可以直接填写 JS 代码，不需要加 script 标签。<b style="color: #C7254E;">注意，使用 Webpack 打包的带 bundle 后缀的发行版不支持这个选项，只有 clone 项目和 Source code 支持！</b>')));
 
     //  自定义CSS
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('cssCode', null, null, _t('自定义 CSS'), _t('通过自定义 CSS 您可以很方便的设置页面样式，自定义 CSS 不会影响网站源代码。')));

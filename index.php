@@ -1,6 +1,6 @@
 <?php
 /**
- * 这是一套简洁的博客主题 <a href="https://www.misterma.com/archives/892/" target="_blank">点击查看使用说明</a>
+ * 这是一套简洁的博客主题 <a href="https://facile.misterma.com/" target="_blank">点击查看使用说明</a>
  *
  * @package Facile
  * @author Mr. Ma
