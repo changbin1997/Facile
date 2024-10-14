@@ -52,9 +52,9 @@ function threadedComments($comments, $options) {
                     <?php if ($comments->status != 'approved'): ?>
                         <span class="badge badge-dark" title="您的评论目前只有您自己能看到，审核通过后才会公开显示。" data-toggle="tooltip" data-placement="top">评论审核中</span>
                     <?php endif; ?>
-                    <span class="comment-time">
+                    <time class="comment-time" datetime="<?php echo date('c', $comments->date->timeStamp); ?>">
                         <?php echo dateFormat($comments->date->timeStamp, $GLOBALS['commentDateFormat']); ?>
-                    </span>
+                    </time>
                 </div>
                 <span class="comment-reply float-right" data-id="<?php $comments->theId(); ?>">
                     <?php $comments->reply('<i class="icon-undo2 mr-1"></i><span>回复</span>', 'active'); ?>

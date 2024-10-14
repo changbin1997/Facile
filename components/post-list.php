@@ -23,7 +23,7 @@ while ($this->next()):
                 <div class="post-info mt-2">
                     <span class="ml-1" title="发布日期" data-toggle="tooltip" data-placement="top">
                         <i class="icon-calendar mr-2" aria-hidden="true"></i>
-                        <?php $this->date('Y年m月d日'); ?>
+                        <time datetime="<?php $this->date('c'); ?>"><?php $this->date('Y年m月d日'); ?></time>
                     </span>
                     <span class="ml-2" title="作者" data-toggle="tooltip" data-placement="top">
                         <i class="icon-user mr-2" aria-hidden="true"></i>
