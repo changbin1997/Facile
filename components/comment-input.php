@@ -5,7 +5,10 @@
     <form method="post" action="<?php $this->commentUrl() ?>" id="comment-form" role="form">
         <div class="row">
             <div class="col-12">
-                <label for="textarea" class="d-block">评论内容</label>
+                <label for="textarea" class="d-block">
+                    <?php _e('评论内容'); ?>
+                    <span class="required">*</span>
+                </label>
                 <textarea name="text" id="textarea" placeholder="请在此处输入评论内容" class="form-control" required></textarea>
             </div>
             <!--Emoji表情区域-->
@@ -42,18 +45,31 @@
             <?php else: ?>
                 <!--姓名输入-->
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                    <label for="author" class="d-block">姓名</label>
+                    <label for="author" class="d-block">
+                        <?php _e('称呼'); ?>
+                        <span class="required">*</span>
+                    </label>
                     <input type="text" class="form-control" placeholder="请输入您的姓名或昵称" name="author" id="author" value="<?php $this->remember('author'); ?>" required>
                 </div>
                 <!--邮箱地址输入-->
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                    <label for="mail" class="d-block">电子邮件地址（不会公开）</label>
-                    <input type="email" class="form-control" placeholder="请输入您的电子邮件地址" name="mail" id="mail" value="<?php $this->remember('mail'); ?>" <?php if ($this->options->commentsRequireMail): ?> required <?php endif; ?>>
+                    <label for="mail" class="d-block">
+                        <?php _e('电子邮件地址'); ?>
+                        <?php if ($this->options->commentsRequireMail): ?>
+                            <span class="required">*</span>
+                        <?php endif; ?>
+                    </label>
+                    <input type="email" class="form-control" placeholder="请输入您的电子邮件地址（不会公开）" name="mail" id="mail" value="<?php $this->remember('mail'); ?>" <?php if ($this->options->commentsRequireMail) echo 'required'; ?>>
                 </div>
                 <!--网站地址输入-->
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                    <label for="url" class="d-block">网站（选填）</label>
-                    <input type="url" class="form-control" placeholder="请输入您的网站或博客地址" name="url" id="url" value="<?php $this->remember('url'); ?>" <?php if ($this->options->commentsRequireURL): ?> required <?php endif; ?>>
+                    <label for="url" class="d-block">
+                        <?php _e('网站'); ?>
+                        <?php if ($this->options->commentsRequireURL): ?>
+                            <span class="required">*</span>
+                        <?php endif; ?>
+                    </label>
+                    <input type="url" class="form-control" placeholder="请输入您的网站或博客地址" name="url" id="url" value="<?php $this->remember('url'); ?>" <?php if ($this->options->commentsRequireURL) echo 'required'; ?>>
                 </div>
             <?php endif; ?>
             <div class="col-12">
