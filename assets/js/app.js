@@ -15,6 +15,7 @@ $(function () {
   const avatarName = [];  // 存储文字头像名称
   let directoryTop = 0;  // 侧边栏章节目录的高度
   let commentParentId = null;  // 存储父评论的id，用于PJAX评论提交后跳转
+  let themeColor = 'light';  // 存储主题配色
 
   // 主题配色初始化
   themeColorInit();
@@ -40,14 +41,14 @@ $(function () {
   // Emoji 面板初始化
   emojiInit();
 
+  // 一些可访问性相关的功能初始化
+  accessibilityInit();
+
   // bootstrap 的一些样式初始化
   bootstrapStyleInit();
 
   // 文章内的章节目录跳转样式
   directoryStyleInit();
-
-  // 一些可访问性相关的功能初始化
-  accessibilityInit();
 
   // 生成文章的分享二维码
   shareQrCode();
@@ -307,12 +308,12 @@ $(function () {
       likeInit();
       // Emoji 面板初始化
       emojiInit();
+      // 一些可访问性相关的功能初始化
+      accessibilityInit();
       // 初始化 bootstrap 的一些样式
       bootstrapStyleInit();
       // 主题配色初始化
       themeColorInit();
-      // 一些可访问性相关的功能初始化
-      accessibilityInit();
       // 给 PJAX 链接添加 class
       pjaxLinkInit();
       // 生成文章的分享二维码
@@ -406,61 +407,67 @@ $(function () {
 
     // 回复对象名字鼠标移入和移出
     $('#comments .parent').hover(ev => {
-      $($(ev.target).attr('href') + ' .comment-content').css({
-        background: '#D0210E',
-        color: '#FFFFFF'
-      });
+      // 根据主题配色模式设置高亮的颜色
+      const commentItemBgColor = themeColor === 'dark' ? '#16161A' : '#F7E6D2';
+      $($(ev.target).attr('href')).css('background', commentItemBgColor);
     }, ev => {
-      $($(ev.target).attr('href') + ' .comment-content').css({
-        background: 'none',
-        color: '#212529'
+      $($(ev.target).attr('href')).css('background', 'none');
+    });
+
+    // 回复链接鼠标移入就高亮回复评论
+    $('#comments .comment-reply a').hover(ev => {
+      // 根据主题配色模式设置高亮的颜色
+      const commentItemBgColor = themeColor === 'dark' ? '#16161A' : '#F7E6D2';
+      $(ev.target).closest('.comment-box').css('background', commentItemBgColor);
+    }, ev => {
+      $(ev.target).closest('.comment-box').css('background', 'none');
+    });
+
+    // 给回复链接添加 title 描述
+    $('.comment-reply').each(function() {
+      const authorName = $(this).closest('.comment-box').find('.author a').text() ||
+          $(this).closest('.comment-box').find('.author').text();
+      $(this).find('a').attr({
+        title: `回复 ${authorName}`,
+        'data-toggle': 'tooltip',
+        'data-placement': 'top'
       });
     });
 
-    // 评论回复链接获取焦点
-    $('#comments .comment-reply a').on('focus', ev => {
-      const cid = $(ev.target).parent().attr('data-id');
-      $('#' + cid + ' .comment-content').css({
-        background: '#D0210E',
-        color: '#FFFFFF'
-      });
-    });
-
-    // 评论回复链接失去焦点
-    $('#comments .comment-reply a').on('blur', ev => {
-      const cid = $(ev.target).parent().attr('data-id');
-      $('#' + cid + ' .comment-content').css({
-        background: 'none',
-        color: '#212529'
-      });
-    });
+    // 给上一篇文章和下一篇文章的链接添加文字描述
+    $('.previous a').attr('aria-description', '上一篇');
+    $('.next a').attr('aria-description', '下一篇');
   }
 
   // 主题配色初始化
   function themeColorInit() {
+    // 获取主题当前的配色模式
+    if ($('.light-color').length) {
+      themeColor = 'light';
+    }else if ($('.dark-color').length) {
+      themeColor = 'dark';
+    }else {
+      // 检测系统配色模式
+      const darkColor = window.matchMedia('(prefers-color-scheme: dark)');
+      if (darkColor.matches) {
+        // 深色
+        themeColor = 'dark';
+      }else {
+        // 浅色
+        themeColor = 'light';
+      }
+    }
+
     // 根据当前使用的主题配色来设置侧边栏主题单选框的选中状态
     if ($('.change-color').length) {
-      // 浅色模式
-      if ($('.light-color').length) $('#light-color').attr('checked', true);
-      // 深色模式
-      if ($('.dark-color').length) $('#dark-color').attr('checked', true);
-      // 如果使用了跟随系统主题就检测系统主题的配色模式
-      if ($('.auto-color').length) {
-        const darkColor = window.matchMedia('(prefers-color-scheme: dark)');
-        if (darkColor.matches) {
-          // 深色
-          $('#dark-color').attr('checked', true);
-        }else {
-          // 浅色
-          $('#light-color').attr('checked', true);
-        }
-      }
+      themeColor === 'dark' ? $('#dark-color').attr('checked', true) : $('#light-color').attr('checked', true);
     }
 
     // 切换主题的单选框改变
     $('.change-theme-color').on('click', ev => {
       // 获取选中的颜色
       const color = $(ev.target).attr('id');
+      themeColor = color === 'dark-color' ? 'dark' : 'light';
       // 获取当前的时间戳
       let time = Date.parse(new Date());
       // 在当前的时间戳上 + 180天

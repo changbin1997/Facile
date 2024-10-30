@@ -29,8 +29,8 @@ $components = explode(',', $components);
                             }
                         ?>
                         <div class="blog-text-info ml-3">
-                            <h5 class="mb-1"><a href="<?php echo $this->options->nicknameUrl?$this->options->nicknameUrl:$this->options->siteUrl; ?>" target="_blank"><?php echo $this->options->nickname?$this->options->nickname:$userInfo['screenName']; ?></a></h5>
-                            <p class="m-0"><?php echo $this->options->Introduction?$this->options->Introduction:$this->options->description; ?></p>
+                            <h5 class="mb-1"><a aria-describedby="blog-description" href="<?php echo $this->options->nicknameUrl?$this->options->nicknameUrl:$this->options->siteUrl; ?>" target="_blank"><?php echo $this->options->nickname?$this->options->nickname:$userInfo['screenName']; ?></a></h5>
+                            <p id="blog-description" class="m-0"><?php echo $this->options->Introduction?$this->options->Introduction:$this->options->description; ?></p>
                         </div>
                     </div>
                     <hr>
