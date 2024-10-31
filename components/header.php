@@ -14,7 +14,6 @@ if (isset($_COOKIE['themeColor'])) {
 }else {
     // 如果不包含主题配色 cookie 就使用后台设置的默认配色
     $GLOBALS['color'] = $this->options->themeColor;
-
     // 如果设置了跟随系统主题并且浏览器是 IE
     if ($GLOBALS['color'] == 'auto-color' && isIE()) {
         // 默认使用浅色主题
@@ -32,6 +31,22 @@ if ($this->options->codeHighlight != 'enable-highlight') {
 // 导航栏自定义链接
 $navLinks = null;
 if ($this->options->navLinks) $navLinks = json_decode($this->options->navLinks);
+
+// body class
+$bodyClass = array(
+    // 代码高亮主题
+    $codeThemeColor,
+    // 开启代码高亮
+    $this->options->codeHighlight,
+    // 主题配色模式
+    $GLOBALS['color']
+);
+// 如果启用了代码高亮就添加代码块行号显示设置
+if ($this->options->codeHighlight == 'enable-highlight') {
+    $bodyClass[] = 'line-num-' . $this->options->codeLineNum;
+}
+// 把 body class 数组转为 string，方便直接输出
+$bodyClass = implode(' ', $bodyClass);
 ?>
 
 <!doctype html>
@@ -82,7 +97,7 @@ if ($this->options->navLinks) $navLinks = json_decode($this->options->navLinks);
         <?php $this->options->headHTML(); ?>
     <?php endif; ?>
 </head>
-<body class="<?php echo $codeThemeColor; ?> <?php $this->options->codeHighlight(); ?> <?php echo $GLOBALS['color']; ?>" data-color="<?php echo $GLOBALS['color']; ?>" data-pjax="<?php $this->options->pjax(); ?>">
+<body class="<?php echo $bodyClass; ?>" data-color="<?php echo $GLOBALS['color']; ?>" data-pjax="<?php $this->options->pjax(); ?>">
 <?php if ($this->options->pjax == 'on' && $this->options->pjaxProgressBar == 'on'): ?>
 <div id="progress-bar" style="display: none;">
     <div id="progress" class="bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>

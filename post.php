@@ -67,7 +67,7 @@ $this->need('components/header.php');
                         </span>
                         <?php endif; ?>
                     </div>
-                    <div class="post-content mt-4" data-code-line-num="<?php $this->options->codeLineNum(); ?>">
+                    <div class="post-content mt-4">
                         <?php if (is_numeric($this->fields->expired) && (int)$this->fields->expired > 0 && $this->created + (int)$this->fields->expired * 86400 < time()): ?>
                             <!--警示信息-->
                             <div class="alert expiration-reminder" role="alert">这篇文章发布于 <?php echo getDays($this->created, time()); ?> 天前，其中的信息可能已经有所发展或是发生改变！</div>

@@ -1043,11 +1043,11 @@ $(function () {
           hljs.highlightBlock($('pre code').eq(i).get(0));
 
           // 给代码块添加行号
-          if (codeLineNum === 'show') {
-            $('pre code').eq(i).css('padding-left', '54px');
-            const lineNumbers = Math.floor($('pre code').eq(i).height() / 24);
+          if ($('.line-num-show').length) {
+            // 获取代码行数
+            const lineCount = $('pre code').eq(i).html().split(/\r\n|\r|\n/).length;
             let lineNumbersEl = '';
-            for (let j = 0;j < lineNumbers;j ++) {
+            for (let j = 0;j < lineCount;j ++) {
               lineNumbersEl += `<div class="text-right">${j + 1}</div>`;
             }
             $('pre').eq(i).prepend(`<div class="line-box">${lineNumbersEl}</div>`);

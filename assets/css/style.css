@@ -278,7 +278,7 @@
   user-select: none;
 }
 .enable-highlight pre > code {
-  font-size: 16px;
+  font-size: 16px !important;
   white-space: pre;
   word-wrap: normal;
 }
@@ -289,11 +289,13 @@
 .enable-highlight pre > code::-webkit-scrollbar-thumb {
   background: #A8A8A8;
 }
-.enable-highlight .post-content[data-code-line-num=show] pre code {
-  padding: 12px 10px;
+
+.line-num-show pre code {
+  padding: 12px 10px 12px 54px !important;
 }
-.enable-highlight .post-content[data-code-line-num=hide] pre code {
-  padding: 12px 16px;
+
+.line-num-hide pre code {
+  padding: 12px 16px !important;
 }
 
 * {
