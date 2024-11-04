@@ -46,7 +46,7 @@ function threadedComments($comments, $options) {
                 <div class="comment-info float-left">
                     <b class="author"><?php $comments->author(); ?></b>
                     <?php if ($comments->authorId == $comments->ownerId): ?>
-                        <span class="badge badge-dark">作者</span>
+                        <span class="badge badge-dark author-tag">作者</span>
                     <?php endif; ?>
                     <?php echo reply($comments->parent); ?>
                     <?php if ($comments->status != 'approved'): ?>

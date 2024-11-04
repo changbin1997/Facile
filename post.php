@@ -174,13 +174,13 @@ $this->need('components/header.php');
                 <div class="post-navigation border-top border-bottom py-4">
                     <nav class="row">
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 previous">
-                            <div>上一篇</div>
+                            <div id="previous-post-text">上一篇</div>
                             <div class="text-truncate">
                                 <?php $this->thePrev('%s','没有了'); ?>
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 next">
-                            <div class="text-lg-right text-xl-right text-md-right">下一篇</div>
+                            <div class="text-lg-right text-xl-right text-md-right" id="next-post-text">下一篇</div>
                             <div class="text-lg-right text-xl-right text-md-right next-box text-truncate">
                                 <?php $this->theNext('%s','没有了'); ?>
                             </div>

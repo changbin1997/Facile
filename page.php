@@ -52,7 +52,7 @@ $this->need('components/header.php');
                         </span>
                             <?php endif; ?>
                         </div>
-                        <div class="post-content mt-4" data-code-line-num="<?php $this->options->codeLineNum(); ?>">
+                        <div class="post-content mt-4">
                             <?php $this->content(); ?>
                         </div>
                     </article>

@@ -72,7 +72,7 @@ $this->need('components/header.php');
                                 <?php echo postViews($this); ?>
                             </span>
                     </div>
-                    <div class="post-content mt-4" data-code-line-num="<?php $this->options->codeLineNum(); ?>">
+                    <div class="post-content mt-4">
                         <?php if (count($linkArr)): ?>
                             <?php foreach ($linkArr as $link): ?>
                                 <h2><?php echo $link['title']; ?></h2>

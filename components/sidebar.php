@@ -73,6 +73,7 @@ $components = explode(',', $components);
             </section>
         <?php endif; ?>
         <?php if ($component == '自定义' && $this->options->customizeHTML): ?>
+            <!--自定义HTML-->
             <section class="ml-xl-4 ml-lg-3 mb-5 customize">
                 <h2 class="mb-4"><?php $this->options->customizeTitle(); ?></h2>
                 <div class="customize-html"><?php $this->options->customizeHTML(); ?></div>
@@ -143,7 +144,7 @@ $components = explode(',', $components);
                     <?php while ($category->next()): ?>
                         <li <?php if ($category->parent > 0) echo 'class="ml-3"'; ?>>
                             <a rel="index" title="<?php if ($category->parent > 0) echo getParentCategory($category->parent) . ' 下的子分类 ' ?><?php $category->description(); ?>" href="<?php $category->permalink(); ?>" data-toggle="tooltip" data-placement="top">
-                                <?php echo $category->name(); ?>
+                                <?php $category->name(); ?>
                                 (<?php $category->count(); ?>)
                             </a>
                         </li>
@@ -176,8 +177,8 @@ $components = explode(',', $components);
                         <?php endwhile; ?>
                     </div>
                 <?php else: ?>
-                <p class="text-center pb-2"><?php _e('没有任何标签'); ?>
-                    <?php endif; ?>
+                    <p class="text-center pb-2"><?php _e('没有任何标签'); ?>
+                <?php endif; ?>
             </section>
         <?php endif; ?>
         <?php if ($component == '文章归档'): ?>
@@ -256,6 +257,7 @@ $components = explode(',', $components);
             <?php endif; ?>
         <?php endif; ?>
         <?php if ($component == '目录' && $GLOBALS['page'] == 'post' && $GLOBALS['post']['directory'] != null): ?>
+            <!--用于文章页的章节目录-->
             <section class="ml-xl-4 ml-lg-3 mb-5 directory d-none d-sm-none d-md-none d-lg-block d-xl-block">
                 <h2 class="mb-4">目录</h2>
                 <?php echo $GLOBALS['post']['directory']; ?>

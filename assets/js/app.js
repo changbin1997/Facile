@@ -435,8 +435,13 @@ $(function () {
     });
 
     // 给上一篇文章和下一篇文章的链接添加文字描述
-    $('.previous a').attr('aria-description', '上一篇');
-    $('.next a').attr('aria-description', '下一篇');
+    $('.previous a').attr('aria-describedby', 'previous-post-text');
+    $('.next a').attr('aria-describedby', 'next-post-text');
+
+    // 给评论区的作者评论链接添加作者 title
+    $('.author-tag').each(function() {
+      $(this).closest('.comment-info').find('.author a').attr('title', '作者');
+    });
   }
 
   // 主题配色初始化
