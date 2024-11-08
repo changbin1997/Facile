@@ -40,8 +40,10 @@ $this->need('components/header.php');
                         $mon = 0;
                         $i = 0;
                         $j = 0;
+                        $num = 0;
                         $output = '<div class="archives">';
                         while ($archives->next()) {
+                            $num++;
                             $year_tmp = date('Y', $archives->created);
                             $mon_tmp = date('m', $archives->created);
                             $y = $year;
@@ -57,7 +59,11 @@ $this->need('components/header.php');
                             }
                             $output .= '<li><span class="day">' . date('d日', $archives->created) . '</span><div class="timeline"></div><div class="link-box"><a href="' . $archives->permalink . '">' . $archives->title . '</a></div></li>'; //输出文章
                         }
-                        $output .= '</ul></div></div>';
+                        if ($num > 0) {
+                            $output .= '</ul></div></div>';
+                        } else {
+                            $output .= '</div>';
+                        }
                         echo $output;
                         ?>
                     </div>
