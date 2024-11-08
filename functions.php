@@ -447,16 +447,21 @@ function checkField() {
     $prefix = $db->getPrefix();
 
     // 检查阅读量字段是否存在
-    if (!array_key_exists('views', $db->fetchRow($db->select()->from('table.contents')))) {
+    if (!columnExists($db, $prefix . 'contents', 'views')) {
         // 在文章表中创建一个字段用来存储阅读量
         $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `views` INT(10) NOT NULL DEFAULT 0;');
     }
 
     // 检查点赞字段是否存在
-    if (!array_key_exists('agree', $db->fetchRow($db->select()->from('table.contents')))) {
+    if (!columnExists($db, $prefix . 'contents', 'agree')) {
         //  在文章表中创建一个字段用来存储点赞数量
         $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `agree` INT(10) NOT NULL DEFAULT 0;');
     }
+}
+
+//判断字段是否存在
+function columnExists($db,$table,$column) {
+    return in_array($column, array_column($db->query('PRAGMA table_info(' . $table . ');')->fetchAll(), 1));
 }
 
 //  设置文章阅读量
