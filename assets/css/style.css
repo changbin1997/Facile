@@ -1853,6 +1853,9 @@ header input[type=search]:focus {
 .dark-color .sidebar section li a {
   color: #D3D3D3;
 }
+.dark-color .sidebar section .message {
+  color: #D3D3D3;
+}
 .dark-color .sidebar .change-color label {
   color: #D3D3D3;
 }
@@ -2356,6 +2359,9 @@ header input[type=search]:focus {
     color: #D3D3D3;
   }
   .auto-color .sidebar section li a {
+    color: #D3D3D3;
+  }
+  .auto-color .sidebar section .message {
     color: #D3D3D3;
   }
   .auto-color .sidebar .change-color label {

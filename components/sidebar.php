@@ -83,21 +83,25 @@ $components = explode(',', $components);
             <!--最新文章-->
             <section class="ml-xl-4 ml-lg-3 mb-5">
                 <h2 class="mb-4">最新文章</h2>
-                <ul aria-label="最新文章">
-                    <?php $latestArticles = $this->widget('Widget_Contents_Post_Recent'); ?>
-                    <?php $postSize = 0; ?>
-                    <?php while ($latestArticles->next()): ?>
-                        <li>
-                            <a href="<?php $latestArticles->permalink(); ?>"><?php $latestArticles->title(); ?></a>
-                        </li>
-                        <?php
-                        $postSize ++;
-                        if ($postSize == $this->options->postsListSize) {
-                            break;
-                        }
-                        ?>
-                    <?php endwhile; ?>
-                </ul>
+                <?php $latestArticles = $this->widget('Widget_Contents_Post_Recent'); ?>
+                <?php $postSize = 0; ?>
+                <?php if ($latestArticles->have()): ?>
+                    <ul aria-label="最新文章">
+                        <?php while ($latestArticles->next()): ?>
+                            <li>
+                                <a href="<?php $latestArticles->permalink(); ?>"><?php $latestArticles->title(); ?></a>
+                            </li>
+                            <?php
+                            $postSize ++;
+                            if ($postSize == $this->options->postsListSize) {
+                                break;
+                            }
+                            ?>
+                        <?php endwhile; ?>
+                    </ul>
+                <?php else: ?>
+                    <p class="pb-2 message">没有可以显示的文章</p>
+                <?php endif; ?>    
             </section>
         <?php endif; ?>
         <?php if ($component == '最新回复'): ?>
@@ -106,32 +110,36 @@ $components = explode(',', $components);
                 <h2 class="mb-4">最新回复</h2>
                 <ul aria-label="最新回复" class="list-unstyled">
                     <?php $this->widget('Widget_Comments_Recent')->to($comments); ?>
-                    <?php while($comments->next()): ?>
-                        <li class="media mb-2">
-                            <?php
-                                // 普通评论头像
-                                if ($comments->type == 'comment') {
-                                    if ($this->options->QQAvatar == 'show' && isQQEmail($comments->mail)) {
-                                        QQAvatar($comments->mail, $comments->author, 40);
-                                    }else {
-                                        gravatar($comments->mail, 50, $this->options->gravatarUrl, $comments->author);
+                    <?php if ($comments->have()): ?>
+                        <?php while($comments->next()): ?>
+                            <li class="media mb-2">
+                                <?php
+                                    // 普通评论头像
+                                    if ($comments->type == 'comment') {
+                                        if ($this->options->QQAvatar == 'show' && isQQEmail($comments->mail)) {
+                                            QQAvatar($comments->mail, $comments->author, 40);
+                                        }else {
+                                            gravatar($comments->mail, 50, $this->options->gravatarUrl, $comments->author);
+                                        }
                                     }
-                                }
-                                // 引用头像
-                                if ($comments->type == 'pingback') {
-                                    echo '<div class="pingback avatar" role="img" aria-label="引用">引用</div>';
-                                }
-                            ?>
-                            <div class="media-body">
-                                <h5 class="mb-0 text-truncate">
-                                    <a href="<?php $comments->permalink(); ?>" title="发表在 <?php $comments->title(); ?> 的评论" data-toggle="tooltip" data-placement="top">
-                                        <?php $comments->author(false); ?>
-                                    </a>
-                                </h5>
-                                <p class="m-0"><?php $comments->excerpt(40, '...'); ?></p>
-                            </div>
-                        </li>
-                    <?php endwhile; ?>
+                                    // 引用头像
+                                    if ($comments->type == 'pingback') {
+                                        echo '<div class="pingback avatar" role="img" aria-label="引用">引用</div>';
+                                    }
+                                ?>
+                                <div class="media-body">
+                                    <h5 class="mb-0 text-truncate">
+                                        <a href="<?php $comments->permalink(); ?>" title="发表在 <?php $comments->title(); ?> 的评论" data-toggle="tooltip" data-placement="top">
+                                            <?php $comments->author(false); ?>
+                                        </a>
+                                    </h5>
+                                    <p class="m-0"><?php $comments->excerpt(40, '...'); ?></p>
+                                </div>
+                            </li>
+                        <?php endwhile; ?>
+                    <?php else: ?>    
+                        <p class="pb-2 message">没有可以显示的评论和回复</p>
+                    <?php endif; ?>    
                 </ul>
             </section>
         <?php endif; ?>
@@ -141,14 +149,18 @@ $components = explode(',', $components);
                 <h2 class="mb-4">文章分类</h2>
                 <ul aria-label="文章分类">
                     <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
-                    <?php while ($category->next()): ?>
-                        <li <?php if ($category->parent > 0) echo 'class="ml-3"'; ?>>
-                            <a rel="index" title="<?php if ($category->parent > 0) echo getParentCategory($category->parent) . ' 下的子分类 ' ?><?php $category->description(); ?>" href="<?php $category->permalink(); ?>" data-toggle="tooltip" data-placement="top">
-                                <?php $category->name(); ?>
-                                (<?php $category->count(); ?>)
-                            </a>
-                        </li>
-                    <?php endwhile; ?>
+                    <?php if ($category->have()): ?>
+                        <?php while ($category->next()): ?>
+                            <li <?php if ($category->parent > 0) echo 'class="ml-3"'; ?>>
+                                <a rel="index" title="<?php if ($category->parent > 0) echo getParentCategory($category->parent) . ' 下的子分类 ' ?><?php $category->description(); ?>" href="<?php $category->permalink(); ?>" data-toggle="tooltip" data-placement="top">
+                                    <?php $category->name(); ?>
+                                    (<?php $category->count(); ?>)
+                                </a>
+                            </li>
+                        <?php endwhile; ?>
+                    <?php else: ?>
+                        <p class="pb-2 message">没有可以显示的分类</p>
+                    <?php endif; ?>    
                 </ul>
             </section>
         <?php endif; ?>
@@ -177,7 +189,7 @@ $components = explode(',', $components);
                         <?php endwhile; ?>
                     </div>
                 <?php else: ?>
-                    <p class="text-center pb-2"><?php _e('没有任何标签'); ?>
+                    <p class="pb-2 message">没有可以显示的标签</p>
                 <?php endif; ?>
             </section>
         <?php endif; ?>
@@ -185,17 +197,21 @@ $components = explode(',', $components);
             <!--归档-->
             <section class="ml-xl-4 ml-lg-3 mb-5">
                 <h2 class="mb-4">文章归档</h2>
-                <ul aria-label="文章归档" class="clearfix">
-                    <?php $postArchive = $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月'); ?>
-                    <?php while ($postArchive->next()): ?>
-                        <li class="float-xl-left float-lg-none float-md-left float-sm-left float-left mr-4">
-                            <a rel="archives" href="<?php $postArchive->permalink(); ?>" class="mr-2">
-                                <?php $postArchive->date(); ?>
-                                (<?php $postArchive->count(); ?>)
-                            </a>
-                        </li>
-                    <?php endwhile; ?>
-                </ul>
+                <?php $postArchive = $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月'); ?>
+                <?php if ($postArchive->have()): ?>
+                    <ul aria-label="文章归档" class="clearfix">
+                        <?php while ($postArchive->next()): ?>
+                            <li class="float-xl-left float-lg-none float-md-left float-sm-left float-left mr-4">
+                                <a rel="archives" href="<?php $postArchive->permalink(); ?>" class="mr-2">
+                                    <?php $postArchive->date(); ?>
+                                    (<?php $postArchive->count(); ?>)
+                                </a>
+                            </li>
+                        <?php endwhile; ?>
+                    </ul>
+                <?php else: ?>
+                    <p class="pb-2 message">没有文章，无法生成文章归档</p>
+                <?php endif; ?>    
             </section>
         <?php endif; ?>
         <?php if ($component == '其它功能'): ?>

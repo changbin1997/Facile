@@ -18,10 +18,16 @@ $this->need('components/header.php');
 <div class="container main" id="main">
     <div class="row mt-4">
         <div class="col-xl-8 col-lg-8 post-list">
+            <?php if ($this->have()): ?>
             <?php $this->need('components/post-list.php'); ?>
             <nav class="page-nav my-5" aria-label="分页导航">
                 <?php $this->pageNav('<i class="icon-chevron-left"></i>', '<i class="icon-chevron-right"></i>', 1, '...', array('wrapTag' => 'ul', 'wrapClass' => 'pagination justify-content-center', 'itemTag' => 'li', 'textTag' => 'a', 'currentClass' => 'active', 'prevClass' => 'prev', 'nextClass' => 'next')); ?>
             </nav>
+            <?php else: ?>
+                <article class="no-content">
+                    <h4 class="text-center mb-3" role="alert">没有可以显示的文章</h4>
+                </article>
+            <?php endif; ?>    
         </div>
         <?php $this->need('components/sidebar.php'); ?>
     </div>

@@ -310,6 +310,9 @@ $dark-text-color2: #999999;
       li a {
         color: $dark-text-color;
       }
+      .message {
+        color: $dark-text-color;
+      }
     }
     // 切换配色模式区域
     .change-color label {
