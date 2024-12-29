@@ -566,6 +566,9 @@ header input[type=search]:focus {
 .sidebar .customize-html img {
   max-width: 100%;
 }
+.sidebar .archive ul li {
+  width: 120px;
+}
 
 .archive-title h1 {
   font-size: 16px;

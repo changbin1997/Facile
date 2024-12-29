@@ -10,6 +10,9 @@
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $GLOBALS['page'] = 'index';
+
+// 语言初始化
+languageInit($this->options->language);
 // 检查数据库字段
 checkField();
 $this->need('components/header.php');

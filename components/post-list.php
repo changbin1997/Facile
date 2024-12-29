@@ -17,21 +17,27 @@ while ($this->next()):
                 <h2 class="post-title m-0">
                     <?php $this->sticky(); ?>
                     <a href="<?php $this->permalink(); ?>" rel="bookmark">
-                        <?php $this->title(); ?>
+                        <?php
+                        if ($this->hidden) {
+                            echo $GLOBALS['t']['post']['thisPostIsPasswordProtected'];
+                        }else {
+                            $this->title();
+                        }
+                        ?>
                     </a>
                 </h2>
                 <div class="post-info mt-2">
-                    <span class="ml-1" title="发布日期" data-toggle="tooltip" data-placement="top">
+                    <span class="ml-1" title="<?php echo $GLOBALS['t']['post']['publicationDate']; ?>" data-toggle="tooltip" data-placement="top">
                         <i class="icon-calendar mr-2" aria-hidden="true"></i>
-                        <time datetime="<?php $this->date('c'); ?>"><?php $this->date('Y年m月d日'); ?></time>
+                        <time datetime="<?php $this->date('c'); ?>"><?php echo postDateFormat($this->created); ?></time>
                     </span>
-                    <span class="ml-2" title="作者" data-toggle="tooltip" data-placement="top">
+                    <span class="ml-2" title="<?php echo $GLOBALS['t']['post']['author']; ?>" data-toggle="tooltip" data-placement="top">
                         <i class="icon-user mr-2" aria-hidden="true"></i>
-                        <a href="<?php $this->author->permalink(); ?>" class="mr-2" title="作者：<?php $this->author(); ?>">
+                        <a href="<?php $this->author->permalink(); ?>" class="mr-2" title="<?php echo $GLOBALS['t']['post']['author']; ?>: <?php $this->author(); ?>">
                             <?php $this->author(); ?>
                         </a>
                     </span>
-                    <span class="ml-2" title="阅读量" data-toggle="tooltip" data-placement="top">
+                    <span class="ml-2" title="<?php echo $GLOBALS['t']['post']['views']; ?>" data-toggle="tooltip" data-placement="top">
                         <i class="icon-eye mr-2"></i>
                         <?php echo postViews($this); ?>
                     </span>
@@ -43,25 +49,31 @@ while ($this->next()):
                         <div class="col-xl-9 col-lg-9 col-md-9 col-sm-8 col-7 content-box">
                             <div class="summary-box">
                                 <p class="text-color">
-                                    <?php $this->fields->summaryContent?$this->fields->summaryContent():$this->excerpt($this->options->summary, '...'); ?>
+                                    <?php
+                                    if ($this->hidden) {
+                                        echo $GLOBALS['t']['post']['enterThePasswordToViewIt'];
+                                    }else {
+                                        $this->fields->summaryContent ? $this->fields->summaryContent() : $this->excerpt($this->options->summary, '...');
+                                    }
+                                    ?>
                                 </p>
                             </div>
                             <div class="more-link-wrapper">
                                 <div>
                                     <a href="<?php $this->permalink(); ?>" class="btn btn-sm mr-3 read-more">
-                                        阅读全文
+                                        <?php echo $GLOBALS['t']['post']['readMore']; ?>
                                         <i class="icon-arrow-right2"></i>
                                     </a>
                                     <a href="<?php $this->permalink() ?>#comments" class="comment-count">
                                         <i class="icon-bubble mr-1"></i>
-                                        <b><?php $this->commentsNum('%d 评论'); ?></b>
+                                        <b><?php $this->commentsNum('%d ' . $GLOBALS['t']['post']['comments']); ?></b>
                                     </a>
                                 </div>
                                 <?php if ($this->user->hasLogin()): ?>
                                     <div class="d-none d-sm-block d-md-block d-lg-block d-xl-block">
                                         <a href="<?php echo $this->options->siteUrl . 'admin/write-post.php?cid=' . $this->cid; ?>" class="float-right edit-link">
                                             <i class="icon-pencil mr-1"></i>
-                                            <b>编辑</b>
+                                            <b><?php echo $GLOBALS['t']['post']['edit']; ?></b>
                                         </a>
                                     </div>
                                 <?php endif; ?>
@@ -74,24 +86,30 @@ while ($this->next()):
                 <?php else: ?>
                     <div class="post-content mt-4">
                         <p class="text-color">
-                            <?php $this->fields->summaryContent?$this->fields->summaryContent():$this->excerpt($this->options->summary, '...'); ?>
+                            <?php
+                            if ($this->hidden) {
+                                echo $GLOBALS['t']['post']['enterThePasswordToViewIt'];
+                            }else {
+                                $this->fields->summaryContent ? $this->fields->summaryContent() : $this->excerpt($this->options->summary, '...');
+                            }
+                            ?>
                         </p>
                         <div class="more-link-wrapper">
                             <div>
                                 <a href="<?php $this->permalink(); ?>" class="btn btn-sm mr-3 read-more">
-                                    阅读全文
+                                    <?php echo $GLOBALS['t']['post']['readMore']; ?>
                                     <i class="icon-arrow-right2"></i>
                                 </a>
                                 <a href="<?php $this->permalink() ?>#comments" class="comment-count">
                                     <i class="icon-bubble mr-1"></i>
-                                    <b><?php $this->commentsNum('%d 评论'); ?></b>
+                                    <b><?php $this->commentsNum('%d ' . $GLOBALS['t']['post']['comments']); ?></b>
                                 </a>
                             </div>
                             <?php if ($this->user->hasLogin()): ?>
                                 <div class="d-none d-sm-block d-md-block d-lg-block d-xl-block">
                                     <a href="<?php echo $this->options->siteUrl . 'admin/write-post.php?cid=' . $this->cid; ?>" class="float-right edit-link">
                                         <i class="icon-pencil mr-1"></i>
-                                        <b>编辑</b>
+                                        <b><?php echo $GLOBALS['t']['post']['edit']; ?></b>
                                     </a>
                                 </div>
                             <?php endif; ?>
@@ -104,19 +122,19 @@ while ($this->next()):
                     <div class="more-link-wrapper">
                         <div>
                             <a href="<?php $this->permalink(); ?>" class="btn btn-sm mr-3 read-more">
-                                阅读全文
+                                <?php echo $GLOBALS['t']['post']['readMore']; ?>
                                 <i class="icon-arrow-right2"></i>
                             </a>
                             <a href="<?php $this->permalink() ?>#comments" class="comment-count">
                                 <i class="icon-bubble mr-1"></i>
-                                <b><?php $this->commentsNum('%d 评论'); ?></b>
+                                <b><?php $this->commentsNum('%d ' . $GLOBALS['t']['post']['comments']); ?></b>
                             </a>
                         </div>
                         <?php if ($this->user->hasLogin()): ?>
                             <div class="d-none d-sm-block d-md-block d-lg-block d-xl-block">
                                 <a href="<?php echo $this->options->siteUrl . 'admin/write-post.php?cid=' . $this->cid; ?>" class="float-right edit-link">
                                     <i class="icon-pencil mr-1"></i>
-                                    <b>编辑</b>
+                                    <b><?php echo $GLOBALS['t']['post']['edit']; ?></b>
                                 </a>
                             </div>
                         <?php endif; ?>

@@ -5,25 +5,29 @@
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $GLOBALS['page'] = 'page-links';
+
+// 语言初始化
+languageInit($this->options->language);
+
 $linkArr = array();
 //  是否包含内页链接
 if ($this->options->pageLinks) {
     array_push($linkArr, array(
-        'title' => '内页链接',
+        'title' => $GLOBALS['t']['linkPage']['linksOnDedicatedPageOnly'],
         'links' => json_decode($this->options->pageLinks)
     ));
 }
 //  是否包含首页链接
 if ($this->options->homeLinks) {
     array_push($linkArr, array(
-        'title' => '首页链接',
+        'title' => $GLOBALS['t']['linkPage']['linksOnHomepage'],
         'links' => json_decode($this->options->homeLinks)
     ));
 }
 //  是否包含全站链接
 if ($this->options->links) {
     array_push($linkArr, array(
-        'title' => '全站链接',
+        'title' => $GLOBALS['t']['linkPage']['linksOnAllPages'],
         'links' => json_decode($this->options->links)
     ));
 }
@@ -57,17 +61,17 @@ $this->need('components/header.php');
                         </div>
                     <?php endif; ?>
                     <div class="post-info mt-2">
-                        <span class="ml-1" title="发布日期" data-toggle="tooltip" data-placement="top">
+                        <span class="ml-1" title="<?php echo $GLOBALS['t']['post']['publicationDate']; ?>" data-toggle="tooltip" data-placement="top">
                                 <i class="icon-calendar mr-1" aria-hidden="true"></i>
-                                <time datetime="<?php $this->date('c'); ?>"><?php $this->date('Y年m月d日'); ?></time>
+                                <time datetime="<?php $this->date('c'); ?>"><?php echo postDateFormat($this->created); ?></time>
                             </span>
-                        <span class="ml-2" title="作者" data-toggle="tooltip" data-placement="top">
+                        <span class="ml-2" title="<?php echo $GLOBALS['t']['post']['author']; ?>" data-toggle="tooltip" data-placement="top">
                                 <i class="icon-user mr-1" aria-hidden="true"></i>
-                                <a href="<?php $this->author->permalink(); ?>" class="mr-2" title="作者：<?php $this->author(); ?>">
+                                <a href="<?php $this->author->permalink(); ?>" class="mr-2" title="<?php echo $GLOBALS['t']['post']['author']; ?>: <?php $this->author(); ?>">
                                     <?php $this->author(); ?>
                                 </a>
                             </span>
-                        <span class="ml-2" title="阅读量" data-toggle="tooltip" data-placement="top">
+                        <span class="ml-2" title="<?php echo $GLOBALS['t']['post']['views']; ?>" data-toggle="tooltip" data-placement="top">
                                 <i class="icon-eye mr-1" aria-hidden="true"></i>
                                 <?php echo postViews($this); ?>
                             </span>

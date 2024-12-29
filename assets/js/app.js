@@ -16,6 +16,7 @@ $(function () {
   let directoryTop = 0;  // 侧边栏章节目录的高度
   let commentParentId = null;  // 存储父评论的id，用于PJAX评论提交后跳转
   let themeColor = 'light';  // 存储主题配色
+  let inputFocus = false;  // 表单焦点状态
 
   // 主题配色初始化
   themeColorInit();
@@ -56,6 +57,9 @@ $(function () {
   // 图片懒加载
   lazyLoadImages();
 
+  // 表单焦点事件初始化
+  inputFocusInit();
+
   // 全局快捷键
   $(document).on('keyup', ev => {
     // 如果是 ESC 就关闭大图
@@ -71,7 +75,7 @@ $(function () {
       $('.max-img-features-btn .small').click();
     }
     // 如果按下的是右方向键就跳转到下一页
-    if (ev.keyCode === 39) {
+    if (ev.keyCode === 39 && !inputFocus) {
       // 文章列表页面跳转
       if ($('.next .page-link').length) {
         location.href = $('.next .page-link').attr('href');
@@ -82,7 +86,7 @@ $(function () {
       }
     }
     // 如果按下的是左方向键就跳转到上一页
-    if (ev.keyCode === 37) {
+    if (ev.keyCode === 37 && !inputFocus) {
       // 文章列表页面跳转
       if ($('.prev .page-link').length) {
         location.href = $('.prev .page-link').attr('href');
@@ -320,6 +324,8 @@ $(function () {
       shareQrCode();
       // 图片懒加载
       lazyLoadImages();
+      // 表单焦点初始化
+      inputFocusInit();
     });
   }
 
@@ -369,8 +375,10 @@ $(function () {
   function accessibilityInit() {
     // 文章是否加密
     if ($('.post-content .protected').length) {
-      $('input[name="protectPassword"]').attr('placeholder', '请在此处输入文章密码');
+      $('input[name="protectPassword"]').attr('placeholder', window.t.enterYourPassword);
       $('input[name="protectPassword"]').focus();
+      $('.protected .submit').val(window.t.submit);
+      $('.protected .word').html(window.t.enterThePasswordToViewIt);
     }
 
     // 给文章内的链接添加 target 属性
@@ -388,6 +396,7 @@ $(function () {
       if ($('.comment-list .comment-input').length && $('#cancel-comment-reply-link').length) {
         $('#cancel-comment-reply-link').addClass('btn btn-outline-primary ml-2');
         $('#cancel-comment-reply-link').attr('role', 'button');
+        $('#cancel-comment-reply-link').html(window.t.cancelReply);
       }
     });
 
@@ -428,7 +437,7 @@ $(function () {
       const authorName = $(this).closest('.comment-box').find('.author a').text() ||
           $(this).closest('.comment-box').find('.author').text();
       $(this).find('a').attr({
-        title: `回复 ${authorName}`,
+        title: `${window.t.replyTo} ${authorName}`,
         'data-toggle': 'tooltip',
         'data-placement': 'top'
       });
@@ -565,7 +574,7 @@ $(function () {
         // 设置类型标题
         $('#emoji-title').html($(ev.target).attr('title'));
         // 设置用于屏幕阅读器的表情列表标题
-        $('#emoji-list').attr('aria-label', $(ev.target).attr('title') + '（按回车可以把表情添加到评论内容输入框）');
+        $('#emoji-list').attr('aria-label', `${$(ev.target).attr('title')} ${window.t.pressEnterToAddTheEmojiToTheCommentInputField}`);
       });
 
       // Emoji 表情点击
@@ -622,7 +631,7 @@ $(function () {
             if (!re.test(data)) return false;
             $('.agree-num').html('赞 ' + data);
             // 创建点赞提示的元素
-            $('body').append('<span id="agree-p" role="alert">赞 + 1</span>');
+            $('body').append(`<span id="agree-p" role="alert">${window.t.like} + 1</span>`);
             // 设置点赞提示的样式
             $('#agree-p').css({
               top: $('.agree-btn').offset().top - 25,
@@ -765,16 +774,16 @@ $(function () {
       $('.pagination .active a').attr('aria-current', 'page');
       if ($('.pagination .prev').length) {
         $('.pagination .prev a').attr({
-          'aria-label': '上一页（左光标键）',
-          'title': '上一页（左光标键）',
+          'aria-label': window.t.previousPage,
+          'title': window.t.previousPage,
           'data-toggle': 'tooltip',
           'data-placement': 'top'
         });
       }
       if ($('.pagination .next').length) {
         $('.pagination .next a').attr({
-          'aria-label': '下一页（右光标键）',
-          'title': '下一页（右光标键）',
+          'aria-label': window.t.nextPage,
+          'title': window.t.nextPage,
           'data-toggle': 'tooltip',
           'data-placement': 'top'
         });
@@ -821,29 +830,29 @@ $(function () {
 
       // 图片灯箱HTML
       const maxImgTemplate = `
-    <div id="max-img-box" role="dialog" aria-modal="true" aria-labelledby="img-info">
-      <div id="max-img-bg"></div>
-      <div class="btn-group max-img-features-btn">
-          <button type="button" class="btn big" aria-label="放大" title="放大">
-              <i class="icon-zoom-in"></i>
+      <div id="max-img-box" role="dialog" aria-modal="true" aria-labelledby="img-info">
+        <div id="max-img-bg"></div>
+        <div class="btn-group max-img-features-btn">
+          <button type="button" class="btn big" aria-label="${window.t.zoomIn}" title="${window.t.zoomIn}">
+            <i class="icon-zoom-in"></i>
           </button>
-          <button type="button" class="btn small" aria-label="缩小" title="缩小">
-              <i class="icon-zoom-out"></i>
+          <button type="button" class="btn small" aria-label="${window.t.zoomOut}" title="${window.t.zoomOut}">
+            <i class="icon-zoom-out"></i>
           </button>
-          <button type="button" class="btn spin-left" aria-label="左旋转90度" title="左旋转90度">
-              <i class="icon-undo"></i>
+          <button type="button" class="btn spin-left" aria-label="${window.t.rotateLeft}" title="${window.t.rotateLeft}">
+            <i class="icon-undo"></i>
           </button>
-          <button type="button" class="btn spin-right" aria-label="右旋转90度" title="右旋转90度">
-              <i class="icon-redo"></i>
+          <button type="button" class="btn spin-right" aria-label="${window.t.rotateRight}" title="${window.t.rotateRight}">
+            <i class="icon-redo"></i>
           </button>
-          <button type="button" class="btn hide-img" aria-label="关闭大图" title="关闭大图">
-              <i class="icon-cancel-circle"></i>
+          <button type="button" class="btn hide-img" aria-label="${window.t.closeImage}" title="${window.t.closeImage}">
+            <i class="icon-cancel-circle"></i>
           </button>
+        </div>
+        <img src="" alt="大图" class="shadow" id="max-img">
+        <p id="img-info" class="text-light text-center"></p>
       </div>
-      <img src="" alt="大图" class="shadow" id="max-img">
-      <p id="img-info" class="text-light text-center"></p>
-    </div>
-    `;
+      `;
       // 把图片灯箱插入到页面
       $('body').append(maxImgTemplate);
 
@@ -1063,9 +1072,9 @@ $(function () {
           btnEl.className = 'copy-code-btn btn btn-outline-secondary btn-sm';
           btnEl.setAttribute('type', 'button');
           btnEl.innerHTML = '<i class="icon-copy"></i>';
-          btnEl.setAttribute('aria-label', '拷贝代码');
+          btnEl.setAttribute('aria-label', window.t.copyCode);
           btnEl.setAttribute('data-clipboard-target', '#code-' + i);
-          btnEl.setAttribute('title', '拷贝代码');
+          btnEl.setAttribute('title', window.t.copyCode);
           btnEl.setAttribute('data-toggle', 'tooltip');
           btnEl.setAttribute('data-placement', 'left');
           btnEl.setAttribute('id', 'copy-btn-' + i);
@@ -1078,28 +1087,40 @@ $(function () {
         // 拷贝成功
         clipboard.on('success', ev => {
           // 把工具提示更改为拷贝成功
-          $(ev.trigger).attr('title', '拷贝成功');
-          $(ev.trigger).attr('data-original-title', '拷贝成功');
+          $(ev.trigger).attr('title', window.t.copySuccess);
+          $(ev.trigger).attr('data-original-title', window.t.copySuccess);
           $(ev.trigger).tooltip('update');
           $(ev.trigger).tooltip('show');
           // 延迟 1 秒后把工具提示更改为拷贝代码
           setTimeout(() => {
-            $(ev.trigger).attr('title', '拷贝代码');
-            $(ev.trigger).attr('data-original-title', '拷贝代码');
+            $(ev.trigger).attr('title', window.t.copyCode);
+            $(ev.trigger).attr('data-original-title', window.t.copyCode);
           }, 1000);
         });
         // 拷贝出错
         clipboard.on('error', ev => {
-          $(ev.trigger).attr('title', '拷贝失败');
-          $(ev.trigger).attr('data-original-title', '拷贝失败');
+          $(ev.trigger).attr('title', window.t.copyError);
+          $(ev.trigger).attr('data-original-title', window.t.copyError);
           $(ev.trigger).tooltip('hide');
           $(ev.trigger).tooltip('show');
           setTimeout(() => {
-            $(ev.trigger).attr('title', '拷贝代码');
-            $(ev.trigger).attr('data-original-title', '拷贝代码');
+            $(ev.trigger).attr('title', window.t.copyCode);
+            $(ev.trigger).attr('data-original-title', window.t.copyCode);
           }, 1000);
         });
       }
     }
+  }
+
+  // 表单焦点事件初始化
+  function inputFocusInit() {
+    // 输入框获取焦点
+    $('input[type="search"], input[type="text"], input[type="email"], input[type="url"], textarea').on('focus', () => {
+      inputFocus = true;
+    });
+    // 输入框失去焦点
+    $('input[type="search"], input[type="text"], input[type="email"], input[type="url"], textarea').on('blur', () => {
+      inputFocus = false;
+    });
   }
 });

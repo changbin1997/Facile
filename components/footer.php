@@ -12,7 +12,7 @@
     </div>
 </footer>
 
-<button class="btn text-primary rounded-circle d-none" id="to-top-btn" type="button" aria-label="返回顶部" title="返回顶部">
+<button class="btn text-primary rounded-circle d-none" id="to-top-btn" type="button" aria-label="<?php echo $GLOBALS['t']['scrollToTop']; ?>" title="<?php echo $GLOBALS['t']['scrollToTop']; ?>">
     <i class="icon-arrow-up"></i>
 </button>
 

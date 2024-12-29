@@ -1,6 +1,10 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $GLOBALS['page'] = 'archive';
+
+// 语言初始化
+languageInit($this->options->language);
+
 $this->need('components/header.php');
 ?>
 
@@ -20,10 +24,10 @@ $this->need('components/header.php');
             <header class="archive-title mb-5">
                 <h1>
                     <?php $this->archiveTitle(array(
-                        'category' => _t('分类 %s 下的文章'),
-                        'search' => _t('包含关键字 %s 的文章'),
-                        'tag' => _t('标签 %s 下的文章'),
-                        'author' => _t('%s 发布的文章')
+                        'category' => $GLOBALS['t']['archive']['postsUnderTheCategory'],
+                        'search' => $GLOBALS['t']['archive']['postsContainingTheKeyword'],
+                        'tag' => $GLOBALS['t']['archive']['postsTagged'],
+                        'author' => $GLOBALS['t']['archive']['postsByAuthor']
                     ), '', ''); ?>
                 </h1>
                 <?php if ($this->getDescription() != ''): ?>
@@ -35,12 +39,12 @@ $this->need('components/header.php');
             <?php else: ?>
                 <article class="no-content">
                     <hr>
-                    <h4 class="mb-3" role="alert">无法查找到包含 <b><?php $this->archiveTitle(array('search' => '%s'), '', ''); ?></b> 的文章！</h4 >
-                    <p>您可以尝试：</p>
+                    <h4 class="mb-3" role="alert"><?php printf($GLOBALS['t']['archive']['noPostsFoundContaining'], '<b>' . $this->archiveTitle . '</b>') ?></h4 >
+                    <p><?php echo $GLOBALS['t']['archive']['youCanTryTheFollowing']; ?></p>
                     <ol class="pl-3 mb-5">
-                        <li>更换关键字重新搜索</li>
-                        <li>在右侧或下方的文章分类区域选择分类查找</li>
-                        <li>在右侧或下方的标签云区域选择标签查找</li>
+                        <li><?php echo $GLOBALS['t']['archive']['trySearchingWithDifferentKeywords']; ?></li>
+                        <li><?php echo $GLOBALS['t']['archive']['browsePostsByCategoryInTheSectionToTheRightOrBelow']; ?></li>
+                        <li><?php echo $GLOBALS['t']['archive']['browsePostsByTagsInTheTagCloudSectionToTheRightOrBelow']; ?></li>
                     </ol>
                 </article>
             <?php endif; ?>

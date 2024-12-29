@@ -50,7 +50,7 @@ $bodyClass = implode(' ', $bodyClass);
 ?>
 
 <!doctype html>
-<html lang="zh-CN">
+<html lang="<?php echo $GLOBALS['language']; ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -59,10 +59,10 @@ $bodyClass = implode(' ', $bodyClass);
     <title>
         <?php
         $this->archiveTitle(array(
-            'category'  =>  _t('分类 %s 下的文章'),
-            'search'    =>  _t('包含关键字 %s 的文章'),
-            'tag'       =>  _t('标签 %s 下的文章'),
-            'author'    =>  _t('%s 发布的文章')
+            'category' => $GLOBALS['t']['archive']['postsUnderTheCategory'],
+            'search' => $GLOBALS['t']['archive']['postsContainingTheKeyword'],
+            'tag' => $GLOBALS['t']['archive']['postsTagged'],
+            'author' => $GLOBALS['t']['archive']['postsByAuthor']
         ), '', ' - ');
         ?>
         <?php $this->options->title(); ?>
@@ -86,6 +86,7 @@ $bodyClass = implode(' ', $bodyClass);
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/bootstrap.css'); ?>" type="text/css">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/style.css'); ?>" type="text/css">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/icon.css'); ?>" type="text/css">
+    <?php localizeScript(); ?>
     <!--自定义CSS-->
     <?php if ($this->options->cssCode): ?>
         <style type="text/css">
@@ -119,7 +120,7 @@ $bodyClass = implode(' ', $bodyClass);
             <div class="collapse navbar-collapse" id="navbarColor03">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item <?php if ($this->is('index')) echo 'active'; ?>">
-                        <a class="nav-link" href="<?php $this->options->siteUrl(); ?>" <?php if ($this->is('index')) echo 'aria-current="page"'; ?>>首页</a>
+                        <a class="nav-link" href="<?php $this->options->siteUrl(); ?>" <?php if ($this->is('index')) echo 'aria-current="page"'; ?>><?php echo $GLOBALS['t']['header']['home']; ?></a>
                     </li>
                     <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
                     <?php while($pages->next()): ?>
@@ -139,9 +140,9 @@ $bodyClass = implode(' ', $bodyClass);
                 </ul>
                 <form class="form-inline my-2 my-lg-0" action="<?php $this->options->siteUrl(); ?>" method="post" role="search">
                     <div class="input-group">
-                        <input class="form-control" type="search" placeholder="搜索" required name="s">
+                        <input class="form-control" type="search" placeholder="<?php echo $GLOBALS['t']['header']['search']; ?>" required name="s">
                         <div class="input-group-append">
-                            <button class="btn btn-primary my-sm-0" type="submit" aria-label="搜索" title="搜索" data-toggle="tooltip" data-placement="bottom">
+                            <button class="btn btn-primary my-sm-0" type="submit" aria-label="<?php echo $GLOBALS['t']['header']['search']; ?>" title="<?php echo $GLOBALS['t']['header']['search']; ?>" data-toggle="tooltip" data-placement="bottom">
                                 <i class="icon-search"></i>
                             </button>
                         </div>
