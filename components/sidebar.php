@@ -74,6 +74,27 @@ $components = explode(',', $components);
                 </ul>
             </section>
         <?php endif; ?>
+
+        <?php if ($component == '语言选择'): ?>
+            <!--语言选择-->
+            <section class="ml-xl-4 ml-lg-3 mb-5 language-select">
+                <h2 class="mb-4">语言（Language）</h2>
+                <ul aria-label="语言（Language）">
+                    <li>
+                        <div class="custom-control custom-radio">
+                            <input <?php if ($GLOBALS['language'] == 'zh' or $GLOBALS['language'] == 'zh-CN') echo 'checked'; ?> class="custom-control-input change-language" type="radio" name="language" id="zh-CN" data-language="zh-CN">
+                            <label class="custom-control-label" for="zh-CN">简体中文</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="custom-control custom-radio">
+                            <input <?php if ($GLOBALS['language'] == 'en') echo 'checked'; ?> class="custom-control-input change-language" type="radio" name="language" id="en" data-language="en">
+                            <label class="custom-control-label" for="en">English</label>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        <?php endif; ?>
         <?php if ($component == '自定义' && $this->options->customizeHTML): ?>
             <!--自定义HTML-->
             <section class="ml-xl-4 ml-lg-3 mb-5 customize">
@@ -102,7 +123,7 @@ $components = explode(',', $components);
                         <?php endwhile; ?>
                     </ul>
                 <?php else: ?>
-                    <p class="pb-2 message">没有可以显示的文章</p>
+                    <p class="pb-2 message"><?php echo $GLOBALS['t']['sidebar']['noPostsAvailableToDisplay']; ?></p>
                 <?php endif; ?>    
             </section>
         <?php endif; ?>
@@ -140,7 +161,7 @@ $components = explode(',', $components);
                             </li>
                         <?php endwhile; ?>
                     <?php else: ?>    
-                        <p class="pb-2 message">没有可以显示的评论和回复</p>
+                        <p class="pb-2 message"><?php echo $GLOBALS['t']['sidebar']['noCommentsOrRepliesAvailableToDisplay']; ?></p>
                     <?php endif; ?>    
                 </ul>
             </section>
@@ -161,7 +182,7 @@ $components = explode(',', $components);
                             </li>
                         <?php endwhile; ?>
                     <?php else: ?>
-                        <p class="pb-2 message">没有可以显示的分类</p>
+                        <p class="pb-2 message"><?php echo $GLOBALS['t']['sidebar']['noCategoriesAvailableToDisplay']; ?></p>
                     <?php endif; ?>    
                 </ul>
             </section>
@@ -191,7 +212,7 @@ $components = explode(',', $components);
                         <?php endwhile; ?>
                     </div>
                 <?php else: ?>
-                    <p class="pb-2 message">没有可以显示的标签</p>
+                    <p class="pb-2 message"><?php echo $GLOBALS['t']['sidebar']['noTagsAvailableToDisplay']; ?></p>
                 <?php endif; ?>
             </section>
         <?php endif; ?>
@@ -216,7 +237,7 @@ $components = explode(',', $components);
                         <?php endwhile; ?>
                     </ul>
                 <?php else: ?>
-                    <p class="pb-2 message">没有文章，无法生成文章归档</p>
+                    <p class="pb-2 message"><?php echo $GLOBALS['t']['sidebar']['coPostsAvailableToGenerateAnArchive']; ?></p>
                 <?php endif; ?>    
             </section>
         <?php endif; ?>
@@ -252,8 +273,8 @@ $components = explode(',', $components);
             <!--友情链接-->
             <?php if ($this->options->links or $this->options->homeLinks && $this->is('index')): ?>
                 <section class="ml-xl-4 ml-lg-3 mb-5">
-                    <h2 class="mb-4"><?php echo $GLOBALS['t']['sidebar']['links']; ?></h2>
-                    <ul aria-label="<?php echo $GLOBALS['t']['sidebar']['links']; ?>">
+                    <h2 class="mb-4"><?php echo $GLOBALS['t']['sidebar']['usefulLinks']; ?></h2>
+                    <ul aria-label="<?php echo $GLOBALS['t']['sidebar']['usefulLinks']; ?>">
                         <?php if ($this->options->links): ?>
                             <?php $links = json_decode($this->options->links); ?>
                             <?php foreach ($links as $link): ?>

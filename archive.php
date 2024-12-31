@@ -12,10 +12,10 @@ $this->need('components/header.php');
     <div class="row mt-4">
         <div class="col-xl-8 col-lg-8 post-list">
             <?php if ($this->options->breadcrumb == 'on'): ?>
-                <nav aria-label="路径" class="breadcrumb-nav bg">
+                <nav aria-label="<?php echo $GLOBALS['t']['breadcrumb']; ?>" class="breadcrumb-nav bg">
                     <ol class="breadcrumb m-0 pl-0 pr-0 pt-0 border-0">
                         <li class="breadcrumb-item">
-                            <a href="<?php $this->options->siteUrl(); ?>">首页</a>
+                            <a href="<?php $this->options->siteUrl(); ?>"><?php echo $GLOBALS['t']['header']['home']; ?></a>
                         </li>
                         <li tabindex="0" class="breadcrumb-item active" aria-current="page"><?php $this->archiveTitle(' &raquo; ','',''); ?></li>
                     </ol>
@@ -48,7 +48,7 @@ $this->need('components/header.php');
                     </ol>
                 </article>
             <?php endif; ?>
-            <nav class="page-nav my-5" aria-label="分页导航">
+            <nav class="page-nav my-5" aria-label="<?php echo $GLOBALS['t']['pagination']['pagination']; ?>">
                 <?php $this->pageNav('<i class="icon-chevron-left"></i>', '<i class="icon-chevron-right"></i>', 1, '...', array('wrapTag' => 'ul', 'wrapClass' => 'pagination justify-content-center', 'itemTag' => 'li', 'textTag' => 'a', 'currentClass' => 'active', 'prevClass' => 'prev', 'nextClass' => 'next')); ?>
             </nav>
         </div>

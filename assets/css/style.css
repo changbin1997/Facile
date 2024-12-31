@@ -1138,11 +1138,11 @@ header input[type=search]:focus {
 }
 
 .statistics-page #category-chart {
-  height: 390px;
+  height: 320px;
   position: relative;
 }
 .statistics-page #post-chart, .statistics-page #comment-chart {
-  height: 250px;
+  height: 180px;
   position: relative;
 }
 .statistics-page .loading {
@@ -1700,6 +1700,12 @@ header input[type=search]:focus {
 .dark-color header .navbar .navbar-text a:hover, .dark-color header .navbar .navbar-text a:focus {
   color: #fff;
 }
+.dark-color header .navbar .dropdown-menu {
+  background: #25252C;
+}
+.dark-color header .navbar .dropdown-menu a {
+  color: #D3D3D3;
+}
 .dark-color header .navbar input[type=search] {
   background: #25252C;
   color: #FFFFFF;
@@ -1859,7 +1865,7 @@ header input[type=search]:focus {
 .dark-color .sidebar section .message {
   color: #D3D3D3;
 }
-.dark-color .sidebar .change-color label {
+.dark-color .sidebar .change-color label, .dark-color .sidebar .language-select label {
   color: #D3D3D3;
 }
 .dark-color .sidebar .latest-comment p {
@@ -2208,6 +2214,12 @@ header input[type=search]:focus {
   .auto-color header .navbar .navbar-text a:hover, .auto-color header .navbar .navbar-text a:focus {
     color: #fff;
   }
+  .auto-color header .navbar .dropdown-menu {
+    background: #25252C;
+  }
+  .auto-color header .navbar .dropdown-menu a {
+    color: #D3D3D3;
+  }
   .auto-color header .navbar input[type=search] {
     background: #25252C;
     color: #FFFFFF;
@@ -2367,7 +2379,7 @@ header input[type=search]:focus {
   .auto-color .sidebar section .message {
     color: #D3D3D3;
   }
-  .auto-color .sidebar .change-color label {
+  .auto-color .sidebar .change-color label, .auto-color .sidebar .language-select label {
     color: #D3D3D3;
   }
   .auto-color .sidebar .latest-comment p {

@@ -905,12 +905,12 @@ header {
 .statistics-page {
   // 分类占比区域
   #category-chart {
-    height: 390px;
+    height: 320px;
     position: relative;
   }
   // 文章和评论动态日历区域
   #post-chart,#comment-chart {
-    height: 250px;
+    height: 180px;
     position: relative;
   }
   // 图表加载提示

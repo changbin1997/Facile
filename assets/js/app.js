@@ -60,6 +60,12 @@ $(function () {
   // 表单焦点事件初始化
   inputFocusInit();
 
+  // 导航栏的切换语言点击
+  $('header .change-language').on('click', changeLanguage);
+
+  // 侧边栏的语言更改
+  $('.sidebar .change-language').on('change', changeLanguage);
+
   // 全局快捷键
   $(document).on('keyup', ev => {
     // 如果是 ESC 就关闭大图
@@ -326,6 +332,9 @@ $(function () {
       lazyLoadImages();
       // 表单焦点初始化
       inputFocusInit();
+
+      // 侧边栏的语言更改
+      $('.sidebar .change-language').on('change', changeLanguage);
     });
   }
 
@@ -629,7 +638,7 @@ $(function () {
           success: data => {
             const re = /\d/;
             if (!re.test(data)) return false;
-            $('.agree-num').html('赞 ' + data);
+            $('.agree-num').html(`${window.t.like} ${data}`);
             // 创建点赞提示的元素
             $('body').append(`<span id="agree-p" role="alert">${window.t.like} + 1</span>`);
             // 设置点赞提示的样式
@@ -1122,5 +1131,18 @@ $(function () {
     $('input[type="search"], input[type="text"], input[type="email"], input[type="url"], textarea').on('blur', () => {
       inputFocus = false;
     });
+  }
+
+  // 更改语言
+  function changeLanguage(ev) {
+    const language = $(ev.target).attr('data-language');
+    // 获取当前的时间戳
+    let time = Date.parse(new Date());
+    // 在当前的时间戳上 + 180天
+    time += 15552000000;
+    time = new Date(time);
+    // 写入 cookie
+    document.cookie = `language=${language};path=/;expires=Tue,${time}`;
+    location.reload();
   }
 });

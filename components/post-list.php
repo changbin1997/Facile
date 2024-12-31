@@ -64,7 +64,14 @@ while ($this->next()):
                                         <?php echo $GLOBALS['t']['post']['readMore']; ?>
                                         <i class="icon-arrow-right2"></i>
                                     </a>
-                                    <a href="<?php $this->permalink() ?>#comments" class="comment-count">
+                                    <?php
+                                    // 根据使用的语言来调整小头图模式评论数在移动设备的可见性，避免字数超出宽度
+                                    $commentCountClass = 'comment-count';
+                                    if (mb_strlen($GLOBALS['t']['post']['comments']) > 4) {
+                                        $commentCountClass = 'comment-count d-none d-sm-inline d-sm-inline d-lg-inline d-xl-inline';
+                                    }
+                                    ?>
+                                    <a href="<?php $this->permalink() ?>#comments" class="<?php echo $commentCountClass; ?>">
                                         <i class="icon-bubble mr-1"></i>
                                         <b><?php $this->commentsNum('%d ' . $GLOBALS['t']['post']['comments']); ?></b>
                                     </a>

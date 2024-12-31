@@ -3,7 +3,8 @@
 const EN = array(
     'header' => array(
         'home' => 'Home',
-        'search' => 'Search'
+        'search' => 'Search',
+        'navigationMenu' => 'Navigation menu'
     ),
     'post' => array(
         'publicationDate' => 'Publication date',
@@ -29,7 +30,12 @@ const EN = array(
         'shareOnTwitter' => 'Share on Twitter',
         'scanTheQRCodeBelowToViewAndShareThisPageOnYourPhone' => 'Scan the QR code below to view and share this page on your phone.',
         'QRCode' => 'QR Code',
-        'donate' => 'Donate'
+        'donate' => 'Donate',
+        'copyrightNotice' => array(
+            'Copyright Notice: This article is an original work. Copyright belongs to %s. Please contact the author for permission before reprinting.',
+            'Article URL: %s',
+            'If you have any questions or concerns about this article, feel free to leave a comment. I will try my best to respond as soon as possible.'
+        )
     ),
     'comment' => array(
         'leaveAComment' => 'Leave a Comment',
@@ -82,7 +88,7 @@ const EN = array(
         'tags' => 'Tags',
         'tagPostCount' => '%d posts',
         'archives' => 'Archives',
-        'links' => 'Links',
+        'usefulLinks' => 'Useful Links',
         'other' => 'Other',
         'login' => 'Log in',
         'logout' => 'Log Out',
@@ -91,7 +97,12 @@ const EN = array(
         'dashboard' => 'Dashboard (%s)',
         'commentOn' => 'Comment on %s',
         'tableOfContents' => 'Table of Contents',
-        'closeTableOfContents' => 'Close Table of Contents'
+        'closeTableOfContents' => 'Close Table of Contents',
+        'noPostsAvailableToDisplay' => 'No posts available to display.',
+        'noCommentsOrRepliesAvailableToDisplay' => 'No comments or replies available to display.',
+        'noCategoriesAvailableToDisplay' => 'No categories available to display.',
+        'noTagsAvailableToDisplay' => 'No tags available to display.',
+        'coPostsAvailableToGenerateAnArchive' => 'No posts available to generate an archive.'
     ),
     'archive' => array(
         'postsUnderTheCategory' => 'Posts under the category %s',
@@ -162,5 +173,6 @@ const EN = array(
     'page404' => array(
         'thePageYouAreLookingForDoesNotExist' => 'The page you are looking for does not exist!',
         'goBackToHomepage' => 'Go back to homepage'
-    )
+    ),
+    'breadcrumb' => 'Breadcrumb'
 );

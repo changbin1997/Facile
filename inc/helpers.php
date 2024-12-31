@@ -4,6 +4,9 @@
 function languageInit($language) {
     $languageList = array('zh', 'en');
 
+    // 如果有语言设置 Cookie 就优先使用 Cookie 存储的语言
+    if (isset($_COOKIE['language']) && $_COOKIE['language'] != '') $language = $_COOKIE['language'];
+
     // 自动选择
     if ($language == 'auto') {
         if (!isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) or $_SERVER['HTTP_ACCEPT_LANGUAGE'] == null) {
@@ -15,6 +18,7 @@ function languageInit($language) {
             if (!in_array($language, $languageList)) $language = 'en';
         }
     }
+
     // 选择中文
     if ($language == 'zh-CN' or $language == 'zh' or $language == null) {
         require_once __DIR__ . '/../languages/zh.php';
@@ -49,7 +53,8 @@ function localizeScript() {
         'enterYourPassword' => $GLOBALS['t']['post']['enterYourPassword'],
         'submit' => $GLOBALS['t']['post']['submit'],
         'replyTo' => $GLOBALS['t']['comment']['replyTo'],
-        'like' => $GLOBALS['t']['post']['like']
+        'like' => $GLOBALS['t']['post']['like'],
+        'categoryDistribution' => $GLOBALS['t']['dataPage']['categoryDistribution']
     );
     $t = json_encode($t, JSON_UNESCAPED_UNICODE);
     echo '<script type="text/javascript"> window.t = ' . $t . ' </script>';

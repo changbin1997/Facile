@@ -23,7 +23,7 @@ $this->need('components/header.php');
         <div class="col-xl-8 col-lg-8 post-list">
             <?php if ($this->have()): ?>
             <?php $this->need('components/post-list.php'); ?>
-            <nav class="page-nav my-5" aria-label="分页导航">
+            <nav class="page-nav my-5" aria-label="<?php echo $GLOBALS['t']['pagination']['pagination']; ?>">
                 <?php $this->pageNav('<i class="icon-chevron-left"></i>', '<i class="icon-chevron-right"></i>', 1, '...', array('wrapTag' => 'ul', 'wrapClass' => 'pagination justify-content-center', 'itemTag' => 'li', 'textTag' => 'a', 'currentClass' => 'active', 'prevClass' => 'prev', 'nextClass' => 'next')); ?>
             </nav>
             <?php else: ?>

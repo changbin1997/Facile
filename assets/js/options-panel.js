@@ -28,15 +28,15 @@ window.addEventListener('load', () => {
 
   // 插入分组标题
   optionForm.insertBefore(titleEl[0], optionUl[0]);  // 语言
-  optionForm.insertBefore(titleEl[1], optionUl[1]);  // 外观
-  optionForm.insertBefore(titleEl[2], optionUl[2]);  // 站点信息
-  optionForm.insertBefore(titleEl[3], optionUl[5]);  // 导航
-  optionForm.insertBefore(titleEl[4], optionUl[9]);  // 侧边栏
-  optionForm.insertBefore(titleEl[5], optionUl[20]);  // 文章相关
-  optionForm.insertBefore(titleEl[6], optionUl[33]);  // 评论
-  optionForm.insertBefore(titleEl[7], optionUl[38]);  // 友链
-  optionForm.insertBefore(titleEl[8], optionUl[41]);  // PJAX
-  optionForm.insertBefore(titleEl[9], optionUl[44]);  // 开发者
+  optionForm.insertBefore(titleEl[1], optionUl[2]);  // 外观
+  optionForm.insertBefore(titleEl[2], optionUl[3]);  // 站点信息
+  optionForm.insertBefore(titleEl[3], optionUl[6]);  // 导航
+  optionForm.insertBefore(titleEl[4], optionUl[10]);  // 侧边栏
+  optionForm.insertBefore(titleEl[5], optionUl[21]);  // 文章相关
+  optionForm.insertBefore(titleEl[6], optionUl[34]);  // 评论
+  optionForm.insertBefore(titleEl[7], optionUl[39]);  // 友链
+  optionForm.insertBefore(titleEl[8], optionUl[42]);  // PJAX
+  optionForm.insertBefore(titleEl[9], optionUl[45]);  // 开发者
 
   // 插入分隔线
   titleEl.forEach(el => {

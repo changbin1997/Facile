@@ -3,7 +3,8 @@
 const ZH = array(
     'header' => array(
         'home' => '首页',
-        'search' => '搜索'
+        'search' => '搜索',
+        'navigationMenu' => '导航菜单'
     ),
     'post' => [
         'publicationDate' => '发布日期',
@@ -29,7 +30,12 @@ const ZH = array(
         'shareOnTwitter' => '分享到Twitter',
         'scanTheQRCodeBelowToViewAndShareThisPageOnYourPhone' => '用手机扫描下方二维码可在手机上浏览和分享。',
         'QRCode' => '二维码',
-        'donate' => '打赏'
+        'donate' => '打赏',
+        'copyrightNotice' => array(
+            '版权声明：本文为原创文章，版权归 %s 所有，转载请联系博主获得授权。',
+            '本文地址：%s',
+            '如果对本文有什么问题或疑问都可以在评论区留言，我看到后会尽量解答。'
+        )
     ],
     'comment' => array(
         'leaveAComment' => '发表评论',
@@ -82,7 +88,7 @@ const ZH = array(
         'tags' => '标签云',
         'tagPostCount' => '%d 篇文章',
         'archives' => '文章归档',
-        'links' => '友情链接',
+        'usefulLinks' => '友情链接',
         'other' => '其它功能',
         'login' => '登录',
         'logout' => '退出登录',
@@ -91,7 +97,12 @@ const ZH = array(
         'dashboard' => '进入后台 (%s)',
         'commentOn' => '发表在 $s 的评论',
         'tableOfContents' => '目录',
-        'closeTableOfContents' => '关闭目录'
+        'closeTableOfContents' => '关闭目录',
+        'noPostsAvailableToDisplay' => '没有可以显示的文章。',
+        'noCommentsOrRepliesAvailableToDisplay' => '没有可以显示的评论和回复。',
+        'noCategoriesAvailableToDisplay' => '没有可以显示的分类。',
+        'noTagsAvailableToDisplay' => '没有可以显示的标签。',
+        'coPostsAvailableToGenerateAnArchive' => '没有文章，无法生成文章归档。'
     ),
     'archive' => array(
         'postsUnderTheCategory' => '分类 %s 下的文章',
@@ -162,5 +173,6 @@ const ZH = array(
     'page404' => array(
         'thePageYouAreLookingForDoesNotExist' => '您访问的页面不存在！',
         'goBackToHomepage' => '返回首页'
-    )
+    ),
+    'breadcrumb' => '页面路径'
 );

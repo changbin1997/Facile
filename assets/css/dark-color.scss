@@ -192,6 +192,14 @@ $dark-text-color2: #999999;
         color: #fff;
       }
 
+      // 下拉菜单
+      .dropdown-menu {
+        background: #25252C;
+        a {
+          color: $dark-text-color;
+        }
+      }
+
       // 搜索框
       input[type="search"] {
         background: #25252C;
@@ -314,8 +322,8 @@ $dark-text-color2: #999999;
         color: $dark-text-color;
       }
     }
-    // 切换配色模式区域
-    .change-color label {
+    // 切换配色模式区域和切换语言
+    .change-color label, .language-select label {
       color: $dark-text-color;
     }
     // 最新评论区域

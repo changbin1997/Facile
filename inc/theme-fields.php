@@ -43,4 +43,10 @@ function themeFields($layout) {
 
     // 文章有效期
     $layout->addItem(new Typecho_Widget_Helper_Form_Element_Text('expired', null, '0', _t('文章有效期'), _t('有的文章可能只是在某个时间段内有用，发布后如果长时间不更新的话，可能会给读者带去错误的信息。文章有效期可以设置一个天数，过了指定天数后，在文章开头会显示一条警示信息。0 或留空不显示。')));
+
+    // 版权声明
+    $layout->addItem(new Typecho_Widget_Helper_Form_Element_Radio('copyrightNotice', array(
+        'show' => '显示',
+        'hide' => '隐藏'
+    ), 'show', _t('显示版权声明'), _t('版权声明会显示在文章内容的底部，如果您的文章是原创文章，可以选择开启版权声明显示。')));
 }

@@ -114,7 +114,7 @@ $bodyClass = implode(' ', $bodyClass);
             <?php else: ?>
                 <a class="navbar-brand" href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a>
             <?php endif; ?>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="导航菜单">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="<?php echo $GLOBALS['t']['header']['navigationMenu']; ?>">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarColor03">
@@ -138,6 +138,20 @@ $bodyClass = implode(' ', $bodyClass);
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </ul>
+                <?php if ($this->options->changeLanguageBtn == 'show'): ?>
+                    <div class="navbar-nav mr-1">
+                        <div class="nav-item dropdown">
+                            <a href="javascript:;" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" aria-label="语言（Language）" title="语言（Language）" role="button">
+                                <i class="icon-languages" style="font-size: 15px;"></i>
+                                <span class="ml-1 d-xl-none d-lg-none d-md-inline d-sm-inline d-inline">语言（Language）</span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a href="javascript:;" data-language="zh-CN" class="change-language dropdown-item <?php if ($GLOBALS['language'] == 'zh' or $GLOBALS['language'] == 'zh-CN') echo 'active'; ?>" aria-checked="<?php echo $GLOBALS['language'] == 'zh' or $GLOBALS['language'] == 'zh-CN'; ?>" role="checkbox">简体中文</a>
+                                <a href="javascript:;" data-language="en" class="change-language dropdown-item <?php if ($GLOBALS['language'] == 'en') echo 'active'; ?>" aria-checked="<?php echo $GLOBALS['language'] == 'en'; ?>" role="checkbox">English</a>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
                 <form class="form-inline my-2 my-lg-0" action="<?php $this->options->siteUrl(); ?>" method="post" role="search">
                     <div class="input-group">
                         <input class="form-control" type="search" placeholder="<?php echo $GLOBALS['t']['header']['search']; ?>" required name="s">
