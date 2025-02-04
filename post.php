@@ -119,7 +119,7 @@ $this->need('components/header.php');
                                 <?php endfor; ?>
                                 <?php if ($postPageNum < count($GLOBALS['postPage'])): ?>
                                     <li class="page-item">
-                                        <a href="<?php echo $this->permalink . '?post-page=' . ($postPageNum + 1); ?>" class="page-link next-page" aria-label="<?php echo $GLOBALS['pagination']['nextPage']; ?>" title="<?php echo $GLOBALS['pagination']['nextPage']; ?>" data-toggle="tooltip" data-placement="top">
+                                        <a href="<?php echo $this->permalink . '?post-page=' . ($postPageNum + 1); ?>" class="page-link next-page" aria-label="<?php echo $GLOBALS['t']['pagination']['nextPage']; ?>" title="<?php echo $GLOBALS['t']['pagination']['nextPage']; ?>" data-toggle="tooltip" data-placement="top">
                                             <i class="icon-chevron-right"></i>
                                         </a>
                                     </li>
