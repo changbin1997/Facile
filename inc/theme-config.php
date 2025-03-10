@@ -78,7 +78,7 @@ EOT;
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('loginLink', array(
         'show' => '显示',
         'hide' => '隐藏'
-    ), 'show', _t('登录入口'), _t('隐藏登录入口后在前台就不会显示登录入口，只能通过 域名/admin/login.php 进入登录页面')));
+    ), 'show', _t('登录入口'), _t('隐藏登录入口后在前台就不会显示登录入口，只能通过 域名' . __TYPECHO_ADMIN_DIR__ . 'login.php 进入登录页面')));
 
     //  侧边栏博客信息博主头像地址
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('avatarUrl', null, null, _t('博主头像地址'), _t('博主头像会显示在侧边栏的博客信息区域，如果省略会使用管理员的 Gravatar 头像。')));
