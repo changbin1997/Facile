@@ -57,7 +57,7 @@ EOT;
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('breadcrumb', array(
         'on' => '开启',
         'off' => '关闭'
-    ), 'off', _t('面包屑导航'), _t('开启后会在导航栏下方显示路劲导航。')));
+    ), 'off', _t('面包屑导航'), _t('开启后会在导航栏下方显示路径导航。')));
 
     // 自定义导航栏链接
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('navLinks', null, null, _t('自定义导航栏链接'), _t('您可以在导航栏添加自定义链接，链接的名称和 URL 都可以自定义，导航栏链接需要使用 JSON 配置 <a href="https://facile.misterma.com/%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE.html#%E8%BF%9B%E5%85%A5%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE" target="_blank">点击查看配置说明</a>。')));
