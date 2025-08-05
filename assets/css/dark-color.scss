@@ -349,6 +349,11 @@ $dark-text-color2: #999999;
         color: $dark-link-color;
       }
     }
+    // 侧边栏的目录高亮
+    .directory-active {
+      font-weight: 600;
+      color: #FFFFFF;
+    }
   }
 
   // 移动设备目录配色
@@ -360,7 +365,12 @@ $dark-text-color2: #999999;
       }
     }
     a {
-      color: $dark-link-color;
+      color: $dark-text-color;
+    }
+    // 移动设备目录高亮
+    .directory-active {
+      font-weight: 600;
+      color: #FFFFFF;
     }
   }
 

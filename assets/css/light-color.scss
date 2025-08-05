@@ -169,12 +169,18 @@
   // 侧边栏配色
   .sidebar {
     section {
+      // 侧边栏标题
       > h2 {
         color: #333333;
       }
-
+      // 侧边栏链接
       li a {
         color: #333333;
+      }
+      // 侧边栏的目录高亮
+      .directory-active {
+        font-weight: 600;
+        color: #000000;
       }
     }
   }
@@ -182,6 +188,14 @@
   // 移动设备的目录配色
   #directory-mobile {
     background: #FFFFFF;
+    .directory-link {
+      color: #333333;
+    }
+    // 移动设备的目录高亮
+    .directory-active {
+      font-weight: 600;
+      color: #000000;
+    }
   }
 
   // 文章页

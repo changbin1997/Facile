@@ -1319,8 +1319,19 @@ header input[type=search]:focus {
 .light-color .sidebar section li a {
   color: #333333;
 }
+.light-color .sidebar section .directory-active {
+  font-weight: 600;
+  color: #000000;
+}
 .light-color #directory-mobile {
   background: #FFFFFF;
+}
+.light-color #directory-mobile .directory-link {
+  color: #333333;
+}
+.light-color #directory-mobile .directory-active {
+  font-weight: 600;
+  color: #000000;
 }
 .light-color .post-page .post-content p > code {
   background: #F9F2F4;
@@ -1537,8 +1548,19 @@ header input[type=search]:focus {
   .auto-color .sidebar section li a {
     color: #333333;
   }
+  .auto-color .sidebar section .directory-active {
+    font-weight: 600;
+    color: #000000;
+  }
   .auto-color #directory-mobile {
     background: #FFFFFF;
+  }
+  .auto-color #directory-mobile .directory-link {
+    color: #333333;
+  }
+  .auto-color #directory-mobile .directory-active {
+    font-weight: 600;
+    color: #000000;
   }
   .auto-color .post-page .post-content p > code {
     background: #F9F2F4;
@@ -1886,6 +1908,10 @@ header input[type=search]:focus {
 .dark-color .sidebar .customize-html a {
   color: #E47063;
 }
+.dark-color .sidebar .directory-active {
+  font-weight: 600;
+  color: #FFFFFF;
+}
 .dark-color #directory-mobile {
   background: #16161A;
 }
@@ -1893,7 +1919,11 @@ header input[type=search]:focus {
   color: #D3D3D3;
 }
 .dark-color #directory-mobile a {
-  color: #E47063;
+  color: #D3D3D3;
+}
+.dark-color #directory-mobile .directory-active {
+  font-weight: 600;
+  color: #FFFFFF;
 }
 .dark-color .post-page .post-content p {
   color: #D3D3D3;
@@ -2400,6 +2430,10 @@ header input[type=search]:focus {
   .auto-color .sidebar .customize-html a {
     color: #E47063;
   }
+  .auto-color .sidebar .directory-active {
+    font-weight: 600;
+    color: #FFFFFF;
+  }
   .auto-color #directory-mobile {
     background: #16161A;
   }
@@ -2407,7 +2441,11 @@ header input[type=search]:focus {
     color: #D3D3D3;
   }
   .auto-color #directory-mobile a {
-    color: #E47063;
+    color: #D3D3D3;
+  }
+  .auto-color #directory-mobile .directory-active {
+    font-weight: 600;
+    color: #FFFFFF;
   }
   .auto-color .post-page .post-content p {
     color: #D3D3D3;
