@@ -78,7 +78,7 @@ while ($this->next()):
                                 </div>
                                 <?php if ($this->user->hasLogin()): ?>
                                     <div class="d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                                        <a href="<?php echo $this->options->siteUrl . 'admin/write-post.php?cid=' . $this->cid; ?>" class="float-right edit-link">
+                                        <a href="<?php echo $this->options->adminUrl() . 'write-post.php?cid=' . $this->cid; ?>" class="float-right edit-link">
                                             <i class="icon-pencil mr-1"></i>
                                             <b><?php echo $GLOBALS['t']['post']['edit']; ?></b>
                                         </a>
@@ -114,7 +114,7 @@ while ($this->next()):
                             </div>
                             <?php if ($this->user->hasLogin()): ?>
                                 <div class="d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                                    <a href="<?php echo $this->options->siteUrl . 'admin/write-post.php?cid=' . $this->cid; ?>" class="float-right edit-link">
+                                    <a href="<?php echo $this->options->adminUrl() . 'write-post.php?cid=' . $this->cid; ?>" class="float-right edit-link">
                                         <i class="icon-pencil mr-1"></i>
                                         <b><?php echo $GLOBALS['t']['post']['edit']; ?></b>
                                     </a>
@@ -139,7 +139,7 @@ while ($this->next()):
                         </div>
                         <?php if ($this->user->hasLogin()): ?>
                             <div class="d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                                <a href="<?php echo $this->options->siteUrl . 'admin/write-post.php?cid=' . $this->cid; ?>" class="float-right edit-link">
+                                <a href="<?php echo $this->options->adminUrl() . 'write-post.php?cid=' . $this->cid; ?>" class="float-right edit-link">
                                     <i class="icon-pencil mr-1"></i>
                                     <b><?php echo $GLOBALS['t']['post']['edit']; ?></b>
                                 </a>
