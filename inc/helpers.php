@@ -1,6 +1,11 @@
 <?php
 
-// 设置语言
+/**
+ * 设置语言
+ *
+ * @param string $language 语言设置选择的默认语言
+ * @return void
+ */
 function languageInit($language) {
     $languageList = array('zh', 'en');
 
@@ -33,7 +38,11 @@ function languageInit($language) {
     $GLOBALS['language'] = $language == null ? 'zh-CN' : $language;
 }
 
-// 把一些翻译内容传给 JS
+/**
+ * 把一些支持多语言显示的内容传给 JS 显示
+ *
+ * @return void
+ */
 function localizeScript() {
     // 需要传给 JS 的翻译内容
     $t = array(
@@ -60,7 +69,12 @@ function localizeScript() {
     echo '<script type="text/javascript"> window.t = ' . $t . ' </script>';
 }
 
-// 根据语言格式化文章日期
+/**
+ * 根据语言格式化文章日期
+ *
+ * @param int $date 时间戳
+ * @return string 格式化后的日期
+ */
 function postDateFormat($date) {
     if ($GLOBALS['language'] == 'zh' or $GLOBALS['language'] == 'zh-CN') {
         $date = date('Y年m月d日', $date);
@@ -70,7 +84,12 @@ function postDateFormat($date) {
     return $date;
 }
 
-// 获取英文的日序数后缀
+/**
+ * 获取英文的日序数后缀
+ *
+ * @param int $timestamp 时间戳
+ * @return string 英文的日序数后缀
+ */
 function getDayWithSuffix($timestamp) {
     // 提取日期中的天
     $day = date('j', $timestamp);
@@ -85,7 +104,12 @@ function getDayWithSuffix($timestamp) {
     return $day . 'th';
 }
 
-// 获取点赞数量
+/**
+ * 获取点赞数量
+ *
+ * @param int $cid 文章的cid
+ * @return array 返回点赞数量和文章是否被点赞过
+ */
 function agreeNum($cid) {
     $db = Typecho_Db::get();
     $prefix = $db->getPrefix();
@@ -104,7 +128,12 @@ function agreeNum($cid) {
     );
 }
 
-// 点赞
+/**
+ * 点赞
+ *
+ * @param int $cid 文章的cid
+ * @return mixed 返回赞数
+ */
 function agree($cid) {
     $db = Typecho_Db::get();
     $agree = $db->fetchRow($db->select('table.contents.agree')->from('table.contents')->where('cid = ?', $cid));
@@ -127,21 +156,33 @@ function agree($cid) {
     return $agree['agree'];
 }
 
-// 获取分类数量
+/**
+ * 获取文章分类数量
+ *
+ * @return int 返回文章分类数量
+ */
 function categoryCount() {
     $db = Typecho_Db::get();
     $count = $db->fetchRow($db->select('COUNT(*)')->from('table.metas')->where('type = ?', 'category'));
     return $count['COUNT(*)'];
 }
 
-// 获取标签数量
+/**
+ * 获取标签数量
+ *
+ * @return int 返回标签数量
+ */
 function tagCount() {
     $db = Typecho_Db::get();
     $count = $db->fetchRow($db->select('COUNT(*)')->from('table.metas')->where('type = ?', 'tag'));
     return $count['COUNT(*)'];
 }
 
-// 获取总阅读量
+/**
+ * 获取总阅读量
+ *
+ * @return int 返回总阅读量
+ */
 function viewsCount() {
     $db = Typecho_Db::get();
     $count = $db->fetchRow($db->select('SUM(views) AS viewsCount')->from('table.contents'));
@@ -149,7 +190,11 @@ function viewsCount() {
     return $count['viewsCount'];
 }
 
-// 获取总点赞数
+/**
+ * 获取总点赞数
+ *
+ * @return int 返回总点赞数
+ */
 function agreeCount() {
     $db = Typecho_Db::get();
     $count = $db->fetchRow($db->select('SUM(agree) AS agreeCount')->from('table.contents'));
@@ -157,7 +202,13 @@ function agreeCount() {
     return $count['agreeCount'];
 }
 
-// 获取 ECharts 格式要求的文章更新日历
+/**
+ * 获取 ECharts 格式要求的文章更新日历
+ *
+ * @param int $start 起始时间戳
+ * @param int $end 结束时间戳
+ * @return array 返回用于日历的文章更新数据
+ */
 function postCalendar($start, $end) {
     $db = Typecho_Db::get();
     $dateList = $db->fetchAll($db->select('created')->from('table.contents')->where('created > ?', $start)->where('created < ?', $end));
@@ -182,7 +233,13 @@ function postCalendar($start, $end) {
     return $dateList;
 }
 
-// 获取 ECharts 格式要求的评论更新日历
+/**
+ * 获取 ECharts 格式要求的评论更新日历
+ *
+ * @param int $start 起始时间戳
+ * @param int $end 结束时间戳
+ * @return array 返回用于日历的评论动态数据
+ */
 function commentCalendar($start, $end) {
     $db = Typecho_Db::get();
     $dateList = $db->fetchAll($db->select('created')->from('table.comments')->where('created > ?', $start)->where('created < ?', $end));
@@ -207,7 +264,11 @@ function commentCalendar($start, $end) {
     return $dateList;
 }
 
-// 获取个分类的文章数量
+/**
+ * 获取每个分类的文章数量
+ *
+ * @return array 返回每个分类的文章数量
+ */
 function categoryPostCount() {
     $db = Typecho_Db::get();
     $count = $db->fetchAll($db->select('name', 'count AS value')->from('table.metas')->where('type = ?', 'category'));
@@ -217,7 +278,11 @@ function categoryPostCount() {
     return $count;
 }
 
-// 获取阅读量排名前 5 的 5 篇文章的信息
+/**
+ * 获取阅读量排名前 5 的 5 篇文章的信息
+ *
+ * @return array 返回阅读量排名前5的文章标题、链接、阅读量
+ */
 function top5post() {
     $db = Typecho_Db::get();
     $top5Post = $db->fetchAll($db->select()->from('table.contents')->where('type = ?', 'post')->where('status = ?', 'publish')->order('views', Typecho_Db::SORT_DESC)->offset(0)->limit(5));
@@ -233,7 +298,11 @@ function top5post() {
     return $postList;
 }
 
-// 获取评论数排名前 5 的 5 篇文章的信息
+/**
+ * 获取评论数排名前 5 的 5 篇文章的信息
+ *
+ * @return array 返回评论数排名前5的文章标题、链接、评论数
+ */
 function top5CommentPost() {
     $db = Typecho_Db::get();
     $top5Post = $db->fetchAll($db->select()->from('table.contents')->where('type = ?', 'post')->where('status = ?', 'publish')->order('commentsNum', Typecho_Db::SORT_DESC)->offset(0)->limit(5));
@@ -249,7 +318,12 @@ function top5CommentPost() {
     return $postList;
 }
 
-// 获取父评论的姓名
+/**
+ * 获取父评论的姓名
+ *
+ * @param int $parent 评论的 coid
+ * @return string 返回父评论的姓名
+ */
 function reply($parent) {
     if ($parent == 0) {
         return '';
@@ -261,7 +335,11 @@ function reply($parent) {
     return $link;
 }
 
-// 检查数据库字段
+/**
+ * 检查数据库字段
+ *
+ * @return void
+ */
 function checkField() {
     $db = Typecho_Db::get();
     $prefix = $db->getPrefix();
@@ -279,7 +357,12 @@ function checkField() {
     }
 }
 
-// 设置文章阅读量
+/**
+ * 设置文章阅读量
+ *
+ * @param object $archive 文章
+ * @return int 返回阅读量
+ */
 function postViews($archive) {
     // 获取文章的 cid
     $cid = $archive->cid;
@@ -310,7 +393,12 @@ function postViews($archive) {
     return $row['views'];
 }
 
-// 检测是否是QQ邮箱
+/**
+ * 检测是否是QQ邮箱
+ *
+ * @param string $email 邮箱
+ * @return bool
+ */
 function isQQEmail($email) {
     $re = '/^\d{6,11}\@qq\.com$/';
     preg_match($re, $email, $result);
@@ -320,14 +408,27 @@ function isQQEmail($email) {
     return false;
 }
 
-// 获取QQ头像
+/**
+ * 获取QQ头像，直接输出
+ *
+ * @param string $email 邮箱
+ * @param string $name 称呼，用于 img 的 alt
+ * @param int $size 头像尺寸
+ * @return void
+ */
 function QQAvatar($email, $name, $size) {
     $qq = str_replace('@qq.com', '', $email);  // 获取QQ号
     $imgUrl = 'https://q2.qlogo.cn/headimg_dl?dst_uin=' . $qq . '&spec=' . $size;
     echo '<img src="' . $imgUrl . '" alt="' . $name . '" class="avatar">';
 }
 
-// 评论时间格式化
+/**
+ * 评论时间格式化
+ *
+ * @param int $date 日期时间戳
+ * @param string $options 评论日期格式设置
+ * @return string 返回格式化后的日期
+ */
 function commentDateFormat($date, $options = 'format1') {
     // 中文日期
     if ($options == 'format1') {
@@ -353,7 +454,12 @@ function commentDateFormat($date, $options = 'format1') {
     }
 }
 
-// 获取时间间隔（中文）
+/**
+ * 计算时间间隔
+ *
+ * @param int $timestamp 时间戳
+ * @return string 返回中文的时间间隔
+ */
 function formatTimeDifferenceZH($timestamp) {
     $timestamp = time() - $timestamp;
     if ($timestamp < 1) {
@@ -369,7 +475,12 @@ function formatTimeDifferenceZH($timestamp) {
     }
 }
 
-// 获取时间间隔（英文）
+/**
+ * 计算时间间隔（英文）
+ *
+ * @param int $timestamp 时间戳
+ * @return string 返回英文的时间间隔
+ */
 function formatTimeDifferenceEN($timestamp) {
     $diff = time() - $timestamp;
 
@@ -391,7 +502,14 @@ function formatTimeDifferenceEN($timestamp) {
     return $days == 1 ? "1 day ago" : "$days days ago";
 }
 
-// 获取文章头图显示设置
+/**
+ * 获取文章头图显示设置
+ *
+ * @param object $t 文章
+ * @param array $options 全局的文章头图显示设置
+ * @param string $defaultImageUrl 默认头图 URL
+ * @return false|string 文章头图 URL
+ */
 function headerImageDisplay($t, $options, $defaultImageUrl) {
     // 在文章列表和文章页显示文章头图
     if ($t->fields->headerImgDisplay == 'post-page-list') {
@@ -425,7 +543,13 @@ function headerImageDisplay($t, $options, $defaultImageUrl) {
     return false;
 }
 
-// 根据设置获取文章头图
+/**
+ * 根据设置获取文章头图
+ *
+ * @param object $a 文章
+ * @param string $defaultUrl 默认文章头图 URL
+ * @return false|mixed 文章头图 URL
+ */
 function postImg($a, $defaultUrl) {
     // 手动输入文章头图
     if ($a->fields->imageSource == 'url' && $a->fields->thumb != '') {
@@ -440,7 +564,12 @@ function postImg($a, $defaultUrl) {
     return $img;
 }
 
-// 获取文章的第一张图片
+/**
+ * 获取文章的第一张图片
+ *
+ * @param object $archive 文章
+ * @return false|string 返回文章头图或 false
+ */
 function getPostImg($archive) {
 
     $img = array();
@@ -453,7 +582,12 @@ function getPostImg($archive) {
     }
 }
 
-// 获取随机文章头图
+/**
+ * 获取随机文章头图
+ *
+ * @param string $imgUrl 默认文章头图URL
+ * @return false|string 返回文章头图URL
+ */
 function randomHeaderImage($imgUrl) {
     if ($imgUrl == null or $imgUrl == '') return false;
     // 把 URL 按行拆分为数组
@@ -466,7 +600,13 @@ function randomHeaderImage($imgUrl) {
     return $imgUrl[mt_rand(0, count($imgUrl) - 1)];
 }
 
-// 获取文章列表的文章头图样式
+/**
+ * 获取文章列表的文章头图样式设置
+ *
+ * @param string $postStyle 单篇文章的头图样式
+ * @param string $optionsStyle 全局文章头图样式
+ * @return string 返回文章头图样式设置
+ */
 function getPostListHeaderImageStyle($postStyle, $optionsStyle) {
     if ($postStyle == 'max' or $postStyle == 'mini') {
         return $postStyle;
@@ -480,19 +620,35 @@ function getPostListHeaderImageStyle($postStyle, $optionsStyle) {
     return 'max';
 }
 
-// 获取父分类的名称
+/**
+ * 获取父分类的名称
+ *
+ * @param int $categoryId 分类id
+ * @return string 返回父分类的名称
+ */
 function getParentCategory($categoryId) {
     $db = Typecho_Db::get();
     $category = $db->fetchRow($db->select()->from('table.metas')->where('mid = ?', $categoryId));
     return $category['name'];
 }
 
-// 计算两个时间之间相差的天数
+/**
+ * 计算两个时间之间相差的天数
+ *
+ * @param int $time1 时间戳
+ * @param int $time2 时间戳
+ * @return false|float 返回天数
+ */
 function getDays($time1, $time2) {
     return floor(($time2 - $time1) / 86400);
 }
 
-// 根据文章内的标题生成目录
+/**
+ * 根据文章内的标题生成目录
+ *
+ * @param string $content 文章内容
+ * @return array 返回文章内容和目录
+ */
 function articleDirectory($content) {
     $re = '#<h(\d)(.*?)>(.*?)</h\d>#im';
     preg_match_all($re, $content, $result);
@@ -562,7 +718,13 @@ function articleDirectory($content) {
     );
 }
 
-// 生成目录 HTML
+/**
+ * 生成目录 HTML
+ *
+ * @param $tree
+ * @param $parent
+ * @return string 返回文章目录HTML
+ */
 function renderArticleDirectory($tree, $parent = '') {
     $index = 1;
     $ariaLabel = $tree[0]['parent_id'] == 0?'aria-label="' . $GLOBALS['t']['sidebar']['tableOfContents'] . '"':'';
@@ -579,15 +741,11 @@ function renderArticleDirectory($tree, $parent = '') {
     return $htmlStr;
 }
 
-// 获取章节目录设置
-function getDirectoryOptions($post, $options) {
-    if ($post == 'hide') return false;
-    if ($post == 'first' or $post == 'first-title') return $post;
-    if ($options == 'first' or $options == 'first-title') return $options;
-    return false;
-}
-
-// 检测是否是 IE
+/**
+ * 检测是否是 IE
+ *
+ * @return bool IE 返回 true，不是 IE 返回 false
+ */
 function isIE() {
     $agent = $_SERVER['HTTP_USER_AGENT'];
     if (preg_match('/MSIE/i', $agent) || preg_match('/Trident/i', $agent)) {
@@ -596,14 +754,27 @@ function isIE() {
     return false;
 }
 
-// 把图片的 src 替换为 data-src，用于图片懒加载
+/**
+ * 把图片的 src 替换为 data-src，用于图片懒加载
+ *
+ * @param string $content 文章内容
+ * @return string 替换后的文章内容
+ */
 function replaceImgSrc($content) {
     $pattern = '/<img(.*?)src(.*?)=(.*?)"(.*?)">/i';
     $replacement = '<img$1data-src$3="$4"$5 class="load-img">';
     return preg_replace($pattern, $replacement, $content);
 }
 
-// 获取 Gravatar 头像
+/**
+ * 获取 Gravatar 头像，直接输出 img
+ *
+ * @param string $email 邮箱
+ * @param int $size 头像尺寸
+ * @param string $gravatarUrl 自定义 gravatarUrl 源
+ * @param string $alt 头像图片描述
+ * @return void
+ */
 function gravatar($email, $size, $gravatarUrl = '', $alt = '') {
     $url = $gravatarUrl . md5(strtolower(trim($email))) . '?s=' . $size;
     if ($gravatarUrl == '' or $gravatarUrl == null) {
@@ -612,14 +783,24 @@ function gravatar($email, $size, $gravatarUrl = '', $alt = '') {
     echo '<img src="' . $url . '" alt="' . $alt . '" class="avatar" />';
 }
 
-// 获取管理员信息
+/**
+ * 获取网站管理员的用户信息
+ *
+ * @return object 管理员用户信息
+ */
 function getAdminInfo() {
     $db = Typecho_Db::get();
     $userInfo = $db->fetchRow($db->select('mail', 'url', 'screenName', 'created')->from('table.users')->where('group = ?', 'administrator'));
     return $userInfo;
 }
 
-// 获取文章列表显示设置
+/**
+ * 获取文章列表显示设置
+ *
+ * @param string $option 文章列表的全局设置
+ * @param string $postOption 单篇文章的列表设置
+ * @return mixed|string 文章列表显示设置
+ */
 function postListStyle($option, $postOption) {
     // 判断单篇文章的列表显示设置
     if ($postOption == 'summary' or $postOption == 'fullText') {
