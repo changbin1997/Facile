@@ -51,7 +51,7 @@ $this->need('components/header.php');
                         <?php if ($this->user->hasLogin()): ?>
                             <span class="ml-2">
                         <i class="icon-pencil mr-2" aria-hidden="true"></i>
-                        <a href="<?php echo $this->options->siteUrl . 'admin/write-page.php?cid=' . $this->cid; ?>"><?php echo $GLOBALS['t']['post']['edit']; ?></a>
+                        <a href="<?php echo $this->options->adminUrl . 'write-page.php?cid=' . $this->cid; ?>"><?php echo $GLOBALS['t']['post']['edit']; ?></a>
                     </span>
                         <?php endif; ?>
                     </div>
