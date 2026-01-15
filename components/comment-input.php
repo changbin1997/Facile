@@ -14,7 +14,7 @@
             <!--Emoji表情区域-->
             <?php if ($this->options->emojiPanel == 'show'): ?>
             <div class="col-12" id="emoji-box">
-                <button aria-expanded="false" type="button" class="btn btn-sm" id="show-emoji-btn" data-url="<?php $this->options->themeUrl('emoji.php'); ?>">
+                <button aria-expanded="false" type="button" class="btn btn-sm" id="show-emoji-btn">
                     😀 <?php echo $GLOBALS['t']['emoji']['emoji']; ?>
                 </button>
                 <div id="emoji-panel" class="bg-light border shadow rounded" role="dialog" aria-label="<?php echo $GLOBALS['t']['emoji']['emojiPanel']; ?>">
