@@ -604,53 +604,97 @@ header {
 
 // 图片灯箱
 #max-img-box {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
   display: none;
-  // 遮罩层
-  #max-img-bg {
-    display: none;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 1200;
-  }
-  // 图片灯箱功能按钮区
-  .max-img-features-btn {
-    position: fixed;
+  z-index: 2000;
+  // 图片数量显示
+  #img-counter {
+    text-shadow: 0 1px #333333, 1px 0 #333333, -1px 0 #333333, 0 -1px #333333;
+    color: #FFFFFF;
+    font-size: 16px;
+    position: absolute;
     top: 10px;
+    z-index: 2002;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    line-height: 38px;
+  }
+  // 按钮区域
+  .btn-bar {
+    position: absolute;
     right: 10px;
-    z-index: 1203;
-    display: none;
+    top: 10px;
+    z-index: 2002;
     button {
       color: #FFFFFF;
       text-shadow: 0 1px #333333, 1px 0 #333333, -1px 0 #333333, 0 -1px #333333;
-      font-size: 15px;
+      font-size: 16px;
       &:hover {
         color: #F7E6D2;
       }
     }
   }
-  // 图片描述
-  #img-info {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translate(-50%, 0);
-    font-size: 16px;
-    text-shadow: 0 1px #333333, 1px 0 #333333, -1px 0 #333333, 0 -1px #333333;
-    z-index: 1203;
-    display: none;
-  }
-  // 图片
-  #max-img {
+  // 图片翻页按钮
+  .previous-image, .next-image {
+    padding: 2px 14px;
+    font-size: 40px;
     position: absolute;
-    cursor: move;
-    display: none;
-    z-index: 1201;
+    z-index: 2002;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #FFFFFF;
+    text-shadow: 0 1px #333333, 1px 0 #333333, -1px 0 #333333, 0 -1px #333333;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  // 上一张
+  .previous-image {
+    left: 20px;
+
+  }
+  // 下一张
+  .next-image {
+    right: 20px;
+  }
+  // 图片 alt 文字
+  #img-alt {
+    text-shadow: 0 1px #333333, 1px 0 #333333, -1px 0 #333333, 0 -1px #333333;
+    color: #FFFFFF;
+    font-size: 16px;
+    position: absolute;
+    bottom: 30px;
+    z-index: 2002;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    text-align: center;
+  }
+  // 更换图片的动画
+  .change-img-animation {
+    animation: fadeIn 0.25s ease-in-out;
+    transition: width 0.25s, height 0.25s, left 0.25s, top 0.25s;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 }
+// 图片
+#max-img {
+  position: absolute;
+  z-index: 2001;
+}
+
 
 // 禁止滚动
 .stop-scrolling {
@@ -1024,6 +1068,23 @@ header {
   // 待加载的图片
   .load-img {
     height: 200px !important;
+  }
+  // 图片灯箱
+  #max-img-box {
+    #img-counter {
+      margin: 0;
+      left: 15px;
+      transform: translateX(0);
+    }
+    // 上一张
+    .previous-image {
+      left: 0;
+
+    }
+    // 下一张
+    .next-image {
+      right: 0;
+    }
   }
 }
 
