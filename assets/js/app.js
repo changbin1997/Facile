@@ -6,16 +6,18 @@
 * Licensed under MIT
 */
 
-import Lightbox from './Lightbox.js';
-import Emoji from './Emoji.js';
+import Lightbox from './modules/Lightbox.js';
+import Emoji from './modules/Emoji.js';
+import Directory from './modules/Directory.js';
+import accessibilityInit from './modules/accessibilityInit.js';
+import ThemeColor from './modules/ThemeColor.js';
+import codeHighlightInit from './modules/codeHighlightInit.js';
+import BootstrapStyle from './modules/BootstrapStyle.js';
+import PJAX from './modules/PJAX.js';
+import AvatarStyle from './modules/AvatarStyle.js';
+import ArticleEngagement from './modules/ArticleEngagement.js';
 
 $(function () {
-  let directory = false;  // 是否打开移动设备的目录
-  const avatarColor = [];  // 存储文字头像颜色
-  const avatarName = [];  // 存储文字头像名称
-  let directoryTop = 0;  // 侧边栏章节目录的高度
-  let commentParentId = null;  // 存储父评论的id，用于PJAX评论提交后跳转
-  let themeColor = 'light';  // 存储主题配色
   let inputFocus = false;  // 表单焦点状态
 
   // 图片灯箱初始化
@@ -26,38 +28,33 @@ $(function () {
   const emoji = new Emoji();
   emoji.init();
 
-  // 目录高亮初始化
-  directoryHighlightInit();
+  // 目录初始化
+  const directory = new Directory();
+  directory.init();
 
   // 主题配色初始化
-  themeColorInit();
+  const themeColor = new ThemeColor();
+  themeColor.init();
 
-  // 给分页链接添加class和aria属性
-  paginationLinkInit();
+  // 一些 bootstrap 的样式初始化
+  const bootstrapStyle = new BootstrapStyle();
+  bootstrapStyle.init();
 
   // 头像样式初始化
-  avatarStyleInit();
-
-  // 给文章内的表格添加 bootstrap 的样式
-  tableInit();
+  const avatarStyle = new AvatarStyle();
+  avatarStyle.init();
 
   // 给文章中的代码块添加拷贝按钮和拷贝事件
   codeHighlightInit();;
 
   // 点赞初始化
-  likeInit();
+  ArticleEngagement.likeInit();
 
   // 一些可访问性相关的功能初始化
   accessibilityInit();
 
-  // bootstrap 的一些样式初始化
-  bootstrapStyleInit();
-
-  // 文章内的章节目录跳转样式
-  directoryStyleInit();
-
   // 生成文章的分享二维码
-  shareQrCode();
+  ArticleEngagement.shareQrCode();
 
   // 图片懒加载
   lazyLoadImages();
@@ -65,16 +62,55 @@ $(function () {
   // 表单焦点事件初始化
   inputFocusInit();
 
+  // pjax 初始化
+  const pjax = new PJAX();
+  pjax.init(() => {
+    // PJAX 替换完成后
+    // 代码高亮初始化
+    codeHighlightInit();
+    // 头像样式初始化
+    avatarStyle.init();
+    // 点赞初始化
+    ArticleEngagement.likeInit();
+    // Emoji 面板初始化
+    emoji.init();
+    // 一些可访问性相关的功能初始化
+    accessibilityInit();
+    // 生成文章的分享二维码
+    ArticleEngagement.shareQrCode();
+    // 图片懒加载
+    lazyLoadImages();
+    // 表单焦点初始化
+    inputFocusInit();
+    // 图片灯箱初始化
+    lightbox.init();
+    // 目录初始化
+    directory.init();
+    // 主题配色初始化
+    themeColor.init();
+    // 一些 bootstrap 样式初始化
+    bootstrapStyle.init();
+
+    // 侧边栏的语言更改
+    $('.sidebar .change-language').on('change', changeLanguage);
+  });
+
   // 导航栏的切换语言点击
   $('header .change-language').on('click', changeLanguage);
 
   // 侧边栏的语言更改
   $('.sidebar .change-language').on('change', changeLanguage);
 
+  // 窗口尺寸改变事件
+  window.addEventListener('resize', () => {
+    // 调整侧边栏目录的高度
+    directory.directorySize();
+  });
+
   // 全局快捷键
   $(document).on('keyup', ev => {
     // 如果按下的是右方向键就跳转到下一页
-    if (ev.keyCode === 39 && !inputFocus && !lightbox.isShow) {
+    if ((ev.keyCode === 39 || ev.key === 'ArrowRight') && !inputFocus && !lightbox.isShow) {
       // 文章列表页面跳转
       if ($('.next .page-link').length) {
         location.href = $('.next .page-link').attr('href');
@@ -85,7 +121,7 @@ $(function () {
       }
     }
     // 如果按下的是左方向键就跳转到上一页
-    if (ev.keyCode === 37 && !inputFocus && !lightbox.isShow) {
+    if ((ev.keyCode === 37 || ev.key === 'ArrowLeft') && !inputFocus && !lightbox.isShow) {
       // 文章列表页面跳转
       if ($('.prev .page-link').length) {
         location.href = $('.prev .page-link').attr('href');
@@ -106,15 +142,6 @@ $(function () {
   // 评论内容输入框点击
   $('#textarea').on('click', () => {
     return false;
-  });
-
-  // 页面加载完成后调整侧边栏目录的高度
-  directorySize()
-
-  // 窗口尺寸改变
-  window.addEventListener('resize', () => {
-    // 调整侧边栏目录的高度
-    directorySize();
   });
 
   // 监听滚动条
@@ -144,17 +171,8 @@ $(function () {
       }
     });
 
-    // 固定侧边栏章节目录位置
-    if ($('.sidebar .directory').length && window.innerWidth >= 992) {
-      if ($(document).scrollTop() >= directoryTop) {
-        $('.sidebar .directory').css({
-          position: 'fixed',
-          top: 80
-        });
-      }else {
-        $('.sidebar .directory').css('position', 'static');
-      }
-    }
+    // 固定或取消固定侧边栏目录
+    directory.directoryPosition();
   });
 
   // 返回顶部按钮点击
@@ -166,172 +184,6 @@ $(function () {
     $('header .navbar-brand').get(0).focus();
     return false;
   });
-
-  // PJAX 链接初始化
-  if ($('body').attr('data-pjax') === 'on') {
-    pjaxLinkInit();
-  }
-
-  // 初始化 PJAX
-  if ($('body').attr('data-pjax') === 'on') {
-    $(document).pjax('.pjax-link', '#main', {
-      fragment: '#main',
-      timeout: 20000
-    });
-  }
-
-  // PJAX 搜索表单提交
-  if ($('body').attr('data-pjax') === 'on') {
-    $(document).on('submit', 'form[role="search"]', ev => {
-      $.pjax.submit(ev, '#main', {
-        fragment: '#main',
-        replace: false,
-        timeout: 20000
-      });
-    });
-  }
-
-  // PJAX 评论表单提交
-  if ($('body').attr('data-pjax') === 'on') {
-    $(document).on('submit', '#comment-form', ev => {
-      // 如果是回复评论就存储父评论的id
-      if ($('#comment-parent').length && $('#comment-parent').val() !== '') {
-        commentParentId = $('#comment-parent').val();
-      }
-
-      $.pjax.submit(ev, '#main', {
-        fragment: '#main',
-        replace: false,
-        push: false,
-        timeout: 20000
-      });
-    });
-  }
-
-  // PJAX 即将开始请求
-  if ($('body').attr('data-pjax') === 'on') {
-    $(document).on('pjax:start', () => {
-      // 如果开启了移动设备的导航菜单就关闭菜单
-      if ($('.navbar-toggler').attr('aria-expanded') === 'true') {
-        $('.navbar-toggler').click();
-      }
-      // 移除工具提示
-      $('[data-toggle="tooltip"]').tooltip('dispose');
-      // 显示进度条
-      if ($('#progress-bar').length) {
-        $('#progress-bar').show();
-      }
-    });
-  }
-
-  // PJAX 开始请求
-  if ($('body').attr('data-pjax') === 'on') {
-    $(document).on('pjax:send', () => {
-      if ($('#progress-bar').length) {
-        // 更改进度条
-        $('#progress-bar #progress').animate({
-          width: '30%'
-        }, 100);
-        $('#progress-bar #progress').attr('aria-valuenow', '30');
-      }
-    });
-  }
-
-  // PJAX 请求完成
-  if ($('body').attr('data-pjax') === 'on') {
-    $(document).on('pjax:complete', () => {
-      if ($('#progress-bar').length) {
-        // 更改进度条
-        $('#progress-bar #progress').animate({
-          width: '80%'
-        }, 200);
-        $('#progress-bar #progress').attr('aria-valuenow', '80');
-      }
-    });
-  }
-
-  // PJAX 替换完成
-  if ($('body').attr('data-pjax') === 'on') {
-    $(document).on('pjax:end', (ev) => {
-      // 隐藏进度条
-      if ($('#progress-bar').length) {
-        $('#progress-bar #progress').animate({
-          width: '100%'
-        }, 100, () => {
-          $('#progress-bar').hide();
-          $('#progress-bar #progress').css('width', '0');
-          $('#progress-bar #progress').attr('aria-valuenow', '0');
-        });
-        $('#progress-bar #progress').attr('aria-valuenow', '100');
-      }
-
-      // 清除导航栏链接的选中状态
-      $('.navbar-nav .nav-item').removeClass('active');
-      $('.navbar-nav .nav-item a').removeAttr('aria-current');
-      // 重新设置导航栏链接的选中状态
-      for (let i = 0;i < $('.navbar-nav .nav-item a').length;i ++) {
-        if ($('.navbar-nav .nav-item a').eq(i).attr('href') === ev.currentTarget.URL) {
-          $('.navbar-nav .nav-item').eq(i).addClass('active');
-          $('.navbar-nav .nav-item a').eq(i).attr('aria-current', 'page');
-          break;
-        }
-      }
-
-      // 如果是评论提交就滚动到评论区
-      if (ev.relatedTarget.id === 'comment-form') {
-        if (commentParentId !== null && $(`#comment-${commentParentId}`).length) {
-          // 如果是回复评论就滚动到父评论的区域
-          $('html, body').animate({
-            scrollTop: $(`#comment-${commentParentId}`).offset().top
-          }, 250);
-        }else {
-          // 如果是评论提交就滚动到评论区
-          $('html, body').animate({
-            scrollTop: $('#comments').offset().top
-          }, 250);
-        }
-        commentParentId = null;
-      }
-
-      // 目录高亮初始化
-      directoryHighlightInit();
-      // 表格初始化
-      tableInit();
-      // 代码高亮初始化
-      codeHighlightInit();
-      // 分页链接初始化
-      paginationLinkInit();
-      // 调整章节目录的尺寸
-      directorySize();
-      // 文章章节目录跳转样式
-      directoryStyleInit();
-      // 头像样式初始化
-      avatarStyleInit();
-      // 点赞初始化
-      likeInit();
-      // Emoji 面板初始化
-      emoji.init();
-      // 一些可访问性相关的功能初始化
-      accessibilityInit();
-      // 初始化 bootstrap 的一些样式
-      bootstrapStyleInit();
-      // 主题配色初始化
-      themeColorInit();
-      // 给 PJAX 链接添加 class
-      pjaxLinkInit();
-      // 生成文章的分享二维码
-      shareQrCode();
-      // 图片懒加载
-      lazyLoadImages();
-      // 表单焦点初始化
-      inputFocusInit();
-      // 图片灯箱初始化
-      lightbox.init();
-
-      // 侧边栏的语言更改
-      $('.sidebar .change-language').on('change', changeLanguage);
-    });
-  }
 
   // 下面是一些用于样式和功能初始化的函数
   // 图片懒加载
@@ -347,425 +199,6 @@ $(function () {
     $('.load-img').on('load', function() {
       $(this).removeClass('load-img');
     });
-  }
-
-  // 给 PJAX 链接添加 class
-  function pjaxLinkInit() {
-    const currentDomain = window.location.hostname;
-
-    $('a').each((index, element) => {
-      const href = $(element).attr('href');
-      const target = $(element).attr('target');
-
-      // 检查链接是否包含当前域名，且不含有 target="_blank"
-      if (href && href.includes(currentDomain) && !target) {
-        $(element).addClass('pjax-link');
-      }
-    });
-  }
-
-  // 生成分享二维码
-  function shareQrCode() {
-    if ($('#qr') !== undefined) {
-      const qr = new QRious({
-        element: $('#qr').get(0),
-        value: location.href,
-        size: 150
-      });
-    }
-  }
-
-  // 一些可访问性相关的功能初始化
-  function accessibilityInit() {
-    // 文章是否加密
-    if ($('.post-content .protected').length) {
-      $('input[name="protectPassword"]').attr('placeholder', window.t.enterYourPassword);
-      $('input[name="protectPassword"]').focus();
-      $('.protected .submit').val(window.t.submit);
-      $('.protected .word').html(window.t.enterThePasswordToViewIt);
-    }
-
-    // 给文章内的链接添加 target 属性
-    if ($('.post-page .post-content a').length) {
-      $('.post-content a').attr('target', '_blank');
-    }
-
-    // 给评论区的评论者链接添加 target 属性
-    if ($('.comment-info .author a').length) {
-      $('.comment-info .author a').attr('target', '_blank');
-    }
-
-    // 评论列表的回复链接点击
-    $('.comment-reply').on('click', () => {
-      if ($('.comment-list .comment-input').length && $('#cancel-comment-reply-link').length) {
-        $('#cancel-comment-reply-link').addClass('btn btn-outline-primary ml-2');
-        $('#cancel-comment-reply-link').attr('role', 'button');
-        $('#cancel-comment-reply-link').html(window.t.cancelReply);
-      }
-    });
-
-    // 取消回复链接按下 tab
-    $('#cancel-comment-reply-link').on('keydown', ev => {
-      if (ev.keyCode === 9) {
-        // 让评论内容输入框获取焦点
-        ev.preventDefault();
-        $('#textarea').focus();
-      }
-    });
-
-    // 给评论列表添加描述
-    if ($('.comments-lists > ol').length) {
-      $('.comments-lists > ol').attr('aria-label', '评论区');
-    }
-
-    // 回复对象名字鼠标移入和移出
-    $('#comments .parent').hover(ev => {
-      // 根据主题配色模式设置高亮的颜色
-      const commentItemBgColor = themeColor === 'dark' ? '#16161A' : '#F7E6D2';
-      $($(ev.target).attr('href')).css('background', commentItemBgColor);
-    }, ev => {
-      $($(ev.target).attr('href')).css('background', 'none');
-    });
-
-    // 回复链接鼠标移入就高亮回复评论
-    $('#comments .comment-reply a').hover(ev => {
-      // 根据主题配色模式设置高亮的颜色
-      const commentItemBgColor = themeColor === 'dark' ? '#16161A' : '#F7E6D2';
-      $(ev.target).closest('.comment-box').css('background', commentItemBgColor);
-    }, ev => {
-      $(ev.target).closest('.comment-box').css('background', 'none');
-    });
-
-    // 给回复链接添加 title 描述
-    $('.comment-reply').each(function() {
-      const authorName = $(this).closest('.comment-box').find('.author a').text() ||
-          $(this).closest('.comment-box').find('.author').text();
-      $(this).find('a').attr({
-        title: `${window.t.replyTo} ${authorName}`,
-        'data-toggle': 'tooltip',
-        'data-placement': 'top'
-      });
-    });
-
-    // 给上一篇文章和下一篇文章的链接添加文字描述
-    $('.previous a').attr('aria-describedby', 'previous-post-text');
-    $('.next a').attr('aria-describedby', 'next-post-text');
-
-    // 给评论区的作者评论链接添加作者 title
-    $('.author-tag').each(function() {
-      $(this).closest('.comment-info').find('.author a').attr('title', '作者');
-    });
-  }
-
-  // 主题配色初始化
-  function themeColorInit() {
-    // 获取主题当前的配色模式
-    if ($('.light-color').length) {
-      themeColor = 'light';
-    }else if ($('.dark-color').length) {
-      themeColor = 'dark';
-    }else {
-      // 检测系统配色模式
-      const darkColor = window.matchMedia('(prefers-color-scheme: dark)');
-      if (darkColor.matches) {
-        // 深色
-        themeColor = 'dark';
-      }else {
-        // 浅色
-        themeColor = 'light';
-      }
-    }
-
-    // 根据当前使用的主题配色来设置侧边栏主题单选框的选中状态
-    if ($('.change-color').length) {
-      themeColor === 'dark' ? $('#dark-color').attr('checked', true) : $('#light-color').attr('checked', true);
-    }
-
-    // 切换主题的单选框改变
-    $('.change-theme-color').on('click', ev => {
-      // 获取选中的颜色
-      const color = $(ev.target).attr('id');
-      themeColor = color === 'dark-color' ? 'dark' : 'light';
-      // 获取当前的时间戳
-      let time = Date.parse(new Date());
-      // 在当前的时间戳上 + 180天
-      time += 15552000000;
-      time = new Date(time);
-      // 写入 cookie
-      document.cookie = 'themeColor=' + color + ';path=/;expires=Tue,' + time;
-      // 更改配色
-      $('body').removeClass($('body').attr('data-color'));
-      $('body').addClass(color);
-      $('body').attr('data-color', color);
-    });
-  }
-
-  // 一些 bootstrap 的样式初始化
-  function bootstrapStyleInit() {
-    // 初始化气球提示
-    $('[data-toggle="tooltip"]').tooltip();
-
-    // 给文章中的标签添加Bootstrap的样式
-    if ($('.post-tag a').length) {
-      $('.post-tag a').addClass('badge badge-dark');
-    }
-  }
-
-  // 点赞初始化
-  function likeInit() {
-    if ($('.agree-btn').length) {
-      $('.agree-btn').on('click', () => {
-        $('.agree-btn').get(0).disabled = true;
-        $.ajax({
-          type: 'post',
-          url: $('.agree-btn').attr('data-url'),
-          data: 'agree=' + $('.agree-btn').attr('data-cid'),
-          async: true,
-          timeout: 15000,
-          cache: false,
-          success: data => {
-            const re = /\d/;
-            if (!re.test(data)) return false;
-            $('.agree-num').html(`${window.t.like} ${data}`);
-            // 创建点赞提示的元素
-            $('body').append(`<span id="agree-p" role="alert">${window.t.like} + 1</span>`);
-            // 设置点赞提示的样式
-            $('#agree-p').css({
-              top: $('.agree-btn').offset().top - 25,
-              left: $('.agree-btn').offset().left + $('.agree-btn').outerWidth() / 2 - $('#agree-p').outerWidth() / 2
-            });
-            // 让点赞提示消失
-            $('#agree-p').animate({
-              top: $('.agree-btn').offset().top - 70,
-              opacity: 0
-            }, 400, function () {
-              $('#agree-p').remove();
-            });
-          },
-          error: () => {
-            $('.agree-btn').get(0).disabled = false;
-          }
-        });
-      });
-    }
-  }
-
-  // 头像样式初始化
-  function avatarStyleInit() {
-    // 头像加载完成后删除头像背景颜色
-    if ($('.avatar').length) {
-      $('.avatar').on('load', ev => {
-        $(ev.target).css('background-color', 'none');
-      });
-    }
-
-    // 给评论者头像添加错误事件
-    for (let i = 0;i < $('.avatar').length;i ++) {
-      // 检测是否是图片
-      if ($('.avatar').eq(i)[0].tagName === 'IMG') {
-        $('.avatar').eq(i).on('error', ev => {
-          // 获取头像昵称
-          const name = $(ev.target).attr('alt');
-          // 创建文字头像元素
-          const avatarEl = document.createElement('div');
-          avatarEl.setAttribute('role', 'img');
-          avatarEl.setAttribute('aria-label', name);
-          // 设置文字头像的 class
-          avatarEl.className = 'pingback avatar';
-          // 把文字头像的内容设置为评论者昵称的第一个字
-          avatarEl.innerHTML = name.substring(0, 1);
-
-          // 检测是否重复出现
-          const nameIndex = avatarName.indexOf(name);
-          if (nameIndex === -1) {
-            avatarName.push(name);
-            // 生成随机颜色
-            const bgColor = {r: rand(250, 1), g: rand(250, 1), b: rand(250, 1)};
-            // 把颜色添加到数组，遇到同名的头像可以使用同一组颜色
-            avatarColor.push(bgColor);
-            // 设置文字头像的背景颜色
-            avatarEl.style.background = 'rgb(' + bgColor.r + ',' + bgColor.g + ',' + bgColor.b + ')';
-          }else {
-            // 设置文字头像的背景颜色
-            avatarEl.style.background = 'rgb(' + avatarColor[nameIndex].r + ',' + avatarColor[nameIndex].g + ',' + avatarColor[nameIndex].b + ')';
-          }
-
-          // 把文字头像插入到页面
-          $(ev.target).before(avatarEl);
-          // 移除加载失败的头像
-          $(ev.target).remove();
-        });
-      }
-    }
-
-    // 给独立页友情链接的网站 Logo 添加加载错误事件
-    $('.page-links .logo').on('error', ev => {
-      // 创建默认网站 Logo
-      const logoEl = '<div role="img" class="logo-icon mr-2"><i class="icon-link"></i></div>';
-      // 把默认网站 Logo 插入到页面
-      $(ev.target).before(logoEl);
-      // 移除加载失败的网站 Logo
-      $(ev.target).remove();
-    });
-  }
-
-  // 生成随机数的函数
-  function rand(max, min) {
-    const num = max - min;
-    return Math.round(Math.random() * num + min);
-  }
-
-  // 文章目录跳转样式
-  function directoryStyleInit() {
-    $('.directory-link').on('click', ev => {
-      ev.preventDefault();
-      const titleSelect = `[data-title="${$(ev.target).attr('data-directory')}"]`;
-      $('html').animate({
-        scrollTop: $(titleSelect).offset().top - 60
-      }, 400);
-      return false;
-    });
-
-    // 如果开启了移动设备文章目录就给目录添加事件
-    if ($('#directory-mobile').length) {
-      // 重置目录状态
-      if (directory) directory = false;
-      // 移动设备的目录按钮点击
-      $('#directory-btn').on('click', () => {
-        if (!directory) {
-          $('#directory-mobile').css('display', 'flex');
-          $('#directory-mobile').animate({opacity: 1}, 250);
-          directory = true;
-        }else {
-          $('#directory-mobile').animate({opacity: 0}, 250, () => {
-            $('#directory-mobile').hide();
-          });
-          directory = false;
-        }
-        $('#directory-btn').attr('aria-expanded', directory);
-      });
-
-      // 移动设备的关闭目录按钮点击
-      $('#directory-mobile .close-btn').on('click', () => {
-        $('#directory-btn').click();
-      });
-    }
-  }
-
-  // 调整侧边栏章节目录的尺寸
-  function directorySize() {
-    if ($('.sidebar .directory').length) {
-      // 获取侧边栏章节目录的位置
-      directoryTop = $('.sidebar .directory').offset().top;
-      // 设置侧边栏章节目录的最大高度
-      $('.sidebar .directory').css('max-height', window.innerHeight - 100);
-      $('.sidebar .directory > .article-directory').css('width', $('.sidebar .directory').width());
-    }
-  }
-
-// 分页链接初始化
-  function paginationLinkInit() {
-    if ($('.pagination li').length) {
-      $('.pagination li').addClass('page-item');
-      $('.pagination li a').addClass('page-link');
-      $('.pagination .active a').attr('aria-current', 'page');
-      if ($('.pagination .prev').length) {
-        $('.pagination .prev a').attr({
-          'aria-label': window.t.previousPage,
-          'title': window.t.previousPage,
-          'data-toggle': 'tooltip',
-          'data-placement': 'top'
-        });
-      }
-      if ($('.pagination .next').length) {
-        $('.pagination .next a').attr({
-          'aria-label': window.t.nextPage,
-          'title': window.t.nextPage,
-          'data-toggle': 'tooltip',
-          'data-placement': 'top'
-        });
-      }
-    }else {
-      $('.page-nav').remove();
-    }
-  }
-
-// 表格初始化
-  function tableInit() {
-    if ($('.post-content table').length) {
-      for (var i = 0; i < $('.post-content table').length; i++) {
-        //  生成 Bootstrap 的响应式表格
-        const table = '<div class="table-responsive"><table class="table table-striped table-bordered table-hover">' + $('.post-content table').eq(i).html() + '</table></div>';
-        $('.post-content table').eq(i).replaceWith(table);  //  替换文章中的表格
-      }
-    }
-  }
-
-  // 代码高亮初始化
-  function codeHighlightInit() {
-    const codeLineNum = $('.post-content').attr('data-code-line-num');
-
-    if ($('.enable-highlight').length && $('pre').length) {
-      for (let i = 0;i < $('pre').length;i ++) {
-        // 是否是代码块
-        if ($('pre').eq(i).children('code').length) {
-          // 添加代码高亮样式
-          hljs.highlightBlock($('pre code').eq(i).get(0));
-
-          // 给代码块添加行号
-          if ($('.line-num-show').length) {
-            // 获取代码行数
-            const lineCount = $('pre code').eq(i).html().split(/\r\n|\r|\n/).length;
-            let lineNumbersEl = '';
-            for (let j = 0;j < lineCount;j ++) {
-              lineNumbersEl += `<div class="text-right">${j + 1}</div>`;
-            }
-            $('pre').eq(i).prepend(`<div class="line-box">${lineNumbersEl}</div>`);
-          }
-
-          // 创建和添加拷贝按钮
-          const btnEl = document.createElement('button');
-          btnEl.className = 'copy-code-btn btn btn-outline-secondary btn-sm';
-          btnEl.setAttribute('type', 'button');
-          btnEl.innerHTML = '<i class="icon-copy"></i>';
-          btnEl.setAttribute('aria-label', window.t.copyCode);
-          btnEl.setAttribute('data-clipboard-target', '#code-' + i);
-          btnEl.setAttribute('title', window.t.copyCode);
-          btnEl.setAttribute('data-toggle', 'tooltip');
-          btnEl.setAttribute('data-placement', 'left');
-          btnEl.setAttribute('id', 'copy-btn-' + i);
-          $('pre').eq(i).prepend(btnEl);
-          // 给代码块添加一个 id 方便拷贝
-          $('pre code').eq(i).attr('id', 'code-' + i);
-        }
-        // 初始化拷贝模块
-        const clipboard = new ClipboardJS('.copy-code-btn');
-        // 拷贝成功
-        clipboard.on('success', ev => {
-          // 把工具提示更改为拷贝成功
-          $(ev.trigger).attr('title', window.t.copySuccess);
-          $(ev.trigger).attr('data-original-title', window.t.copySuccess);
-          $(ev.trigger).tooltip('update');
-          $(ev.trigger).tooltip('show');
-          // 延迟 1 秒后把工具提示更改为拷贝代码
-          setTimeout(() => {
-            $(ev.trigger).attr('title', window.t.copyCode);
-            $(ev.trigger).attr('data-original-title', window.t.copyCode);
-          }, 1000);
-        });
-        // 拷贝出错
-        clipboard.on('error', ev => {
-          $(ev.trigger).attr('title', window.t.copyError);
-          $(ev.trigger).attr('data-original-title', window.t.copyError);
-          $(ev.trigger).tooltip('hide');
-          $(ev.trigger).tooltip('show');
-          setTimeout(() => {
-            $(ev.trigger).attr('title', window.t.copyCode);
-            $(ev.trigger).attr('data-original-title', window.t.copyCode);
-          }, 1000);
-        });
-      }
-    }
   }
 
   // 表单焦点事件初始化
@@ -791,120 +224,5 @@ $(function () {
     // 写入 cookie
     document.cookie = `language=${language};path=/;expires=Tue,${time}`;
     location.reload();
-  }
-
-  // 侧边栏章节目录高亮初始化
-  function directoryHighlightInit() {
-    // 定义常量和进行一次性元素选择 ---
-    const MOBILE_BREAKPOINT = 992; // Bootstrap 4 的 'lg' 断点，小于此值为移动端
-    const $targets = $('.title-position');
-
-    // 明确选择桌面端和移动端的链接，并缓存
-    const $desktopLinks = $('.sidebar .directory-link');
-    const $mobileLinks = $('#directory-mobile .directory-link');
-
-    // 为两套链接分别构建高效的查找 Map
-    const desktopLinkMap = new Map();
-    $desktopLinks.each(function() {
-      desktopLinkMap.set($(this).attr('href'), $(this));
-    });
-
-    const mobileLinkMap = new Map();
-    $mobileLinks.each(function() {
-      mobileLinkMap.set($(this).attr('href'), $(this));
-    });
-
-    // 如果页面上没有任何标题，直接退出
-    if (!$targets.length) {
-      return;
-    }
-
-    // 计算动态偏移量 ---
-    const $stickyHeader = $('.sticky-top');
-    const headerHeight = $stickyHeader.length ? $stickyHeader.outerHeight() : 0;
-    const activationOffset = headerHeight + 30;
-
-    // 核心更新函数
-    const updateActiveLink = (linksToUpdate, linkMap) => {
-      // 如果被告知要更新的链接集不存在，则不执行
-      if (!linksToUpdate || !linksToUpdate.length) {
-        return;
-      }
-
-      const scrollTop = $(window).scrollTop();
-      const activationPoint = scrollTop + activationOffset;
-      let activeTargetId = null;
-
-      $targets.each(function() {
-        if ($(this).offset().top < activationPoint) {
-          activeTargetId = `#${$(this).attr('id')}`;
-        } else {
-          return false;
-        }
-      });
-
-      const windowHeight = $(window).height();
-      const docHeight = $(document).height();
-      if (scrollTop + windowHeight >= docHeight - 5) {
-        const $lastTarget = $targets.last();
-        if ($lastTarget.length) {
-          activeTargetId = `#${$lastTarget.attr('id')}`;
-        }
-      }
-
-      // 更新 Class
-      linksToUpdate.removeClass('directory-active');
-      if (activeTargetId) {
-        const $activeLink = linkMap.get(activeTargetId);
-        if ($activeLink) {
-          $activeLink.addClass('directory-active');
-        }
-      }
-    };
-
-    // 这个函数负责判断环境并调用执行者
-    const scrollspyController = () => {
-      // 清理工作：在判断前，先移除所有链接的高亮，以防窗口切换时残留
-      $desktopLinks.removeClass('directory-active');
-      $mobileLinks.removeClass('directory-active');
-
-      // 根据窗口宽度决定使用哪一套链接和 Map
-      if (window.innerWidth >= MOBILE_BREAKPOINT) {
-        // 桌面模式
-        updateActiveLink($desktopLinks, desktopLinkMap);
-      } else {
-        // 移动模式
-        updateActiveLink($mobileLinks, mobileLinkMap);
-      }
-    };
-
-    // 辅助函数：防抖和节流 ---
-    const debounce = (func, delay) => {
-      let timeout;
-      return (...args) => {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(this, args), delay);
-      };
-    };
-    const throttle = (func, delay) => {
-      let inProgress = false;
-      return (...args) => {
-        if (inProgress) return;
-        inProgress = true;
-        setTimeout(() => {
-          func.apply(this, args);
-          inProgress = false;
-        }, delay);
-      };
-    };
-
-    const throttledController = throttle(scrollspyController, 100);
-    const debouncedController = debounce(scrollspyController, 250);
-
-    $(window).on('scroll', throttledController);
-    $(window).on('resize', debouncedController);
-
-    // 页面加载完成后，立即执行一次“总指挥”，以设置正确的初始状态
-    scrollspyController();
   }
 });

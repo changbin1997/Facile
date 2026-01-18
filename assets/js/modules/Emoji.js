@@ -1,3 +1,11 @@
+/*!
+* HomePage: https://www.misterma.com
+* GithubPage: https://github.com/changbin1997
+* ProjectPage: https://github.com/changbin1997/Facile
+* author: Changbin (changbin1997)
+* Licensed under MIT
+*/
+
 export default class Emoji {
   // Emoji 表情
   emojiList = {
