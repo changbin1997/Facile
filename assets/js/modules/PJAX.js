@@ -114,7 +114,7 @@ export default class PJAX {
 
       // 如果是评论提交就滚动到评论区
       if (ev.relatedTarget?.id === 'comment-form') {
-        if (this.commentParentId !== null && $(`#comment-${commentParentId}`).length) {
+        if (this.commentParentId !== null && $(`#comment-${this.commentParentId}`).length) {
           // 如果是回复评论就滚动到父评论的区域
           $('html, body').animate({
             scrollTop: $(`#comment-${this.commentParentId}`).offset().top

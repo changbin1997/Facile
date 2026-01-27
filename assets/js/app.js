@@ -36,10 +36,6 @@ $(function () {
   const themeColor = new ThemeColor();
   themeColor.init();
 
-  // 一些 bootstrap 的样式初始化
-  const bootstrapStyle = new BootstrapStyle();
-  bootstrapStyle.init();
-
   // 头像样式初始化
   const avatarStyle = new AvatarStyle();
   avatarStyle.init();
@@ -52,6 +48,10 @@ $(function () {
 
   // 一些可访问性相关的功能初始化
   accessibilityInit();
+
+  // 一些 bootstrap 的样式初始化
+  const bootstrapStyle = new BootstrapStyle();
+  bootstrapStyle.init();
 
   // 生成文章的分享二维码
   ArticleEngagement.shareQrCode();
@@ -66,8 +66,6 @@ $(function () {
   const pjax = new PJAX();
   pjax.init(() => {
     // PJAX 替换完成后
-    // 代码高亮初始化
-    codeHighlightInit();
     // 头像样式初始化
     avatarStyle.init();
     // 点赞初始化
@@ -90,6 +88,8 @@ $(function () {
     themeColor.init();
     // 一些 bootstrap 样式初始化
     bootstrapStyle.init();
+    // 代码高亮初始化
+    codeHighlightInit();
 
     // 侧边栏的语言更改
     $('.sidebar .change-language').on('change', changeLanguage);
