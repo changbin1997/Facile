@@ -549,7 +549,7 @@ header input[type=search]:focus {
   height: 56px;
   flex: none;
 }
-.sidebar .blog-info .blog-user-info .pingback {
+.sidebar .blog-info .blog-user-info .text-avatar {
   font-size: 20px;
   line-height: 56px;
 }

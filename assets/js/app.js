@@ -14,7 +14,7 @@ import ThemeColor from './modules/ThemeColor.js';
 import codeHighlightInit from './modules/codeHighlightInit.js';
 import BootstrapStyle from './modules/BootstrapStyle.js';
 import PJAX from './modules/PJAX.js';
-import AvatarStyle from './modules/AvatarStyle.js';
+import AvatarGenerator from './modules/AvatarGenerator.js';
 import ArticleEngagement from './modules/ArticleEngagement.js';
 
 $(function () {
@@ -36,9 +36,8 @@ $(function () {
   const themeColor = new ThemeColor();
   themeColor.init();
 
-  // 头像样式初始化
-  const avatarStyle = new AvatarStyle();
-  avatarStyle.init();
+  // 文字头像样式初始化
+  const avatarGenerator = new AvatarGenerator();
 
   // 给文章中的代码块添加拷贝按钮和拷贝事件
   codeHighlightInit();;
@@ -66,8 +65,8 @@ $(function () {
   const pjax = new PJAX();
   pjax.init(() => {
     // PJAX 替换完成后
-    // 头像样式初始化
-    avatarStyle.init();
+    // 重新初始化文字头像样式
+    avatarGenerator.refresh();
     // 点赞初始化
     ArticleEngagement.likeInit();
     // Emoji 面板初始化
