@@ -4,6 +4,7 @@ export default class AvatarGenerator {
    */
   constructor() {
     this.init();
+    this.linksLogo();
   }
 
   /**
@@ -84,5 +85,29 @@ export default class AvatarGenerator {
    */
   refresh() {
     this.init();
+    this.linksLogo();
+  }
+
+  /**
+   * 为加载失败的链接 logo 设置默认 logo
+   * @returns 
+   */
+  linksLogo() {
+    // 没有链接就直接返回
+    if ($('img.logo').length < 1) return false;
+    // 把加载失败的链接LOGO图片替换为字体图标
+    $('img.logo').on('error', ev => {
+      const linkLogo = `
+      <div class="logo-icon mr-2" role="img" aria-label="${$(ev.target).attr('alt')}">
+        <i class="icon-link"></i>
+      </div>
+      `;
+      $(ev.target).after(linkLogo);
+      $(ev.target).remove();
+    });
+    // 加载完成就删除默认的背景颜色
+    $('img.logo').on('load', ev => {
+      $(ev.target).css('background', 'none');
+    });
   }
 }
