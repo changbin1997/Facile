@@ -815,3 +815,29 @@ function postListStyle($option, $postOption) {
     // 如果出现异常就默认显示文章摘要和
     return 'summary';
 }
+
+/**
+ * 根据秒数偏移量设置全局时区
+ * * @param int|string $offset Typecho 格式的时区偏移量 (例如: "28800" 或 28800)
+ * @return void
+ */
+function setTimezoneByOffset($offset) {
+    // 强制转换为整数
+    $offset = (int) $offset;
+
+    // 尝试根据偏移量获取合法的时区名称 (例如 "Asia/Shanghai" 或 "Etc/GMT-8")
+    $timezone_name = timezone_name_from_abbr('', $offset, 0);
+    // 如果获取失败（极少数情况），或者获取到的是 false
+    if ($timezone_name === false) {
+        // 手动回退逻辑：构建 Etc/GMT 时区
+        $hours = $offset / 3600;
+        if ($hours > 0) {
+            $timezone_name = 'Etc/GMT-' . $hours;
+        } else {
+            $timezone_name = 'Etc/GMT+' . abs($hours);
+        }
+    }
+
+    // 设置全局时区
+    @date_default_timezone_set($timezone_name);
+}

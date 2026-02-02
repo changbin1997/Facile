@@ -1,6 +1,8 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
+// 让主题使用的时区跟随 Typecho 设置的时区
+setTimezoneByOffset($this->options->timezone);
 // 检测是否包含主题配色 cookie
 if (isset($_COOKIE['themeColor'])) {
     // 检测 cookie

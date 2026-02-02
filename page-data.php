@@ -6,6 +6,8 @@
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
+// 让主题使用的时区跟随 Typecho 设置的时区
+setTimezoneByOffset($this->options->timezone);
 // 语言初始化
 languageInit($this->options->language);
 // 获取分类数据
@@ -48,7 +50,7 @@ $this->need('components/header.php');
                     <div class="post-info mt-2">
                         <span class="ml-1" title="<?php echo $GLOBALS['t']['post']['publicationDate']; ?>" data-toggle="tooltip" data-placement="top">
                             <i class="icon-calendar mr-1" aria-hidden="true"></i>
-                            <time datetime="<?php $this->date('c'); ?>"><?php echo postDateFormat($this->created); ?></time>
+                            <time datetime="<?php echo date('c', $this->created); ?>"><?php echo postDateFormat($this->created); ?></time>
                         </span>
                         <span class="ml-2" title="<?php echo $GLOBALS['t']['post']['author']; ?>" data-toggle="tooltip" data-placement="top">
                             <i class="icon-user mr-1" aria-hidden="true"></i>

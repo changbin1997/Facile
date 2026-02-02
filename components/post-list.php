@@ -29,7 +29,7 @@ while ($this->next()):
                 <div class="post-info mt-2">
                     <span class="ml-1" title="<?php echo $GLOBALS['t']['post']['publicationDate']; ?>" data-toggle="tooltip" data-placement="top">
                         <i class="icon-calendar mr-2" aria-hidden="true"></i>
-                        <time datetime="<?php $this->date('c'); ?>"><?php echo postDateFormat($this->created); ?></time>
+                        <time datetime="<?php echo date('c', $this->created); ?>"><?php echo postDateFormat($this->created); ?></time>
                     </span>
                     <span class="ml-2" title="<?php echo $GLOBALS['t']['post']['author']; ?>" data-toggle="tooltip" data-placement="top">
                         <i class="icon-user mr-2" aria-hidden="true"></i>
