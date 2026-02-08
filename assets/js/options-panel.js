@@ -36,8 +36,8 @@ window.addEventListener('load', () => {
   optionForm.insertBefore(titleEl[6], optionUl[34]);  // 评论
   optionForm.insertBefore(titleEl[7], optionUl[39]);  // 搜索页面
   optionForm.insertBefore(titleEl[8], optionUl[40]);  // 友链
-  optionForm.insertBefore(titleEl[9], optionUl[43]);  // PJAX
-  optionForm.insertBefore(titleEl[10], optionUl[46]);  // 开发者
+  optionForm.insertBefore(titleEl[9], optionUl[44]);  // PJAX
+  optionForm.insertBefore(titleEl[10], optionUl[47]);  // 开发者
 
   // 插入分隔线
   titleEl.forEach(el => {
