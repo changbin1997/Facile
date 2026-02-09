@@ -68,36 +68,42 @@ $this->need('components/header.php');
                         <p><?php echo $GLOBALS['t']['dataPage']['basicStatisticsDescription']; ?></p>
                         <?php Typecho_Widget::widget('Widget_Stat')->to($quantity); ?>
                         <div class="row">
+                            <!--文章数-->
                             <div class="col-lg-4 col-md-4 col-sm-6 col-6 pb-3">
                                 <div class="py-2 statistics-card">
                                     <h3 class="text-center"><?php $quantity->publishedPostsNum(); ?></h3>
                                     <h4 class="text-center"><?php echo $GLOBALS['t']['dataPage']['totalPosts']; ?></h4>
                                 </div>
                             </div>
+                            <!--评论数-->
                             <div class="col-lg-4 col-md-4 col-sm-6 col-6 pb-3">
                                 <div class="py-2 statistics-card">
                                     <h3 class="text-center"><?php $quantity->publishedCommentsNum(); ?></h3>
                                     <h4 class="text-center"><?php echo $GLOBALS['t']['dataPage']['totalComments']; ?></h4>
                                 </div>
                             </div>
+                            <!--分类数-->
                             <div class="col-lg-4 col-md-4 col-sm-6 col-6 pb-3">
                                 <div class="py-2 statistics-card">
                                     <h3 class="text-center"><?php echo categoryCount(); ?></h3>
                                     <h4 class="text-center"><?php echo $GLOBALS['t']['dataPage']['categories']; ?></h4>
                                 </div>
                             </div>
+                            <!--标签数-->
                             <div class="col-lg-4 col-md-4 col-sm-6 col-6 pb-3">
                                 <div class="py-2 statistics-card">
                                     <h3 class="text-center"><?php echo tagCount(); ?></h3>
                                     <h4 class="text-center"><?php echo $GLOBALS['t']['dataPage']['tags']; ?></h4>
                                 </div>
                             </div>
+                            <!--文章阅读量-->
                             <div class="col-lg-4 col-md-4 col-sm-6 col-6 pb-3">
                                 <div class="py-2 statistics-card">
                                     <h3 class="text-center"><?php echo viewsCount(); ?></h3>
                                     <h4 class="text-center"><?php echo $GLOBALS['t']['dataPage']['totalViews']; ?></h4>
                                 </div>
                             </div>
+                            <!--获赞数-->
                             <div class="col-lg-4 col-md-4 col-sm-6 col-6 pb-3">
                                 <div class="py-2 statistics-card">
                                     <h3 class="text-center"><?php echo agreeCount(); ?></h3>
@@ -106,6 +112,7 @@ $this->need('components/header.php');
                             </div>
                         </div>
                         <hr>
+                        <!--文章分类占比图-->
                         <h2><?php echo $GLOBALS['t']['dataPage']['categoryDistribution']; ?></h2>
                         <?php if (empty($categoryPostCount)): ?>
                             <p><?php echo $GLOBALS['t']['dataPage']['NoCategoryDataAvailableAtTheMoment']; ?></p>
@@ -118,6 +125,7 @@ $this->need('components/header.php');
                             </div>
                         <?php endif; ?>    
                         <hr>
+                        <!--文章更新日历图-->
                         <h2><?php echo $GLOBALS['t']['dataPage']['postUpdates']; ?></h2>
                         <p><?php printf($GLOBALS['t']['dataPage']['postUpdateDescription'], postDateFormat(time() - 20736000), postDateFormat(time())); ?></p>
                         <div id="post-chart" role="img" aria-label="用于显示文章更新动态的日历图">
@@ -126,6 +134,7 @@ $this->need('components/header.php');
                             </div>
                         </div>
                         <hr>
+                        <!--评论更新日历图-->
                         <h2><?php echo $GLOBALS['t']['dataPage']['commentActivity']; ?></h2>
                         <p><?php printf($GLOBALS['t']['dataPage']['commentActivityDescription'], postDateFormat(time() - 20736000), postDateFormat(time())); ?></p>
                         <div id="comment-chart" role="img" aria-label="用于显示评论更新动态的日历图">
@@ -134,6 +143,7 @@ $this->need('components/header.php');
                             </div>
                         </div>
                         <hr>
+                        <!--按阅读量的文章排名表格-->
                         <h2><?php echo $GLOBALS['t']['dataPage']['mostViewedPosts']; ?></h2>
                         <?php $top5Post = top5post(); ?>
                         <?php if (count($top5Post)): ?>
@@ -162,6 +172,7 @@ $this->need('components/header.php');
                             <p><?php echo $GLOBALS['t']['dataPage']['NoPostsAvailableAtTheMoment']; ?></p>
                         <?php endif; ?>    
                         <hr>
+                        <!--按评论数量的文章排名表格-->
                         <h2><?php echo $GLOBALS['t']['dataPage']['mostCommentedPosts']; ?></h2>
                         <?php $top5CommentPost = top5CommentPost(); ?>
                         <?php if (count($top5CommentPost)): ?>
