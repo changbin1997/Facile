@@ -85,10 +85,10 @@ $(function () {
     directory.init();
     // 主题配色初始化
     themeColor.init();
-    // 一些 bootstrap 样式初始化
-    bootstrapStyle.init();
     // 代码高亮初始化
     codeHighlightInit();
+    // 一些 bootstrap 样式初始化
+    bootstrapStyle.init();
 
     // 侧边栏的语言更改
     $('.sidebar .change-language').on('change', changeLanguage);
