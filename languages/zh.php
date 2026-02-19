@@ -102,7 +102,7 @@ const ZH = array(
         'noCommentsOrRepliesAvailableToDisplay' => '没有可以显示的评论和回复。',
         'noCategoriesAvailableToDisplay' => '没有可以显示的分类。',
         'noTagsAvailableToDisplay' => '没有可以显示的标签。',
-        'coPostsAvailableToGenerateAnArchive' => '没有文章，无法生成文章归档。'
+        'noPostsAvailableToGenerateAnArchive' => '没有文章，无法生成文章归档。'
     ),
     'archive' => array(
         'postsUnderTheCategory' => '分类 %s 下的文章',
