@@ -102,7 +102,7 @@ const EN = array(
         'noCommentsOrRepliesAvailableToDisplay' => 'No comments or replies available to display.',
         'noCategoriesAvailableToDisplay' => 'No categories available to display.',
         'noTagsAvailableToDisplay' => 'No tags available to display.',
-        'noPostsAvailableToGenerateAnArchive' => 'No posts available to generate an archive.'
+        'oPostsAvailableToGenerateAnArchive' => 'No posts available to generate an archive.'
     ),
     'archive' => array(
         'postsUnderTheCategory' => 'Posts under the category %s',
