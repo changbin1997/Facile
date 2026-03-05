@@ -82,7 +82,7 @@ $this->need('components/header.php');
                             <!--警示信息-->
                             <div class="alert expiration-reminder" role="alert"><?php printf($GLOBALS['t']['post']['warningMessage'], getDays($this->created, time())); ?></div>
                         <?php endif; ?>
-                        <?php $GLOBALS['postPage'] = preg_split('/\[-page-]|<p>\[-page-]<\/p>/', $this->content); ?>
+                        <?php $GLOBALS['postPage'] = splitArticleContent($this->content); ?>
                         <?php $postPageNum = isset($_GET['post-page'])?$_GET['post-page']:1; ?>
                         <?php if (!isset($GLOBALS['postPage'][$postPageNum - 1])) $postPageNum = 1; ?>
                         <?php $GLOBALS['post'] = articleDirectory($GLOBALS['postPage'][$postPageNum - 1]); ?>
