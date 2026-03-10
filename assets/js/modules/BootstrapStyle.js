@@ -19,39 +19,8 @@ export default class BootstrapStyle {
       $('.post-tag a').addClass('badge badge-dark');
     }
 
-    // 分页链接样式初始化
-    this.paginationLinkInit();
     // 表格样式初始化
     this.tableInit();
-  }
-
-  /**
-   * 分页链接样式初始化
-   */
-  paginationLinkInit() {
-    if ($('.pagination li').length) {
-      $('.pagination li').addClass('page-item');
-      $('.pagination li a').addClass('page-link');
-      $('.pagination .active a').attr('aria-current', 'page');
-      if ($('.pagination .prev').length) {
-        $('.pagination .prev a').attr({
-          'aria-label': window.t.previousPage,
-          'title': window.t.previousPage,
-          'data-toggle': 'tooltip',
-          'data-placement': 'top'
-        });
-      }
-      if ($('.pagination .next').length) {
-        $('.pagination .next a').attr({
-          'aria-label': window.t.nextPage,
-          'title': window.t.nextPage,
-          'data-toggle': 'tooltip',
-          'data-placement': 'top'
-        });
-      }
-    }else {
-      $('.page-nav').remove();
-    }
   }
 
   /**

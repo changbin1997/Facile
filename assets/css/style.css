@@ -1927,7 +1927,7 @@ header input[type=search]:focus {
 .dark-color #copyright-info {
   background: #16161A;
 }
-.dark-color .pagination li:not(.active) a {
+.dark-color .pagination li:not(.active) .page-link {
   background: #16161A;
   color: #D3D3D3 !important;
   border: none;
@@ -2449,7 +2449,7 @@ header input[type=search]:focus {
   .auto-color #copyright-info {
     background: #16161A;
   }
-  .auto-color .pagination li:not(.active) a {
+  .auto-color .pagination li:not(.active) .page-link {
     background: #16161A;
     color: #D3D3D3 !important;
     border: none;

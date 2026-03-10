@@ -289,7 +289,7 @@ $dark-text-color2: #999999;
 
   // 翻页导航区
   .pagination {
-    li:not(.active) a {
+    li:not(.active) .page-link {
       background: #16161A;
       color: $dark-text-color !important;
       border: none;

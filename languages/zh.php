@@ -119,6 +119,8 @@ const ZH = array(
         'pagination' => '分页导航',
         'nextPage' => '下一页（右光标键）',
         'previousPage' => '上一页（左光标键）',
+        'nextPageNoShortcutKey' => '下一页',
+        'previousPageNoShortcutKey' => '上一页',
         'postContentPagination' => '文章内容分页',
         'commentPagination' => '评论分页'
     ),
