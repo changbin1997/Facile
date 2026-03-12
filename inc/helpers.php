@@ -903,8 +903,8 @@ function bootstrap4Pagination($archive, $previousPageTitle, $nextPageTitle) {
         'itemTag' => 'li',
         'textTag' => 'span',
         'currentClass' => 'active',
-        'prevClass' => '',
-        'nextClass' => ''
+        'prevClass' => 'prev',
+        'nextClass' => 'next'
     ));
     $content = ob_get_contents();
     ob_end_clean();
