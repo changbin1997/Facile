@@ -56,7 +56,7 @@ $this->need('components/header.php');
                         <?php endif; ?>
                     </div>
                     <div class="post-content mt-4">
-                        <?php $this->content(); ?>
+                        <?php echo addBootstrapTableClasses($this->content); ?>
                     </div>
                 </article>
                 <?php $this->need('components/comments.php'); ?>

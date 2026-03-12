@@ -44,6 +44,7 @@ while ($this->next()):
                 </div>
             </header>
             <?php if ($postListStyle == 'summary'): ?>
+                <!--显示摘要-->
                 <?php if (getPostListHeaderImageStyle($this->fields->postListHeaderImageStyle, $this->options->postListHeaderImageStyle) == 'mini' && $headerImage): ?>
                     <div class="post-content mt-4 row" data-header-image-type="<?php echo getPostListHeaderImageStyle($this->fields->postListHeaderImageStyle, $this->options->postListHeaderImageStyle); ?>">
                         <div class="col-xl-9 col-lg-9 col-md-9 col-sm-8 col-7 content-box">
@@ -124,8 +125,9 @@ while ($this->next()):
                     </div>
                 <?php endif; ?>
             <?php else: ?>
+                <!--显示全文-->
                 <div class="post-content mt-4">
-                    <div class="fullText"><?php $this->content(); ?></div>
+                    <div class="fullText"><?php echo addBootstrapTableClasses($this->content); ?></div>
                     <div class="more-link-wrapper">
                         <div>
                             <a href="<?php $this->permalink(); ?>" class="btn btn-sm mr-3 read-more">

@@ -12,7 +12,6 @@ import Directory from './modules/Directory.js';
 import accessibilityInit from './modules/accessibilityInit.js';
 import ThemeColor from './modules/ThemeColor.js';
 import codeHighlightInit from './modules/codeHighlightInit.js';
-import BootstrapStyle from './modules/BootstrapStyle.js';
 import PJAX from './modules/PJAX.js';
 import AvatarGenerator from './modules/AvatarGenerator.js';
 import ArticleEngagement from './modules/ArticleEngagement.js';
@@ -47,10 +46,6 @@ $(function () {
 
   // 一些可访问性相关的功能初始化
   accessibilityInit();
-
-  // 一些 bootstrap 的样式初始化
-  const bootstrapStyle = new BootstrapStyle();
-  bootstrapStyle.init();
 
   // 生成文章的分享二维码
   ArticleEngagement.shareQrCode();
@@ -87,8 +82,6 @@ $(function () {
     themeColor.init();
     // 代码高亮初始化
     codeHighlightInit();
-    // 一些 bootstrap 样式初始化
-    bootstrapStyle.init();
 
     // 侧边栏的语言更改
     $('.sidebar .change-language').on('change', changeLanguage);

@@ -82,11 +82,23 @@ $this->need('components/header.php');
                             <!--警示信息-->
                             <div class="alert expiration-reminder" role="alert"><?php printf($GLOBALS['t']['post']['warningMessage'], getDays($this->created, time())); ?></div>
                         <?php endif; ?>
-                        <?php $GLOBALS['postPage'] = splitArticleContent($this->content); ?>
-                        <?php $postPageNum = isset($_GET['post-page'])?$_GET['post-page']:1; ?>
-                        <?php if (!isset($GLOBALS['postPage'][$postPageNum - 1])) $postPageNum = 1; ?>
-                        <?php $GLOBALS['post'] = articleDirectory($GLOBALS['postPage'][$postPageNum - 1]); ?>
-                        <?php echo $this->options->imagelazyloading == 'on'?replaceImgSrc($GLOBALS['post']['content']):$GLOBALS['post']['content']; ?>
+                        <?php
+                        // 使用分隔符给文章分页
+                        $GLOBALS['postPage'] = splitArticleContent($this->content);
+                        // 如果 url query 传入了页码就获取页码，否则默认为第一页
+                        $postPageNum = isset($_GET['post-page'])?$_GET['post-page']:1;
+                        // 如果通过 url 传入的页码找不到文章页面就把页码设置为第一页
+                        if (!isset($GLOBALS['postPage'][$postPageNum - 1])) $postPageNum = 1;
+                        // 生成章节目录
+                        $GLOBALS['post'] = articleDirectory($GLOBALS['postPage'][$postPageNum - 1]);
+                        // 生成 bootstrap 表格
+                        $GLOBALS['post']['content'] = addBootstrapTableClasses($GLOBALS['post']['content']);
+                        // 如果启用了图片懒加载就把图片的 src 改为 data-src
+                        if ($this->options->imagelazyloading == 'on') {
+                            $GLOBALS['post']['content'] = replaceImgSrc($GLOBALS['post']['content']);
+                        }
+                        echo $GLOBALS['post']['content'];
+                        ?>
                         <?php if ($this->fields->copyrightNotice != 'hide'): ?>
                         <div class="alert my-4" id="copyright-info">
                             <p class="my-2">
