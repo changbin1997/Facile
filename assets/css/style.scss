@@ -195,13 +195,6 @@
     font-size: 16px !important;
     white-space: pre;
     word-wrap: normal;
-    &::-webkit-scrollbar {
-      height: 12px;
-      background: #F1F1F1;
-    }
-    &::-webkit-scrollbar-thumb {
-      background: #A8A8A8;
-    }
   }
 }
 // 包含行号的样式

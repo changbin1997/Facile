@@ -53,13 +53,14 @@ $dark-text-color2: #999999;
 
 // 暗色主题的文章内容配色
 @mixin dark-post-content-color {
+  // 普通段落
   p {
     color: $dark-text-color;
-
     > code {
       @include codeColor;
     }
   }
+  // 列表
   ol, ul {
     li {
       color: $dark-text-color;
@@ -68,28 +69,26 @@ $dark-text-color2: #999999;
       }
     }
   }
+  // 标题
   h1, h2, h3, h4, h5, h6 {
     color: #FFFFFF !important;
     code {
       @include codeColor;
     }
   }
+  // 表格
   table {
     background: #16161A;
-
     th {
       color: #FFFFFF;
       border: 1px solid #454D55;
-
       a {
         color: $dark-link-color;
       }
-
       code {
         @include codeColor;
       }
     }
-
     td {
       color: $dark-text-color;
 
@@ -103,34 +102,58 @@ $dark-text-color2: #999999;
 
       border: 1px solid #454D55;
     }
-
     tbody tr:nth-child(odd) {
       background: #212529;
     }
-
     tr:hover {
       background: #212529;
     }
   }
+  // 链接
   a {
     color: $dark-link-color;
   }
+  // 分隔线
   hr {
     background: #CCCCCC;
   }
+  // 代码块
   pre {
     code {
-      &::-webkit-scrollbar {
-        background: #212529;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background: #717171;
-      }
+      @include dark-horizontal-scrollbar;
     }
   }
+  // 引用
   blockquote {
     color: $dark-text-color2;
+  }
+  // 响应式表格的滚动条
+  .table-responsive {
+    @include dark-horizontal-scrollbar;
+  }
+}
+
+// 横向滚动条
+@mixin dark-horizontal-scrollbar {
+  // Firefox
+  scrollbar-color: #888888 #2a2a2a;
+  // IE11
+  scrollbar-face-color: #888888;
+  scrollbar-track-color: #2a2a2a;
+  scrollbar-arrow-color: #888888;
+  scrollbar-shadow-color: #2a2a2a;
+  scrollbar-darkshadow-color: #2a2a2a;
+  scrollbar-3dlight-color: #2a2a2a;
+  scrollbar-highlight-color: #2a2a2a;
+  &::-webkit-scrollbar-track {
+    background: #2a2a2a;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #888888;
+    border: 2px solid #2a2a2a;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #aaaaaa;
   }
 }
 

@@ -282,13 +282,6 @@
   white-space: pre;
   word-wrap: normal;
 }
-.enable-highlight pre > code::-webkit-scrollbar {
-  height: 12px;
-  background: #F1F1F1;
-}
-.enable-highlight pre > code::-webkit-scrollbar-thumb {
-  background: #A8A8A8;
-}
 
 .line-num-show pre code {
   padding: 12px 10px 12px 54px !important;
@@ -1418,6 +1411,60 @@ header input[type=search]:focus {
   background: #F9F2F4;
   color: #C7254E;
 }
+.light-color .post-page .post-content .table-responsive {
+  scrollbar-width: thin;
+  scrollbar-color: #737373 #e5e5e5;
+  scrollbar-face-color: #737373;
+  scrollbar-track-color: #e5e5e5;
+  scrollbar-arrow-color: #737373;
+  scrollbar-shadow-color: #e5e5e5;
+  scrollbar-darkshadow-color: #e5e5e5;
+  scrollbar-3dlight-color: #e5e5e5;
+  scrollbar-highlight-color: #e5e5e5;
+}
+.light-color .post-page .post-content .table-responsive::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+.light-color .post-page .post-content .table-responsive::-webkit-scrollbar-track {
+  background: #e5e5e5;
+  border-radius: 6px;
+}
+.light-color .post-page .post-content .table-responsive::-webkit-scrollbar-thumb {
+  background-color: #737373;
+  border-radius: 6px;
+  border: 2px solid #e5e5e5;
+}
+.light-color .post-page .post-content .table-responsive::-webkit-scrollbar-thumb:hover {
+  background-color: #525252;
+}
+.light-color .post-page .post-content pre code {
+  scrollbar-width: thin;
+  scrollbar-color: #737373 #e5e5e5;
+  scrollbar-face-color: #737373;
+  scrollbar-track-color: #e5e5e5;
+  scrollbar-arrow-color: #737373;
+  scrollbar-shadow-color: #e5e5e5;
+  scrollbar-darkshadow-color: #e5e5e5;
+  scrollbar-3dlight-color: #e5e5e5;
+  scrollbar-highlight-color: #e5e5e5;
+}
+.light-color .post-page .post-content pre code::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+.light-color .post-page .post-content pre code::-webkit-scrollbar-track {
+  background: #e5e5e5;
+  border-radius: 6px;
+}
+.light-color .post-page .post-content pre code::-webkit-scrollbar-thumb {
+  background-color: #737373;
+  border-radius: 6px;
+  border: 2px solid #e5e5e5;
+}
+.light-color .post-page .post-content pre code::-webkit-scrollbar-thumb:hover {
+  background-color: #525252;
+}
 .light-color .post-page .agree-share button {
   color: #d9230f;
   border-color: #d9230f;
@@ -1468,6 +1515,60 @@ header input[type=search]:focus {
 .light-color #comments .comment-content table td code {
   background: #F9F2F4;
   color: #C7254E;
+}
+.light-color #comments .comment-content .table-responsive {
+  scrollbar-width: thin;
+  scrollbar-color: #737373 #e5e5e5;
+  scrollbar-face-color: #737373;
+  scrollbar-track-color: #e5e5e5;
+  scrollbar-arrow-color: #737373;
+  scrollbar-shadow-color: #e5e5e5;
+  scrollbar-darkshadow-color: #e5e5e5;
+  scrollbar-3dlight-color: #e5e5e5;
+  scrollbar-highlight-color: #e5e5e5;
+}
+.light-color #comments .comment-content .table-responsive::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+.light-color #comments .comment-content .table-responsive::-webkit-scrollbar-track {
+  background: #e5e5e5;
+  border-radius: 6px;
+}
+.light-color #comments .comment-content .table-responsive::-webkit-scrollbar-thumb {
+  background-color: #737373;
+  border-radius: 6px;
+  border: 2px solid #e5e5e5;
+}
+.light-color #comments .comment-content .table-responsive::-webkit-scrollbar-thumb:hover {
+  background-color: #525252;
+}
+.light-color #comments .comment-content pre code {
+  scrollbar-width: thin;
+  scrollbar-color: #737373 #e5e5e5;
+  scrollbar-face-color: #737373;
+  scrollbar-track-color: #e5e5e5;
+  scrollbar-arrow-color: #737373;
+  scrollbar-shadow-color: #e5e5e5;
+  scrollbar-darkshadow-color: #e5e5e5;
+  scrollbar-3dlight-color: #e5e5e5;
+  scrollbar-highlight-color: #e5e5e5;
+}
+.light-color #comments .comment-content pre code::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+.light-color #comments .comment-content pre code::-webkit-scrollbar-track {
+  background: #e5e5e5;
+  border-radius: 6px;
+}
+.light-color #comments .comment-content pre code::-webkit-scrollbar-thumb {
+  background-color: #737373;
+  border-radius: 6px;
+  border: 2px solid #e5e5e5;
+}
+.light-color #comments .comment-content pre code::-webkit-scrollbar-thumb:hover {
+  background-color: #525252;
 }
 .light-color #comments .comment-reply i, .light-color #comments .comment-reply a {
   color: #333333;
@@ -1647,6 +1748,60 @@ header input[type=search]:focus {
     background: #F9F2F4;
     color: #C7254E;
   }
+  .auto-color .post-page .post-content .table-responsive {
+    scrollbar-width: thin;
+    scrollbar-color: #737373 #e5e5e5;
+    scrollbar-face-color: #737373;
+    scrollbar-track-color: #e5e5e5;
+    scrollbar-arrow-color: #737373;
+    scrollbar-shadow-color: #e5e5e5;
+    scrollbar-darkshadow-color: #e5e5e5;
+    scrollbar-3dlight-color: #e5e5e5;
+    scrollbar-highlight-color: #e5e5e5;
+  }
+  .auto-color .post-page .post-content .table-responsive::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+  }
+  .auto-color .post-page .post-content .table-responsive::-webkit-scrollbar-track {
+    background: #e5e5e5;
+    border-radius: 6px;
+  }
+  .auto-color .post-page .post-content .table-responsive::-webkit-scrollbar-thumb {
+    background-color: #737373;
+    border-radius: 6px;
+    border: 2px solid #e5e5e5;
+  }
+  .auto-color .post-page .post-content .table-responsive::-webkit-scrollbar-thumb:hover {
+    background-color: #525252;
+  }
+  .auto-color .post-page .post-content pre code {
+    scrollbar-width: thin;
+    scrollbar-color: #737373 #e5e5e5;
+    scrollbar-face-color: #737373;
+    scrollbar-track-color: #e5e5e5;
+    scrollbar-arrow-color: #737373;
+    scrollbar-shadow-color: #e5e5e5;
+    scrollbar-darkshadow-color: #e5e5e5;
+    scrollbar-3dlight-color: #e5e5e5;
+    scrollbar-highlight-color: #e5e5e5;
+  }
+  .auto-color .post-page .post-content pre code::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+  }
+  .auto-color .post-page .post-content pre code::-webkit-scrollbar-track {
+    background: #e5e5e5;
+    border-radius: 6px;
+  }
+  .auto-color .post-page .post-content pre code::-webkit-scrollbar-thumb {
+    background-color: #737373;
+    border-radius: 6px;
+    border: 2px solid #e5e5e5;
+  }
+  .auto-color .post-page .post-content pre code::-webkit-scrollbar-thumb:hover {
+    background-color: #525252;
+  }
   .auto-color .post-page .agree-share button {
     color: #d9230f;
     border-color: #d9230f;
@@ -1697,6 +1852,60 @@ header input[type=search]:focus {
   .auto-color #comments .comment-content table td code {
     background: #F9F2F4;
     color: #C7254E;
+  }
+  .auto-color #comments .comment-content .table-responsive {
+    scrollbar-width: thin;
+    scrollbar-color: #737373 #e5e5e5;
+    scrollbar-face-color: #737373;
+    scrollbar-track-color: #e5e5e5;
+    scrollbar-arrow-color: #737373;
+    scrollbar-shadow-color: #e5e5e5;
+    scrollbar-darkshadow-color: #e5e5e5;
+    scrollbar-3dlight-color: #e5e5e5;
+    scrollbar-highlight-color: #e5e5e5;
+  }
+  .auto-color #comments .comment-content .table-responsive::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+  }
+  .auto-color #comments .comment-content .table-responsive::-webkit-scrollbar-track {
+    background: #e5e5e5;
+    border-radius: 6px;
+  }
+  .auto-color #comments .comment-content .table-responsive::-webkit-scrollbar-thumb {
+    background-color: #737373;
+    border-radius: 6px;
+    border: 2px solid #e5e5e5;
+  }
+  .auto-color #comments .comment-content .table-responsive::-webkit-scrollbar-thumb:hover {
+    background-color: #525252;
+  }
+  .auto-color #comments .comment-content pre code {
+    scrollbar-width: thin;
+    scrollbar-color: #737373 #e5e5e5;
+    scrollbar-face-color: #737373;
+    scrollbar-track-color: #e5e5e5;
+    scrollbar-arrow-color: #737373;
+    scrollbar-shadow-color: #e5e5e5;
+    scrollbar-darkshadow-color: #e5e5e5;
+    scrollbar-3dlight-color: #e5e5e5;
+    scrollbar-highlight-color: #e5e5e5;
+  }
+  .auto-color #comments .comment-content pre code::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+  }
+  .auto-color #comments .comment-content pre code::-webkit-scrollbar-track {
+    background: #e5e5e5;
+    border-radius: 6px;
+  }
+  .auto-color #comments .comment-content pre code::-webkit-scrollbar-thumb {
+    background-color: #737373;
+    border-radius: 6px;
+    border: 2px solid #e5e5e5;
+  }
+  .auto-color #comments .comment-content pre code::-webkit-scrollbar-thumb:hover {
+    background-color: #525252;
   }
   .auto-color #comments .comment-reply i, .auto-color #comments .comment-reply a {
     color: #333333;
@@ -1911,14 +2120,48 @@ header input[type=search]:focus {
 .dark-color .fullText hr {
   background: #CCCCCC;
 }
-.dark-color .fullText pre code::-webkit-scrollbar {
-  background: #212529;
+.dark-color .fullText pre code {
+  scrollbar-color: #888888 #2a2a2a;
+  scrollbar-face-color: #888888;
+  scrollbar-track-color: #2a2a2a;
+  scrollbar-arrow-color: #888888;
+  scrollbar-shadow-color: #2a2a2a;
+  scrollbar-darkshadow-color: #2a2a2a;
+  scrollbar-3dlight-color: #2a2a2a;
+  scrollbar-highlight-color: #2a2a2a;
+}
+.dark-color .fullText pre code::-webkit-scrollbar-track {
+  background: #2a2a2a;
 }
 .dark-color .fullText pre code::-webkit-scrollbar-thumb {
-  background: #717171;
+  background-color: #888888;
+  border: 2px solid #2a2a2a;
+}
+.dark-color .fullText pre code::-webkit-scrollbar-thumb:hover {
+  background-color: #aaaaaa;
 }
 .dark-color .fullText blockquote {
   color: #999999;
+}
+.dark-color .fullText .table-responsive {
+  scrollbar-color: #888888 #2a2a2a;
+  scrollbar-face-color: #888888;
+  scrollbar-track-color: #2a2a2a;
+  scrollbar-arrow-color: #888888;
+  scrollbar-shadow-color: #2a2a2a;
+  scrollbar-darkshadow-color: #2a2a2a;
+  scrollbar-3dlight-color: #2a2a2a;
+  scrollbar-highlight-color: #2a2a2a;
+}
+.dark-color .fullText .table-responsive::-webkit-scrollbar-track {
+  background: #2a2a2a;
+}
+.dark-color .fullText .table-responsive::-webkit-scrollbar-thumb {
+  background-color: #888888;
+  border: 2px solid #2a2a2a;
+}
+.dark-color .fullText .table-responsive::-webkit-scrollbar-thumb:hover {
+  background-color: #aaaaaa;
 }
 .dark-color .expiration-reminder {
   background: #16161A;
@@ -2045,14 +2288,48 @@ header input[type=search]:focus {
 .dark-color .post-page .post-content hr {
   background: #CCCCCC;
 }
-.dark-color .post-page .post-content pre code::-webkit-scrollbar {
-  background: #212529;
+.dark-color .post-page .post-content pre code {
+  scrollbar-color: #888888 #2a2a2a;
+  scrollbar-face-color: #888888;
+  scrollbar-track-color: #2a2a2a;
+  scrollbar-arrow-color: #888888;
+  scrollbar-shadow-color: #2a2a2a;
+  scrollbar-darkshadow-color: #2a2a2a;
+  scrollbar-3dlight-color: #2a2a2a;
+  scrollbar-highlight-color: #2a2a2a;
+}
+.dark-color .post-page .post-content pre code::-webkit-scrollbar-track {
+  background: #2a2a2a;
 }
 .dark-color .post-page .post-content pre code::-webkit-scrollbar-thumb {
-  background: #717171;
+  background-color: #888888;
+  border: 2px solid #2a2a2a;
+}
+.dark-color .post-page .post-content pre code::-webkit-scrollbar-thumb:hover {
+  background-color: #aaaaaa;
 }
 .dark-color .post-page .post-content blockquote {
   color: #999999;
+}
+.dark-color .post-page .post-content .table-responsive {
+  scrollbar-color: #888888 #2a2a2a;
+  scrollbar-face-color: #888888;
+  scrollbar-track-color: #2a2a2a;
+  scrollbar-arrow-color: #888888;
+  scrollbar-shadow-color: #2a2a2a;
+  scrollbar-darkshadow-color: #2a2a2a;
+  scrollbar-3dlight-color: #2a2a2a;
+  scrollbar-highlight-color: #2a2a2a;
+}
+.dark-color .post-page .post-content .table-responsive::-webkit-scrollbar-track {
+  background: #2a2a2a;
+}
+.dark-color .post-page .post-content .table-responsive::-webkit-scrollbar-thumb {
+  background-color: #888888;
+  border: 2px solid #2a2a2a;
+}
+.dark-color .post-page .post-content .table-responsive::-webkit-scrollbar-thumb:hover {
+  background-color: #aaaaaa;
 }
 .dark-color .post-page .category-tag i {
   color: #D3D3D3;
@@ -2166,14 +2443,48 @@ header input[type=search]:focus {
 .dark-color #comments .comment-content hr {
   background: #CCCCCC;
 }
-.dark-color #comments .comment-content pre code::-webkit-scrollbar {
-  background: #212529;
+.dark-color #comments .comment-content pre code {
+  scrollbar-color: #888888 #2a2a2a;
+  scrollbar-face-color: #888888;
+  scrollbar-track-color: #2a2a2a;
+  scrollbar-arrow-color: #888888;
+  scrollbar-shadow-color: #2a2a2a;
+  scrollbar-darkshadow-color: #2a2a2a;
+  scrollbar-3dlight-color: #2a2a2a;
+  scrollbar-highlight-color: #2a2a2a;
+}
+.dark-color #comments .comment-content pre code::-webkit-scrollbar-track {
+  background: #2a2a2a;
 }
 .dark-color #comments .comment-content pre code::-webkit-scrollbar-thumb {
-  background: #717171;
+  background-color: #888888;
+  border: 2px solid #2a2a2a;
+}
+.dark-color #comments .comment-content pre code::-webkit-scrollbar-thumb:hover {
+  background-color: #aaaaaa;
 }
 .dark-color #comments .comment-content blockquote {
   color: #999999;
+}
+.dark-color #comments .comment-content .table-responsive {
+  scrollbar-color: #888888 #2a2a2a;
+  scrollbar-face-color: #888888;
+  scrollbar-track-color: #2a2a2a;
+  scrollbar-arrow-color: #888888;
+  scrollbar-shadow-color: #2a2a2a;
+  scrollbar-darkshadow-color: #2a2a2a;
+  scrollbar-3dlight-color: #2a2a2a;
+  scrollbar-highlight-color: #2a2a2a;
+}
+.dark-color #comments .comment-content .table-responsive::-webkit-scrollbar-track {
+  background: #2a2a2a;
+}
+.dark-color #comments .comment-content .table-responsive::-webkit-scrollbar-thumb {
+  background-color: #888888;
+  border: 2px solid #2a2a2a;
+}
+.dark-color #comments .comment-content .table-responsive::-webkit-scrollbar-thumb:hover {
+  background-color: #aaaaaa;
 }
 .dark-color #comments .comment-reply i, .dark-color #comments .comment-reply a {
   color: #D3D3D3 !important;
@@ -2433,14 +2744,48 @@ header input[type=search]:focus {
   .auto-color .fullText hr {
     background: #CCCCCC;
   }
-  .auto-color .fullText pre code::-webkit-scrollbar {
-    background: #212529;
+  .auto-color .fullText pre code {
+    scrollbar-color: #888888 #2a2a2a;
+    scrollbar-face-color: #888888;
+    scrollbar-track-color: #2a2a2a;
+    scrollbar-arrow-color: #888888;
+    scrollbar-shadow-color: #2a2a2a;
+    scrollbar-darkshadow-color: #2a2a2a;
+    scrollbar-3dlight-color: #2a2a2a;
+    scrollbar-highlight-color: #2a2a2a;
+  }
+  .auto-color .fullText pre code::-webkit-scrollbar-track {
+    background: #2a2a2a;
   }
   .auto-color .fullText pre code::-webkit-scrollbar-thumb {
-    background: #717171;
+    background-color: #888888;
+    border: 2px solid #2a2a2a;
+  }
+  .auto-color .fullText pre code::-webkit-scrollbar-thumb:hover {
+    background-color: #aaaaaa;
   }
   .auto-color .fullText blockquote {
     color: #999999;
+  }
+  .auto-color .fullText .table-responsive {
+    scrollbar-color: #888888 #2a2a2a;
+    scrollbar-face-color: #888888;
+    scrollbar-track-color: #2a2a2a;
+    scrollbar-arrow-color: #888888;
+    scrollbar-shadow-color: #2a2a2a;
+    scrollbar-darkshadow-color: #2a2a2a;
+    scrollbar-3dlight-color: #2a2a2a;
+    scrollbar-highlight-color: #2a2a2a;
+  }
+  .auto-color .fullText .table-responsive::-webkit-scrollbar-track {
+    background: #2a2a2a;
+  }
+  .auto-color .fullText .table-responsive::-webkit-scrollbar-thumb {
+    background-color: #888888;
+    border: 2px solid #2a2a2a;
+  }
+  .auto-color .fullText .table-responsive::-webkit-scrollbar-thumb:hover {
+    background-color: #aaaaaa;
   }
   .auto-color .expiration-reminder {
     background: #16161A;
@@ -2567,14 +2912,48 @@ header input[type=search]:focus {
   .auto-color .post-page .post-content hr {
     background: #CCCCCC;
   }
-  .auto-color .post-page .post-content pre code::-webkit-scrollbar {
-    background: #212529;
+  .auto-color .post-page .post-content pre code {
+    scrollbar-color: #888888 #2a2a2a;
+    scrollbar-face-color: #888888;
+    scrollbar-track-color: #2a2a2a;
+    scrollbar-arrow-color: #888888;
+    scrollbar-shadow-color: #2a2a2a;
+    scrollbar-darkshadow-color: #2a2a2a;
+    scrollbar-3dlight-color: #2a2a2a;
+    scrollbar-highlight-color: #2a2a2a;
+  }
+  .auto-color .post-page .post-content pre code::-webkit-scrollbar-track {
+    background: #2a2a2a;
   }
   .auto-color .post-page .post-content pre code::-webkit-scrollbar-thumb {
-    background: #717171;
+    background-color: #888888;
+    border: 2px solid #2a2a2a;
+  }
+  .auto-color .post-page .post-content pre code::-webkit-scrollbar-thumb:hover {
+    background-color: #aaaaaa;
   }
   .auto-color .post-page .post-content blockquote {
     color: #999999;
+  }
+  .auto-color .post-page .post-content .table-responsive {
+    scrollbar-color: #888888 #2a2a2a;
+    scrollbar-face-color: #888888;
+    scrollbar-track-color: #2a2a2a;
+    scrollbar-arrow-color: #888888;
+    scrollbar-shadow-color: #2a2a2a;
+    scrollbar-darkshadow-color: #2a2a2a;
+    scrollbar-3dlight-color: #2a2a2a;
+    scrollbar-highlight-color: #2a2a2a;
+  }
+  .auto-color .post-page .post-content .table-responsive::-webkit-scrollbar-track {
+    background: #2a2a2a;
+  }
+  .auto-color .post-page .post-content .table-responsive::-webkit-scrollbar-thumb {
+    background-color: #888888;
+    border: 2px solid #2a2a2a;
+  }
+  .auto-color .post-page .post-content .table-responsive::-webkit-scrollbar-thumb:hover {
+    background-color: #aaaaaa;
   }
   .auto-color .post-page .category-tag i {
     color: #D3D3D3;
@@ -2688,14 +3067,48 @@ header input[type=search]:focus {
   .auto-color #comments .comment-content hr {
     background: #CCCCCC;
   }
-  .auto-color #comments .comment-content pre code::-webkit-scrollbar {
-    background: #212529;
+  .auto-color #comments .comment-content pre code {
+    scrollbar-color: #888888 #2a2a2a;
+    scrollbar-face-color: #888888;
+    scrollbar-track-color: #2a2a2a;
+    scrollbar-arrow-color: #888888;
+    scrollbar-shadow-color: #2a2a2a;
+    scrollbar-darkshadow-color: #2a2a2a;
+    scrollbar-3dlight-color: #2a2a2a;
+    scrollbar-highlight-color: #2a2a2a;
+  }
+  .auto-color #comments .comment-content pre code::-webkit-scrollbar-track {
+    background: #2a2a2a;
   }
   .auto-color #comments .comment-content pre code::-webkit-scrollbar-thumb {
-    background: #717171;
+    background-color: #888888;
+    border: 2px solid #2a2a2a;
+  }
+  .auto-color #comments .comment-content pre code::-webkit-scrollbar-thumb:hover {
+    background-color: #aaaaaa;
   }
   .auto-color #comments .comment-content blockquote {
     color: #999999;
+  }
+  .auto-color #comments .comment-content .table-responsive {
+    scrollbar-color: #888888 #2a2a2a;
+    scrollbar-face-color: #888888;
+    scrollbar-track-color: #2a2a2a;
+    scrollbar-arrow-color: #888888;
+    scrollbar-shadow-color: #2a2a2a;
+    scrollbar-darkshadow-color: #2a2a2a;
+    scrollbar-3dlight-color: #2a2a2a;
+    scrollbar-highlight-color: #2a2a2a;
+  }
+  .auto-color #comments .comment-content .table-responsive::-webkit-scrollbar-track {
+    background: #2a2a2a;
+  }
+  .auto-color #comments .comment-content .table-responsive::-webkit-scrollbar-thumb {
+    background-color: #888888;
+    border: 2px solid #2a2a2a;
+  }
+  .auto-color #comments .comment-content .table-responsive::-webkit-scrollbar-thumb:hover {
+    background-color: #aaaaaa;
   }
   .auto-color #comments .comment-reply i, .auto-color #comments .comment-reply a {
     color: #D3D3D3 !important;

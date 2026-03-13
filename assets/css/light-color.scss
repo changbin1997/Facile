@@ -24,11 +24,13 @@
 
 // 浅色主题的文章内容配色
 @mixin light-post-content-color {
+  // 段落
   p {
     > code {
       @include codeColor;
     }
   }
+  // 列表
   ol, ul {
     li {
       > code {
@@ -36,24 +38,64 @@
       }
     }
   }
+  // 标题
   h1,h2,h3,h4,h5,h6 {
     color: #333333;
     code {
       @include codeColor;
     }
   }
+  // 表格
   table {
     th {
       code {
         @include codeColor;
       }
     }
-
     td {
       code {
         @include codeColor;
       }
     }
+  }
+  // 响应式表格的滚动条
+  .table-responsive {
+    @include light-horizontal-scrollbar;
+  }
+  // 代码块
+  pre code {
+    @include light-horizontal-scrollbar;
+  }
+}
+
+// 横向滚动条
+@mixin light-horizontal-scrollbar {
+  // Firefox
+  scrollbar-width: thin;
+  scrollbar-color: #737373 #e5e5e5;
+  // IE11
+  scrollbar-face-color: #737373;
+  scrollbar-track-color: #e5e5e5;
+  scrollbar-arrow-color: #737373;
+  scrollbar-shadow-color: #e5e5e5;
+  scrollbar-darkshadow-color: #e5e5e5;
+  scrollbar-3dlight-color: #e5e5e5;
+  scrollbar-highlight-color: #e5e5e5;
+  &::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #e5e5e5;
+    border-radius: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #737373;
+    border-radius: 6px;
+    border: 2px solid #e5e5e5;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #525252;
   }
 }
 

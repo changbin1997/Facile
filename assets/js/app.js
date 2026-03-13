@@ -105,22 +105,22 @@ $(function () {
     if ((ev.keyCode === 39 || ev.key === 'ArrowRight') && !inputFocus && !lightbox.isShow) {
       // 文章列表页面跳转
       if ($('.next .page-link').length) {
-        $('.next .page-link').click();
+        $('.next .page-link').get(0).click();
       }
       // 文章页内容翻页
       if ($('.post-pagination .next-page').length) {
-        $('.post-pagination .next-page').click();
+        $('.post-pagination .next-page').get(0).click();
       }
     }
     // 如果按下的是左方向键就跳转到上一页
     if ((ev.keyCode === 37 || ev.key === 'ArrowLeft') && !inputFocus && !lightbox.isShow) {
       // 文章列表页面跳转
       if ($('.prev .page-link').length) {
-        $('.prev .page-link').click();
+        $('.prev .page-link').get(0).click();
       }
       // 文章页内容翻页
       if ($('.post-pagination .previous-page').length) {
-        $('.post-pagination .previous-page').click();
+        $('.post-pagination .previous-page').get(0).click();
       }
     }
   });
