@@ -994,3 +994,21 @@ function addBootstrapTableClasses($html) {
 
     return $newHtml;
 }
+
+/**
+ * 给文章内的标签添加 bootstrap 样式
+ *
+ * @param object $post 文章对象
+ * @return void
+ */
+function postTadAddStyle($post) {
+    // 拦截输出
+    ob_start();
+    $post->tags(' ', true, $GLOBALS['t']['post']['noneTag']);
+    $content = ob_get_contents();
+    ob_end_clean();
+    // 给标签链接添加 class
+    $content = str_replace('<a href=', '<a class="badge badge-dark" href=', $content);
+
+    echo $content;
+}

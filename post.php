@@ -147,7 +147,7 @@ $this->need('components/header.php');
                         </div>
                         <div class="post-tag float-right" role="group" aria-label="<?php echo $GLOBALS['t']['post']['tag']; ?>">
                             <i class="icon-price-tag mr-1" aria-hidden="true"></i>
-                            <?php $this->tags(' ', true, '暂无标签'); ?>
+                            <?php postTadAddStyle($this); ?>
                         </div>
                     </div>
                 </article>

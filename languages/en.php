@@ -35,7 +35,8 @@ const EN = array(
             'Copyright Notice: This article is an original work. Copyright belongs to %s. Please contact the author for permission before reprinting.',
             'Article URL: %s',
             'If you have any questions or concerns about this article, feel free to leave a comment. I will try my best to respond as soon as possible.'
-        )
+        ),
+        'noneTag' => 'None'
     ),
     'comment' => array(
         'leaveAComment' => 'Leave a Comment',

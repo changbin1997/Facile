@@ -70,9 +70,4 @@ export default () => {
 
   // 初始化气球提示
   $('[data-toggle="tooltip"]').tooltip();
-
-  // 给文章中的标签添加Bootstrap的样式
-  if ($('.post-tag a').length) {
-    $('.post-tag a').addClass('badge badge-dark');
-  }
 }
