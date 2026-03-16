@@ -236,7 +236,7 @@ EOT;
     ), 'on', _t('PJAX进度条'), _t('PJAX 进度条会显示在页面顶部，在 PJAX 页面内容更新时，进度条会显示更新进度，更新完成后进度条会隐藏。禁用 PJAX 进度条不会影响 PJAX 功能。')));
 
     // PJAX更新完成后执行的代码
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('pjaxEnd', null, null, _t('PJAX 更新完成后要执行的 JS 代码'), _t('这里的 JS 代码会在页面内容更新完成后执行，你可以直接填写 JS 代码，不需要加 script 标签。<b style="color: #C7254E;">注意，使用 Webpack 打包的带 bundle 后缀的发行版不支持这个选项，只有 clone 项目和 Source code 支持！</b>')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('pjaxEnd', null, null, _t('PJAX 更新完成后要执行的 JS 代码'), _t('PJAX 页面跳转时，不会刷新页面，如果你需要在页面加载完成后执行 JS 代码，可以在这里填写 JS 代码。这里的代码会在页面内容更新完成后执行，直接填写 JS 代码，不需要加 script 标签。')));
 
     //  自定义CSS
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('cssCode', null, null, _t('自定义 CSS'), _t('通过自定义 CSS 您可以很方便的设置页面样式，自定义 CSS 不会影响网站源代码。')));

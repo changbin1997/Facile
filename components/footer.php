@@ -16,6 +16,13 @@
     <i class="icon-arrow-up"></i>
 </button>
 
+<!--PJAX更新完成后执行的JS-->
+<?php if ($this->options->pjax === 'on' && $this->options->pjaxEnd): ?>
+    <script type="text/javascript">
+      function pjaxUpdateComplete() {<?php $this->options->pjaxEnd(); ?>}
+    </script>
+<?php endif; ?>
+
 <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/jquery-3.5.1.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/jquery.pjax.js'); ?>"></script>
 <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/bootstrap.bundle.min.js'); ?>"></script>
@@ -23,14 +30,6 @@
 <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/qrious.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/clipboard.min.js'); ?>"></script>
 <script type="module" src="<?php $this->options->themeUrl('assets/js/app.js'); ?>"></script>
-<!--PJAX更新完成后执行的JS-->
-<?php if ($this->options->pjax === 'on' && $this->options->pjaxEnd): ?>
-    <script type="text/javascript">
-        $(function() {
-          $(document).on('pjax:end', function() {<?php $this->options->pjaxEnd(); ?>});
-        });
-    </script>
-<?php endif; ?>
 <!--自定义HTML-->
 <?php if ($this->options->bodyHTML): ?>
     <?php $this->options->bodyHTML(); ?>
