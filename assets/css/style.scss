@@ -162,10 +162,9 @@
   pre {
     background: #F6F6F6;
     .line-box {
-      background: #F6F6F6;
+      background: #EFF2F3;
       div {
         color: #777777;
-        border-right: 1px solid #777777;
       }
     }
   }
@@ -176,10 +175,9 @@
   pre {
     background: #1E1E1E;
     .line-box {
-      background: #1E1E1E;
+      background-color: #26282B;
       div {
         color: #9B9B9B;
-        border-right: 1px solid #9B9B9B;
       }
     }
   }
@@ -190,10 +188,9 @@
   pre {
     background: #000000;
     .line-box {
-      background: #000000;
+      background: #131314;
       div {
         color: #AEAEAE;
-        border-right: 1px solid #AEAEAE;
       }
     }
   }
@@ -213,6 +210,7 @@
       top: 0;
       left: 0;
       padding-top: 12px;
+      padding-bottom: 12px;
       div {
         line-height: 24px;
         height: 24px;
