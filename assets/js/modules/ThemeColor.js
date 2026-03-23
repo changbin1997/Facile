@@ -35,6 +35,9 @@ export default class ThemeColor {
       this.themeColor === 'dark' ? $('#dark-color').attr('checked', true) : $('#light-color').attr('checked', true);
     }
 
+    // 根据当前使用的主题配色来设置代码高亮的配色
+    this.codeHighlightColor();
+
     // 切换主题的单选框改变
     $('.change-theme-color').on('click', ev => {
       // 获取选中的颜色
@@ -51,6 +54,8 @@ export default class ThemeColor {
       $('body').removeClass($('body').attr('data-color'));
       $('body').addClass(color);
       $('body').attr('data-color', color);
+      // 重新设置代码块配色
+      this.codeHighlightColor();
     });
 
     // 回复对象名字鼠标移入和移出
@@ -70,5 +75,22 @@ export default class ThemeColor {
     }, ev => {
       $(ev.target).closest('.comment-box').css('background', 'none');
     });
+  }
+
+  /**
+   * 根据主题配色模式设置代码高亮主题
+   * @returns {boolean} 如果代码块配色不是跟随主题配色就直接返回
+   */
+  codeHighlightColor() {
+    // 如果代码块主题不是跟随主题就直接返回
+    if ($('.follow-theme-color').length < 1) return false;
+    // 移除可能添加的代码配色，方便切换主题配色的时候能同时切换代码块配色
+    $('body').removeClass('stackoverflow-light');
+    $('body').removeClass('vs2015');
+    if (this.themeColor === 'light') {
+      $('body').addClass('stackoverflow-light');
+    }else {
+      $('body').addClass('vs2015');
+    }
   }
 }

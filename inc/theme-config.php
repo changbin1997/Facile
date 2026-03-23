@@ -135,8 +135,9 @@ EOT;
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('codeThemeColor', array(
         'stackoverflow-light' => 'Stack Overflow（浅色）',
         'vs2015' => 'VS2015（深色）',
-        'sunburst' => 'Sunburst（高对比度）'
-    ), 'vs2015', _t('代码块颜色主题')));
+        'sunburst' => 'Sunburst（高对比度）',
+        'follow-theme-color' => '跟随主题配色'
+    ), 'vs2015', _t('代码块颜色主题'), _t('跟随主题配色会根据主题使用的配色模式来自动选择代码块的颜色主题，如果主题为浅色模式，使用 Stack Overflow，如果主题为深色模式，使用 VS2015。')));
 
     // 图片懒加载
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('imagelazyloading', array(
