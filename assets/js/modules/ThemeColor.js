@@ -19,14 +19,24 @@ export default class ThemeColor {
     }else if ($('.dark-color').length) {
       this.themeColor = 'dark';
     }else {
-      // 检测系统配色模式
-      const darkColor = window.matchMedia('(prefers-color-scheme: dark)');
-      if (darkColor.matches) {
-        // 深色
-        this.themeColor = 'dark';
+      // 检查浏览器是否支持跟随系统的配色模式
+      if (this.isColorSchemeSupported()) {
+        // 检测系统配色模式
+        const darkColor = window.matchMedia('(prefers-color-scheme: dark)');
+        if (darkColor.matches) {
+          // 深色
+          this.themeColor = 'dark';
+        }else {
+          // 浅色
+          this.themeColor = 'light';
+        }
       }else {
-        // 浅色
+        // 如果浏览器不支持跟随系统配色就使用浅色模式
         this.themeColor = 'light';
+        // 更改配色
+        $('body').removeClass($('body').attr('data-color'));
+        $('body').addClass('light-color');
+        $('body').attr('data-color', 'light-color');
       }
     }
 
@@ -75,6 +85,26 @@ export default class ThemeColor {
     }, ev => {
       $(ev.target).closest('.comment-box').css('background', 'none');
     });
+  }
+
+  /**
+   * 检查浏览器是否支持跟随系统的配色模式
+   * @returns {boolean}
+   */
+  isColorSchemeSupported() {
+    try {
+      // 检查 matchMedia 是否存在 (IE9 及其以上支持 matchMedia，但不支持 prefers-color-scheme)
+      if (typeof window !== 'undefined' && window.matchMedia) {
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        // 检查返回的 media 字符串。
+        // 如果浏览器不支持该查询，media 属性通常会返回 "not all" 或原始字符串但无效。
+        // 在完全不支持的浏览器中，matches 也会一直是 false。
+        return mediaQuery.media !== 'not all';
+      }
+      return false;
+    }catch (error) {
+      return false;
+    }
   }
 
   /**
