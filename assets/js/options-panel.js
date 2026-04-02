@@ -35,9 +35,9 @@ window.addEventListener('load', () => {
   optionForm.insertBefore(titleEl[5], optionUl[21]);  // 文章相关
   optionForm.insertBefore(titleEl[6], optionUl[34]);  // 评论
   optionForm.insertBefore(titleEl[7], optionUl[39]);  // SEO相关
-  optionForm.insertBefore(titleEl[8], optionUl[41]);  // 友链
-  optionForm.insertBefore(titleEl[9], optionUl[45]);  // PJAX
-  optionForm.insertBefore(titleEl[10], optionUl[48]);  // 开发者
+  optionForm.insertBefore(titleEl[8], optionUl[42]);  // 友链
+  optionForm.insertBefore(titleEl[9], optionUl[46]);  // PJAX
+  optionForm.insertBefore(titleEl[10], optionUl[49]);  // 开发者
 
   // 插入分隔线
   titleEl.forEach(el => {

@@ -62,8 +62,12 @@ $bodyClass = implode(' ', $bodyClass);
     <?php if ($this->is('search') && $this->options->searchPageNoindex == 'show'): ?>
         <meta name="robots" content="noindex, follow">
     <?php endif; ?>
-    <!--归档页添加 noindex-->
+    <!--日期归档页添加 noindex-->
     <?php if ($this->is('date') && $this->options->dateArchivePageNoindex == 'show'): ?>
+        <meta name="robots" content="noindex, follow">
+    <?php endif; ?>
+    <!--作者归档页添加 noindex-->
+    <?php if ($this->is('author') && $this->options->authorPageNoindex): ?>
         <meta name="robots" content="noindex, follow">
     <?php endif; ?>
     <title>
