@@ -58,18 +58,9 @@ $bodyClass = implode(' ', $bodyClass);
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!--搜索页添加 noindex-->
-    <?php if ($this->is('search') && $this->options->searchPageNoindex == 'show'): ?>
-        <meta name="robots" content="noindex, follow">
-    <?php endif; ?>
-    <!--日期归档页添加 noindex-->
-    <?php if ($this->is('date') && $this->options->dateArchivePageNoindex == 'show'): ?>
-        <meta name="robots" content="noindex, follow">
-    <?php endif; ?>
-    <!--作者归档页添加 noindex-->
-    <?php if ($this->is('author') && $this->options->authorPageNoindex): ?>
-        <meta name="robots" content="noindex, follow">
-    <?php endif; ?>
+    <?php
+    themeSeoTags($this);
+    ?>
     <title>
         <?php
         $this->archiveTitle(array(
