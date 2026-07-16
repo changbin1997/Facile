@@ -19,6 +19,7 @@ export default class ThemeColor {
     }else if ($('.dark-color').length) {
       this.themeColor = 'dark';
     }else {
+      // 跟随系统
       // 检查浏览器是否支持跟随系统的配色模式
       if (this.isColorSchemeSupported()) {
         // 检测系统配色模式
@@ -68,7 +69,7 @@ export default class ThemeColor {
       this.codeHighlightColor();
     });
 
-    // 回复对象名字鼠标移入和移出
+    // 评论回复对象名字鼠标移入和移出
     $('#comments .parent').hover(ev => {
       // 根据主题配色模式设置高亮的颜色
       const commentItemBgColor = this.themeColor === 'dark' ? '#16161A' : '#F7E6D2';
@@ -85,6 +86,36 @@ export default class ThemeColor {
     }, ev => {
       $(ev.target).closest('.comment-box').css('background', 'none');
     });
+
+    // 系统配色模式改变时调整配色模式的状态
+    if (this.isColorSchemeSupported()) {
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+      // 定义系统配色改变时的处理逻辑
+      const handleSystemThemeChange = (e) => {
+        // 更新当前的配色状态
+        this.themeColor = e.matches ? 'dark' : 'light';
+        const colorClass = this.themeColor + '-color';
+
+        // 更改 body 配色类和自定义属性
+        $('body').removeClass($('body').attr('data-color'));
+        $('body').addClass(colorClass);
+        $('body').attr('data-color', colorClass);
+
+        // 重新设置配色单选框的选中状态 (使用 prop 确保 DOM 状态正确更新)
+        $(`#${this.themeColor}-color`).prop('checked', true);
+
+        // 重新调用代码高亮设置
+        this.codeHighlightColor();
+      };
+
+      // 兼容性处理：现代浏览器使用 addEventListener，老版浏览器使用 addListener
+      if (mediaQuery.addEventListener) {
+        mediaQuery.addEventListener('change', handleSystemThemeChange);
+      } else if (mediaQuery.addListener) {
+        mediaQuery.addListener(handleSystemThemeChange);
+      }
+    }
   }
 
   /**
