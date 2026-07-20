@@ -34,6 +34,14 @@ if ($this->options->codeHighlight != 'enable-highlight') {
 $navLinks = null;
 if ($this->options->navLinks) $navLinks = json_decode($this->options->navLinks, true);
 
+// Navbar logo URLs
+$navLogoUrl = (string) $this->options->navLogoUrl;
+$navDarkLogoUrl = $this->options->navDarkLogoUrl ? (string) $this->options->navDarkLogoUrl : $navLogoUrl;
+$navCurrentLogoUrl = $GLOBALS['color'] == 'dark-color' ? $navDarkLogoUrl : $navLogoUrl;
+$navLogoUrlAttr = htmlspecialchars($navLogoUrl, ENT_QUOTES, 'UTF-8');
+$navDarkLogoUrlAttr = htmlspecialchars($navDarkLogoUrl, ENT_QUOTES, 'UTF-8');
+$navCurrentLogoUrlAttr = htmlspecialchars($navCurrentLogoUrl, ENT_QUOTES, 'UTF-8');
+
 // body class
 $bodyClass = array(
     // 代码高亮主题
@@ -113,10 +121,20 @@ $bodyClass = implode(' ', $bodyClass);
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <?php if ($this->options->navLogoUrl): ?>
+                <!--使用图片 Logo-->
                 <a class="navbar-brand" href="<?php $this->options->siteUrl(); ?>" title="<?php $this->options->title(); ?>">
-                    <img src="<?php $this->options->navLogoUrl(); ?>" alt="<?php $this->options->title(); ?>" height="<?php $this->options->navLogoHeight(); ?>">
+                    <?php if ($GLOBALS['color'] == 'auto-color'): ?>
+                        <picture>
+                            <source srcset="<?php echo $navDarkLogoUrlAttr; ?>" media="(prefers-color-scheme: dark)">
+                            <source srcset="<?php echo $navLogoUrlAttr; ?>" media="(prefers-color-scheme: light)">
+                            <img class="logo-img" src="<?php echo $navLogoUrlAttr; ?>" data-light-url="<?php echo $navLogoUrlAttr; ?>" data-dark-url="<?php echo $navDarkLogoUrlAttr; ?>" alt="<?php $this->options->title(); ?>" height="<?php $this->options->navLogoHeight(); ?>">
+                        </picture>
+                    <?php else: ?>
+                        <img class="logo-img" src="<?php echo $navCurrentLogoUrlAttr; ?>" data-light-url="<?php echo $navLogoUrlAttr; ?>" data-dark-url="<?php echo $navDarkLogoUrlAttr; ?>" alt="<?php $this->options->title(); ?>" height="<?php $this->options->navLogoHeight(); ?>">
+                    <?php endif; ?>
                 </a>
             <?php else: ?>
+                <!--使用文字 Logo -->
                 <a class="navbar-brand" href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a>
             <?php endif; ?>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="<?php echo $GLOBALS['t']['header']['navigationMenu']; ?>">

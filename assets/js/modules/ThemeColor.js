@@ -67,6 +67,11 @@ export default class ThemeColor {
       $('body').attr('data-color', color);
       // 重新设置代码块配色
       this.codeHighlightColor();
+      // 如果设置了导航栏图片 logo 就更改 logo 图片
+      if ($('.logo-img').length) {
+        const dataUrl = color === 'dark-color' ? 'data-dark-url' : 'data-light-url';
+        $('.logo-img').attr('src', $('.logo-img').attr(dataUrl));
+      }
     });
 
     // 评论回复对象名字鼠标移入和移出

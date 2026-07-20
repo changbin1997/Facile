@@ -65,6 +65,9 @@ EOT;
     // 导航栏图片 logo
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('navLogoUrl', null, null, _t('站点 Logo 图片地址'), _t('站点 Logo 图片会显示在顶部导航栏的左侧，支持常见的图片格式，包括 SVG，只要能在 img 标签显示的图片都可以，留空会使用站点名称作为 Logo。')));
 
+    // 导航栏深色模式 logo
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('navDarkLogoUrl', null, null, _t('深色模式 Logo 图片地址'), _t('主题包含浅色和深色模式，如果您希望浅色模式和深色模式显示不同的 Logo，可以在这里填写深色模式的 Logo 图片 URL。如果需要深色模式和浅色模式都使用同一个 Logo 图片，可以只填写上方的 <b style="color: red;">站点 Logo 图片地址</b>，这里可以留空。')));
+
     // 站点 logo 图片高度限制
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('navLogoHeight', null, '30', _t('站点 Logo 图片高度限制'), _t('如果您发现导航栏 Logo 图片尺寸较小或过大的话，可以调整 Logo 图片的高度，可以直接填入数字，不需要加 px。')));
 
