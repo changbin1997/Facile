@@ -125,6 +125,10 @@ const EN = array(
         'nextPageNoShortcutKey' => 'Next Page',
         'previousPageNoShortcutKey' => 'Previous Page'
     ),
+    'loadMore' => array(
+        'oadMore' => 'Load More',
+        'loading' => 'Loading...'
+    ),
     'archivePage' => array(
         'totalPosts' => 'Total of %d Posts'
     ),

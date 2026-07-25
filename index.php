@@ -22,10 +22,24 @@ $this->need('components/header.php');
     <div class="row mt-4">
         <div class="col-xl-8 col-lg-8 post-list">
             <?php if ($this->have()): ?>
-            <?php $this->need('components/post-list.php'); ?>
-            <nav class="page-nav my-5" aria-label="<?php echo $GLOBALS['t']['pagination']['pagination']; ?>">
-                <?php bootstrap4Pagination($this, $GLOBALS['t']['pagination']['previousPage'], $GLOBALS['t']['pagination']['nextPage']); ?>
-            </nav>
+                <?php $this->need('components/post-list.php'); ?>
+
+                <?php if ($this->options->postPaginationType == 'loadMore'): ?>
+                    <nav style="display: none;" class="page-nav my-5" aria-label="<?php echo $GLOBALS['t']['pagination']['pagination']; ?>">
+                        <?php $nextPageExists = bootstrap4Pagination($this, $GLOBALS['t']['pagination']['previousPage'], $GLOBALS['t']['pagination']['nextPage']); ?>
+                    </nav>
+                    <?php if ($nextPageExists): ?>
+                        <nav class="my-5 text-center">
+                            <button type="button" class="btn load-more-post-btn btn-block btn-outline-primary">
+                                <?php echo $GLOBALS['t']['loadMore']['oadMore']; ?>
+                            </button>
+                        </nav>
+                    <?php endif; ?>
+                <?php else: ?>
+                    <nav class="page-nav my-5" aria-label="<?php echo $GLOBALS['t']['pagination']['pagination']; ?>">
+                        <?php bootstrap4Pagination($this, $GLOBALS['t']['pagination']['previousPage'], $GLOBALS['t']['pagination']['nextPage']); ?>
+                    </nav>
+                <?php endif; ?>
             <?php else: ?>
                 <article class="no-content">
                     <h4 class="text-center mb-3" role="alert">没有可以显示的文章</h4>

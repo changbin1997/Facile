@@ -76,7 +76,9 @@ function localizeScript() {
         'submit' => $GLOBALS['t']['post']['submit'],
         'replyTo' => $GLOBALS['t']['comment']['replyTo'],
         'like' => $GLOBALS['t']['post']['like'],
-        'categoryDistribution' => $GLOBALS['t']['dataPage']['categoryDistribution']
+        'categoryDistribution' => $GLOBALS['t']['dataPage']['categoryDistribution'],
+        'oadMore' => $GLOBALS['t']['loadMore']['oadMore'],
+        'loading' => $GLOBALS['t']['loadMore']['loading']
     );
     $t = json_encode($t, JSON_UNESCAPED_UNICODE);
     echo '<script type="text/javascript"> window.t = ' . $t . ' </script>';
@@ -900,12 +902,12 @@ function splitArticleContent($content) {
 }
 
 /**
- * 生成 Bootstrap4 分页
+ * 生成 Bootstrap4 分页，并判断是否有下一页
  *
  * @param object $archive 包含 pageNav 方法的 typecho 文章或评论对象
  * @param string $previousPageTitle 用于上一页 title 的文字
  * @param string $nextPageTitle 用于下一页 title 的文字
- * @return void
+ * @return bool 有下一页返回 true，否则返回 false（包括没有分页的情况）
  */
 function bootstrap4Pagination($archive, $previousPageTitle, $nextPageTitle) {
     ob_start();
@@ -922,9 +924,9 @@ function bootstrap4Pagination($archive, $previousPageTitle, $nextPageTitle) {
     $content = ob_get_contents();
     ob_end_clean();
 
-    // 如果没有分页则不输出
+    // 如果没有分页则不输出，并返回 false
     if (empty($content)) {
-        return;
+        return false;
     }
 
     // 给 li 加入 page-item
@@ -956,7 +958,11 @@ function bootstrap4Pagination($archive, $previousPageTitle, $nextPageTitle) {
         $content
     );
 
+    // 检查是否存在下一页链接（通过查找最终生成的下一页图标）
+    $hasNext = (strpos($content, 'icon-chevron-right') !== false);
+
     echo $content;
+    return $hasNext;
 }
 
 /**

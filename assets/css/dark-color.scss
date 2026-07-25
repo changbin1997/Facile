@@ -310,7 +310,7 @@ $dark-text-color2: #999999;
     background: #16161A;
   }
 
-  // 翻页导航区
+  // 分页导航区
   .pagination {
     li:not(.active) .page-link {
       background: #16161A;
@@ -321,6 +321,13 @@ $dark-text-color2: #999999;
     .active a {
       color: $dark-text-color !important;
     }
+  }
+
+  // 加载更多的按钮配色
+  .load-more-post-btn {
+    background: #16161A;
+    color: $dark-text-color !important;
+    border: none;
   }
 
   // 返回顶部按钮和移动设备的目录按钮配色

@@ -2066,6 +2066,11 @@ header input[type=search]:focus {
 .dark-color .pagination .active a {
   color: #D3D3D3 !important;
 }
+.dark-color .load-more-post-btn {
+  background: #16161A;
+  color: #D3D3D3 !important;
+  border: none;
+}
 .dark-color #to-top-btn, .dark-color #directory-btn {
   background-color: #212529;
   color: #FFFFFF !important;
@@ -2689,6 +2694,11 @@ header input[type=search]:focus {
   }
   .auto-color .pagination .active a {
     color: #D3D3D3 !important;
+  }
+  .auto-color .load-more-post-btn {
+    background: #16161A;
+    color: #D3D3D3 !important;
+    border: none;
   }
   .auto-color #to-top-btn, .auto-color #directory-btn {
     background-color: #212529;

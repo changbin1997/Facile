@@ -125,6 +125,10 @@ const ZH = array(
         'postContentPagination' => '文章内容分页',
         'commentPagination' => '评论分页'
     ),
+    'loadMore' => array(
+        'oadMore' => '加载更多',
+        'loading' => '正在加载...'
+    ),
     'archivePage' => array(
         'totalPosts' => '共包含 %d 篇文章'
     ),

@@ -48,9 +48,23 @@ $this->need('components/header.php');
                     </ol>
                 </article>
             <?php endif; ?>
-            <nav class="page-nav my-5" aria-label="<?php echo $GLOBALS['t']['pagination']['pagination']; ?>">
-                <?php bootstrap4Pagination($this, $GLOBALS['t']['pagination']['previousPage'], $GLOBALS['t']['pagination']['nextPage']); ?>
-            </nav>
+
+            <?php if ($this->options->postPaginationType == 'loadMore'): ?>
+                <nav style="display: none;" class="page-nav my-5" aria-label="<?php echo $GLOBALS['t']['pagination']['pagination']; ?>">
+                    <?php $nextPageExists = bootstrap4Pagination($this, $GLOBALS['t']['pagination']['previousPage'], $GLOBALS['t']['pagination']['nextPage']); ?>
+                </nav>
+                <?php if ($nextPageExists): ?>
+                    <nav class="my-5 text-center">
+                        <button type="button" class="btn load-more-post-btn btn-block btn-outline-primary">
+                        <?php echo $GLOBALS['t']['loadMore']['oadMore']; ?>
+                        </button>
+                    </nav>
+                <?php endif; ?>
+            <?php else: ?>
+                <nav class="page-nav my-5" aria-label="<?php echo $GLOBALS['t']['pagination']['pagination']; ?>">
+                    <?php bootstrap4Pagination($this, $GLOBALS['t']['pagination']['previousPage'], $GLOBALS['t']['pagination']['nextPage']); ?>
+                </nav>
+            <?php endif; ?>
         </div>
         <?php $this->need('components/sidebar.php'); ?>
     </div>
