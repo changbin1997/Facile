@@ -1295,6 +1295,17 @@ header input[type=search]:focus {
   transform: translate(-50%, -50%);
 }
 
+#repository-list .loading-animation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#repository-list .repository-item .card-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .page-404 .text-404 {
   font-size: 120px;
   font-weight: 700;
@@ -2066,7 +2077,7 @@ header input[type=search]:focus {
 .dark-color .pagination .active a {
   color: #D3D3D3 !important;
 }
-.dark-color .load-more-post-btn {
+.dark-color .load-more-post-btn, .dark-color .load-more-repository-btn {
   background: #16161A;
   color: #D3D3D3 !important;
   border: none;
@@ -2442,6 +2453,23 @@ header input[type=search]:focus {
 .dark-color .statistics-card {
   background: #16161A;
 }
+.dark-color #repository-list .card {
+  background-color: #16161A;
+  border-color: #999999;
+}
+.dark-color #repository-list .card .card-footer {
+  background-color: #212529;
+  color: #999999 !important;
+  border-color: #999999;
+}
+.dark-color #repository-list .loading-animation div, .dark-color #repository-list .loading-animation span {
+  color: #D3D3D3;
+}
+.dark-color #repository-list .alert {
+  background: #16161A;
+  color: #D3D3D3;
+  border: none;
+}
 .dark-color .page-404 h1 {
   color: #D3D3D3;
 }
@@ -2695,7 +2723,7 @@ header input[type=search]:focus {
   .auto-color .pagination .active a {
     color: #D3D3D3 !important;
   }
-  .auto-color .load-more-post-btn {
+  .auto-color .load-more-post-btn, .auto-color .load-more-repository-btn {
     background: #16161A;
     color: #D3D3D3 !important;
     border: none;
@@ -3070,6 +3098,23 @@ header input[type=search]:focus {
   }
   .auto-color .statistics-card {
     background: #16161A;
+  }
+  .auto-color #repository-list .card {
+    background-color: #16161A;
+    border-color: #999999;
+  }
+  .auto-color #repository-list .card .card-footer {
+    background-color: #212529;
+    color: #999999 !important;
+    border-color: #999999;
+  }
+  .auto-color #repository-list .loading-animation div, .auto-color #repository-list .loading-animation span {
+    color: #D3D3D3;
+  }
+  .auto-color #repository-list .alert {
+    background: #16161A;
+    color: #D3D3D3;
+    border: none;
   }
   .auto-color .page-404 h1 {
     color: #D3D3D3;

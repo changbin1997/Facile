@@ -323,8 +323,8 @@ $dark-text-color2: #999999;
     }
   }
 
-  // 加载更多的按钮配色
-  .load-more-post-btn {
+  // 加载更多文章和加载更多 github 仓库的按钮配色
+  .load-more-post-btn, .load-more-repository-btn {
     background: #16161A;
     color: $dark-text-color !important;
     border: none;
@@ -560,6 +560,32 @@ $dark-text-color2: #999999;
   // 统计页的配色
   .statistics-card {
     background: #16161A;
+  }
+
+  // github项目页面配色
+  #repository-list {
+    // 卡片区域
+    .card {
+      background-color: #16161A;
+      border-color: $dark-text-color2;
+      .card-footer {
+        background-color: #212529;
+        color: $dark-text-color2 !important;
+        border-color: $dark-text-color2;
+      }
+    }
+    // 加载动画
+    .loading-animation {
+      div, span {
+        color: $dark-text-color;
+      }
+    }
+    // 提示信息
+    .alert {
+      background: #16161A;
+      color: $dark-text-color;
+      border: none;
+    }
   }
 
   // 404 页面配色

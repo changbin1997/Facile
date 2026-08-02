@@ -126,7 +126,7 @@ const ZH = array(
         'commentPagination' => '评论分页'
     ),
     'loadMore' => array(
-        'oadMore' => '加载更多',
+        'loadMore' => '加载更多',
         'loading' => '正在加载...'
     ),
     'archivePage' => array(
@@ -183,5 +183,10 @@ const ZH = array(
         'thePageYouAreLookingForDoesNotExist' => '您访问的页面不存在！',
         'goBackToHomepage' => '返回首页'
     ),
-    'breadcrumb' => '页面路径'
+    'breadcrumb' => '页面路径',
+    'githubPage' => array(
+        'githubUsernameIsnotConfigured' => '您还没有配置 GitHub 用户，请在后台主题设置页填写 GitHub 用户名。',
+        'noDescription' => '暂无描述',
+        'unknown' => '未知'
+    )
 );

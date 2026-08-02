@@ -126,7 +126,7 @@ const EN = array(
         'previousPageNoShortcutKey' => 'Previous Page'
     ),
     'loadMore' => array(
-        'oadMore' => 'Load More',
+        'loadMore' => 'Load More',
         'loading' => 'Loading...'
     ),
     'archivePage' => array(
@@ -183,5 +183,10 @@ const EN = array(
         'thePageYouAreLookingForDoesNotExist' => 'The page you are looking for does not exist!',
         'goBackToHomepage' => 'Go back to homepage'
     ),
-    'breadcrumb' => 'Breadcrumb'
+    'breadcrumb' => 'Breadcrumb',
+    'githubPage' => array(
+        'githubUsernameIsnotConfigured' => 'GitHub username is not configured. Please add it in the theme settings.',
+        'noDescription' => 'No description',
+        'unknown' => 'Unknown'
+    )
 );

@@ -1000,6 +1000,24 @@ header {
   }
 }
 
+// github 仓库展示页面
+#repository-list {
+  // 加载动画
+  .loading-animation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  // 列表卡片
+  .repository-item {
+    .card-text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
 // 404页面
 .page-404 {
   .text-404 {

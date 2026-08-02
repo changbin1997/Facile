@@ -31,7 +31,7 @@ $this->need('components/header.php');
                     <?php if ($nextPageExists): ?>
                         <nav class="my-5 text-center">
                             <button type="button" class="btn load-more-post-btn btn-block btn-outline-primary">
-                                <?php echo $GLOBALS['t']['loadMore']['oadMore']; ?>
+                                <?php echo $GLOBALS['t']['loadMore']['loadMore']; ?>
                             </button>
                         </nav>
                     <?php endif; ?>

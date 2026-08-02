@@ -61,7 +61,7 @@ export default () => {
         complete: () => {
           // 恢复按钮状态
           loadMorePostBtn.prop('disabled', false);
-          loadMorePostBtn.html(window.t.oadMore);
+          loadMorePostBtn.html(window.t.loadMore);
         }
       });
     });
