@@ -47,22 +47,7 @@ $this->need('components/header.php');
                             <a <?php if ($this->options->headerImageStyle == 'rounded-corners') echo 'class="rounded"'; ?> href="<?php $this->permalink(); ?>" aria-hidden="true" aria-label="文章头图" style="background-image: url(<?php echo $headerImg; ?>);" tabindex="-1"></a>
                         </div>
                     <?php endif; ?>
-                    <div class="post-info mt-2">
-                        <span class="ml-1" title="<?php echo $GLOBALS['t']['post']['publicationDate']; ?>" data-toggle="tooltip" data-placement="top">
-                            <i class="icon-calendar mr-1" aria-hidden="true"></i>
-                            <time datetime="<?php echo date('c', $this->created); ?>"><?php echo postDateFormat($this->created); ?></time>
-                        </span>
-                        <span class="ml-2" title="<?php echo $GLOBALS['t']['post']['author']; ?>" data-toggle="tooltip" data-placement="top">
-                            <i class="icon-user mr-1" aria-hidden="true"></i>
-                            <a href="<?php $this->author->permalink(); ?>" class="mr-2" title="作者：<?php $this->author(); ?>">
-                                <?php $this->author(); ?>
-                            </a>
-                        </span>
-                        <span class="ml-2" title="<?php echo $GLOBALS['t']['post']['views']; ?>" data-toggle="tooltip" data-placement="top">
-                            <i class="icon-eye mr-1" aria-hidden="true"></i>
-                            <?php echo postViews($this); ?>
-                        </span>
-                    </div>
+
                     <div class="post-content mt-4">
                         <h2><?php echo $GLOBALS['t']['dataPage']['basicStatistics']; ?></h2>
                         <p><?php echo $GLOBALS['t']['dataPage']['basicStatisticsDescription']; ?></p>
@@ -119,8 +104,11 @@ $this->need('components/header.php');
                         <?php else: ?>
                             <p><?php echo $GLOBALS['t']['dataPage']['categoryDistributionDescription']; ?></p>
                             <div id="category-chart" role="img">
-                                <div class="loading text-center">
-                                    <h4 class="text-primary"><?php echo $GLOBALS['t']['dataPage']['loadingChart']; ?></h4>
+                                <div class="loading">
+                                    <div class="spinner-border spinner-border-sm mr-2" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                    <span><?php echo $GLOBALS['t']['loadMore']['loading']; ?></span>
                                 </div>
                             </div>
                         <?php endif; ?>    
@@ -129,8 +117,11 @@ $this->need('components/header.php');
                         <h2><?php echo $GLOBALS['t']['dataPage']['postUpdates']; ?></h2>
                         <p><?php printf($GLOBALS['t']['dataPage']['postUpdateDescription'], postDateFormat(time() - 20736000), postDateFormat(time())); ?></p>
                         <div id="post-chart" role="img" aria-label="用于显示文章更新动态的日历图">
-                            <div class="loading text-center">
-                                <h4 class="text-primary"><?php echo $GLOBALS['t']['dataPage']['loadingChart']; ?></h4>
+                            <div class="loading">
+                                <div class="spinner-border spinner-border-sm mr-2" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                <span><?php echo $GLOBALS['t']['loadMore']['loading']; ?></span>
                             </div>
                         </div>
                         <hr>
@@ -138,8 +129,11 @@ $this->need('components/header.php');
                         <h2><?php echo $GLOBALS['t']['dataPage']['commentActivity']; ?></h2>
                         <p><?php printf($GLOBALS['t']['dataPage']['commentActivityDescription'], postDateFormat(time() - 20736000), postDateFormat(time())); ?></p>
                         <div id="comment-chart" role="img" aria-label="用于显示评论更新动态的日历图">
-                            <div class="loading text-center">
-                                <h4 class="text-primary"><?php echo $GLOBALS['t']['dataPage']['loadingChart']; ?></h4>
+                            <div class="loading">
+                                <div class="spinner-border spinner-border-sm mr-2" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                <span><?php echo $GLOBALS['t']['loadMore']['loading']; ?></span>
                             </div>
                         </div>
                         <hr>

@@ -36,23 +36,6 @@ $this->need('components/header.php');
                         </h1>
                     </header>
 
-                    <div class="post-info mt-2">
-                        <span class="ml-1" title="<?php echo $GLOBALS['t']['post']['publicationDate']; ?>" data-toggle="tooltip" data-placement="top">
-                            <i class="icon-calendar mr-1" aria-hidden="true"></i>
-                            <time datetime="<?php echo date('c', $this->created); ?>"><?php echo postDateFormat($this->created); ?></time>
-                        </span>
-                        <span class="ml-2" title="<?php echo $GLOBALS['t']['post']['author']; ?>" data-toggle="tooltip" data-placement="top">
-                            <i class="icon-user mr-1" aria-hidden="true"></i>
-                            <a href="<?php $this->author->permalink(); ?>" class="mr-2" title="作者：<?php $this->author(); ?>">
-                                <?php $this->author(); ?>
-                            </a>
-                        </span>
-                        <span class="ml-2" title="<?php echo $GLOBALS['t']['post']['views']; ?>" data-toggle="tooltip" data-placement="top">
-                            <i class="icon-eye mr-1" aria-hidden="true"></i>
-                            <?php echo postViews($this); ?>
-                        </span>
-                    </div>
-
                     <div class="post-content mt-4">
                         <?php echo addBootstrapTableClasses($this->content); ?>
                         <?php if ($this->options->githubUserName): ?>

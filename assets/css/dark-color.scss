@@ -558,8 +558,15 @@ $dark-text-color2: #999999;
   }
 
   // 统计页的配色
-  .statistics-card {
-    background: #16161A;
+  .statistics-page {
+    // 统计卡片配色
+    .statistics-card {
+      background: #16161A;
+    }
+    // 加载动画
+    .loading {
+      color: $dark-text-color;
+    }
   }
 
   // github项目页面配色

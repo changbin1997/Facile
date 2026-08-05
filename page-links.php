@@ -63,27 +63,7 @@ $this->need('components/header.php');
                         </h1>
                     </header>
                     <?php $headerImg = headerImageDisplay($this, $this->options->headerImage, $this->options->headerImageUrl); ?>
-                    <?php if ($headerImg): ?>
-                        <div class="header-img mb-3 mt-4">
-                            <a <?php if ($this->options->headerImageStyle == 'rounded-corners') echo 'class="rounded"'; ?> href="<?php $this->permalink(); ?>" aria-hidden="true" aria-label="文章头图" style="background-image: url(<?php echo $headerImg; ?>);" tabindex="-1"></a>
-                        </div>
-                    <?php endif; ?>
-                    <div class="post-info mt-2">
-                        <span class="ml-1" title="<?php echo $GLOBALS['t']['post']['publicationDate']; ?>" data-toggle="tooltip" data-placement="top">
-                                <i class="icon-calendar mr-1" aria-hidden="true"></i>
-                                <time datetime="<?php echo date('c', $this->created); ?>"><?php echo postDateFormat($this->created); ?></time>
-                            </span>
-                        <span class="ml-2" title="<?php echo $GLOBALS['t']['post']['author']; ?>" data-toggle="tooltip" data-placement="top">
-                                <i class="icon-user mr-1" aria-hidden="true"></i>
-                                <a href="<?php $this->author->permalink(); ?>" class="mr-2" title="<?php echo $GLOBALS['t']['post']['author']; ?>: <?php $this->author(); ?>">
-                                    <?php $this->author(); ?>
-                                </a>
-                            </span>
-                        <span class="ml-2" title="<?php echo $GLOBALS['t']['post']['views']; ?>" data-toggle="tooltip" data-placement="top">
-                                <i class="icon-eye mr-1" aria-hidden="true"></i>
-                                <?php echo postViews($this); ?>
-                            </span>
-                    </div>
+
                     <div class="post-content mt-4">
                         <?php if (count($linkArr)): ?>
                             <?php foreach ($linkArr as $link): ?>

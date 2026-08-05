@@ -1289,10 +1289,10 @@ header input[type=search]:focus {
   position: relative;
 }
 .statistics-page .loading {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #repository-list .loading-animation {
@@ -2450,8 +2450,11 @@ header input[type=search]:focus {
 .dark-color .archive-page .archives h2 {
   background: #121212;
 }
-.dark-color .statistics-card {
+.dark-color .statistics-page .statistics-card {
   background: #16161A;
+}
+.dark-color .statistics-page .loading {
+  color: #D3D3D3;
 }
 .dark-color #repository-list .card {
   background-color: #16161A;
@@ -3096,8 +3099,11 @@ header input[type=search]:focus {
   .auto-color .archive-page .archives h2 {
     background: #121212;
   }
-  .auto-color .statistics-card {
+  .auto-color .statistics-page .statistics-card {
     background: #16161A;
+  }
+  .auto-color .statistics-page .loading {
+    color: #D3D3D3;
   }
   .auto-color #repository-list .card {
     background-color: #16161A;
