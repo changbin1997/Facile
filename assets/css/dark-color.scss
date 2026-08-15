@@ -82,7 +82,7 @@ $dark-text-color2: #999999;
     th {
       color: #FFFFFF;
       border: 1px solid #454D55;
-      a {
+      a:not(.btn) {
         color: $dark-link-color;
       }
       code {
@@ -92,7 +92,7 @@ $dark-text-color2: #999999;
     td {
       color: $dark-text-color;
 
-      a {
+      a:not(.btn) {
         color: $dark-link-color;
       }
 
@@ -110,7 +110,7 @@ $dark-text-color2: #999999;
     }
   }
   // 链接
-  a {
+  a:not(.btn) {
     color: $dark-link-color;
   }
   // 分隔线

@@ -1989,7 +1989,7 @@ header input[type=search]:focus {
   color: #FFFFFF;
   border: 1px solid #454D55;
 }
-.dark-color .fullText table th a {
+.dark-color .fullText table th a:not(.btn) {
   color: #E47063;
 }
 .dark-color .fullText table th code {
@@ -2000,7 +2000,7 @@ header input[type=search]:focus {
   color: #D3D3D3;
   border: 1px solid #454D55;
 }
-.dark-color .fullText table td a {
+.dark-color .fullText table td a:not(.btn) {
   color: #E47063;
 }
 .dark-color .fullText table td code {
@@ -2013,7 +2013,7 @@ header input[type=search]:focus {
 .dark-color .fullText table tr:hover {
   background: #212529;
 }
-.dark-color .fullText a {
+.dark-color .fullText a:not(.btn) {
   color: #E47063;
 }
 .dark-color .fullText hr {
@@ -2162,7 +2162,7 @@ header input[type=search]:focus {
   color: #FFFFFF;
   border: 1px solid #454D55;
 }
-.dark-color .post-page .post-content table th a {
+.dark-color .post-page .post-content table th a:not(.btn) {
   color: #E47063;
 }
 .dark-color .post-page .post-content table th code {
@@ -2173,7 +2173,7 @@ header input[type=search]:focus {
   color: #D3D3D3;
   border: 1px solid #454D55;
 }
-.dark-color .post-page .post-content table td a {
+.dark-color .post-page .post-content table td a:not(.btn) {
   color: #E47063;
 }
 .dark-color .post-page .post-content table td code {
@@ -2186,7 +2186,7 @@ header input[type=search]:focus {
 .dark-color .post-page .post-content table tr:hover {
   background: #212529;
 }
-.dark-color .post-page .post-content a {
+.dark-color .post-page .post-content a:not(.btn) {
   color: #E47063;
 }
 .dark-color .post-page .post-content hr {
@@ -2317,7 +2317,7 @@ header input[type=search]:focus {
   color: #FFFFFF;
   border: 1px solid #454D55;
 }
-.dark-color #comments .comment-content table th a {
+.dark-color #comments .comment-content table th a:not(.btn) {
   color: #E47063;
 }
 .dark-color #comments .comment-content table th code {
@@ -2328,7 +2328,7 @@ header input[type=search]:focus {
   color: #D3D3D3;
   border: 1px solid #454D55;
 }
-.dark-color #comments .comment-content table td a {
+.dark-color #comments .comment-content table td a:not(.btn) {
   color: #E47063;
 }
 .dark-color #comments .comment-content table td code {
@@ -2341,7 +2341,7 @@ header input[type=search]:focus {
 .dark-color #comments .comment-content table tr:hover {
   background: #212529;
 }
-.dark-color #comments .comment-content a {
+.dark-color #comments .comment-content a:not(.btn) {
   color: #E47063;
 }
 .dark-color #comments .comment-content hr {
@@ -2638,7 +2638,7 @@ header input[type=search]:focus {
     color: #FFFFFF;
     border: 1px solid #454D55;
   }
-  .auto-color .fullText table th a {
+  .auto-color .fullText table th a:not(.btn) {
     color: #E47063;
   }
   .auto-color .fullText table th code {
@@ -2649,7 +2649,7 @@ header input[type=search]:focus {
     color: #D3D3D3;
     border: 1px solid #454D55;
   }
-  .auto-color .fullText table td a {
+  .auto-color .fullText table td a:not(.btn) {
     color: #E47063;
   }
   .auto-color .fullText table td code {
@@ -2662,7 +2662,7 @@ header input[type=search]:focus {
   .auto-color .fullText table tr:hover {
     background: #212529;
   }
-  .auto-color .fullText a {
+  .auto-color .fullText a:not(.btn) {
     color: #E47063;
   }
   .auto-color .fullText hr {
@@ -2811,7 +2811,7 @@ header input[type=search]:focus {
     color: #FFFFFF;
     border: 1px solid #454D55;
   }
-  .auto-color .post-page .post-content table th a {
+  .auto-color .post-page .post-content table th a:not(.btn) {
     color: #E47063;
   }
   .auto-color .post-page .post-content table th code {
@@ -2822,7 +2822,7 @@ header input[type=search]:focus {
     color: #D3D3D3;
     border: 1px solid #454D55;
   }
-  .auto-color .post-page .post-content table td a {
+  .auto-color .post-page .post-content table td a:not(.btn) {
     color: #E47063;
   }
   .auto-color .post-page .post-content table td code {
@@ -2835,7 +2835,7 @@ header input[type=search]:focus {
   .auto-color .post-page .post-content table tr:hover {
     background: #212529;
   }
-  .auto-color .post-page .post-content a {
+  .auto-color .post-page .post-content a:not(.btn) {
     color: #E47063;
   }
   .auto-color .post-page .post-content hr {
@@ -2966,7 +2966,7 @@ header input[type=search]:focus {
     color: #FFFFFF;
     border: 1px solid #454D55;
   }
-  .auto-color #comments .comment-content table th a {
+  .auto-color #comments .comment-content table th a:not(.btn) {
     color: #E47063;
   }
   .auto-color #comments .comment-content table th code {
@@ -2977,7 +2977,7 @@ header input[type=search]:focus {
     color: #D3D3D3;
     border: 1px solid #454D55;
   }
-  .auto-color #comments .comment-content table td a {
+  .auto-color #comments .comment-content table td a:not(.btn) {
     color: #E47063;
   }
   .auto-color #comments .comment-content table td code {
@@ -2990,7 +2990,7 @@ header input[type=search]:focus {
   .auto-color #comments .comment-content table tr:hover {
     background: #212529;
   }
-  .auto-color #comments .comment-content a {
+  .auto-color #comments .comment-content a:not(.btn) {
     color: #E47063;
   }
   .auto-color #comments .comment-content hr {

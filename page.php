@@ -20,6 +20,7 @@ $this->need('components/header.php');
                     </ol>
                 </nav>
             <?php endif; ?>
+
             <main class="page">
                 <article class="mb-4 border-bottom">
                     <header>
@@ -27,12 +28,14 @@ $this->need('components/header.php');
                             <a href="<?php $this->permalink(); ?>" rel="bookmark"><?php $this->title(); ?></a>
                         </h1>
                     </header>
+
                     <?php $headerImg = headerImageDisplay($this, $this->options->headerImage, $this->options->headerImageUrl); ?>
                     <?php if ($headerImg): ?>
                         <div class="header-img mb-3 mt-4">
                             <a <?php if ($this->options->headerImageStyle == 'rounded-corners') echo 'class="rounded"'; ?> href="<?php $this->permalink(); ?>" aria-hidden="true" aria-label="文章头图" style="background-image: url(<?php echo $headerImg; ?>);" tabindex="-1"></a>
                         </div>
                     <?php endif; ?>
+
                     <div class="post-info mt-2">
                         <span class="ml-1" title="<?php echo $GLOBALS['t']['post']['publicationDate']; ?>" data-toggle="tooltip" data-placement="top">
                             <i class="icon-calendar mr-1" aria-hidden="true"></i>
@@ -50,13 +53,20 @@ $this->need('components/header.php');
                         </span>
                         <?php if ($this->user->hasLogin()): ?>
                             <span class="ml-2">
-                        <i class="icon-pencil mr-2" aria-hidden="true"></i>
-                        <a href="<?php echo $this->options->adminUrl . 'write-page.php?cid=' . $this->cid; ?>"><?php echo $GLOBALS['t']['post']['edit']; ?></a>
-                    </span>
+                                <i class="icon-pencil mr-2" aria-hidden="true"></i>
+                                <a href="<?php echo $this->options->adminUrl . 'write-page.php?cid=' . $this->cid; ?>"><?php echo $GLOBALS['t']['post']['edit']; ?></a>
+                            </span>
                         <?php endif; ?>
                     </div>
+
                     <div class="post-content mt-4">
-                        <?php echo addBootstrapTableClasses($this->content); ?>
+                        <?php
+                        // 添加响应式表格样式
+                        $postContent = addBootstrapTableClasses($this->content);
+                        // 自定义短代码解析
+                        $postContent = parseThemeShortcodes($postContent);
+                        echo $postContent;
+                        ?>
                     </div>
                 </article>
                 <?php $this->need('components/comments.php'); ?>

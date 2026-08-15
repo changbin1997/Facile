@@ -55,6 +55,7 @@ $this->need('components/header.php');
                     </ol>
                 </nav>
             <?php endif; ?>
+
             <main class="page">
                 <article class="mb-4 border-bottom">
                     <header>
@@ -87,7 +88,13 @@ $this->need('components/header.php');
                                 <hr>
                             <?php endforeach; ?>
                         <?php endif; ?>
-                        <?php echo addBootstrapTableClasses($this->content); ?>
+                        <?php
+                        // 添加响应式表格样式
+                        $postContent = addBootstrapTableClasses($this->content);
+                        // 自定义短代码语法解析
+                        $postContent = parseThemeShortcodes($postContent);
+                        echo $postContent;
+                        ?>
                     </div>
                 </article>
                 <?php $this->need('components/comments.php'); ?>

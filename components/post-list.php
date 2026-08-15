@@ -26,6 +26,7 @@ while ($this->next()):
                         ?>
                     </a>
                 </h2>
+
                 <div class="post-info mt-2">
                     <span class="ml-1" title="<?php echo $GLOBALS['t']['post']['publicationDate']; ?>" data-toggle="tooltip" data-placement="top">
                         <i class="icon-calendar mr-2" aria-hidden="true"></i>
@@ -43,6 +44,7 @@ while ($this->next()):
                     </span>
                 </div>
             </header>
+
             <?php if ($postListStyle == 'summary'): ?>
                 <!--显示摘要-->
                 <?php if (getPostListHeaderImageStyle($this->fields->postListHeaderImageStyle, $this->options->postListHeaderImageStyle) == 'mini' && $headerImage): ?>
@@ -127,7 +129,15 @@ while ($this->next()):
             <?php else: ?>
                 <!--显示全文-->
                 <div class="post-content mt-4">
-                    <div class="fullText"><?php echo addBootstrapTableClasses($this->content); ?></div>
+                    <div class="fullText">
+                        <?php
+                        // 添加表格样式
+                        $postContent = addBootstrapTableClasses($this->content);
+                        // 自定义短代码语法解析
+                        $postContent = parseThemeShortcodes($postContent);
+                        echo $postContent;
+                        ?>
+                    </div>
                     <div class="more-link-wrapper">
                         <div>
                             <a href="<?php $this->permalink(); ?>" class="btn btn-sm mr-3 read-more">

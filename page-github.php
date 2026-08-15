@@ -37,7 +37,13 @@ $this->need('components/header.php');
                     </header>
 
                     <div class="post-content mt-4">
-                        <?php echo addBootstrapTableClasses($this->content); ?>
+                        <?php
+                        // 添加表格样式
+                        $postContent = addBootstrapTableClasses($this->content);
+                        // 自定义短代码语法解析
+                        $postContent = parseThemeShortcodes($postContent);
+                        echo $postContent;
+                        ?>
                         <?php if ($this->options->githubUserName): ?>
                             <span id="github-username" style="display: none;" data-user="<?php $this->options->githubUserName(); ?>"></span>
                             <div class="row mb-3" id="repository-list">

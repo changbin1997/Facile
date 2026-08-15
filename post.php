@@ -49,12 +49,14 @@ $this->need('components/header.php');
                             </a>
                         </h1>
                     </header>
+
                     <?php $headerImg = headerImageDisplay($this, $this->options->headerImage, $this->options->headerImageUrl); ?>
                     <?php if ($headerImg): ?>
                         <div class="header-img mb-3 mt-4">
                             <a <?php if ($this->options->headerImageStyle == 'rounded-corners') echo 'class="rounded"'; ?> href="<?php $this->permalink(); ?>" aria-hidden="true" aria-label="文章头图" style="background-image: url(<?php echo $headerImg; ?>);" tabindex="-1"></a>
                         </div>
                     <?php endif; ?>
+
                     <div class="post-info mt-2">
                         <span class="ml-1" title="<?php echo $GLOBALS['t']['post']['publicationDate']; ?>" data-toggle="tooltip" data-placement="top">
                             <i class="icon-calendar mr-2" aria-hidden="true"></i>
@@ -77,6 +79,7 @@ $this->need('components/header.php');
                           </span>
                         <?php endif; ?>
                     </div>
+
                     <div class="post-content mt-4">
                         <?php if (is_numeric($this->fields->expired) && (int)$this->fields->expired > 0 && $this->created + (int)$this->fields->expired * 86400 < time()): ?>
                             <!--警示信息-->
@@ -97,6 +100,8 @@ $this->need('components/header.php');
                         if ($this->options->imagelazyloading == 'on') {
                             $GLOBALS['post']['content'] = replaceImgSrc($GLOBALS['post']['content']);
                         }
+                        // 自定义短代码语法解析
+                        $GLOBALS['post']['content'] = parseThemeShortcodes($GLOBALS['post']['content']);
                         echo $GLOBALS['post']['content'];
                         ?>
                         <?php if ($this->fields->copyrightNotice != 'hide'): ?>
