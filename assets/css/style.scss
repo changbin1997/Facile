@@ -796,7 +796,8 @@ header {
       #emoji-classification {
         overflow-x: auto;
         button {
-          font-size: 16px;
+          font-size: 18px;
+          padding: 4px;
         }
         button:hover {
           background: #D9230F;
@@ -812,7 +813,8 @@ header {
         // 表情
         .emoji {
           float: left;
-          font-size: 16px;
+          font-size: 18px;
+          padding: 4px !important;
           margin: 0;
           cursor: pointer;
           &:hover {

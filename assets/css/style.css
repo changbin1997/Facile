@@ -1018,7 +1018,8 @@ header input[type=search]:focus {
   overflow-x: auto;
 }
 #comments .comment-input #emoji-panel #emoji-classification button {
-  font-size: 16px;
+  font-size: 18px;
+  padding: 4px;
 }
 #comments .comment-input #emoji-panel #emoji-classification button:hover {
   background: #D9230F;
@@ -1032,7 +1033,8 @@ header input[type=search]:focus {
 }
 #comments .comment-input #emoji-panel #emoji-list .emoji {
   float: left;
-  font-size: 16px;
+  font-size: 18px;
+  padding: 4px !important;
   margin: 0;
   cursor: pointer;
 }
