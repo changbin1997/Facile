@@ -146,10 +146,12 @@ $this->need('components/header.php');
                     <?php endif; ?>
 
                     <div class="category-tag clearfix my-4">
+                        <!--文章分类-->
                         <div class="post-category float-left" role="group" aria-label="<?php echo $GLOBALS['t']['post']['category']; ?>">
                             <i class="icon-folder-open mr-1" aria-hidden="true"></i>
-                            <?php $this->category(' '); ?>
+                            <?php $this->category(' ', true, '<span>' . $GLOBALS['t']['post']['uncategorized'] . '</span>'); ?>
                         </div>
+                        <!--文章标签-->
                         <div class="post-tag float-right" role="group" aria-label="<?php echo $GLOBALS['t']['post']['tag']; ?>">
                             <i class="icon-price-tag mr-1" aria-hidden="true"></i>
                             <?php postTadAddStyle($this); ?>

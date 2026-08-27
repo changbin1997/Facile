@@ -2243,6 +2243,9 @@ header input[type=search]:focus {
 .dark-color .post-page .post-category a {
   color: #D3D3D3;
 }
+.dark-color .post-page .category-tag span {
+  color: #D3D3D3;
+}
 .dark-color .post-page .agree-share button {
   color: #fff;
   background-color: #d9230f;
@@ -2890,6 +2893,9 @@ header input[type=search]:focus {
     color: #D3D3D3;
   }
   .auto-color .post-page .post-category a {
+    color: #D3D3D3;
+  }
+  .auto-color .post-page .category-tag span {
     color: #D3D3D3;
   }
   .auto-color .post-page .agree-share button {

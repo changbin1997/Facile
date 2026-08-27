@@ -36,7 +36,8 @@ const EN = array(
             'Article URL: %s',
             'If you have any questions or concerns about this article, feel free to leave a comment. I will try my best to respond as soon as possible.'
         ),
-        'noneTag' => 'None'
+        'noneTag' => 'None',
+        'uncategorized' => 'Uncategorized'
     ),
     'comment' => array(
         'leaveAComment' => 'Leave a Comment',

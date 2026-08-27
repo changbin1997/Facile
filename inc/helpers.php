@@ -1025,7 +1025,7 @@ function addBootstrapTableClasses($html) {
 function postTadAddStyle($post) {
     // 拦截输出
     ob_start();
-    $post->tags(' ', true, $GLOBALS['t']['post']['noneTag']);
+    $post->tags(' ', true, '<span>' . $GLOBALS['t']['post']['noneTag'] . '</span>');
     $content = ob_get_contents();
     ob_end_clean();
     // 给标签链接添加 class

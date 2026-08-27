@@ -421,6 +421,11 @@ $dark-text-color2: #999999;
       color: $dark-text-color;
     }
 
+    // 文章页没有分类和标签的提示内容颜色
+    .category-tag span {
+      color: $dark-text-color;
+    }
+
     // 文章页的分享和点赞按钮配色
     .agree-share button {
       @include btn-primary;

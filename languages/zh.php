@@ -36,7 +36,8 @@ const ZH = array(
             '本文地址：%s',
             '如果对本文有什么问题或疑问都可以在评论区留言，我看到后会尽量解答。'
         ),
-        'noneTag' => '暂无标签'
+        'noneTag' => '暂无标签',
+        'uncategorized' => '未分类'
     ],
     'comment' => array(
         'leaveAComment' => '发表评论',
