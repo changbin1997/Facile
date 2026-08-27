@@ -145,8 +145,12 @@ EOT;
         'stackoverflow-light' => 'Stack Overflow（浅色）',
         'vs2015' => 'VS2015（深色）',
         'sunburst' => 'Sunburst（高对比度）',
-        'follow-theme-color' => '跟随主题配色'
+        'follow-theme-color' => '跟随主题配色',
+        'custom-code-theme' => '自定义'
     ), 'vs2015', _t('代码块颜色主题'), _t('跟随主题配色会根据主题使用的配色模式来自动选择代码块的颜色主题，如果主题为浅色模式，使用 Stack Overflow，如果主题为深色模式，使用 VS2015。')));
+
+    // 自定义代码高亮 CSS
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('highlightJsCSS', null, null, _t('自定义代码块颜色主题'), _t('如果代码块颜色主题选择了自定义，可以在这里输入 highlight.js 的配色 CSS URL，也可以直接粘贴 highlight.js 的 CSS 代码。highlight.js 的 CSS 可以到 <a target="_blank" href="https://cdnjs.com/libraries/highlight.js">https://cdnjs.com/libraries/highlight.js</a> 获取，要预览不同配色的效果可以访问 <a target="_blank" href="https://highlightjs.org/demo">https://highlightjs.org/demo</a>。使用自定义代码块配色建议关闭代码块行号，代码块行号只能适配内置的代码高亮主题。')));
 
     // 图片懒加载
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('imagelazyloading', array(

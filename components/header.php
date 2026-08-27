@@ -99,14 +99,24 @@ $bodyClass = implode(' ', $bodyClass);
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/bootstrap.css'); ?>" type="text/css">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/style.css'); ?>" type="text/css">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/icon.css'); ?>" type="text/css">
+    <!--需要传给 JS 的多语言内容-->
     <?php localizeScript(); ?>
+
+    <?php
+    // 自定义代码高亮主题
+    if ($this->options->codeThemeColor === 'custom-code-theme' && $this->options->highlightJsCSS) {
+        outputCustomHighlightCSS($this->options->highlightJsCSS);
+    }
+    ?>
+
     <!--自定义CSS-->
     <?php if ($this->options->cssCode): ?>
         <style type="text/css">
             <?php $this->options->cssCode(); ?>
         </style>
     <?php endif; ?>
-    <!--自定义HTML-->
+
+    <!--自定义 head HTML-->
     <?php if ($this->options->headHTML): ?>
         <?php $this->options->headHTML(); ?>
     <?php endif; ?>

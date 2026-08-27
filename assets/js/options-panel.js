@@ -33,12 +33,12 @@ window.addEventListener('load', () => {
   optionForm.insertBefore(titleEl[3], optionUl[6]);  // 导航
   optionForm.insertBefore(titleEl[4], optionUl[11]);  // 侧边栏
   optionForm.insertBefore(titleEl[5], optionUl[22]);  // 文章相关
-  optionForm.insertBefore(titleEl[6], optionUl[36]);  // 评论
-  optionForm.insertBefore(titleEl[7], optionUl[41]);  // SEO相关
-  optionForm.insertBefore(titleEl[8], optionUl[44]);  // 友链
-  optionForm.insertBefore(titleEl[9], optionUl[48]);  // PJAX
-  optionForm.insertBefore(titleEl[10], optionUl[51]);  // github项目展示
-  optionForm.insertBefore(titleEl[11], optionUl[52]);  // 开发者
+  optionForm.insertBefore(titleEl[6], optionUl[37]);  // 评论
+  optionForm.insertBefore(titleEl[7], optionUl[42]);  // SEO相关
+  optionForm.insertBefore(titleEl[8], optionUl[45]);  // 友链
+  optionForm.insertBefore(titleEl[9], optionUl[49]);  // PJAX
+  optionForm.insertBefore(titleEl[10], optionUl[52]);  // github项目展示
+  optionForm.insertBefore(titleEl[11], optionUl[53]);  // 开发者
 
   // 插入分隔线
   titleEl.forEach(el => {
