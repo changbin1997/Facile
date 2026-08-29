@@ -71,7 +71,7 @@ function threadedComments($comments, $options) {
                 <?php if (!$commentContent['canView']): ?>
                     <div class="hide-comment-content p-1"><em><?php echo $GLOBALS['t']['comment']['secretCommentVisibility']; ?></em></div>
                 <?php else: ?>
-                    <?php $comments->content(); ?>
+                    <?php echo $commentContent['content']; ?>
                 <?php endif; ?>
             </div>
         </div>
