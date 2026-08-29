@@ -11,31 +11,42 @@
                 </label>
                 <textarea name="text" id="textarea" placeholder="<?php echo $GLOBALS['t']['comment']['enterYourCommentHere']; ?>" class="form-control" required></textarea>
             </div>
-            <!--Emoji表情区域-->
-            <?php if ($this->options->emojiPanel == 'show'): ?>
+            <!--Emoji表情面板和私密评论复选框区域-->
             <div class="col-12" id="emoji-box">
-                <button aria-expanded="false" type="button" class="btn btn-sm" id="show-emoji-btn">
-                    😀 <?php echo $GLOBALS['t']['emoji']['emoji']; ?>
-                </button>
-                <div id="emoji-panel" class="bg-light border shadow rounded" role="dialog" aria-label="<?php echo $GLOBALS['t']['emoji']['emojiPanel']; ?>">
-                    <div class="card card-body p-0 m-0 border-bottom">
-                        <div id="emoji-classification" class="m-0 btn-group" role="group" aria-label="<?php echo $GLOBALS['t']['emoji']['emojiCategories']; ?>">
-                            <button role="radio" aria-checked="true" aria-label="<?php echo $GLOBALS['t']['emoji']['smileys']; ?>" title="<?php echo $GLOBALS['t']['emoji']['smileys']; ?>" type="button" class="btn btn btn-sm selected" data-classification="smileys">😀</button>
-                            <button role="radio" aria-checked="false" aria-label="<?php echo $GLOBALS['t']['emoji']['peopleAndGestures']; ?>" title="<?php echo $GLOBALS['t']['emoji']['peopleAndGestures']; ?>" type="button" class="btn btn btn-sm" data-classification="character">👦</button>
-                            <button role="radio" aria-checked="false" aria-label="<?php echo $GLOBALS['t']['emoji']['clothingAndAccessories']; ?>" title="<?php echo $GLOBALS['t']['emoji']['clothingAndAccessories']; ?>" type="button" class="btn btn btn-sm" data-classification="clothing">👕</button>
-                            <button role="radio" aria-checked="false" aria-label="<?php echo $GLOBALS['t']['emoji']['animalsAndNature']; ?>" title="<?php echo $GLOBALS['t']['emoji']['animalsAndNature']; ?>" type="button" class="btn btn btn-sm" data-classification="animal">🐶</button>
-                            <button role="radio" aria-checked="false" aria-label="<?php echo $GLOBALS['t']['emoji']['food']; ?>" title="<?php echo $GLOBALS['t']['emoji']['food']; ?>" type="button" class="btn btn btn-sm" data-classification="food">🍏</button>
-                            <button role="radio" aria-checked="false" aria-label="<?php echo $GLOBALS['t']['emoji']['activity']; ?>" title="<?php echo $GLOBALS['t']['emoji']['activity']; ?>" type="button" class="btn btn btn-sm" data-classification="motion">⚽</button>
-                            <button role="radio" aria-checked="false" aria-label="<?php echo $GLOBALS['t']['emoji']['travelAndPlaces']; ?>" title="<?php echo $GLOBALS['t']['emoji']['travelAndPlaces']; ?>" type="button" class="btn btn-sm>" data-classification="tourism">🚚</button>
-                            <button role="radio" aria-checked="false" aria-label="<?php echo $GLOBALS['t']['emoji']['objects']; ?>" title="<?php echo $GLOBALS['t']['emoji']['objects']; ?>" type="button" class="btn btn-sm>" data-classification="objects">⌚</button>
-                            <button role="radio" aria-checked="false" aria-label="<?php echo $GLOBALS['t']['emoji']['symbols']; ?>" title="<?php echo $GLOBALS['t']['emoji']['symbols']; ?>" type="button" class="btn btn-sm>" data-classification="symbols">❤</button>
-                        </div>
+                <div id="emoji-btn-and-hide-comment">
+                    <!--emoji面板开关-->
+                    <?php if ($this->options->emojiPanel == 'show'): ?>
+                        <button aria-expanded="false" type="button" class="btn btn-sm" id="show-emoji-btn">
+                            😀 <?php echo $GLOBALS['t']['emoji']['emoji']; ?>
+                        </button>
+                    <?php endif; ?>
+                    <!--私密评论选择-->
+                    <div class="custom-control custom-checkbox">
+                        <input data-toggle="tooltip" data-placement="top" title="<?php echo $GLOBALS['t']['comment']['secretCommentDescription']; ?>" type="checkbox" class="custom-control-input" id="hide-comment">
+                        <label class="custom-control-label" for="hide-comment"><?php echo $GLOBALS['t']['comment']['secretComment']; ?></label>
                     </div>
-                    <h5 class="text-center py-2 m-0 border-bottom" id="emoji-title">表情类型</h5>
-                    <div id="emoji-list" class="clearfix" role="list" aria-label="<?php echo $GLOBALS['t']['emoji']['emojiList'] . $GLOBALS['t']['emoji']['pressEnterToAddTheEmojiToTheCommentInputField']; ?>"></div>
                 </div>
+                <!--emoji面板-->
+                <?php if ($this->options->emojiPanel == 'show'): ?>
+                    <div id="emoji-panel" class="bg-light border shadow rounded" role="dialog" aria-label="<?php echo $GLOBALS['t']['emoji']['emojiPanel']; ?>">
+                        <div class="card card-body p-0 m-0 border-bottom">
+                            <div id="emoji-classification" class="m-0 btn-group" role="group" aria-label="<?php echo $GLOBALS['t']['emoji']['emojiCategories']; ?>">
+                                <button role="radio" aria-checked="true" aria-label="<?php echo $GLOBALS['t']['emoji']['smileys']; ?>" title="<?php echo $GLOBALS['t']['emoji']['smileys']; ?>" type="button" class="btn btn btn-sm selected" data-classification="smileys">😀</button>
+                                <button role="radio" aria-checked="false" aria-label="<?php echo $GLOBALS['t']['emoji']['peopleAndGestures']; ?>" title="<?php echo $GLOBALS['t']['emoji']['peopleAndGestures']; ?>" type="button" class="btn btn btn-sm" data-classification="character">👦</button>
+                                <button role="radio" aria-checked="false" aria-label="<?php echo $GLOBALS['t']['emoji']['clothingAndAccessories']; ?>" title="<?php echo $GLOBALS['t']['emoji']['clothingAndAccessories']; ?>" type="button" class="btn btn btn-sm" data-classification="clothing">👕</button>
+                                <button role="radio" aria-checked="false" aria-label="<?php echo $GLOBALS['t']['emoji']['animalsAndNature']; ?>" title="<?php echo $GLOBALS['t']['emoji']['animalsAndNature']; ?>" type="button" class="btn btn btn-sm" data-classification="animal">🐶</button>
+                                <button role="radio" aria-checked="false" aria-label="<?php echo $GLOBALS['t']['emoji']['food']; ?>" title="<?php echo $GLOBALS['t']['emoji']['food']; ?>" type="button" class="btn btn btn-sm" data-classification="food">🍏</button>
+                                <button role="radio" aria-checked="false" aria-label="<?php echo $GLOBALS['t']['emoji']['activity']; ?>" title="<?php echo $GLOBALS['t']['emoji']['activity']; ?>" type="button" class="btn btn btn-sm" data-classification="motion">⚽</button>
+                                <button role="radio" aria-checked="false" aria-label="<?php echo $GLOBALS['t']['emoji']['travelAndPlaces']; ?>" title="<?php echo $GLOBALS['t']['emoji']['travelAndPlaces']; ?>" type="button" class="btn btn-sm>" data-classification="tourism">🚚</button>
+                                <button role="radio" aria-checked="false" aria-label="<?php echo $GLOBALS['t']['emoji']['objects']; ?>" title="<?php echo $GLOBALS['t']['emoji']['objects']; ?>" type="button" class="btn btn-sm>" data-classification="objects">⌚</button>
+                                <button role="radio" aria-checked="false" aria-label="<?php echo $GLOBALS['t']['emoji']['symbols']; ?>" title="<?php echo $GLOBALS['t']['emoji']['symbols']; ?>" type="button" class="btn btn-sm>" data-classification="symbols">❤</button>
+                            </div>
+                        </div>
+                        <h5 class="text-center py-2 m-0 border-bottom" id="emoji-title">表情类型</h5>
+                        <div id="emoji-list" class="clearfix" role="list" aria-label="<?php echo $GLOBALS['t']['emoji']['emojiList'] . $GLOBALS['t']['emoji']['pressEnterToAddTheEmojiToTheCommentInputField']; ?>"></div>
+                    </div>
+                <?php endif; ?>
             </div>
-            <?php endif; ?>
             <?php if($this->user->hasLogin()): ?>
                 <div class="col-lg-12 comment-user">
                     <?php echo $GLOBALS['t']['comment']['loggedInAs']; ?>

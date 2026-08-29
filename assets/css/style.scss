@@ -775,8 +775,9 @@ header {
       font-weight: 700;
       margin-bottom: 25px;
     }
+    // 通用的表单样式
     .row {
-      div {
+      > div {
         margin-bottom: 16px;
         textarea {
           height: 150px;
@@ -786,6 +787,13 @@ header {
     a {
       font-weight: 700;
     }
+    // emoji面板开关和私密评论复选框区域
+    #emoji-btn-and-hide-comment {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    // emoji面板
     #emoji-panel {
       width: 400px;
       height: 300px;
@@ -879,6 +887,14 @@ header {
       }
       p,a,li,code,td {
         font-size: 15px;
+      }
+      // 私密评论的提示内容
+      .hide-comment-content {
+        margin-bottom: 20px;
+        font-size: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        background: #F6F6F3;
+        border-radius: 5px;
       }
     }
     //  子评论

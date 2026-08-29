@@ -998,14 +998,19 @@ header input[type=search]:focus {
   font-weight: 700;
   margin-bottom: 25px;
 }
-#comments .comment-input .row div {
+#comments .comment-input .row > div {
   margin-bottom: 16px;
 }
-#comments .comment-input .row div textarea {
+#comments .comment-input .row > div textarea {
   height: 150px;
 }
 #comments .comment-input a {
   font-weight: 700;
+}
+#comments .comment-input #emoji-btn-and-hide-comment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 #comments .comment-input #emoji-panel {
   width: 400px;
@@ -1193,6 +1198,13 @@ header input[type=search]:focus {
 }
 #comments .comments-lists .comment-content p, #comments .comments-lists .comment-content a, #comments .comments-lists .comment-content li, #comments .comments-lists .comment-content code, #comments .comments-lists .comment-content td {
   font-size: 15px;
+}
+#comments .comments-lists .comment-content .hide-comment-content {
+  margin-bottom: 20px;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.5);
+  background: #F6F6F3;
+  border-radius: 5px;
 }
 #comments .comments-lists .comment-children {
   margin-left: 52px;
@@ -2395,6 +2407,10 @@ header input[type=search]:focus {
 .dark-color #comments .comment-content .table-responsive::-webkit-scrollbar-thumb:hover {
   background-color: #aaaaaa;
 }
+.dark-color #comments .comment-content .hide-comment-content {
+  background: #16161A;
+  color: #999999;
+}
 .dark-color #comments .comment-reply i, .dark-color #comments .comment-reply a {
   color: #D3D3D3 !important;
 }
@@ -3046,6 +3062,10 @@ header input[type=search]:focus {
   }
   .auto-color #comments .comment-content .table-responsive::-webkit-scrollbar-thumb:hover {
     background-color: #aaaaaa;
+  }
+  .auto-color #comments .comment-content .hide-comment-content {
+    background: #16161A;
+    color: #999999;
   }
   .auto-color #comments .comment-reply i, .auto-color #comments .comment-reply a {
     color: #D3D3D3 !important;

@@ -58,6 +58,9 @@ $(function () {
   // 表单焦点事件初始化
   inputFocusInit();
 
+  // 私密评论标记初始化
+  hideCommentInit();
+
   // 加载更多初始化
   loadMore();
 
@@ -83,6 +86,8 @@ $(function () {
     lazyLoadImages();
     // 表单焦点初始化
     inputFocusInit();
+    // 私密评论标记初始化
+    hideCommentInit();
     // 图片灯箱初始化
     lightbox.init();
     // 目录初始化
@@ -229,5 +234,26 @@ $(function () {
     // 写入 cookie
     document.cookie = `language=${language};path=/;expires=Tue,${time}`;
     location.reload();
+  }
+
+  // 私密评论提交处理
+  function hideCommentInit() {
+    // 绑定在表单元素上，会先于 document 上的 PJAX 委托 submit 事件执行，
+    // 这样 PJAX 序列化表单数据时就已经包含 [hide] 标记
+    $('#comment-form').on('submit', () => {
+      const textarea = $('#textarea');
+      const content = textarea.val().trim();
+
+      // 私密评论复选框选中时给评论内容包裹 [hide] 标记
+      // 已经包含标记的评论内容不会重复包裹
+      if (
+          $('#hide-comment').prop('checked') &&
+          content !== '' &&
+          !content.startsWith('[hide]') &&
+          !content.endsWith('[/hide]')
+      ) {
+        textarea.val(`[hide]${content}[/hide]`);
+      }
+    });
   }
 });

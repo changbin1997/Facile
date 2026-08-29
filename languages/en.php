@@ -57,7 +57,10 @@ const EN = array(
         'cancelReply' => 'Cancel reply',
         'pendingReview' => 'Pending Review',
         'pendingReviewDescription' => 'Only you can see this comment. It will be visible to others once approved.',
-        'loggedInAs' => 'Logged in as: '
+        'loggedInAs' => 'Logged in as: ',
+        'secretComment' => 'Private Comment',
+        'secretCommentDescription' => 'Only you and the site administrator can see the comment content',
+        'secretCommentVisibility' => 'Private comment, visible only to the commenter and the administrator.'
     ),
     'emoji' => array(
         'emoji' => 'Emoji',
@@ -104,7 +107,8 @@ const EN = array(
         'noCommentsOrRepliesAvailableToDisplay' => 'No comments or replies available to display.',
         'noCategoriesAvailableToDisplay' => 'No categories available to display.',
         'noTagsAvailableToDisplay' => 'No tags available to display.',
-        'coPostsAvailableToGenerateAnArchive' => 'No posts available to generate an archive.'
+        'coPostsAvailableToGenerateAnArchive' => 'No posts available to generate an archive.',
+        'secretCommentNotice' => 'Private comment. Please open the post page to view it.'
     ),
     'archive' => array(
         'postsUnderTheCategory' => 'Posts under the category %s',

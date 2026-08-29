@@ -156,7 +156,16 @@ $components = explode(',', $components);
                                             <?php $comments->author(false); ?>
                                         </a>
                                     </h5>
-                                    <p class="m-0"><?php $comments->excerpt(40, '...'); ?></p>
+                                    <p class="m-0">
+                                        <?php
+                                        $commentContent = parseSecretComment($comments->content, $comments);
+                                        if ($commentContent['hide']) {
+                                            echo $GLOBALS['t']['sidebar']['secretCommentNotice'];
+                                        }else {
+                                            $comments->excerpt(40, '...');
+                                        }
+                                        ?>
+                                    </p>
                                 </div>
                             </li>
                         <?php endwhile; ?>

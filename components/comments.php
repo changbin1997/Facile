@@ -45,12 +45,19 @@ function threadedComments($comments, $options) {
                 ?>
                 <div class="comment-info float-left">
                     <b class="author"><?php $comments->author(); ?></b>
+                    <!--作者评论-->
                     <?php if ($comments->authorId == $comments->ownerId): ?>
                         <span class="badge badge-dark author-tag"><?php echo $GLOBALS['t']['post']['author']; ?></span>
                     <?php endif; ?>
                     <?php echo reply($comments->parent); ?>
+                    <!--评论审核中-->
                     <?php if ($comments->status != 'approved'): ?>
                         <span class="badge badge-dark" title="<?php echo $GLOBALS['t']['comment']['pendingReviewDescription']; ?>" data-toggle="tooltip" data-placement="top"><?php echo $GLOBALS['t']['comment']['pendingReview']; ?></span>
+                    <?php endif; ?>
+                    <!--私密评论-->
+                    <?php $commentContent = parseSecretComment($comments->content, $comments); ?>
+                    <?php if ($commentContent['hide']): ?>
+                        <span class="badge badge-dark"><?php echo $GLOBALS['t']['comment']['secretComment']; ?></span>
                     <?php endif; ?>
                     <time class="comment-time" datetime="<?php echo date('c', $comments->created); ?>">
                         <?php echo commentDateFormat($comments->created, $GLOBALS['commentDateFormat']); ?>
@@ -61,7 +68,11 @@ function threadedComments($comments, $options) {
                 </span>
             </div>
             <div class="comment-content" id="c-<?php $comments->theId(); ?>">
-                <?php $comments->content(); ?>
+                <?php if (!$commentContent['canView']): ?>
+                    <div class="hide-comment-content p-1"><em><?php echo $GLOBALS['t']['comment']['secretCommentVisibility']; ?></em></div>
+                <?php else: ?>
+                    <?php $comments->content(); ?>
+                <?php endif; ?>
             </div>
         </div>
         <?php if ($comments->children) { ?>

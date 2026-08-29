@@ -481,6 +481,11 @@ $dark-text-color2: #999999;
     .comment-content {
       color: $dark-text-color;
       @include dark-post-content-color;
+      // 私密评论的提示内容配色
+      .hide-comment-content {
+        background: #16161A;
+        color: $dark-text-color2;
+      }
     }
 
     // 回复链接的配色

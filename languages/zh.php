@@ -57,7 +57,10 @@ const ZH = array(
         'cancelReply' => '取消回复',
         'pendingReview' => '评论审核中',
         'pendingReviewDescription' => '您的评论目前只有您自己能看到，审核通过后才会公开显示。',
-        'loggedInAs' => '登录身份: '
+        'loggedInAs' => '登录身份: ',
+        'secretComment' => '私密评论',
+        'secretCommentDescription' => '评论内容只有您自己和网站管理员可以看到',
+        'secretCommentVisibility' => '私密评论，仅评论者和管理员可见。'
     ),
     'emoji' => array(
         'emoji' => 'Emoji表情',
@@ -104,7 +107,8 @@ const ZH = array(
         'noCommentsOrRepliesAvailableToDisplay' => '没有可以显示的评论和回复。',
         'noCategoriesAvailableToDisplay' => '没有可以显示的分类。',
         'noTagsAvailableToDisplay' => '没有可以显示的标签。',
-        'coPostsAvailableToGenerateAnArchive' => '没有文章，无法生成文章归档。'
+        'coPostsAvailableToGenerateAnArchive' => '没有文章，无法生成文章归档。',
+        'secretCommentNotice' => '私密评论，请进入评论页查看。'
     ),
     'archive' => array(
         'postsUnderTheCategory' => '分类 %s 下的文章',
