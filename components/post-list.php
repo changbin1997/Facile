@@ -15,7 +15,9 @@ while ($this->next()):
         <div class="post-container">
             <header class="mb-4">
                 <h2 class="post-title m-0">
-                    <?php $this->sticky(); ?>
+                    <?php if ($this->is_pinned): ?>
+                        <span class="badge badge-primary"><?php echo $GLOBALS['t']['post']['pinned']; ?></span>
+                    <?php endif; ?>
                     <a href="<?php $this->permalink(); ?>" rel="bookmark">
                         <?php
                         if ($this->hidden) {

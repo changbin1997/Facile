@@ -49,4 +49,10 @@ function themeFields($layout) {
         'show' => '显示',
         'hide' => '隐藏'
     ), 'show', _t('显示版权声明'), _t('版权声明会显示在文章内容的底部，如果您的文章是原创文章，可以选择开启版权声明显示。')));
+
+    // 文章置顶
+    $layout->addItem(new Typecho_Widget_Helper_Form_Element_Radio('pinned', array(
+        'on' => '开启置顶',
+        'off' => '关闭置顶'
+    ), 'off', _t('文章置顶'), _t('文章置顶可以让文章显示在首页第一页的最前面。')));
 }
