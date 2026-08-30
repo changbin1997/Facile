@@ -2,7 +2,7 @@
 
 while ($this->next()):
 ?>
-<div class="post mb-5 pb-3">
+<div class="post post-list-item mb-5 pb-3">
     <article>
         <?php $postListStyle = postListStyle($this->options->postListStyle, $this->fields->postListStyle); ?>
         <!--文章头图区域-->
