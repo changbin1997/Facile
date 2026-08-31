@@ -29,6 +29,18 @@
 <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/qrious.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/clipboard.min.js'); ?>"></script>
 <script type="module" src="<?php $this->options->themeUrl('assets/js/app.js'); ?>"></script>
+
+<?php if ($this->options->serviceWorker === 'enable'): ?>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('<?php $this->options->siteUrl('sw.js'); ?>').catch(function(err) {
+            console.log('serviceWorker注册失败', err);
+          });
+        });
+      }
+    </script>
+<?php endif; ?>
 <!--自定义HTML-->
 <?php if ($this->options->bodyHTML): ?>
     <?php $this->options->bodyHTML(); ?>
