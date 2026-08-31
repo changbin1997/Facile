@@ -47,7 +47,7 @@ export default () => {
           btnEl.innerHTML = '<i class="icon-copy"></i>';
           btnEl.setAttribute('aria-label', window.t.copyCode);
           btnEl.setAttribute('data-clipboard-target', '#code-' + i);
-          btnEl.setAttribute('title', window.t.copyCode);
+          btnEl.setAttribute('data-original-title', window.t.copyCode);
           btnEl.setAttribute('data-toggle', 'tooltip');
           btnEl.setAttribute('data-placement', 'left');
           btnEl.setAttribute('id', 'copy-btn-' + i);
@@ -56,33 +56,31 @@ export default () => {
           $('pre code').eq(i).attr('id', 'code-' + i);
         }
 
-        // 初始化拷贝模块
-        const clipboard = new ClipboardJS('.copy-code-btn');
-        // 拷贝成功
-        clipboard.on('success', ev => {
-          // 把工具提示更改为拷贝成功
-          $(ev.trigger).attr('title', window.t.copySuccess);
-          $(ev.trigger).attr('data-original-title', window.t.copySuccess);
-          $(ev.trigger).tooltip('update');
-          $(ev.trigger).tooltip('show');
-          // 延迟 1 秒后把工具提示更改为拷贝代码
-          setTimeout(() => {
-            $(ev.trigger).attr('title', window.t.copyCode);
-            $(ev.trigger).attr('data-original-title', window.t.copyCode);
-          }, 1000);
-        });
-        // 拷贝出错
-        clipboard.on('error', ev => {
-          $(ev.trigger).attr('title', window.t.copyError);
-          $(ev.trigger).attr('data-original-title', window.t.copyError);
-          $(ev.trigger).tooltip('hide');
-          $(ev.trigger).tooltip('show');
-          setTimeout(() => {
-            $(ev.trigger).attr('title', window.t.copyCode);
-            $(ev.trigger).attr('data-original-title', window.t.copyCode);
-          }, 1000);
-        });
       }
+
+      // 初始化拷贝模块；这里不能放在上面的循环里，否则每个代码块都会创建一份 ClipboardJS 监听
+      const clipboard = new ClipboardJS('.copy-code-btn');
+      // 拷贝成功
+      clipboard.on('success', ev => {
+        // 把工具提示更改为拷贝成功
+        $(ev.trigger).attr('data-original-title', window.t.copySuccess);
+        $(ev.trigger).tooltip('update');
+        $(ev.trigger).tooltip('show');
+        // 延迟 1 秒后把工具提示更改为拷贝代码
+        setTimeout(() => {
+          $(ev.trigger).attr('data-original-title', window.t.copyCode);
+        }, 1000);
+      });
+      // 拷贝出错
+      clipboard.on('error', ev => {
+        $(ev.trigger).attr('data-original-title', window.t.copyError);
+        $(ev.trigger).tooltip('show');
+        setTimeout(() => {
+          $(ev.trigger).attr('data-original-title', window.t.copyCode);
+        }, 1000);
+      });
+      // 初始化气球提示
+      $('[data-toggle="tooltip"]').tooltip();
     };
 
     // highlight.js 已经加载过就直接初始化，避免重复加载

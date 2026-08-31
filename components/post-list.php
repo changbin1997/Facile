@@ -30,16 +30,19 @@ while ($this->next()):
                 </h2>
 
                 <div class="post-info mt-2">
+                    <!--日期-->
                     <span class="ml-1" title="<?php echo $GLOBALS['t']['post']['publicationDate']; ?>" data-toggle="tooltip" data-placement="top">
                         <i class="icon-calendar mr-2" aria-hidden="true"></i>
                         <time datetime="<?php echo date('c', $this->created); ?>"><?php echo postDateFormat($this->created); ?></time>
                     </span>
+                    <!--作者-->
                     <span class="ml-2" title="<?php echo $GLOBALS['t']['post']['author']; ?>" data-toggle="tooltip" data-placement="top">
                         <i class="icon-user mr-2" aria-hidden="true"></i>
                         <a href="<?php $this->author->permalink(); ?>" class="mr-2" title="<?php echo $GLOBALS['t']['post']['author']; ?>: <?php $this->author(); ?>">
                             <?php $this->author(); ?>
                         </a>
                     </span>
+                    <!--阅读量-->
                     <span class="ml-2" title="<?php echo $GLOBALS['t']['post']['views']; ?>" data-toggle="tooltip" data-placement="top">
                         <i class="icon-eye mr-2"></i>
                         <?php echo postViews($this); ?>
