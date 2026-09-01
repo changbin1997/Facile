@@ -63,6 +63,8 @@ $this->need('components/header.php');
                         <?php
                         // 添加响应式表格样式
                         $postContent = addBootstrapTableClasses($this->content);
+                        // 图片懒加载
+                        $postContent = lazyLoadImages($postContent, $this->options->imagelazyloading);
                         // 自定义短代码解析
                         $postContent = parseThemeShortcodes($postContent);
                         echo $postContent;

@@ -100,10 +100,8 @@ $this->need('components/header.php');
                         $GLOBALS['post'] = articleDirectory($GLOBALS['postPage'][$postPageNum - 1]);
                         // 生成 bootstrap 表格
                         $GLOBALS['post']['content'] = addBootstrapTableClasses($GLOBALS['post']['content']);
-                        // 如果启用了图片懒加载就把图片的 src 改为 data-src
-                        if ($this->options->imagelazyloading == 'on') {
-                            $GLOBALS['post']['content'] = replaceImgSrc($GLOBALS['post']['content']);
-                        }
+                        // 图片懒加载
+                        $GLOBALS['post']['content'] = lazyLoadImages($GLOBALS['post']['content'], $this->options->imagelazyloading);
                         // 自定义短代码语法解析
                         $GLOBALS['post']['content'] = parseThemeShortcodes($GLOBALS['post']['content']);
                         echo $GLOBALS['post']['content'];
