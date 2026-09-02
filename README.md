@@ -39,17 +39,24 @@ Facile 相比 [MWordStar](https://github.com/changbin1997/MWordStar) 来说，�
 * 响应式设计
 * 无障碍适配（Accessibility）
 * 包含浅色和深色两套配色（可根据系统主题配色自动调节）
+* 支持多语言（i18n）
 * 代码高亮
-* 自带点赞功能
+* 支持短代码（Shortcode）
+* 自带阅读量统计和点赞功能
 * 支持根据文章内插入的标题生成章节目录
 * 支持图片懒加载
 * 支持文章分页
 * 文章列表支持多种排版方式
 * 丰富的侧边栏组件
-* 丰富的设置选项
+* 丰富的自定义选项
 * 详细的图表统计
 * 评论区自带 Emoji 表情面板
 * 支持 PJAX 无刷新跳转
+* 内置文章置顶功能
+* 支持 Service Worker 缓存
+* 支持 QQ 头像显示和自定义 Gravatar 源
+* 内置多套独立页面模板，包括时间线的文章归档、友链、统计、Github 项目展示
+* SEO 友好
 * 详细的 [帮助文档](https://facile.misterma.com/) （必看）
 * 长期维护
 
@@ -73,6 +80,8 @@ Facile 相比 [MWordStar](https://github.com/changbin1997/MWordStar) 来说，�
 后端没有用到任何库。
 
 ECharts 的库比较大，所以只引入了饼图和日历图，而且只会在统计页加载。Bootstrap 的 JS 使用 Webpack 打包过的发行版也只引入了用到的模块。
+
+CSS 和 JS 使用了 Service Worker 缓存，第一次访问时会缓存用到的 CSS 和 JS，下次访问直接使用缓存的 CSS 和 JS，代码高亮模块会按需加载，只有页面中有代码块才会加载。
 
 主题的图标使用的是 [IcoMoon](https://icomoon.io/) 的字体图标，IcoMoon 的图标可以自定义，所以主题中只包含几个用到的图标。
 

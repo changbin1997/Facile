@@ -17,6 +17,7 @@ import AvatarGenerator from './modules/AvatarGenerator.js';
 import ArticleEngagement from './modules/ArticleEngagement.js';
 import loadMore from './modules/loadMore.js';
 import GithubRepositoryShowcase from './modules/GithubRepositoryShowcase.js';
+import captchaInit from './modules/captcha.js';
 
 $(function () {
   let inputFocus = false;  // 表单焦点状态
@@ -68,6 +69,9 @@ $(function () {
   const githubRepositoryShowcase = new GithubRepositoryShowcase();
   githubRepositoryShowcase.init();
 
+  // 评论图片验证码初始化
+  captchaInit();
+
   // pjax 初始化
   const pjax = new PJAX();
   pjax.init(() => {
@@ -100,6 +104,8 @@ $(function () {
     loadMore();
     // github仓库展示初始化
     githubRepositoryShowcase.init();
+    // 评论图片验证码初始化
+    captchaInit();
 
     // 侧边栏的语言更改
     $('.sidebar .change-language').on('change', changeLanguage);
