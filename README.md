@@ -51,6 +51,7 @@ Facile 相比 [MWordStar](https://github.com/changbin1997/MWordStar) 来说，�
 * 丰富的自定义选项
 * 详细的图表统计
 * 评论区自带 Emoji 表情面板
+* 评论区支持图片验证码和 Cloudflare Turnstile
 * 支持 PJAX 无刷新跳转
 * 内置文章置顶功能
 * 支持 Service Worker 缓存

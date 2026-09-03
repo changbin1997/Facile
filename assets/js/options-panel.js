@@ -1,5 +1,13 @@
+/*!
+* HomePage: https://www.misterma.com
+* GithubPage: https://github.com/changbin1997
+* ProjectPage: https://github.com/changbin1997/Facile
+* author: Changbin (changbin1997)
+* Licensed under MIT
+*/
+
 window.addEventListener('load', () => {
-  const title = ['语言', '外观', '站点信息', '导航', '侧边栏', '文章相关', '评论', 'SEO相关', '友情链接', 'PJAX', 'GitHub项目展示', '开发者', 'Service Worker'];  // 组标题
+  const title = ['语言', '外观', '站点信息', '导航', '侧边栏', '文章相关', '评论', '评论验证码', 'SEO相关', '友情链接', 'PJAX', 'GitHub项目展示', '开发者', 'Service Worker'];  // 组标题
   const optionUl = document.querySelectorAll('form .typecho-option');  // 列表
   const optionForm = document.querySelector('.typecho-page-main form');
   const titleEl = [];
@@ -34,12 +42,13 @@ window.addEventListener('load', () => {
   optionForm.insertBefore(titleEl[4], optionUl[11]);  // 侧边栏
   optionForm.insertBefore(titleEl[5], optionUl[22]);  // 文章相关
   optionForm.insertBefore(titleEl[6], optionUl[37]);  // 评论
-  optionForm.insertBefore(titleEl[7], optionUl[44]);  // SEO相关
-  optionForm.insertBefore(titleEl[8], optionUl[47]);  // 友链
-  optionForm.insertBefore(titleEl[9], optionUl[51]);  // PJAX
-  optionForm.insertBefore(titleEl[10], optionUl[54]);  // github项目展示
-  optionForm.insertBefore(titleEl[11], optionUl[55]);  // 开发者
-  optionForm.insertBefore(titleEl[12], optionUl[58]);  // Service Worker
+  optionForm.insertBefore(titleEl[7], optionUl[42]);  // 评论验证码
+  optionForm.insertBefore(titleEl[8], optionUl[46]);  // SEO相关
+  optionForm.insertBefore(titleEl[9], optionUl[49]);  // 友链
+  optionForm.insertBefore(titleEl[10], optionUl[53]);  // PJAX
+  optionForm.insertBefore(titleEl[11], optionUl[56]);  // github项目展示
+  optionForm.insertBefore(titleEl[12], optionUl[57]);  // 开发者
+  optionForm.insertBefore(titleEl[13], optionUl[60]);  // Service Worker
 
   // 插入分隔线
   titleEl.forEach(el => {
