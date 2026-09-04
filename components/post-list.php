@@ -14,6 +14,7 @@ while ($this->next()):
         <?php endif; ?>
         <div class="post-container">
             <header class="mb-4">
+                <!--文章标题-->
                 <h2 class="post-title m-0">
                     <?php if ($this->is_pinned): ?>
                         <span class="badge badge-primary"><?php echo $GLOBALS['t']['post']['pinned']; ?></span>
@@ -61,7 +62,7 @@ while ($this->next()):
                                     if ($this->hidden) {
                                         echo $GLOBALS['t']['post']['enterThePasswordToViewIt'];
                                     }else {
-                                        $this->fields->summaryContent ? $this->fields->summaryContent() : $this->excerpt($this->options->summary, '...');
+                                        $this->fields->summaryContent ? $this->fields->summaryContent() : postListSummary($this, $this->options->summary, '...');
                                     }
                                     ?>
                                 </p>
@@ -105,7 +106,7 @@ while ($this->next()):
                             if ($this->hidden) {
                                 echo $GLOBALS['t']['post']['enterThePasswordToViewIt'];
                             }else {
-                                $this->fields->summaryContent ? $this->fields->summaryContent() : $this->excerpt($this->options->summary, '...');
+                                $this->fields->summaryContent ? $this->fields->summaryContent() : postListSummary($this, $this->options->summary, '...');
                             }
                             ?>
                         </p>
