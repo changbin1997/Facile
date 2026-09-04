@@ -104,6 +104,8 @@ $this->need('components/header.php');
                         $GLOBALS['post']['content'] = lazyLoadImages($GLOBALS['post']['content'], $this->options->imagelazyloading);
                         // 自定义短代码语法解析
                         $GLOBALS['post']['content'] = parseThemeShortcodes($GLOBALS['post']['content']);
+                        // 站外链接添加 target="_blank" 与 rel="noopener"
+                        $GLOBALS['post']['content'] = addExternalLinkAttributes($GLOBALS['post']['content'], $this->options->siteUrl);
                         echo $GLOBALS['post']['content'];
                         ?>
                         <?php if ($this->fields->copyrightNotice != 'hide'): ?>

@@ -140,6 +140,8 @@ while ($this->next()):
                         $postContent = addBootstrapTableClasses($this->content);
                         // 自定义短代码语法解析
                         $postContent = parseThemeShortcodes($postContent);
+                        // 站外链接添加 target="_blank" 与 rel="noopener"
+                        $postContent = addExternalLinkAttributes($postContent, $this->options->siteUrl);
                         echo $postContent;
                         ?>
                     </div>

@@ -15,11 +15,6 @@ export default () => {
     $('.protected .word').html(window.t.enterThePasswordToViewIt);
   }
 
-  // 给文章内的链接添加 target 属性
-  if ($('.post-page .post-content a').length) {
-    $('.post-content a').attr('target', '_blank');
-  }
-
   // 给评论区的评论者链接添加 target 属性
   if ($('.comment-info .author a').length) {
     $('.comment-info .author a').attr('target', '_blank');
