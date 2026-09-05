@@ -139,6 +139,20 @@ $dark-text-color2: #999999;
   .table-responsive {
     @include dark-horizontal-scrollbar;
   }
+  // collapse 折叠内容
+  .collapse-box {
+    border: 1px solid $dark-text-color2;
+    .card-header {
+      background: #16161A !important;
+      border-bottom: 1px solid $dark-text-color2;
+      button {
+        color: $dark-text-color;
+      }
+    }
+    .card-body {
+      color: $dark-text-color;
+    }
+  }
 }
 
 // 横向滚动条

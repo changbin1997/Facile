@@ -521,6 +521,12 @@ header input[type=search]:focus {
 .post-list .fullText .table-responsive::-webkit-scrollbar-thumb:hover {
   background-color: #525252;
 }
+.post-list .fullText .collapse-box {
+  background: none;
+}
+.post-list .fullText .collapse-box .card-body {
+  background: none;
+}
 
 #to-top-btn {
   position: fixed;
@@ -757,6 +763,12 @@ header input[type=search]:focus {
 }
 .post-page article .post-content .table-responsive::-webkit-scrollbar-thumb:hover {
   background-color: #525252;
+}
+.post-page article .post-content .collapse-box {
+  background: none;
+}
+.post-page article .post-content .collapse-box .card-body {
+  background: none;
 }
 .post-page article .post-content .load-img {
   width: 100%;
@@ -1191,6 +1203,12 @@ header input[type=search]:focus {
 #comments .comments-lists .comment-content .table-responsive::-webkit-scrollbar-thumb:hover {
   background-color: #525252;
 }
+#comments .comments-lists .comment-content .collapse-box {
+  background: none;
+}
+#comments .comments-lists .comment-content .collapse-box .card-body {
+  background: none;
+}
 #comments .comments-lists .comment-content p {
   margin-top: 0;
   word-wrap: break-word;
@@ -1405,6 +1423,13 @@ header input[type=search]:focus {
     right: 0;
   }
 }
+/*!
+* HomePage: https://www.misterma.com
+* GithubPage: https://github.com/changbin1997
+* ProjectPage: https://github.com/changbin1997/Facile
+* author: Mr. Ma
+* Licensed under MIT
+*/
 .light-color {
   background-color: #FCFCFC;
 }
@@ -1862,6 +1887,13 @@ header input[type=search]:focus {
     background-color: transparent;
   }
 }
+/*!
+* HomePage: https://www.misterma.com
+* GithubPage: https://github.com/changbin1997
+* ProjectPage: https://github.com/changbin1997/Facile
+* author: Mr. Ma
+* Licensed under MIT
+*/
 .dark-color {
   background-color: #0C0C0C;
 }
@@ -2076,6 +2108,19 @@ header input[type=search]:focus {
 .dark-color .fullText .table-responsive::-webkit-scrollbar-thumb:hover {
   background-color: #aaaaaa;
 }
+.dark-color .fullText .collapse-box {
+  border: 1px solid #999999;
+}
+.dark-color .fullText .collapse-box .card-header {
+  background: #16161A !important;
+  border-bottom: 1px solid #999999;
+}
+.dark-color .fullText .collapse-box .card-header button {
+  color: #D3D3D3;
+}
+.dark-color .fullText .collapse-box .card-body {
+  color: #D3D3D3;
+}
 .dark-color .expiration-reminder {
   background: #16161A;
   color: #D3D3D3;
@@ -2249,6 +2294,19 @@ header input[type=search]:focus {
 .dark-color .post-page .post-content .table-responsive::-webkit-scrollbar-thumb:hover {
   background-color: #aaaaaa;
 }
+.dark-color .post-page .post-content .collapse-box {
+  border: 1px solid #999999;
+}
+.dark-color .post-page .post-content .collapse-box .card-header {
+  background: #16161A !important;
+  border-bottom: 1px solid #999999;
+}
+.dark-color .post-page .post-content .collapse-box .card-header button {
+  color: #D3D3D3;
+}
+.dark-color .post-page .post-content .collapse-box .card-body {
+  color: #D3D3D3;
+}
 .dark-color .post-page .category-tag i {
   color: #D3D3D3;
 }
@@ -2406,6 +2464,19 @@ header input[type=search]:focus {
 }
 .dark-color #comments .comment-content .table-responsive::-webkit-scrollbar-thumb:hover {
   background-color: #aaaaaa;
+}
+.dark-color #comments .comment-content .collapse-box {
+  border: 1px solid #999999;
+}
+.dark-color #comments .comment-content .collapse-box .card-header {
+  background: #16161A !important;
+  border-bottom: 1px solid #999999;
+}
+.dark-color #comments .comment-content .collapse-box .card-header button {
+  color: #D3D3D3;
+}
+.dark-color #comments .comment-content .collapse-box .card-body {
+  color: #D3D3D3;
 }
 .dark-color #comments .comment-content .hide-comment-content {
   background: #16161A;
@@ -2732,6 +2803,19 @@ header input[type=search]:focus {
   .auto-color .fullText .table-responsive::-webkit-scrollbar-thumb:hover {
     background-color: #aaaaaa;
   }
+  .auto-color .fullText .collapse-box {
+    border: 1px solid #999999;
+  }
+  .auto-color .fullText .collapse-box .card-header {
+    background: #16161A !important;
+    border-bottom: 1px solid #999999;
+  }
+  .auto-color .fullText .collapse-box .card-header button {
+    color: #D3D3D3;
+  }
+  .auto-color .fullText .collapse-box .card-body {
+    color: #D3D3D3;
+  }
   .auto-color .expiration-reminder {
     background: #16161A;
     color: #D3D3D3;
@@ -2905,6 +2989,19 @@ header input[type=search]:focus {
   .auto-color .post-page .post-content .table-responsive::-webkit-scrollbar-thumb:hover {
     background-color: #aaaaaa;
   }
+  .auto-color .post-page .post-content .collapse-box {
+    border: 1px solid #999999;
+  }
+  .auto-color .post-page .post-content .collapse-box .card-header {
+    background: #16161A !important;
+    border-bottom: 1px solid #999999;
+  }
+  .auto-color .post-page .post-content .collapse-box .card-header button {
+    color: #D3D3D3;
+  }
+  .auto-color .post-page .post-content .collapse-box .card-body {
+    color: #D3D3D3;
+  }
   .auto-color .post-page .category-tag i {
     color: #D3D3D3;
   }
@@ -3062,6 +3159,19 @@ header input[type=search]:focus {
   }
   .auto-color #comments .comment-content .table-responsive::-webkit-scrollbar-thumb:hover {
     background-color: #aaaaaa;
+  }
+  .auto-color #comments .comment-content .collapse-box {
+    border: 1px solid #999999;
+  }
+  .auto-color #comments .comment-content .collapse-box .card-header {
+    background: #16161A !important;
+    border-bottom: 1px solid #999999;
+  }
+  .auto-color #comments .comment-content .collapse-box .card-header button {
+    color: #D3D3D3;
+  }
+  .auto-color #comments .comment-content .collapse-box .card-body {
+    color: #D3D3D3;
   }
   .auto-color #comments .comment-content .hide-comment-content {
     background: #16161A;
