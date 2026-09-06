@@ -39,7 +39,7 @@
 
 //  通用的文章内容样式
 @mixin postContent {
-  p,li,a {
+  p,li {
     font-size: 16px;
   }
   h1,h2,h3,h4,h5,h6 {
@@ -89,10 +89,11 @@
     font-size: 16px;
     padding: 0 4px;
   }
-  a {
+  a:not(.btn, .badge) {
     font-weight: 700;
     word-wrap: break-word;
     word-break: break-all;
+    font-size: 16px;
   }
   p {
     margin: 20px 0;
