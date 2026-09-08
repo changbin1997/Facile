@@ -10,7 +10,7 @@
  *  - lazyLoadImages              图片懒加载（原生 / 兼容）
  *  - splitArticleContent         按 [-page-] 分页文章内容
  *  - addBootstrapTableClasses    为表格加 Bootstrap 样式
- *  - parseThemeShortcodes        解析自定义短代码（button / alert）
+ *  - parseThemeShortcodes        解析自定义短代码（button / alert / progress）
  * - stripThemeShortcodes              去除短代码语法仅保留包裹内容（支持嵌套）
  * - postListSummary                   输出文章列表摘要（不含短代码语法）
  *  - postTadAddStyle             文章标签加 Bootstrap 样式
@@ -230,7 +230,7 @@ function parseThemeShortcodes($content, $cid = 0) {
     // 页面级自增计数器，保证同一页面内多个 collapse 短代码的 id 唯一
     static $collapse_id = 0;
     // 定义支持的短代码标签，方便未来维护和添加新功能
-    $supported_tags = array('button', 'alert', 'collapse', 'badge', 'hide');
+    $supported_tags = array('button', 'alert', 'collapse', 'badge', 'hide', 'progress');
     $tags_pattern = implode('|', $supported_tags);
     // 构造正则表达式
     // 前半部分匹配 <pre> 或 <code> 块（用于忽略）
@@ -322,6 +322,16 @@ function parseThemeShortcodes($content, $cid = 0) {
                     ? $inner_content
                     : '<div class="alert expiration-reminder">' . $tip . '</div>';
 
+            case 'progress':
+                // 未指定 type 时默认使用 primary 样式，映射为 Bootstrap 的 bg-* 颜色类
+                $type = isset($atts['type']) ? $atts['type'] : 'primary';
+                // 进度值支持 75 或 75% 写法：去除百分号与其它非数字字符，仅保留数字
+                $value = (float)preg_replace('/[^0-9.]/', '', $inner_content);
+                $type_attr = htmlspecialchars($type, ENT_QUOTES, 'UTF-8');
+                return '<div class="progress">'
+                    . '<div class="progress-bar progress-bar-striped progress-bar-animated bg-' . $type_attr . '" role="progressbar" aria-valuenow="' . $value . '" aria-valuemin="0" aria-valuemax="100" style="width: ' . $value . '%;"></div>'
+                    . '</div>';
+
             default:
                 // 如果没有对应的处理逻辑，返回原文本
                 return $matches[0];
@@ -394,7 +404,7 @@ function canViewHideContent($type, $cid = 0) {
  */
 function stripThemeShortcodes($content) {
     // 定义支持的短代码标签，与 parseThemeShortcodes 保持一致
-    $supported_tags = array('button', 'alert', 'collapse', 'badge', 'hide');
+    $supported_tags = array('button', 'alert', 'collapse', 'badge', 'hide', 'progress');
     $tags_pattern = implode('|', $supported_tags);
     // 前半部分匹配 <pre> / <code> 块（忽略其中的短代码）
     // 后半部分匹配 [tag ...]内容[/tag] 的短代码

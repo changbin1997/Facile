@@ -47,6 +47,8 @@ Facile 相比 [MWordStar](https://github.com/changbin1997/MWordStar) 来说，�
 * 支持图片懒加载
 * 支持文章分页
 * 文章列表支持多种排版方式
+* 文章支持单独加密某一部分内容，评论后可查看
+* 评论支持私密评论，只有评论者和管理员可见
 * 丰富的侧边栏组件
 * 丰富的自定义选项
 * 详细的图表统计
@@ -58,6 +60,7 @@ Facile 相比 [MWordStar](https://github.com/changbin1997/MWordStar) 来说，�
 * 支持 QQ 头像显示和自定义 Gravatar 源
 * 内置多套独立页面模板，包括时间线的文章归档、友链、统计、Github 项目展示
 * SEO 友好
+* 支持添加自定义 CSS、head 区域 HTML、footer 底部 HTML，可以方便的修改主题样式和添加分析 JS
 * 详细的 [帮助文档](https://facile.misterma.com/) （必看）
 * 长期维护
 
@@ -165,10 +168,6 @@ Facile 主题针对屏幕阅读器做了大量优化，并在 [MVDA](http://www.
 友情链接分为 `全站友情链接`、`首页友情链接`、`内页友情链接`。`全站友情链接` 会在每个页面的侧边栏显示，`首页友情链接` 会在首页的侧边栏显示，`内页友情链接` 只会在 友情链接 的页面显示。
 
 要查看友情链接的设置说明可以访问 [帮助文档 - 主题设置](https://facile.misterma.com/%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE.html#%E8%BF%9B%E5%85%A5%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE)
-
-## 插件适配
-
-因为我需要用到 [Sticky](https://plugins.typecho.me/plugins/sticky.html) 文章置顶插件，所以这个主题也直接适配了 Sticky 插件，Sticky 插件安装完成后无需修改主题。
 
 ## 兼容性
 
