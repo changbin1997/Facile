@@ -129,6 +129,21 @@
     background: none;
     .card-body {
       background: none;
+      & :last-child {
+        margin-bottom: 0 !important;
+      }
+    }
+  }
+  // 选项卡
+  .tab-box {
+    margin: 20px 0;
+    // 内容区域
+    .tab-pane {
+      padding: 20px;
+      font-size: 16px;
+      & :last-child {
+        margin-bottom: 0 !important;
+      }
     }
   }
 }
