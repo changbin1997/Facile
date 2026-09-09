@@ -231,7 +231,7 @@ function parseThemeShortcodes($content, $cid = 0) {
     static $collapse_id = 0;
     static $tabs_id = 0;
     // 定义支持的短代码标签，方便未来维护和添加新功能
-    $supported_tags = array('button', 'alert', 'collapse', 'badge', 'hide', 'progress', 'tabs');
+    $supported_tags = array('button', 'alert', 'collapse', 'badge', 'hide', 'progress', 'tabs', 'row', 'col');
     $tags_pattern = implode('|', $supported_tags);
 
     // 渲染单个短代码为 HTML；$rawText 为短代码原始文本，用于无法解析时兜底原样返回
@@ -366,6 +366,15 @@ function parseThemeShortcodes($content, $cid = 0) {
                 // 没有解析到任何 tab 时返回原文本
                 return $rawText;
 
+            case 'row':
+                // 行容器：包一层 tc-row，内部列由 col 短代码渲染
+                $re = '/<div\s+class="tc-col">.*?<\/div>(*SKIP)(*FAIL)|<br\s*\/?>/s';
+                return '<div class="tc-row">' . preg_replace($re, '', $inner_content) . '</div>';
+
+            case 'col':
+                // 列：包一层 tc-col；与 collapse / tabs 一致，去掉首尾多余的 <br>
+                return '<div class="tc-col">' . preg_replace('/^\<br>|\<br>$/', '', $inner_content) . '</div>';
+
             default:
                 // 如果没有对应的处理逻辑，返回原文本
                 return $rawText;
@@ -456,7 +465,26 @@ function parseThemeShortcodes($content, $cid = 0) {
         return $result;
     };
 
-    return $renderContent($content);
+    $html = $renderContent($content);
+
+    // Typecho 的 Markdown 会把短代码当成普通段落，给解析出的块级 div 外层套上 <p>；
+    // 块级 div 不能嵌套在 <p> 内，这里去掉仅包含 div 块的段落外层 <p>（普通文本段落不受影响）
+    $unwrapDivParagraph = function ($text) {
+        // 匹配 <p> 内仅包含一个或多个（可嵌套）<div> 块的段落
+        $pattern = '#<p>\s*((?:<div\b[^>]*>(?:(?1)|(?!</?div\b).)*</div>)\s*)+</p>#is';
+        while (true) {
+            $new = preg_replace_callback($pattern, function ($matches) {
+                return $matches[1];
+            }, $text);
+            if ($new === null || $new === $text) {
+                break;
+            }
+            $text = $new;
+        }
+        return $text;
+    };
+
+    return $unwrapDivParagraph($html);
 }
 
 /**
@@ -524,7 +552,7 @@ function canViewHideContent($type, $cid = 0) {
  */
 function stripThemeShortcodes($content) {
     // 定义支持的短代码标签，与 parseThemeShortcodes 保持一致；tab 附属于 tabs，单独列出以便摘要去除
-    $supported_tags = array('button', 'alert', 'collapse', 'badge', 'hide', 'progress', 'tabs', 'tab');
+    $supported_tags = array('button', 'alert', 'collapse', 'badge', 'hide', 'progress', 'tabs', 'tab', 'row', 'col');
     $tags_pattern = implode('|', $supported_tags);
     // 前半部分匹配 <pre> / <code> 块（忽略其中的短代码）
     // 后半部分匹配 [tag ...]内容[/tag] 的短代码

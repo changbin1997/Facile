@@ -124,28 +124,6 @@
   .table-responsive {
     @include light-horizontal-scrollbar;
   }
-  // collapse 折叠内容
-  .collapse-box {
-    background: none;
-    .card-body {
-      background: none;
-      & :last-child {
-        margin-bottom: 0 !important;
-      }
-    }
-  }
-  // 选项卡
-  .tab-box {
-    margin: 20px 0;
-    // 内容区域
-    .tab-pane {
-      padding: 20px;
-      font-size: 16px;
-      & :last-child {
-        margin-bottom: 0 !important;
-      }
-    }
-  }
 }
 
 // 横向滚动条
@@ -270,6 +248,54 @@
   }
 }
 
+// 文章内容里使用的一些短代码小组件
+.post-content {
+  // 信息框
+  .alert {
+    margin-bottom: 20px;
+  }
+  // collapse 折叠内容
+  .collapse-box {
+    background: none;
+    .card-body {
+      background: none;
+      & :last-child {
+        margin-bottom: 0 !important;
+      }
+    }
+  }
+  // 选项卡
+  .tab-box {
+    margin: 20px 0;
+    // 内容区域
+    .tab-pane {
+      padding: 20px;
+      font-size: 16px;
+      & :last-child {
+        margin-bottom: 0 !important;
+      }
+    }
+  }
+  // 并排显示
+  .tc-row {
+    display: flex;
+    width: 100%;
+    .tc-col {
+      width: 0;
+      flex: 1 1 0;
+      min-width: 0;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    .tc-col + .tc-col {
+      margin-left: 20px;
+    }
+  }
+  // 进度条
+  .progress {
+    margin-bottom: 20px;
+  }
+}
 
 
 * {
@@ -1139,6 +1165,17 @@ header {
     .post-title {
       @include postTitle;
       font-size: 18px;
+    }
+    // 文章内容区域的并排显示
+    .tc-row {
+      display: block;
+      .tc-col {
+        width: 100%;
+      }
+      .tc-col + .tc-col {
+        margin-left: 0;
+        margin-top: 20px;
+      }
     }
   }
   // 评论区
