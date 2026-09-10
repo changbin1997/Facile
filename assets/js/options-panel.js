@@ -41,14 +41,14 @@ window.addEventListener('load', () => {
   optionForm.insertBefore(titleEl[3], optionUl[6]);  // 导航
   optionForm.insertBefore(titleEl[4], optionUl[11]);  // 侧边栏
   optionForm.insertBefore(titleEl[5], optionUl[22]);  // 文章相关
-  optionForm.insertBefore(titleEl[6], optionUl[38]);  // 评论
-  optionForm.insertBefore(titleEl[7], optionUl[43]);  // 评论验证码
-  optionForm.insertBefore(titleEl[8], optionUl[47]);  // SEO相关
-  optionForm.insertBefore(titleEl[9], optionUl[50]);  // 友链
-  optionForm.insertBefore(titleEl[10], optionUl[54]);  // PJAX
-  optionForm.insertBefore(titleEl[11], optionUl[57]);  // github项目展示
-  optionForm.insertBefore(titleEl[12], optionUl[58]);  // 开发者
-  optionForm.insertBefore(titleEl[13], optionUl[61]);  // Service Worker
+  optionForm.insertBefore(titleEl[6], optionUl[39]);  // 评论
+  optionForm.insertBefore(titleEl[7], optionUl[44]);  // 评论验证码
+  optionForm.insertBefore(titleEl[8], optionUl[48]);  // SEO相关
+  optionForm.insertBefore(titleEl[9], optionUl[51]);  // 友链
+  optionForm.insertBefore(titleEl[10], optionUl[55]);  // PJAX
+  optionForm.insertBefore(titleEl[11], optionUl[58]);  // github项目展示
+  optionForm.insertBefore(titleEl[12], optionUl[59]);  // 开发者
+  optionForm.insertBefore(titleEl[13], optionUl[62]);  // Service Worker
 
   // 插入分隔线
   titleEl.forEach(el => {

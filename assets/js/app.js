@@ -11,7 +11,7 @@ import Emoji from './modules/Emoji.js';
 import Directory from './modules/Directory.js';
 import accessibilityInit from './modules/accessibilityInit.js';
 import ThemeColor from './modules/ThemeColor.js';
-import codeHighlightInit from './modules/codeHighlightInit.js';
+import CodeAndMath from './modules/CodeAndMath.js';
 import PJAX from './modules/PJAX.js';
 import AvatarGenerator from './modules/AvatarGenerator.js';
 import ArticleEngagement from './modules/ArticleEngagement.js';
@@ -41,8 +41,9 @@ $(function () {
   // 文字头像样式初始化
   const avatarGenerator = new AvatarGenerator();
 
-  // 给文章中的代码块添加拷贝按钮和拷贝事件
-  codeHighlightInit();;
+  // 代码高亮和 MathJax 初始化
+  const codeAndMath = new CodeAndMath();
+  codeAndMath.init();
 
   // 点赞初始化
   ArticleEngagement.likeInit();
@@ -106,8 +107,8 @@ $(function () {
       directory.init();
       // 主题配色初始化
       themeColor.init();
-      // 代码高亮初始化
-      codeHighlightInit();
+      // 代码高亮和 MathJax 初始化
+      codeAndMath.init();
       // 加载更多初始化
       loadMore();
       // github仓库展示初始化
