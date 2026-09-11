@@ -40,7 +40,7 @@ function threadedComments($comments, $options) {
                 }
                 // 引用头像
                 if ($comments->type == 'pingback') {
-                    echo '<div class="pingback avatar" role="img" aria-label="引用">引用</div>';
+                    echo '<div class="pingback avatar" role="img" aria-label="' . $GLOBALS['t']['comment']['pingback'] . '">' . $GLOBALS['t']['comment']['pingbackAvatar'] . '</div>';
                 }
                 ?>
                 <div class="comment-info float-left">
@@ -83,12 +83,12 @@ function threadedComments($comments, $options) {
     </li>
 <?php } ?>
 
-<div id="comments" aria-label="评论区">
+<div id="comments">
     <?php $this->comments()->to($comments); ?>
     <?php if ($this->options->commentInput == 'top') require_once 'comment-input.php'; ?>
     <?php if ($comments->have()): ?>
         <div class="comments-lists">
-            <h2><?php $this->commentsNum(_t('暂无评论'), $GLOBALS['t']['comment']['1Comment'], $GLOBALS['t']['comment']['thereAreNumComments']); ?></h2>
+            <h2><?php $this->commentsNum($GLOBALS['t']['comment']['noComments'], $GLOBALS['t']['comment']['1Comment'], $GLOBALS['t']['comment']['thereAreNumComments']); ?></h2>
 
             <?php $comments->listComments(); ?>
 

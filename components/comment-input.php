@@ -42,7 +42,7 @@
                                 <button role="radio" aria-checked="false" aria-label="<?php echo $GLOBALS['t']['emoji']['symbols']; ?>" title="<?php echo $GLOBALS['t']['emoji']['symbols']; ?>" type="button" class="btn btn-sm>" data-classification="symbols">❤</button>
                             </div>
                         </div>
-                        <h5 class="text-center py-2 m-0 border-bottom" id="emoji-title">表情类型</h5>
+                        <h5 class="text-center py-2 m-0 border-bottom" id="emoji-title"><?php echo $GLOBALS['t']['emoji']['emojiCategories']; ?></h5>
                         <div id="emoji-list" class="clearfix" role="list" aria-label="<?php echo $GLOBALS['t']['emoji']['emojiList'] . $GLOBALS['t']['emoji']['pressEnterToAddTheEmojiToTheCommentInputField']; ?>"></div>
                     </div>
                 <?php endif; ?>
@@ -50,7 +50,7 @@
             <?php if($this->user->hasLogin()): ?>
                 <div class="col-lg-12 comment-user">
                     <?php echo $GLOBALS['t']['comment']['loggedInAs']; ?>
-                    <a href="<?php $this->options->profileUrl(); ?>" title="当前登录身份：<?php $this->user->screenName(); ?>">
+                    <a href="<?php $this->options->profileUrl(); ?>" title="<?php echo $GLOBALS['t']['comment']['loggedInAs']; ?><?php $this->user->screenName(); ?>">
                         <?php $this->user->screenName(); ?>
                     </a>.
                     <a href="<?php $this->options->logoutUrl(); ?>" title="<?php echo $GLOBALS['t']['sidebar']['logout']; ?>"><?php echo $GLOBALS['t']['sidebar']['logout']; ?> &raquo;</a>
@@ -116,6 +116,6 @@
 
 <?php else: ?>
     <div class="comment-off">
-        <h2>评论功能已关闭</h2>
+        <h2><?php echo $GLOBALS['t']['comment']['commentOff']; ?></h2>
     </div>
 <?php endif; ?>

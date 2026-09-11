@@ -147,7 +147,7 @@ $components = explode(',', $components);
                                     }
                                     // 引用头像
                                     if ($comments->type == 'pingback') {
-                                        echo '<div class="pingback avatar" role="img" aria-label="引用">引用</div>';
+                                        echo '<div class="pingback avatar" role="img" aria-label="' . $GLOBALS['t']['comment']['pingback'] . '">' . $GLOBALS['t']['comment']['pingbackAvatar'] . '</div>';
                                     }
                                 ?>
                                 <div class="media-body">
