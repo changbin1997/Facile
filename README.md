@@ -2,7 +2,7 @@
 
 Facile 是一套简洁的 Typecho 博客主题，也是我的博客正在使用的主题。
 
-之前我用的主题是 [MWordStar](https://www.misterma.com/archives/812/) ，时间长了就想换一下外观，本来想再给 MWordStar 增加一套样式，但是外观变动比较大，而且 MWordStar 已经有几套样式了，所以重新开发一套主题。
+之前我用的主题是 [MWordStar](https://www.misterma.com/archives/812/) ，时间长了就想换一下外观，本来想再给 MWordStar 增加一套样式，但是外观变动比较大，而且 MWordStar 已经有多套样式了，所以重新开发一套主题。
 
 主题演示地址：[https://www.misterma.com/](https://www.misterma.com/) 
 
@@ -42,7 +42,8 @@ Facile 相比 [MWordStar](https://github.com/changbin1997/MWordStar) 来说，�
 * 支持多语言（i18n）
 * 代码高亮
 * 支持短代码（Shortcode）
-* 自带阅读量统计和点赞功能
+* 支持 MathJax 数学公式渲染
+* 内置阅读量统计和点赞功能
 * 支持根据文章内插入的标题生成章节目录
 * 支持图片懒加载
 * 支持文章分页
@@ -52,13 +53,14 @@ Facile 相比 [MWordStar](https://github.com/changbin1997/MWordStar) 来说，�
 * 丰富的侧边栏组件
 * 丰富的自定义选项
 * 详细的图表统计
-* 评论区自带 Emoji 表情面板
+* 评论区内置 Emoji 表情面板
 * 评论区支持图片验证码和 Cloudflare Turnstile
 * 支持 PJAX 无刷新跳转
 * 内置文章置顶功能
 * 支持 Service Worker 缓存
 * 支持 QQ 头像显示和自定义 Gravatar 源
 * 内置多套独立页面模板，包括时间线的文章归档、友链、统计、Github 项目展示
+* 支持添加友情链接
 * SEO 友好
 * 支持添加自定义 CSS、head 区域 HTML、footer 底部 HTML，可以方便的修改主题样式和添加分析 JS
 * 详细的 [帮助文档](https://facile.misterma.com/) （必看）
@@ -80,6 +82,7 @@ Facile 相比 [MWordStar](https://github.com/changbin1997/MWordStar) 来说，�
 * [highlight.js](https://highlightjs.org/) 代码高亮
 * [ECharts](https://github.com/apache/echarts) 百度开源的图表库，用于 [统计页](https://www.misterma.com/data.html) 生成统计图
 * [jquery-pjax](https://github.com/defunkt/jquery-pjax) 用于页面无刷新跳转
+* [MathJax](https://github.com/mathjax/MathJax) 数学公式渲染
 
 后端没有用到任何库。
 
@@ -87,15 +90,27 @@ ECharts 的库比较大，所以只引入了饼图和日历图，而且只会在
 
 CSS 和 JS 使用了 Service Worker 缓存，第一次访问时会缓存用到的 CSS 和 JS，下次访问直接使用缓存的 CSS 和 JS，代码高亮模块会按需加载，只有页面中有代码块才会加载。
 
+MathJax 使用在线 CDN 加载，国内可以正常加载，只有检测到文章内有 MathJax 语言标记才会加载 MathJax 库。
+
 主题的图标使用的是 [IcoMoon](https://icomoon.io/) 的字体图标，IcoMoon 的图标可以自定义，所以主题中只包含几个用到的图标。
 
 前端 JS 使用的是 ES6 语法，在 IE 系列的浏览器（包括 IE11）是无法运行的，如果没有二次开发需求的话，可以在 [Releases](https://github.com/changbin1997/Facile/releases) 下载 `Facile-bundle.zip` 发行版，发行版使用了 Webpack + Babel 来打包和转换，可以在 IE 运行。
+
+只有发行版支持 Service Worker 缓存。
 
 ## 代码高亮
 
 代码高亮目前包含三套主题配色，分别是 Stack Overflow（浅色）、VS2015（深色）、Sunburst（高对比度）。目前支持 30 多种语言的代码高亮。
 
 要查看支持的语言列表和代码高亮样式可以访问 [帮助文档 - 代码高亮](https://facile.misterma.com/%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE.html)
+
+## 文章头图和文章列表排版
+
+文章头图可以显示在文章列表、文章页顶部。
+
+文章列表支持大图和小图模式，可以统一设置，也可以每篇文章使用不同的方案，文章列表也可以直接显示全文。
+
+文章头图来源可以手动输入图片 URL，也可以自动抓取文章内的第一张图片，也可以设置一堆图片 URL 随机显示。
 
 ## 侧边栏
 
@@ -143,11 +158,13 @@ CSS 和 JS 使用了 Service Worker 缓存，第一次访问时会缓存用到�
 
 统计页面演示可以访问 [https://www.misterma.com/data.html](https://www.misterma.com/data.html) 。
 
-## Emoji 表情
+## 评论区
 
-主题评论区包含一个 Emoji 表情面板，你可以在后台启用或禁用。Emoji 表情面板包含 1466 个表情，这些表情都是按照分类动态加载的，不用担心性能问题。
+评论区支持私密评论，只有评论者和网站管理员可见。
 
-Emoji 表情面板也进行了无障碍适配，可支持键盘访问和屏幕阅读器朗读。
+主题内置了用于评论验证的图片验证码和 Cloudflare Turnstile 支持，图片验证码开启就可以使用，Cloudflare Turnstile 注册账号可免费使用。
+
+主题也内置了一个 Emoji 表情面板，包含很多类型的表情。
 
 下面是 Emoji 表情面板的截图：
 
@@ -157,23 +174,19 @@ Emoji 表情面板也进行了无障碍适配，可支持键盘访问和屏幕�
 
 上网对于大多数人来说是一件再简单不过的事，但是对于一些身体有缺陷的残障人士来说却是一件非常困难的事。目前国内的很多网站和 App 都只注重外观，忽略了残障人士的 [可访问性](https://www.misterma.com/archives/264/)，甚至有的 App 在开启屏幕阅读器的情况下都无法正常使用。
 
-Facile 主题针对屏幕阅读器做了大量优化，并在 [MVDA](http://www.nvda-project.org/) 和 [VoiceOver](https://www.apple.com/cn/accessibility/iphone/vision/) 这两款屏幕阅读器上做过测试，无论是 PC 还是移动设备都能完美朗读（除了日历图），主题能准确传达需要朗读的内容和信息，对于盲人来说，使用标准的屏幕阅读器基本可以无障碍操作。
+主题针对屏幕阅读器做了大量优化，并 在 [NVDA](http://www.nvda-project.org/) 、[VoiceOver](https://en.wikipedia.org/wiki/VoiceOver) 、[TalkBack](https://en.wikipedia.org/wiki/TalkBack) 这些屏幕阅读器上做过测试，无论是 PC 还是移动设备都能完美朗读。主题能准确传达需要朗读的内容和信息，对于视障人群来说，使用标准的屏幕阅读器基本可以无障碍操作。
 
-主题可完美支持键盘访问，颜色对比度也符合标准。
+主题可完美支持键盘访问，很多地方专门做了键盘适配，颜色对比度也符合标准。
 
-小提示：如果您是屏幕阅读器用户，为了您的浏览体验，不建议使用 IE 浏览器。
-
-## 友情链接
-
-友情链接分为 `全站友情链接`、`首页友情链接`、`内页友情链接`。`全站友情链接` 会在每个页面的侧边栏显示，`首页友情链接` 会在首页的侧边栏显示，`内页友情链接` 只会在 友情链接 的页面显示。
-
-要查看友情链接的设置说明可以访问 [帮助文档 - 主题设置](https://facile.misterma.com/%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE.html#%E8%BF%9B%E5%85%A5%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE)
+主题后台设置也适配了屏幕阅读器。
 
 ## 兼容性
 
 主题用到了少量的 CSS3，常见的浏览器都能完美兼容，IE 系列浏览器需要达到 IE10 才能完美兼容。
 
 JavaScript 用到了 ES6，打包的发行版可以完美兼容 IE，开发版不支持 IE 系列浏览器和一些较老的浏览器。
+
+MathJax 不一定能在 IE 系列浏览器渲染数学公式。
 
 ## 打赏支持
 
