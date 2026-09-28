@@ -107,6 +107,7 @@ const ZH = array(
         'tags' => '标签云',
         'tagPostCount' => '%d 篇文章',
         'archives' => '文章归档',
+        'viewMore' => '查看更多',
         'usefulLinks' => '友情链接',
         'other' => '其它功能',
         'login' => '登录',

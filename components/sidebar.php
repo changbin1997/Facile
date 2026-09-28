@@ -232,7 +232,9 @@ $components = explode(',', $components);
                 <?php
                 // 根据语言设置归档时间格式
                 $format = $GLOBALS['language'] == 'en' ? 'F Y' : 'Y年m月';
-                $postArchive = $this->widget('Widget_Contents_Post_Date', 'type=month&format=' . $format);
+                // 侧边栏文章归档月份数量，0 为不限制
+                $archiveMonthCount = $this->options->sidebarArchiveMonthCount == 0?1000:$this->options->sidebarArchiveMonthCount;
+                $postArchive = $this->widget('Widget_Contents_Post_Date', 'type=month&format=' . $format . '&limit=' . $archiveMonthCount);
                 ?>
                 <?php if ($postArchive->have()): ?>
                     <ul aria-label="<?php echo $GLOBALS['t']['sidebar']['archives']; ?>" class="clearfix">
@@ -244,6 +246,11 @@ $components = explode(',', $components);
                                 </a>
                             </li>
                         <?php endwhile; ?>
+                        <?php if ($this->options->archivePageUrl): ?>
+                            <li class="float-xl-left float-lg-none float-md-left float-sm-left float-left">
+                                <a rel="archives" href="<?php echo $this->options->archivePageUrl; ?>" class="mr-2"><?php echo $GLOBALS['t']['sidebar']['viewMore']; ?></a>
+                            </li>
+                        <?php endif; ?>
                     </ul>
                 <?php else: ?>
                     <p class="pb-2 message"><?php echo $GLOBALS['t']['sidebar']['coPostsAvailableToGenerateAnArchive']; ?></p>

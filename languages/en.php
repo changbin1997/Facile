@@ -107,6 +107,7 @@ const EN = array(
         'tags' => 'Tags',
         'tagPostCount' => '%d posts',
         'archives' => 'Archives',
+        'viewMore' => 'View More',
         'usefulLinks' => 'Useful Links',
         'other' => 'Other',
         'login' => 'Log in',
