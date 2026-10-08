@@ -38,7 +38,8 @@ const EN = array(
         ),
         'noneTag' => 'None',
         'uncategorized' => 'Uncategorized',
-        'pinned' => 'Pinned'
+        'pinned' => 'Pinned',
+        'dateFormat' => 'j M Y'
     ),
     'comment' => array(
         'leaveAComment' => 'Leave a Comment',
@@ -129,7 +130,8 @@ const EN = array(
         'noCategoriesAvailableToDisplay' => 'No categories available to display.',
         'noTagsAvailableToDisplay' => 'No tags available to display.',
         'coPostsAvailableToGenerateAnArchive' => 'No posts available to generate an archive.',
-        'secretCommentNotice' => 'Private comment. Please open the post page to view it.'
+        'secretCommentNotice' => 'Private comment. Please open the post page to view it.',
+        'archiveMonth' => 'F Y'
     ),
     'archive' => array(
         'postsUnderTheCategory' => 'Posts under the category %s',

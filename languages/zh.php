@@ -38,7 +38,8 @@ const ZH = array(
         ),
         'noneTag' => '暂无标签',
         'uncategorized' => '未分类',
-        'pinned' => '置顶'
+        'pinned' => '置顶',
+        'dateFormat' => 'Y年m月d日'
     ],
     'comment' => array(
         'leaveAComment' => '发表评论',
@@ -129,7 +130,8 @@ const ZH = array(
         'noCategoriesAvailableToDisplay' => '没有可以显示的分类。',
         'noTagsAvailableToDisplay' => '没有可以显示的标签。',
         'coPostsAvailableToGenerateAnArchive' => '没有文章，无法生成文章归档。',
-        'secretCommentNotice' => '私密评论，请进入评论页查看。'
+        'secretCommentNotice' => '私密评论，请进入评论页查看。',
+        'archiveMonth' => 'Y年m月'
     ),
     'archive' => array(
         'postsUnderTheCategory' => '分类 %s 下的文章',

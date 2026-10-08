@@ -231,7 +231,7 @@ $components = explode(',', $components);
                 <h2 class="mb-4"><?php echo $GLOBALS['t']['sidebar']['archives']; ?></h2>
                 <?php
                 // 根据语言设置归档时间格式
-                $format = $GLOBALS['language'] == 'en' ? 'F Y' : 'Y年m月';
+                $format = $GLOBALS['t']['sidebar']['archiveMonth'];
                 // 侧边栏文章归档月份数量，0 为不限制
                 $archiveMonthCount = $this->options->sidebarArchiveMonthCount == 0?1000:$this->options->sidebarArchiveMonthCount;
                 $postArchive = $this->widget('Widget_Contents_Post_Date', 'type=month&format=' . $format . '&limit=' . $archiveMonthCount);
