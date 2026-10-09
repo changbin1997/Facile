@@ -39,7 +39,7 @@ Facile 相比 [MWordStar](https://github.com/changbin1997/MWordStar) 来说，�
 * 响应式设计
 * 无障碍适配（Accessibility）
 * 包含浅色和深色两套配色（可根据系统主题配色自动调节）
-* 支持多语言（i18n）
+* 支持多语言（i18n），目前已内置简体、繁体、英文
 * 代码高亮
 * 支持短代码（Shortcode）
 * 支持 MathJax 数学公式渲染

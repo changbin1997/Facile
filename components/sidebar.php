@@ -88,6 +88,12 @@ $components = explode(',', $components);
                     </li>
                     <li>
                         <div class="custom-control custom-radio">
+                            <input <?php if ($GLOBALS['language'] == 'zh-TW') echo 'checked'; ?> class="custom-control-input change-language" type="radio" name="language" id="zh-TW" data-language="zh-TW">
+                            <label class="custom-control-label" for="zh-TW">繁體中文</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="custom-control custom-radio">
                             <input <?php if ($GLOBALS['language'] == 'en') echo 'checked'; ?> class="custom-control-input change-language" type="radio" name="language" id="en" data-language="en">
                             <label class="custom-control-label" for="en">English</label>
                         </div>
